@@ -1,5 +1,12 @@
 #root {
+  width: 100%;
+  height: 100vh;
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
 }
+
+#container{
+  width: 100%;
+  height: 300px;
+  background: url(assets/i_have_no_enemies___thorfinn___vinland_manga_3d_by_synedae_dg3gce9-fullview.jpg) no-repeat;
+}
+
