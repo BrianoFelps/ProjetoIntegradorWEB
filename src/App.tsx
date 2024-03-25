@@ -1,6 +1,4 @@
 import './App.css'
-import ShareButton from './Components/ShareButton';
-import ThreeDotIcon from './Components/ThreeDotIcon';
 
 function App() {
 
@@ -12,7 +10,6 @@ function App() {
   return (
     <>
       <div id='Container'>
-        <ShareButton onClick={testebacanudo} />
       </div>
     </>
   )
