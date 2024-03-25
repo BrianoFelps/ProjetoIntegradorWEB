@@ -1,0 +1,18 @@
+#ShareB{
+    display: flex;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    bottom: 12.6%;
+    left: .5%;
+    /* css default aberto a alterações a vontade */
+}
+
+#ShareButtonText{
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    cursor: pointer;
+    /* css default aberto a alterações a vontade */
+}
