@@ -1,17 +1,21 @@
 #ClockI{
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 30px;
     height: 30px;
-    position: relative;
-    bottom: 12.6%;
-    left: .5%;
+    border-radius: 6px;
     /* css default aberto a alterações a vontade */
 }
 
+#ClockI:hover{
+    background: rgba(0, 0, 0, .1);
+}
+
 #ClockIconOption{
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
+    padding: 2px;
     background: url('../assets/ClockIcon.png') no-repeat;
     background-size: cover;
     cursor: pointer;

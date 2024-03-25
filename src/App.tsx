@@ -4,7 +4,8 @@ import TextTitle from './Components/TextTitle';
 import ShareButton from './Components/ShareButton';
 import ThreeDotIcon from './Components/ThreeDotIcon';
 import FavoriteIcon from './Components/FavoriteIcon';
-
+import ClockIcon from './Components/ClockIcon';
+import CommentIcon from './Components/CommentIcon';
 
 function App() {
   const ola = () =>{
@@ -21,13 +22,13 @@ function App() {
 
         <div id='ItensDoCanto'>
           <ShareButton onClick={ola}/>
+          <CommentIcon onClick={ola}/>
+          <ClockIcon onClick={ola}/>
+          <FavoriteIcon onClick={ola}/>
           <ThreeDotIcon onClick={ola}/>
-          <br />
-          <FavoriteIcon onClick={ola}></FavoriteIcon>
         </div>
       </div>
       <div id='BgBanner'></div>
-
 
     </>
   )
