@@ -12,14 +12,13 @@ body{
   height: 100vh;
   min-width: 1280px;
   width: 100%;
-
 }
 
 #ContainerSuperior{
   display: flex;
   align-items: center;
   width: 100%;
-  background: rgba(0, 0, 0, .2) no-repeat;
+  padding: 5px 0;
 }
 
 #BgBanner{
@@ -31,43 +30,49 @@ body{
 }
 
 div#TitleText{
-  width: 200px;
-  height: 50px;
-  float: left;
-  position: relative;
-  bottom: 16%;
-}
-
-div#TitleTextIcon{
+  margin-left: 4px;
+  align-items: center;
   justify-content: center;
   align-items: center;
-  width: 400px;
-  height: 30px;
   display: flex;
-  font-size: .65em;
+  padding: 6px 0;
 }
 
-div#TitleTextIcon:hover{
-  transition: .3s;
-  background: rgba(0, 0, 0, .05);
-  border-radius: 10px;
+div#TitleText:hover{
+  transition: .2s;
+  background: rgba(0, 0, 0, .1);
 }
 
 #ItensDoCanto{
   display: flex;
+  margin-left: 75%;
   align-items: center;
-  margin-left: 66%;
+  justify-content: end;
 }
 
-#shareB, #ThreeDI, #FavoriteIcon{
-  position: static;
-  align-items: center;
-  justify-content: center;
-  height: auto;
+div#ShareB{
+  margin-left: 10px;
+  padding: 5px 0;
+}
+
+div#ShareB:hover{
+  background: rgba(0, 0, 0, .1);
 }
 
 div#ShareButtonText{
   font-size: .65em;
   width: auto;
   height: auto;
+}
+
+#ThreeDI{
+  margin-left: 5px;
+}
+
+div#ThreeDI:hover{
+  background: rgba(0, 0, 0, .1);
+}
+
+div#FavoriteIcon{
+  margin-left: 5px;
 }
