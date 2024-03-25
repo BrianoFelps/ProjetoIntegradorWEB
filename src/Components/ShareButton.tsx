@@ -6,8 +6,8 @@ interface Props{
 
 function ShareButton(props: Props){
     return(
-        <div id='ShareB'>
-            <div id='ShareButtonText' onClick={props.onClick}><h2>Compartilhar</h2></div>
+        <div id='ShareB' onClick={props.onClick}>
+            <h2>Compartilhar</h2>
         </div>
     )
 }

@@ -1,19 +1,27 @@
 #ThreeDI{
     display: flex;
     align-items: center;
-    width: 30px;
-    height: 30px;
-    position: relative;
-    bottom: 12.6%;
-    left: .5%;
+    width: 50px;
+    height: 20px;
+    /* bottom: 12.6%;
+    left: .5%; */
     /* css default aberto a alterações a vontade */
 }
 
 #ThreeDotIconOption{
     width: 20px;
-    height: 20px;
+    height: 10px;
     background: url('../assets/three-dots-icon.svg') no-repeat;
     background-size: cover;
+    background-position: center;
     cursor: pointer;
     /* css default aberto a alterações a vontade */
+}
+
+#ThreeDI:hover{
+    background: rgba(255, 255, 255, .5);
+    border-radius: 6px;
+
+    /* white-space: nowrap; */ 
+
 }
