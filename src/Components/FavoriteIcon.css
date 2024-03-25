@@ -1,0 +1,16 @@
+#FavoriteIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 1px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+#FavoriteIcon:hover{
+    background: rgba(0, 0, 0, .1);
+}

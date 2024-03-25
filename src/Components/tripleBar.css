@@ -1,11 +1,13 @@
 #tripleBar{
     display: flex;
     align-items: center;
-    width: 30px;
-    height: 30px;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
     position: relative;
-    bottom: 12.6%;
-    left: .5%;
+    bottom: 14.3%;
+    left: .2%;
+    border-radius: 5px;
 }
 
 #Bars{
@@ -14,4 +16,9 @@
     background: url(../assets/menu-tres-barras-destacadas.png) no-repeat;
     background-size: cover;
     cursor: pointer;
+}
+
+#tripleBar:hover{
+    background: rgba(0, 0, 0, .1);
+    transition: .4s;
 }
