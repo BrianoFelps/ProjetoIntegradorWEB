@@ -1,45 +1,27 @@
 import './App.css';
-import TripleBar from './Components/TripleBar';
-import TextTitle from './Components/TextTitle';
-import ShareButton from './Components/ShareButton';
-import ThreeDotIcon from './Components/ThreeDotIcon';
-import FavoriteIcon from './Components/FavoriteIcon';
-import ClockIcon from './Components/ClockIcon';
-import CommentIcon from './Components/CommentIcon';
-import EditedInfo from './Components/EditedInfo';
-
+import Input from './Components/Inputtypetext';
+import Title from './Components/title';
+import TopBar from './all-in-one/Topbar';
+import EmojiMenu from './Components/EmojiMenu';
 
 function App() {
-  const ola = () =>{
-    alert("Olá")
-  }
-
-  const handleClick = () => {
-    // sua função personalizada aqui
-    console.log("Hover ocorreu!");
-  };
-
   return (
     <>
+        <TopBar ></TopBar>
 
-      <div id='ContainerSuperior'>
-        <TripleBar onClick={ola}/>
-
-        <TextTitle onClick={ola}></TextTitle>
-
-        <div id='ItensDoCanto'>
-          <EditedInfo onMouseEnter={handleClick} onMouseLeave={ola}/>
-          <ShareButton onClick={ola}/>
-          <CommentIcon onClick={ola}/>
-          <ClockIcon onClick={ola}/>
-          <FavoriteIcon onClick={ola}/>
-          <ThreeDotIcon onClick={ola}/>
-        </div>
-      </div>
-      <div id='BgBanner'></div>
-
+        <main id='ConteudoPrincipal'>
+          <section>
+            <Title>
+              <h2>
+                Ponto de equilíbrio
+              </h2>
+            </Title>
+            <EmojiMenu></EmojiMenu>
+            <Input placeholder='Citação vazia'/>
+          </section>
+        </main>
     </>
   )
 }
 
-export default App
+export default App;

@@ -6,7 +6,7 @@ interface props{
 
 function Title(Props: props) {
     return(
-        <div>
+        <div id='DivTitulo'>
             {Props.children}
         </div>
     )

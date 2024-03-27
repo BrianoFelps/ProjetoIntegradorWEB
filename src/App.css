@@ -6,6 +6,7 @@
 body{
   width: 100%;
   margin: 0;
+  font-family: sans-serif;
 }
 
 #root {
@@ -14,79 +15,28 @@ body{
   width: 100%;
 }
 
-#ContainerSuperior{
+#ConteudoPrincipal{
   display: flex;
+  margin: 0 auto;
   align-items: center;
+  width: 80%;
+}
+
+#ConteudoPrincipal section{
   width: 100%;
-  padding: 7px 0;
 }
 
-#BgBanner{
-  height: 300px;
-  width: 100%;
-
-  background: url(assets/i_have_no_enemies___thorfinn___vinland_manga_3d_by_synedae_dg3gce9-fullview.jpg) no-repeat center;
-  background-size: cover;
+#DivTitulo h2{
+  font-family: "Lyon-text";
+  font-size: 2.2em;
 }
 
-div#tripleBar{
-  padding: 0 5px;
+section{
+  position: relative
 }
 
-div#TitleText{
-  white-space: nowrap;
-  margin-left: 5px;
-  align-items: center;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  padding: 6px 5px;
-}
-
-div#TitleText:hover{
-  transition: .2s;
-  background: rgba(0, 0, 0, .1);
-}
-
-#ItensDoCanto{
-  display: flex;
-  margin-right: 1%;
-  margin-left: 71%;
-  align-items: center;
-  
-}
-
-div#ShareB{
-  margin-left: 10px;
-  padding: 5px 0;
-}
-
-div#ShareB:hover{
-  background: rgba(0, 0, 0, .1);
-}
-
-div#ShareButtonText{
-  font-size: .65em;
-  width: auto;
-  height: auto;
-}
-
-#ThreeDI{
-  margin-left: 5px;
-}
-
-div#ThreeDI:hover{
-  background: rgba(0, 0, 0, .1);
-}
-
-div#FavoriteIcon{
-  margin-left: 5px;
-}
-
-div#ClockI{
-  margin-left: 5px;
-}
-
-div#CommentIcon{
-  margin-left: 5px
+div.emoji-container{
+  position: absolute;
+  top: 39%;
+  left: .4%;
 }

@@ -1,12 +1,13 @@
+import './InputTypeText.css'
+
 interface Props{
-    type: string;
+    placeholder?: string;
 }
 
-function Input(props : Props){
+function Input(props: Props){
     return(
-        <input type={props.type} /> 
+        <textarea id="Input" placeholder={props.placeholder}></textarea>
     )
 }
 
 export default Input;
-   

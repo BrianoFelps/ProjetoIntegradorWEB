@@ -33,8 +33,6 @@ function TopBar() {
           <ClockIcon onClick={ola}/>
           <FavoriteIcon onClick={ola}/>
           <ThreeDotIcon onClick={ola}/>
-          <br />
-          <FavoriteIcon onClick={ola}></FavoriteIcon>
         </div>
       </div>
       <div id='BgBanner'></div>
