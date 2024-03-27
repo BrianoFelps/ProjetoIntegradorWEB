@@ -22,8 +22,6 @@ function EditedInfo(props: Props){
         }
     };
 
-
-
     return(
         <nav id='EditedInfo'>
             <p onMouseEnter={handleMouseEnter}
