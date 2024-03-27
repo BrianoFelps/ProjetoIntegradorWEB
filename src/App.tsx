@@ -4,7 +4,7 @@ import TextTitle from './Components/TextTitle';
 import ShareButton from './Components/ShareButton';
 import ThreeDotIcon from './Components/ThreeDotIcon';
 import FavoriteIcon from './Components/FavoriteIcon';
-import MiddleIcon from './Components/MiddleIcon';
+// import MiddleIcon from './Components/MiddleIcon';
 
 
 function App() {
@@ -29,10 +29,10 @@ function App() {
       </div>
       <div id='BgBanner'></div>
 
-      <div id='testes'>
-        <MiddleIcon onClick={ola}></MiddleIcon>
+      {/* <div id='testes'> */}
+        {/* <MiddleIcon onClick={ola}></MiddleIcon> */}
 
-      </div>
+      {/* </div> */}
 
 
     </>
