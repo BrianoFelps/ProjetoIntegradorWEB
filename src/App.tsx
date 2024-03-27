@@ -4,7 +4,6 @@ import TextTitle from './Components/TextTitle';
 import ShareButton from './Components/ShareButton';
 import ThreeDotIcon from './Components/ThreeDotIcon';
 import FavoriteIcon from './Components/FavoriteIcon';
-// import MiddleIcon from './Components/MiddleIcon';
 
 
 function App() {
@@ -29,7 +28,6 @@ function App() {
       </div>
       <div id='BgBanner'></div>
 
-      
     </>
   )
 }
