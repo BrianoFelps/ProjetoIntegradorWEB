@@ -1,5 +1,4 @@
 .emoji-menu {
-
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -21,7 +20,13 @@
     transition: .1s;
     margin: 0 2px;
   }
-  
-  button {
-    font-size: 16px;
+
+  .emoji-container{
+    width: 40px;
+    height: 40px;
+  }
+
+ .emoji-container button{
+    box-sizing: border-box;
+    padding: 13px;
   }
