@@ -29,12 +29,7 @@ function App() {
       </div>
       <div id='BgBanner'></div>
 
-      {/* <div id='testes'> */}
-        {/* <MiddleIcon onClick={ola}></MiddleIcon> */}
-
-      {/* </div> */}
-
-
+      
     </>
   )
 }
