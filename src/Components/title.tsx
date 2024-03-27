@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'; 
+propsimport { ReactNode } from 'react'; 
 
 interface props{
     children: ReactNode;
