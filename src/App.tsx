@@ -16,8 +16,8 @@ function App() {
                 Ponto de equilíbrio
               </h2>
             </Title>
-            <EmojiMenu></EmojiMenu>
-            <Input placeholder='Citação vazia'/>
+            <EmojiMenu/>
+            <Input placeholder='Título vazio'/>
           </section>
         </main>
     </>

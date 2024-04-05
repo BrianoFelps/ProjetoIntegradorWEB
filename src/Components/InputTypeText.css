@@ -1,17 +1,49 @@
+.custom-textarea-container {
+  position: relative;
+}
+
 #Input{
     width: 100%;
 
-    font-size: 1.2em;
+    font-size: 1.3em;
 
     border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
+    border-radius: 0 0 4px 4px;
+    border-top: none;
 
     resize: none;
 
-    padding: 20px;
+    padding: 10px 50px;
+
+
+    line-height: 1.4em;
+
+    z-index: 1;
   }
 
 #Input:focus, select:focus{
     box-shadow: 0 0 0 0;
     outline: 0;
+}
+
+.custom-title {
+  position: sticky;
+
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px 4px 0px 0px;
+  border-bottom: none;
+
+  padding-top: 20px;
+  padding-left: 45px; /* Adiciona padding-left para o título simulado */
+
+  font-size: 1.4em;
+
+  width: calc(110% - 50px); /* Ajuste para a largura do input menos o padding-left */
+  box-sizing: border-box;/* Inclui padding na largura total */
+
+  line-height: 1.5;
+}
+
+.custom-title:focus{
+  outline: none;
 }

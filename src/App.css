@@ -37,6 +37,10 @@ section{
 
 div.emoji-container{
   position: absolute;
-  top: 45%;
+  top: 25.8%;
   left: 1%;
+}
+
+#Input{
+  height: 20vh;
 }
