@@ -46,7 +46,7 @@ section{
   position: relative;
 }
 
-div.emoji-container{
+#top div.emoji-container{
   position: absolute;
   top: 74px;
   left: 1%;

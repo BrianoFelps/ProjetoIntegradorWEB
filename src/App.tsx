@@ -5,8 +5,13 @@ import TopBar from './all-in-one/Topbar';
 import EmojiMenu from './Components/EmojiMenu';
 import InputWriteIdea from './Components/InputWriteIdea';
 import MidIcon from './Components/MidIcon';
+import TopBarL from './Components/TopBarL';
 
 function App() {
+  const oi = () => {
+    alert('oi')
+  }
+
   return (
     <>
         <TopBar ></TopBar>
@@ -28,7 +33,14 @@ function App() {
           </section>
           
           <section id='main'>
-            asdfdsafads
+            <TopBarL onClick={oi}>
+              <div>
+                <i className="fa fa-picture-o" aria-hidden="true" style={{fontSize:17}}/>
+                <span>
+                  Gallery view
+                </span>
+              </div>
+            </TopBarL>
           </section>
         </main>
     </>

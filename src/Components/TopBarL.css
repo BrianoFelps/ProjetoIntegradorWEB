@@ -1,0 +1,35 @@
+#TopBarList{
+    display: flex;
+    list-style: none;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.ListItem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 4px 7px;
+    border-radius: 5px;
+
+    font-size: .95em;
+    text-overflow: ellipsis;
+}
+
+.ListItem:hover{
+    background-color: rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: .2s;
+}
+
+#TopBarList .ListItem div{
+    display: flex;
+    align-items: center;
+}
+
+#TopBarList .ListItem div span{
+    margin-left: 4px;
+    margin-top: 2px;
+}
+
