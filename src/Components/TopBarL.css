@@ -1,7 +1,7 @@
 #TopBarList{
     display: flex;
     list-style: none;
-    padding: 4px 0;
+    padding: 2px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
@@ -15,6 +15,10 @@
 
     font-size: .95em;
     text-overflow: ellipsis;
+
+    box-shadow: 0 1px 1px black;
+
+    margin-right: 5px;
 }
 
 .ListItem:hover{
@@ -23,13 +27,19 @@
     transition: .2s;
 }
 
-#TopBarList .ListItem div{
+#TopBarList .ListItem a{
     display: flex;
     align-items: center;
+    color: black;
+    width: 100%;
+    height: 100%;
 }
 
-#TopBarList .ListItem div span{
+#TopBarList .ListItem a span{
     margin-left: 4px;
     margin-top: 2px;
 }
 
+.primary .ListItem{
+    border-bottom: 2px solid black;
+} 

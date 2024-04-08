@@ -4,11 +4,12 @@ import './TopBarL.css'
 interface props {
     children: ReactNode;
     onClick: ()=> void;
+    classNm: string;
 }
 
 function TopBarL (props: props){
     return(
-        <ul id='TopBarList'>
+        <ul id='TopBarList' className={props.classNm}>
             {React.Children.map(props.children, (child, index) => {
                 // Verifica se o elemento child é válido e é um tipo de React.Element
                 if (React.isValidElement(child)) {

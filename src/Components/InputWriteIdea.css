@@ -19,3 +19,7 @@
     
     /* -webkit-text-fill-color: rgb(255, 255, 255); */ /* esse aqui muda a cor do placeholder */
 }
+
+#Spacer.top{
+    margin-bottom: 2px;
+}

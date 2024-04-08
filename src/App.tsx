@@ -6,6 +6,7 @@ import EmojiMenu from './Components/EmojiMenu';
 import InputWriteIdea from './Components/InputWriteIdea';
 import MidIcon from './Components/MidIcon';
 import TopBarL from './Components/TopBarL';
+import NItem from './Components/NItem';
 
 function App() {
   const oi = () => {
@@ -29,18 +30,21 @@ function App() {
             </Title>
             <EmojiMenu/>
             <Input/>
-            <InputWriteIdea></InputWriteIdea>
+            <InputWriteIdea classNm='top'></InputWriteIdea>
           </section>
           
           <section id='main'>
-            <TopBarL onClick={oi}>
-              <div>
+            <TopBarL onClick={oi} classNm= "primary">
+              <a href=''>
                 <i className="fa fa-picture-o" aria-hidden="true" style={{fontSize:17}}/>
                 <span>
                   Gallery view
                 </span>
-              </div>
+              </a>
             </TopBarL>
+            <div id='ItensContainer'>
+              <NItem onclick={oi}/>
+            </div>
           </section>
         </main>
     </>

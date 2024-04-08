@@ -3,11 +3,12 @@ import './InputWriteIdea.css'
 
 interface Props{
     onClick?: () => void;
+    classNm?: string;
 }
 
 function Spacer(props: Props){
     return(
-        <div id='Spacer' onClick={props.onClick}>
+        <div id='Spacer' onClick={props.onClick} className={props.classNm}>
         </div>
     )
 }
