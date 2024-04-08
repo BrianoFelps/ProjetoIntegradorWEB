@@ -1,21 +1,20 @@
-import './App.css';
-import Input from './Components/inputtypetext';
-import Title from './Components/title';
-import TopBar from './all-in-one/Topbar';
-import EmojiMenu from './Components/EmojiMenu';
-import InputWriteIdea from './Components/InputWriteIdea';
-import MidIcon from './Components/MidIcon';
-import TopBarL from './Components/TopBarL';
+import './MainPage.css'
+import EmojiMenu from "../Components/EmojiMenu"
+import MidIcon from "../Components/MidIcon"
+import Input from "../Components/inputtypetext"
+import Title from "../Components/title"
+import InputWriteIdea from "../Components/InputWriteIdea"
+import TopBarL from "../Components/TopBarL"
 
-function App() {
-  const oi = () => {
-    alert('oi')
-  }
 
-  return (
-    <>
-        <TopBar ></TopBar>
+function MainPage() {
+  
+    const oi = () => {
+        alert('oi')
+    }
 
+    return (
+      <>
         <div id='Separator'>
           <MidIcon/>
         </div>
@@ -43,8 +42,7 @@ function App() {
             </TopBarL>
           </section>
         </main>
-    </>
-  )
+        </>
+    )
 }
-
-export default App;
+  export default MainPage
