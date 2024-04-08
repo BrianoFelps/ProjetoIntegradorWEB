@@ -1,5 +1,5 @@
 import './App.css';
-import Input from './Components/Inputtypetext';
+import Input from './Components/inputtypetext';
 import Title from './Components/title';
 import TopBar from './all-in-one/Topbar';
 import EmojiMenu from './Components/EmojiMenu';

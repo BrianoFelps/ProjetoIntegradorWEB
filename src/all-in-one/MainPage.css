@@ -1,0 +1,72 @@
+*{
+    padding: 0;
+    margin: 0;
+  }
+  
+  body{
+    width: 100%;
+    margin: 0;
+    font-family: sans-serif;
+  }
+  
+  #root {
+    height: 100vh;
+    width: 100%;
+    min-width: 1280px;
+  }
+  
+  #ConteudoPrincipal{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  
+    position: relative;
+    bottom: 15px;
+  
+    margin: 0 auto;
+  
+    width: 80%;
+  }
+  
+  #ConteudoPrincipal section{
+    width: 100%;
+  }
+  
+  #ContainerSuperior{
+    position: sticky;
+    z-index: 100;
+  }
+  
+  #DivTitulo h2{
+    font-family: "Lyon-text";
+    font-size: 2.2em;
+  }
+  
+  section{
+    position: relative;
+  }
+  
+  #top div.emoji-container{
+    position: absolute;
+    top: 74px;
+    left: 1%;
+  }
+  
+  #Input{
+    height: 20vh;
+  }
+  
+  #Separator{
+    display: flex;
+    width: fit-content;
+    position: relative;
+    bottom: 40px;
+    left: 190px;
+  }
+  /* #MidIconOutside{
+    position: absolute;
+  
+    top: -45px;
+    right: 100%;
+    z-index: 3;
+  } */
