@@ -1,27 +1,21 @@
-#InputOutside{
-    width: 600px; 
-    max-width: 100%; 
-    margin-top: 1px; 
-    margin-bottom: 1px;
-    /* css default aberto a alterações a vontade */
-}
+#Spacer{
+    background: rgb(211, 211, 211);
 
-#InputWriteInside{
-    background: rgb(47, 47, 47);
-    color: white;
     display: flex;
+
     max-width: 100%; 
     width: 100%; 
+
     white-space: pre-wrap;
     word-break: break-word;
+
     padding: 3px 2px;
     min-height: 1em;
+    height: 24px;
+    margin: 25px 0 0 0;
+
     outline: none;
     border: none;
+    
     /* -webkit-text-fill-color: rgb(255, 255, 255); */ /* esse aqui muda a cor do placeholder */
-
-}
-
-#InputWriteInside::placeholder{
-    text-align: center;
 }

@@ -5,12 +5,11 @@ interface Props{
     onClick?: () => void;
 }
 
-function InputWriteIdea(props: Props){
+function Spacer(props: Props){
     return(
-        <div id='InputOutside'>
-            <input id='InputWriteInside' type="text" placeholder="Write some ideas you have" onClick={props.onClick}></input>
+        <div id='Spacer' onClick={props.onClick}>
         </div>
     )
 }
 
-export default InputWriteIdea
+export default Spacer;
