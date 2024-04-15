@@ -1,0 +1,17 @@
+#NItem{
+    display: flex;
+    width: 500px;
+    height: 300px;
+}
+
+#NItemText{
+    display: flex;
+    align-items: bottom;
+}
+
+#NItemContainer .emoji-container button#BotãoEmoji{
+    width: 20px;
+    height: 20px;
+    font-size: .75em;
+    border-radius: 5px;
+}

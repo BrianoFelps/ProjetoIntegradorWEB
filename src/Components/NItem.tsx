@@ -8,11 +8,12 @@ interface props{
 function NItem (props: props){
     return(
         <div id='NItemContainer'>
-            <div id='' onClick={props.onclick}></div>
-
-            <EmojiMenu/>
-            
-            <input type="text"/>
+                    <EmojiMenu/>
+            <div id='NItem' onClick={props.onclick}>
+                <div id='NItemText'>
+                    <input type="text"/>
+                </div>
+            </div>
         </div>
     )
 }
