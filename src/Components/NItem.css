@@ -1,17 +1,60 @@
-#NItem{
+#NItemContainer{
     display: flex;
-    width: 500px;
-    height: 300px;
+    width: 100%;
+    border: none;
+    background: rgba(0, 0, 0, .05);
+    height: 187px;
+}
+
+#NItem {
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+
+    padding: 8px 5px;
+
+    height: 0px;
+}
+
+#NItem .emoji-container{
+    margin-right: 5px;
+}
+
+#NItem .emoji-container button{
+    width: 1.2em;
+    height: 1.2em;
+
+    font-size: 1.2em;
 }
 
 #NItemText{
     display: flex;
-    align-items: bottom;
+    align-items: center;
+
+    width: 100%;
+    margin: 0;
 }
 
-#NItemContainer .emoji-container button#BotãoEmoji{
-    width: 20px;
-    height: 20px;
-    font-size: .75em;
-    border-radius: 5px;
+#NItemText input{
+    width: 100%;
+
+    outline: none;
+    border: none;
+    
+    font-weight: 525;
+    font-family: "Lyon text";
+
+    text-transform: uppercase;
+
+    background-color: rgba(0, 0, 0, 0) ;
+}
+
+#NItemContainer .card-img-top{
+    object-fit: cover;
+    height: 81%;
+}
+
+#NItemContainer .card-img-top:hover{
+    cursor: pointer;
+    opacity: .9;
 }

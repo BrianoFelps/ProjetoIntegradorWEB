@@ -1,4 +1,9 @@
 import './App.css';
+import image1 from "./assets/1000019662.jpg"
+import image2 from "./assets/Alexandre-o-Grande.webp"
+import image3 from "./assets/Apoteose-de-Santo-Tomás.jpg"
+import image4 from "./assets/athens-art-school-1143741_1920.jpg"
+import image5 from "./assets/ca9c8e1a6db194149e8806c734fdae47.jpg"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from './Components/Inputtypetext';
 import Title from './Components/title';
@@ -44,7 +49,11 @@ function App() {
               </a>
             </TopBarL>
             <div id='ItensContainer'>
-              <NItem onclick={oi}/>
+              <NItem onclick={oi} image={image1}/>
+              <NItem onclick={oi} image={image2}/>
+              <NItem onclick={oi} image={image3}/>
+              <NItem onclick={oi} image={image4}/>
+              <NItem onclick={oi} image={image5}/>
             </div>
           </section>
         </main>
