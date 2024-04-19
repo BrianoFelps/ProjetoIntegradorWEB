@@ -1,11 +1,21 @@
 #TopBarList{
     display: flex;
     list-style: none;
-    padding: 2px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    padding-top: 3px;
 }
 
-.ListItem{
+#TopBarList li a {
+    display: flex;
+    font-size: .95em;
+    color: inherit;
+}
+
+#TopBarList li a img{
+    width: 25px;
+    margin-right: 5px;
+}
+
+/* .ListItem{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,4 +50,4 @@
 
 .primary .ListItem{
     border-bottom: 2px solid black;
-} 
+}  */

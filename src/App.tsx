@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from './Components/Inputtypetext';
 import Title from './Components/title';
 import TopBar from './all-in-one/Topbar';
@@ -15,7 +16,7 @@ function App() {
 
   return (
     <>
-        <TopBar ></TopBar>
+        <TopBar></TopBar>
 
         <div id='Separator'>
           <MidIcon/>
@@ -34,7 +35,7 @@ function App() {
           </section>
           
           <section id='main'>
-            <TopBarL onClick={oi} classNm= "primary">
+            <TopBarL onClick={oi}>
               <a href=''>
                 <i className="fa fa-picture-o" aria-hidden="true" style={{fontSize:17}}/>
                 <span>

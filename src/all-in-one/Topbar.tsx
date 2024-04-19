@@ -1,4 +1,5 @@
 import './topbar.css';
+import Banner from "../assets/i_have_no_enemies___thorfinn___vinland_manga_3d_by_synedae_dg3gce9-fullview.jpg"
 import TripleBar from '../Components/TripleBar';
 import TextTitle from '../Components/TextTitle';
 import ShareButton from '../Components/ShareButton';
@@ -20,7 +21,7 @@ function TopBar() {
 
   return (
     <>
-
+  <div id='TopbarContainermax'>
       <div id='ContainerSuperior'>
         <TripleBar onClick={ola}/>
 
@@ -35,9 +36,11 @@ function TopBar() {
           <ThreeDotIcon onClick={ola}/>
         </div>
       </div>
-      <div id='BgBanner'></div>
+      <div id='BgBanner'>
+        <img src={Banner} alt="" />
+      </div>
 
-
+    </div>
     </>
   )
 }

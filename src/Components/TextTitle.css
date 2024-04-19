@@ -4,7 +4,7 @@
     /* width: 300px; */
     /* height: 30px; */
     width: 200px;
-    height: 15px;
+    height: auto;
     font-size: 10px;
     justify-content: center;
     cursor: pointer;
@@ -14,17 +14,18 @@
 #TitleText:hover{
     background: rgba(255, 255, 255, .5);
     border-radius: 6px;
-
     /* white-space: nowrap; */
-
 }
 
 #TitleTextIcon{
-    margin-right: 5px;
+    display: flex;
     width: 15px;
     height: 15px;
-    background: url(../assets/GreekTempleIcon.png);
-    background-size: cover;
     cursor: pointer;
     /* css default aberto a alterações a vontade */
+    margin-right: 5px;
+}
+
+#TitleTextIcon img{
+    width: 20px;
 }

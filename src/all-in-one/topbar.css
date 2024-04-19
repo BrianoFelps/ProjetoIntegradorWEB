@@ -1,35 +1,59 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 #ContainerSuperior{
     display: flex;
     align-items: center;
     width: 100%;
     padding: 7px 0;
+    background: white;
   }
   
   #BgBanner{
-    height: 300px;
-    width: 100%;
+    padding-top: 44px;
+    grid-area: 1/1;
+    height: 100%;
   
-    background: url(../assets/i_have_no_enemies___thorfinn___vinland_manga_3d_by_synedae_dg3gce9-fullview.jpg) no-repeat center;
-    background-size: cover;
+    /* background: url(../assets/i_have_no_enemies___thorfinn___vinland_manga_3d_by_synedae_dg3gce9-fullview.jpg) no-repeat center; */
+    /* background-size: cover; */
+  }
+
+  #BgBanner img{
+    display: block;
+    object-fit: cover;
+    object-position: center 50%;
+    height: 40vh;
+    width: 100%;
+
+    /* background: url(../assets/i_have_no_enemies___thorfinn___vinland_manga_3d_by_synedae_dg3gce9-fullview.jpg) no-repeat center; */
+    /* background-size: cover; */
   }
   
   div#tripleBar{
     padding: 0 5px;
   }
   
-  div#TitleText{
+  #ContainerSuperior div#TitleText{
     white-space: nowrap;
     margin-left: 5px;
     align-items: center;
     justify-content: center;
     align-items: center;
     display: flex;
-    padding: 6px 5px;
+    padding: 4px 5px;
   }
   
-  div#TitleText:hover{
+  #ContainerSuperior div#TitleText:hover{
     transition: .2s;
     background: rgba(0, 0, 0, .1);
+  }
+
+  #ContainerSuperior div#TitleText h2{
+    margin: 0;
+    margin-right: 5px;
+    font-size: 1.5em;
   }
   
   #ItensDoCanto{
@@ -41,8 +65,12 @@
   }
   
   div#ShareB{
-    margin-left: 10px;
-    padding: 5px 0;
+    padding: 15px 10px;
+  }
+  
+  div#ShareB h2{
+    font-size: 1.5em;
+    margin: 0;
   }
   
   div#ShareB:hover{
@@ -73,4 +101,8 @@
   
   div#CommentIcon{
     margin-left: 5px
+  }
+
+  #EditedInfo p{
+    margin: 0;
   }
