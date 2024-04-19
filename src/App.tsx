@@ -7,6 +7,8 @@ import InputWriteIdea from './Components/InputWriteIdea';
 import MidIcon from './Components/MidIcon';
 import TopBarL from './Components/TopBarL';
 import NItem from './Components/NItem';
+import DiaADiaComponent from './Components/DiaADiaComponent';
+
 
 function App() {
   const oi = () => {
@@ -46,6 +48,9 @@ function App() {
               <NItem onclick={oi}/>
             </div>
           </section>
+          <DiaADiaComponent onClick={oi}>
+
+          </DiaADiaComponent>
         </main>
     </>
   )
