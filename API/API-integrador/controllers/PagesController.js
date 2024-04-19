@@ -35,13 +35,13 @@ export const addPages = (req, res) => {
     })
 }
 
-export const updateUser = (req, res) => {
-    const sql = "update usuario set nome = ? where id = ?";
+export const updatePages = (req, res) => {
+    const sql = "update pages set isFavorited = ? where id = ?";
 
-    const {id, nome} = req.body;
+    const {id, isFavorited} = req.body;
 
     // Nome a partir daqui vai ser transferido ao "?"
-    db.query(sql, [nome, id], (err, data) => {
+    db.query(sql, [isFavorited, id], (err, data) => {
         if(err){
             console.log("Erro ao processar a requisição!")
             // Status code, retorna uma coisa se der erro padronizando (tipo erro 404 do google)
@@ -54,4 +54,21 @@ export const updateUser = (req, res) => {
     });
 }
 
+export const deletePages = (req, res) => {
+    const sql = "delete from pages where id = ?";
 
+    const {id} = req.query;
+
+    // Nome a partir daqui vai ser transferido ao "?"
+    db.query(sql, [id], (err, data) => {
+        if(err){
+            console.log("Erro ao processar a requisição!")
+            // Status code, retorna uma coisa se der erro padronizando (tipo erro 404 do google)
+            return res.status(500).json(err);
+        } else {
+            console.log(`Usuário removido adequadamente!`);
+            return res.status(200).json(data);
+            // 500 expressa erro, 200 sucesso.
+        }
+    });
+}

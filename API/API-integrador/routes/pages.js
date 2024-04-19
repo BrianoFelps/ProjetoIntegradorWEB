@@ -1,6 +1,6 @@
 // Definir rotas
 import express from 'express';
-import { getPages, addPages } from '../controllers/PagesController.js';
+import { getPages, addPages, updatePages, deletePages } from '../controllers/PagesController.js';
 
 const router = express.Router();
 
@@ -8,5 +8,7 @@ const router = express.Router();
 // router.get("/", () => {console.log("Rota de usuários acionada.")});
 router.get("/", getPages);
 router.post("/", addPages);
+router.put("/", updatePages);
+router.delete("/", deletePages);
 
 export default router;
