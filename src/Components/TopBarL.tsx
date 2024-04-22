@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import './TopBarL.css';
 import ImageGaleryIcon from "../assets/icons8-gallery-50.png"
 

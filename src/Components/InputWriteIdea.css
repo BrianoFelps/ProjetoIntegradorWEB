@@ -20,6 +20,20 @@
     /* -webkit-text-fill-color: rgb(255, 255, 255); */ /* esse aqui muda a cor do placeholder */
 }
 
+#Spacer input{
+    width: 100%;
+    height: 100%;
+
+    outline: none;
+    border: none;
+    background: rgba(0, 0, 0, 0);
+
+    font-size: 1.2em;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
 #Spacer.top{
     margin-bottom: 2px;
 }
+

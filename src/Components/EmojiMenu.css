@@ -6,6 +6,8 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     padding: 10px;
+
+    z-index: 99999;
   }
   
   .emoji-menu span{

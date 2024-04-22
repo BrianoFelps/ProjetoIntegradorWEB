@@ -11,7 +11,7 @@ function NItem (props: props){
         <div id='NItemContainer' className='card'>
                     
             <img className='card-img-top' onClick={props.onclick} src={props.image} alt="" />
-            <div id='NItem' className='card-footer'>
+            <div id='NItem' className='card-body'>
             <EmojiMenu/>
                 <div id='NItemText' className='card-title lead'>
                     <input type="text"/>

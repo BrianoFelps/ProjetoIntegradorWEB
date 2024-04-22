@@ -13,6 +13,7 @@ import InputWriteIdea from './Components/InputWriteIdea';
 import MidIcon from './Components/MidIcon';
 import TopBarL from './Components/TopBarL';
 import NItem from './Components/NItem';
+import LinkGroup from './Components/LinkGroup';
 
 function App() {
   const oi = () => {
@@ -55,6 +56,10 @@ function App() {
               <NItem onclick={oi} image={image4}/>
               <NItem onclick={oi} image={image5}/>
             </div>
+          </section>
+
+          <section id='NavegacaoBasica'>
+              <LinkGroup></LinkGroup>
           </section>
         </main>
     </>

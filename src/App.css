@@ -72,7 +72,6 @@ section{
 } */
 
 #ItensContainer{
-  display: flex;
   padding-bottom: 0px;
   min-width: calc(100% - 192px);
   display: grid;
@@ -81,4 +80,9 @@ section{
   gap: 16px;
   padding-top: 16px;
   padding-bottom: 4px;
+}
+
+#NavegacaoBasica{
+  width: 70%;
+  height: 1000px;
 }
