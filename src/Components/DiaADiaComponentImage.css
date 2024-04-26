@@ -1,0 +1,20 @@
+#DADComponent{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+#DiaADiaImg {
+  display: flex;
+  justify-content: space-around; /* Centralizar horizontalmente */
+  align-items: center; /* Centralizar verticalmente */
+  width: 50%;
+  pointer-events: auto;
+}
+
+#DiaADiaImg img {
+  max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
+  height: auto; /* Altura automática para manter a proporção */
+  border-radius: 4px 6px; 
+}
