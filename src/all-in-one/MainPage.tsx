@@ -26,7 +26,9 @@ function MainPage() {
                 Ponto de equilíbrio
               </h2>
             </Title>
-            <EmojiMenu/>
+            <EmojiMenu
+            onOpen={() => {}} 
+            onClose={() => {}}/>
             <Input/>
             <InputWriteIdea></InputWriteIdea>
           </section>

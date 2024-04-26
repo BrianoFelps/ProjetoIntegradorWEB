@@ -1,8 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './EmojiMenu.css'; // Arquivo de estilos CSS
 
-function EmojiMenu() {
+interface EmojiMenuProps {
+  onOpen: () => void;
+  onClose: () => void;
+}
+
+function EmojiMenu({ onOpen, onClose }: EmojiMenuProps){
   const [menuOpen, setMenuOpen] = useState(false);
+  const [TooltipOpen, setTooltipOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -20,9 +26,14 @@ function EmojiMenu() {
   }, []);
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    setMenuOpen(prevState => !prevState);
+    if (!menuOpen) {
+      onOpen();
+      setTooltipOpen(false);
+    } else {
+      onClose();
+    }
   };
-
   const [buttonContent, setButtonContent] = useState('');
 
   const selectEmoji = (emoji: string) => {

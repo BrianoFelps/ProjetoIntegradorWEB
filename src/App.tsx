@@ -35,7 +35,9 @@ function App() {
                 Ponto de equilíbrio
               </h2>
             </Title>
-            <EmojiMenu/>
+            <EmojiMenu 
+            onOpen={() => {}} 
+            onClose={() => {}}/>
             <Input/>
             <InputWriteIdea classNm='top'></InputWriteIdea>
           </section>
@@ -59,6 +61,8 @@ function App() {
           </section>
 
           <section id='NavegacaoBasica'>
+              <LinkGroup></LinkGroup>
+              <LinkGroup></LinkGroup>
               <LinkGroup></LinkGroup>
           </section>
         </main>

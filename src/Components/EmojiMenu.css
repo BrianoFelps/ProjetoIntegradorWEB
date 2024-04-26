@@ -1,18 +1,26 @@
 .emoji-menu {
-    display: none;
+    display: block;
+
     position: absolute;
+
     background-color: #f9f9f9;
+
     min-width: 100px;
+    width: 200px;
+    height: 200px;
+
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
     border-radius: 5px;
     padding: 10px;
 
-    z-index: 99999;
+    z-index: 999;
   }
   
   .emoji-menu span{
+    position: relative;
     padding: 4px 0;
-    margin: 0 1px;
+    z-index: 998;
   }
 
   .emoji-menu span:hover {
@@ -20,12 +28,13 @@
     background: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
     transition: .1s;
-    margin: 0 2px;
+    padding: 5px 1px;
   }
 
   .emoji-container{
+    position: relative; /* Mudança para permitir que o menu de emojis seja posicionado em relação a este contêiner */
     display: inline-block;
-    z-index: 2;
+    z-index: 0;
   }
 
   .emoji-container button#BotãoEmoji{
@@ -39,6 +48,10 @@
 
     align-items: center;
     justify-content: center;
+
+    position: relative;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.05);
   }
 
   .emoji-container button#BotãoEmoji:hover{

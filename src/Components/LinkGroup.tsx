@@ -4,6 +4,7 @@ import CardTooltip from './CardTooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 
 function LinkGroup (){
+    
     return(
         <div id='LinkGroupContainer'>
             <InputWriteIdea>

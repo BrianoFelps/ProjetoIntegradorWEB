@@ -1,5 +1,5 @@
 #Spacer{
-    background: rgb(211, 211, 211);
+    background: rgba(0, 0, 0, 0.075);
 
     display: flex;
 
@@ -9,14 +9,12 @@
     white-space: pre-wrap;
     word-break: break-word;
 
-    padding: 3px 2px;
-    min-height: 1em;
-    height: 24px;
+    padding: 5px 0px 5px 5px;
     margin: 25px 0 0 0;
 
     outline: none;
     border: none;
-    
+    border-radius: 2px;
     /* -webkit-text-fill-color: rgb(255, 255, 255); */ /* esse aqui muda a cor do placeholder */
 }
 

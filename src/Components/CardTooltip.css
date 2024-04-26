@@ -1,15 +1,21 @@
+#ContainerCardT{
+    position: relative;
+}
+
 #custom-tooltip{
     position: absolute;
-
-    z-index: 999;
+    z-index: 900;
+    top: 100%; /* Posiciona a tooltip abaixo da li com um espaço de 5px */
+    left: 0;
 }
 
 #custom-tooltip #card{
     position: relative;
 
     display: flex;
-    align-items: baseline;
-    justify-items: baseline;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
 
     width: 400px;
     height: 240px;
@@ -21,6 +27,11 @@
     font-size: .3em;
     
     overflow-y: hidden;
+
+    background-color: white; /* Define uma cor de fundo para a tooltip */
+    border: 1px solid #ccc; /* Adiciona uma borda à tooltip */
+    border-radius: 5px; /* Arredonda as bordas da tooltip */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra à tooltip */
 }
 
 #custom-tooltip #card #MidIconInside{
@@ -30,6 +41,40 @@
 }
 
 #custom-tooltip .card-img-top{
-    height: 100px;
-    object-fit: cover;
+    width: 100%; /* Garante que a imagem ocupe toda a largura da tooltip */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 5px; /* Arredonda as bordas da imagem */
+}
+
+#ContainerCardT li{
+    /* position: relative;
+    z-index: -1; */
+    /* background-color: black; */
+    padding: 4px;
+
+    border: none;
+    border-radius: 5px;
+}
+
+#ContainerCardT li #InsCont{
+    display: flex;
+    align-items: center;
+}
+
+#ContainerCardT div input{
+    width: 100%;
+
+    margin-left: 10px;
+    border: none;
+
+    outline: none;
+
+    background: 0;
+
+    font-size: 1.3em;
+    text-decoration: #ccc 1px underline;
+}
+
+#ContainerCardT #InsCont .emoji-container{
+    font-size: 1em;
 }

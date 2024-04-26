@@ -84,5 +84,9 @@ section{
 
 #NavegacaoBasica{
   width: 70%;
-  height: 1000px;
+  height: 700px;
+}
+
+#main .emoji-container{
+  z-index: 1;
 }
