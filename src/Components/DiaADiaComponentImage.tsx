@@ -3,7 +3,7 @@ import './DiaADiaComponentImage.css'
 import DiaADiaImage from '../assets/DiaADia_berserk_image.jpg'
 
 interface Props{
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 function DiaADiaComponentImage(props: Props){
