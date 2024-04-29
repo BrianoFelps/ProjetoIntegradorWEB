@@ -22,7 +22,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
-    "react-tooltip": "^5.26.3"
+    "react-tooltip": "^5.26.4"
   },
   "devDependencies": {
     "@types/material-ui": "^0.21.17",
