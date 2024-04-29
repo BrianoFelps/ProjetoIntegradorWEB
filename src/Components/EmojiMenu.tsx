@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import './EmojiMenu.css'; // Arquivo de estilos CSS
 
 interface EmojiMenuProps {
@@ -36,8 +37,29 @@ function EmojiMenu({ onOpen, onClose }: EmojiMenuProps){
   };
   const [buttonContent, setButtonContent] = useState('');
 
+  const emojiIdMap: { [key: string]: number } = {
+    '😊': 1,
+    '😂': 2,
+    '😍': 3,
+    '🥴': 4,
+    '😁': 5,
+    // Adicione mais emojis conforme necessário
+  };
+
+  // const SendOrUpdateEmojiToBackend = (emoji:string) =>{
+  //   const emojiId = emojiIdMap[emoji];
+  //   axios.post('http://localhost:8080/pages', {emojiId})
+  //   .then(response => {
+  //     console.log('Emoji enviado para o backend com sucesso.', response.data)
+  //   })
+  //   .catch(error => {
+  //     console.error('Erro ao enviar emoji para o backend:', error);
+  //   });
+  // }
+
   const selectEmoji = (emoji: string) => {
     setButtonContent(emoji);
+    // SendOrUpdateEmojiToBackend(emoji);
   };
 
   return (

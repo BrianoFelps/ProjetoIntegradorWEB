@@ -10,7 +10,7 @@ interface props {
 function TopBarL (props: props){
     return(
         <ul className="nav nav-tabs" id='TopBarList'>
-            <li className="nav-item">
+            <li className="nav-item" onClick={props.onClick}>
                 <a href="" className="nav-link active">
                     <img src={ImageGaleryIcon} alt="" />
                     Image Gallery

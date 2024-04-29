@@ -19,6 +19,18 @@ function ContentPage() {
       alert('oi')
     }
 
+    const handleEmojiOpen = () => {
+        console.log("EmojiMenu aberto!");
+    }
+
+    const handleEmojiClose = () => {
+        console.log("EmojiMenu fechado!");
+    }
+
+    const handleTopBarClick = () => {
+        console.log("TopBarL clicado!");
+    }
+
     return (
     <main id='ConteudoPrincipal'>
         <section id='top'>
@@ -28,36 +40,37 @@ function ContentPage() {
             </h2>
                 </Title>
                 <EmojiMenu 
-                onOpen={() => {}} 
-                onClose={() => {}}/>
+                onOpen={handleEmojiOpen} 
+                onClose={handleEmojiClose}/>
                 <Input/>
                 <InputWriteIdea classNm='top'></InputWriteIdea>
-            </section>
+        </section>
             
-            <section id='main'>
-                <TopBarL onClick={oi}>
+        <section id='main'>
+            <TopBarL onClick={handleTopBarClick}>
                 <a href=''>
                     <i className="fa fa-picture-o" aria-hidden="true" style={{fontSize:17}}/>
                     <span>
-                    Gallery view
+                        Gallery view
                     </span>
                 </a>
-                </TopBarL>
-                <div id='ItensContainer'>
+            </TopBarL>
+
+            <div id='ItensContainer'>
                 <NItem onclick={oi} image={image1}/>
                 <NItem onclick={oi} image={image2}/>
                 <NItem onclick={oi} image={image3}/>
                 <NItem onclick={oi} image={image4}/>
                 <NItem onclick={oi} image={image5}/>
-                </div>
-            </section>
+            </div>
+        </section>
 
-            <section id='NavegacaoBasica'>
-                <DiaADiaComponentImage/>
-                <LinkGroup></LinkGroup>
-                <LinkGroup></LinkGroup>
-                <LinkGroup></LinkGroup>
-            </section>
+        <section id='NavegacaoBasica'>
+            <DiaADiaComponentImage/>
+            <LinkGroup></LinkGroup>
+            <LinkGroup></LinkGroup>
+            <LinkGroup></LinkGroup>
+        </section>
     </main>
     )
 }
