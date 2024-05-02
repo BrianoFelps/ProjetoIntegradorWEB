@@ -9,23 +9,69 @@
     font-family: sans-serif;
   }
   
-  #root {
+  #AllPage {
+    display: flex;
     height: 100vh;
     width: 100%;
     min-width: 1280px;
-  }
-
-  .insertData {
-    display: flex;
-    background-color: tomato;
     align-items: center;
-    justify-content: space-around;
-    /* max-width: 800px; */
-    height: 100vh;
+    background-color: white;
   }
 
-  /* #InputEmail1{ */
-  /* } */
+  #logo {
+    width: 90px;
+    display: flex;
+    position: absolute;
+    left: 5%;
+    top: 10%;
+  }
+
+  #LogoIcon{
+    display: flex;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    object-fit: cover;
+  }
+
+  #CentPage {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+  }
+
+  .insertData{
+    display: block;
+    width: 100%; /* Ajuste conforme necessário */
+    height: 350px;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: white;
+    justify-content: space-around;
+  }
+
+  #labelLogin{
+    padding-bottom: 10px;
+    font-size: large;
+  }
+
+  #labelEmail {
+    padding-bottom: 5px;
+  }
+
+  #labelPassword {
+    padding-bottom: 5px;
+  }
+
+  #InputEmail1{
+    width: 100% !important;
+  }
+
+  #InputPassword1{
+    width: 100% !important;
+  }
 
     #InputEmail1:focus{
         border-color: rgb(44, 17, 22);
@@ -36,7 +82,6 @@
         border-color: rgb(44, 17, 22);
         background-color: #e4e4e4;
     }
-
 
     #emailHelp{
         display: block;
@@ -74,8 +119,65 @@
         border-color: rgb(201, 186, 186);
     }
 
-  /* @media (min-width: 576px){
-    #caixadetras{
 
+  @media (max-width: 768px) {
+    /* body{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
     }
-  } */
+    #root{
+      justify-content: space-around;
+      height: 50vh;
+      width: 50%;
+      min-width: 1280px;
+    } */
+
+    #AllPage{
+      display: flex;
+      align-items: center;
+      height: 100vh;
+      width: 100%;
+      min-width: 480px;
+    }
+
+    #logo{
+        width: 100%;
+        display: flex;
+        position: absolute;
+    }
+
+    #LogoIcon{
+      display: flex;
+      align-items: center;
+      width: 28px;
+      height: 28px;
+      object-fit: cover;
+    }
+  
+    #CentPage{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        position: absolute;
+    }
+
+    .insertData{
+        width: 100%; /* Ajuste conforme necessário */
+        height: 350px;
+        margin-left: 25%;
+        margin-right: 25%;
+        background-color: white;
+        justify-content: space-around;
+    }
+
+    #InputEmail1{
+      width: 100% !important;
+    }
+
+    #InputPassword1{
+      width: 100% !important;
+    }
+
+  }
