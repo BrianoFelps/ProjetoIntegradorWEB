@@ -8,7 +8,7 @@ function Login(){
         <div id='AllPage'>
                 <div id='logo'>
                     <img id='LogoIcon' src={imgplace}></img>
-                    <label htmlFor="textLogo">Equilibrium</label>
+                    <label htmlFor="textLogo" id='textLogo'>Equilibrium</label>
                 </div>
             <div id='CentPage'>
                 <form className='insertData'>
@@ -26,7 +26,7 @@ function Login(){
                     </div>
                     <div className="form-group form-check" id='checkgroup'>
                         <input type="checkbox" className="form-check-input" id="exCheck1"></input>
-                        <label className="form-check-label" htmlFor="exampleCheck1">Lembrar do Login</label>
+                        <label className="form-check-label" htmlFor="exampleCheck1" id='labelCheck'>Lembrar do Login</label>
                     </div>
                     <button type="submit" className="btn btn-primary" id="btnEnter">Entrar</button>
                 </form>

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 *{
     padding: 0;
     margin: 0;
@@ -7,23 +10,35 @@
     width: 100%;
     margin: 0;
     font-family: sans-serif;
+    display: block;
   }
   
   #AllPage {
     display: flex;
     height: 100vh;
     width: 100%;
-    min-width: 1280px;
+    /* min-width: 1280px; */
     align-items: center;
     background-color: white;
   }
 
   #logo {
-    width: 90px;
+    width: auto;
     display: flex;
     position: absolute;
+    cursor: pointer;
     left: 5%;
     top: 10%;
+  }
+
+  #logo:hover{
+    background-color: #000000;
+    transition: background-color 1000ms ease;
+    opacity: 0.8;
+    border-radius: 8px;
+    #textLogo{
+      color: white;
+    }
   }
 
   #LogoIcon{
@@ -31,8 +46,14 @@
     align-items: center;
     width: 28px;
     height: 28px;
-    margin-right: 10px;
+    margin-right: 5px;
     object-fit: cover;
+  }
+
+  #textLogo{
+    font-size: large;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    cursor: pointer;
   }
 
   #CentPage {
@@ -45,7 +66,6 @@
   .insertData{
     display: block;
     width: 100%; /* Ajuste conforme necessário */
-    height: 350px;
     margin-left: 25%;
     margin-right: 25%;
     background-color: white;
@@ -55,26 +75,37 @@
   #labelLogin{
     padding-bottom: 10px;
     font-size: large;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
   #labelFName  {
     padding-bottom: 5px;
+    font-size: large;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
   #labelLName {
     padding-bottom: 5px;
+    font-size: large;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
   #labelEmail {
     padding-bottom: 5px;
+    font-size: large;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
   #labelPassword {
     padding-bottom: 5px;
+    font-size: large;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
   #labelCPassword {
     padding-bottom: 5px;
+    font-size: large;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
   #signUpNE {
@@ -105,20 +136,45 @@
     width: 100%;
   }
 
+  #InputFName1:hover{
+    box-shadow: 0 0 0 0.25rem rgb(58, 57, 57);
+    border-color: rgb(44, 17, 22);
+  }
+
   #InputLName1{
     width: 100%;
+  }
+
+  #InputLName1:hover{
+    box-shadow: 0 0 0 0.25rem rgb(58, 57, 57);
+    border-color: rgb(44, 17, 22);
   }
 
   #InputEmail1{
     width: 100% !important;
   }
 
+  #InputEmail1:hover{
+    box-shadow: 0 0 0 0.25rem rgb(58, 57, 57);
+    border-color: rgb(44, 17, 22);
+  }
+
   #InputPassword1{
     width: 100% !important;
   }
 
+  #InputPassword1:hover{
+    box-shadow: 0 0 0 0.25rem rgb(58, 57, 57);
+    border-color: rgb(44, 17, 22);
+  }
+
   #InputCPassword1{
     width: 100% !important;
+  }
+
+  #InputCPassword1:hover{
+    box-shadow: 0 0 0 0.25rem rgb(58, 57, 57);
+    border-color: rgb(44, 17, 22);
   }
 
     #InputFName1:focus{
@@ -151,15 +207,40 @@
         box-shadow: 0 0 0 0.25rem rgb(58, 57, 57);
     }
 
+    #InputFName1::placeholder{
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    }
+
+    #InputLName1::placeholder{
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    }
+
+    #InputEmail1::placeholder{
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    }
+
+    #InputPassword1::placeholder{
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    }
+
+    #InputCPassword1::placeholder{
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    }
+
     #emailHelp{
-        display: block;
-        color: #665b54 !important;
-        padding-bottom: 5px;
+      display: block;
+      color: #665b54 !important;
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+      padding-bottom: 5px;
     }
 
     #checkgroup{
         padding-bottom: 10px;
         padding-top: 10px;
+    }
+
+    #labelCheck{
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
     }
 
     #exCheck1:checked {
@@ -172,14 +253,21 @@
         box-shadow: 0px 0px .250em #ADA49E;
     }
 
+    #exCheck1:hover{
+      border-color: #ADA49E;
+      box-shadow: 0px 0px .250em #ADA49E;
+    }
+
     #btnEnter{
         background-color: black;
         border-color: white;
+        font-family: 'Poppins', Arial, Helvetica, sans-serif;
     }
 
     #btnEnter:hover{
         background-color: rgb(51, 49, 49);
         border-color: rgb(201, 186, 186);
+        box-shadow: 0px 0px .250em #636160;
     }
 
     #btnEnter:active{
@@ -211,16 +299,17 @@
     }
 
     #logo{
-        width: 100%;
+        width: auto !important;
         display: flex;
         position: absolute;
+        justify-content: center;
+        align-items: center;
+        top: 2.50%;
     }
 
     #LogoIcon{
       display: flex;
       align-items: center;
-      width: 28px;
-      height: 28px;
       object-fit: cover;
     }
   
@@ -233,7 +322,6 @@
 
     .insertData{
         width: 100%; /* Ajuste conforme necessário */
-        height: 350px;
         margin-left: 25%;
         margin-right: 25%;
         background-color: white;
@@ -260,4 +348,35 @@
         padding-left: 0px !important;
     }
 
+  }
+
+  @media screen and (max-width: 350px) {
+    #logo{
+      margin-left: 25%;
+      margin-right: 25%;
+    }
+
+    #InputFName1::placeholder{
+      text-align: center;
+    }
+
+    #InputLName1::placeholder{
+      text-align: center;
+    }
+
+    #InputEmail1::placeholder{
+      text-align: center;
+    }
+
+    #InputPassword1::placeholder{
+      text-align: center;
+    }
+
+    #InputCPassword1::placeholder{
+      text-align: center;
+    }
+
+    #CentPage{
+      text-align: center;
+    }
   }

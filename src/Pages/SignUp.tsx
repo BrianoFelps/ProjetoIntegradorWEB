@@ -4,11 +4,12 @@ import imgplace from '../assets/temploemoji100porcentorealfi.svg';
 
 function SignUp(){
 
-    return( 
+    return(
+    <> 
         <div id='AllPage'>
-                <div id='logo'>
+                <div id='logo'  className=''>
                     <img id='LogoIcon' src={imgplace}></img>
-                    <label htmlFor="textLogo">Equilibrium</label>
+                    <label htmlFor="textLogo" id='textLogo'>Equilibrium</label>
                 </div>
             <div id='CentPage'>
                 <form className='insertData'>
@@ -40,12 +41,14 @@ function SignUp(){
                     </div>
                     <div className="form-group form-check" id='checkgroup'>
                         <input type="checkbox" className="form-check-input" id="exCheck1"></input>
-                        <label className="form-check-label" htmlFor="exampleCheck1">Lembrar do Login</label>
+                        <label className="form-check-label" htmlFor="exampleCheck1" id='labelCheck'>Lembrar do Login</label>
                     </div>
                     <button type="submit" className="btn btn-primary" id="btnEnter">Criar Conta</button>
+                    <br></br>
                 </form>
             </div>
         </div>
+    </>
     )
 }
 
