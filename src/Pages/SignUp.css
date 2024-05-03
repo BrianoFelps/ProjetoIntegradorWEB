@@ -1,0 +1,263 @@
+*{
+    padding: 0;
+    margin: 0;
+  }
+  
+  body{
+    width: 100%;
+    margin: 0;
+    font-family: sans-serif;
+  }
+  
+  #AllPage {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    min-width: 1280px;
+    align-items: center;
+    background-color: white;
+  }
+
+  #logo {
+    width: 90px;
+    display: flex;
+    position: absolute;
+    left: 5%;
+    top: 10%;
+  }
+
+  #LogoIcon{
+    display: flex;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    object-fit: cover;
+  }
+
+  #CentPage {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+  }
+
+  .insertData{
+    display: block;
+    width: 100%; /* Ajuste conforme necessário */
+    height: 350px;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: white;
+    justify-content: space-around;
+  }
+
+  #labelLogin{
+    padding-bottom: 10px;
+    font-size: large;
+  }
+
+  #labelFName  {
+    padding-bottom: 5px;
+  }
+
+  #labelLName {
+    padding-bottom: 5px;
+  }
+
+  #labelEmail {
+    padding-bottom: 5px;
+  }
+
+  #labelPassword {
+    padding-bottom: 5px;
+  }
+
+  #labelCPassword {
+    padding-bottom: 5px;
+  }
+
+  #signUpNE {
+    width: 100%;
+    display: table;
+    padding-bottom: 5px;
+  }
+
+  #FNameResponsive {
+    width: 50%;
+    float: left;
+    position: relative;
+    padding-right: 10px;
+  }
+
+  #LNameResponsive {
+    width: 50%;
+    float: left;
+    position: relative;
+    padding-left: 10px;
+  }
+
+  .form-groupP {
+    padding-bottom: 5px;
+  }
+
+  #InputFName1 {
+    width: 100%;
+  }
+
+  #InputLName1{
+    width: 100%;
+  }
+
+  #InputEmail1{
+    width: 100% !important;
+  }
+
+  #InputPassword1{
+    width: 100% !important;
+  }
+
+  #InputCPassword1{
+    width: 100% !important;
+  }
+
+    #InputFName1:focus{
+        border-color: rgb(44, 17, 22);
+        background-color: #e4e4e4;
+        box-shadow: 0 0 0 0.25rem rgb(58, 57, 57);
+    }
+
+    #InputLName1:focus{
+        border-color: rgb(44, 17, 22);
+        background-color: #e4e4e4;
+        box-shadow: 0 0 0 0.25rem rgb(58, 57, 57);
+    }
+
+    #InputEmail1:focus{
+        border-color: rgb(44, 17, 22);
+        background-color: #e4e4e4;
+        box-shadow: 0 0 0 0.25rem rgb(58, 57, 57);
+    }
+
+    #InputPassword1:focus{
+        border-color: rgb(44, 17, 22);
+        background-color: #e4e4e4;
+        box-shadow: 0 0 0 0.25rem rgb(58, 57, 57);
+    }
+
+    #InputCPassword1:focus{
+        border-color: rgb(44, 17, 22);
+        background-color: #e4e4e4;
+        box-shadow: 0 0 0 0.25rem rgb(58, 57, 57);
+    }
+
+    #emailHelp{
+        display: block;
+        color: #665b54 !important;
+        padding-bottom: 5px;
+    }
+
+    #checkgroup{
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+
+    #exCheck1:checked {
+        background-color: black;
+        border-color: #ADA49E;
+    }
+
+    #exCheck1:focus{
+        border-color: #ADA49E;
+        box-shadow: 0px 0px .250em #ADA49E;
+    }
+
+    #btnEnter{
+        background-color: black;
+        border-color: white;
+    }
+
+    #btnEnter:hover{
+        background-color: rgb(51, 49, 49);
+        border-color: rgb(201, 186, 186);
+    }
+
+    #btnEnter:active{
+        background-color: rgb(51, 49, 49);
+        border-color: rgb(201, 186, 186);
+    }
+
+
+  @media (max-width: 768px) {
+    /* body{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    #root{
+      justify-content: space-around;
+      height: 50vh;
+      width: 50%;
+      min-width: 1280px;
+    } */
+
+    #AllPage{
+      display: flex;
+      align-items: center;
+      height: 100vh;
+      width: 100%;
+      min-width: 480px;
+    }
+
+    #logo{
+        width: 100%;
+        display: flex;
+        position: absolute;
+    }
+
+    #LogoIcon{
+      display: flex;
+      align-items: center;
+      width: 28px;
+      height: 28px;
+      object-fit: cover;
+    }
+  
+    #CentPage{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        position: absolute;
+    }
+
+    .insertData{
+        width: 100%; /* Ajuste conforme necessário */
+        height: 350px;
+        margin-left: 25%;
+        margin-right: 25%;
+        background-color: white;
+        justify-content: space-around;
+    }
+
+    #signUpNE {
+        width: 100%;
+        display: flex;
+        padding-bottom: 5px;
+        flex-direction: column;
+      }
+
+    #FNameResponsive {
+        width: 100%;
+        position: relative;
+        padding-bottom: 5px;
+        padding-right: 0px !important;
+    }
+
+    #LNameResponsive {
+        width: 100%;
+        position: relative;
+        padding-left: 0px !important;
+    }
+
+  }
