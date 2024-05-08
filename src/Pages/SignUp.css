@@ -25,13 +25,20 @@
   #logo {
     width: auto;
     display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     cursor: pointer;
     left: 5%;
     top: 10%;
   }
 
-  #logo:hover{
+  #aniLogo{
+    width: min-content;
+    display: inline-flex;
+  }
+
+  #aniLogo:hover{
     background-color: #000000;
     transition: background-color 1000ms ease;
     opacity: 0.8;
@@ -295,35 +302,63 @@
       align-items: center;
       height: 100vh;
       width: 100%;
-      min-width: 480px;
+      min-width: 350px;
     }
 
     #logo{
+        margin-top: 5%;
         width: auto !important;
         display: flex;
-        position: absolute;
         justify-content: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
         align-items: center;
-        top: 2.50%;
+        cursor: pointer;
     }
 
     #LogoIcon{
       display: flex;
-      align-items: center;
       object-fit: cover;
+    }
+
+    
+    #InputFName1::placeholder{
+      text-align: center;
+    }
+
+    #InputLName1::placeholder{
+      text-align: center;
+    }
+
+    #InputEmail1::placeholder{
+      text-align: center;
+    }
+
+    #InputPassword1::placeholder{
+      text-align: center;
+    }
+
+    #InputCPassword1::placeholder{
+      text-align: center;
     }
   
     #CentPage{
         width: 100%;
         display: flex;
         align-items: center;
+        text-align: center;
         position: absolute;
+        height: auto;
+    }
+
+    #checkgroup{
+      text-align: initial !important;
     }
 
     .insertData{
         width: 100%; /* Ajuste conforme necessário */
-        margin-left: 25%;
-        margin-right: 25%;
         background-color: white;
         justify-content: space-around;
     }
@@ -350,10 +385,33 @@
 
   }
 
-  @media screen and (max-width: 350px) {
+  @media(max-width: 350px) {
+    #AllPage{
+      display: flex;
+      align-items: center;
+      height: 100vh;
+      width: 100%;
+      min-width: 175px;
+      overflow-y: auto;
+    }
+
+    .insertData{
+      width: 100%; /* Ajuste conforme necessário */
+      /* margin-left: auto;
+      margin-right: auto; */
+    }
+
     #logo{
-      margin-left: 25%;
-      margin-right: 25%;
+      margin-top: 5%;
+      width: 100% !important;
+      display: flex;
+      justify-content: center;
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      align-items: center;
+      cursor: pointer;
     }
 
     #InputFName1::placeholder{
@@ -377,6 +435,14 @@
     }
 
     #CentPage{
+      width: auto;
+      margin: 10px;
+      justify-content: center;
+      display: flex;
+      align-items: center;
       text-align: center;
+      position: fixed;
+      /* background-color: aqua; */
+      height: 100vh;
     }
   }

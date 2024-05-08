@@ -7,8 +7,10 @@ function Login(){
     return( 
         <div id='AllPage'>
                 <div id='logo'>
-                    <img id='LogoIcon' src={imgplace}></img>
-                    <label htmlFor="textLogo" id='textLogo'>Equilibrium</label>
+                <div id='aniLogo'>
+                        <img id='LogoIcon' src={imgplace}></img>
+                        <label htmlFor="textLogo" id='textLogo'>Equilibrium</label>
+                    </div>
                 </div>
             <div id='CentPage'>
                 <form className='insertData'>
