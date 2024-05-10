@@ -41,6 +41,10 @@ function SignUp(){
                         <label htmlFor="exInputPassword1" id='labelCPassword'>Confirme a sua Senha: </label>
                         <input type="password" className="form-control" id="InputCPassword1" placeholder="Confirme a Senha"></input>
                     </div>
+                    {/* <div className="form-groupT">
+                        <label htmlFor='exInputTelephone1' id='labelTelephone'>Telefone:</label>
+                        <input type='tel'></input>
+                    </div> */}
                     <div className="form-group form-check" id='checkgroup'>
                         <input type="checkbox" className="form-check-input" id="exCheck1"></input>
                         <label className="form-check-label" htmlFor="exampleCheck1" id='labelCheck'>Lembrar do Login</label>

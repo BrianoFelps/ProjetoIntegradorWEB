@@ -1,17 +1,32 @@
 import './Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import imgplace from '../assets/temploemoji100porcentorealfi.svg';
+import LoginButton from '../Components/LoginButton';
+import LoginPageLogo from '../Components/LoginPageLogo';
+// import React, { useState } from 'react';
+// import axios from 'axios';
 
 function Login(){
 
+    const oi = () => {
+        alert('aopa fi')
+    }
+
+    // const Login: React.FC = () => {
+    //     const [username, setUsername] = useState('');
+    //     const [password, setPassword] = useState('');
+
+    // const handleLogin = async () => {
+    // try {
+    //   const response = await axios.post('/login', { username, password });
+    //   console.log(response.data); // Lógica para redirecionar o usuário após o login bem-sucedido
+    // } catch (error) {
+    //   console.error('Erro ao fazer login:', error);
+    // }
+    // }
+
     return( 
         <div id='AllPage'>
-                <div id='logo'>
-                <div id='aniLogo'>
-                        <img id='LogoIcon' src={imgplace}></img>
-                        <label htmlFor="textLogo" id='textLogo'>Equilibrium</label>
-                    </div>
-                </div>
+                <LoginPageLogo onClick={oi}></LoginPageLogo>
             <div id='CentPage'>
                 <form className='insertData'>
                     <div id='titleLogin'>
@@ -30,7 +45,7 @@ function Login(){
                         <input type="checkbox" className="form-check-input" id="exCheck1"></input>
                         <label className="form-check-label" htmlFor="exampleCheck1" id='labelCheck'>Lembrar do Login</label>
                     </div>
-                    <button type="submit" className="btn btn-primary" id="btnEnter">Entrar</button>
+                    <LoginButton onClick={oi}></LoginButton>
                 </form>
             </div>
         </div>
