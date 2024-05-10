@@ -1,4 +1,4 @@
-import './topbar.css';
+import './TopBar.css';
 import Banner from "../assets/i_have_no_enemies___thorfinn___vinland_manga_3d_by_synedae_dg3gce9-fullview.jpg"
 import TripleBar from '../Components/TripleBar';
 import TextTitle from '../Components/TextTitle';
@@ -22,10 +22,14 @@ function TopBar() {
   return (
     <>
   <div id='TopbarContainermax'>
-      <div id='ContainerSuperior'>
-        <TripleBar onClick={ola}/>
+      <div id='ContainerSuperior' className='d-flex justify-content-between'>
 
-        <TextTitle onClick={ola}/>
+        <div id='ParteEsquerda' className='d-flex align-items-center justify-content-center'>
+          <TripleBar onClick={ola}/>
+
+          <TextTitle onClick={ola}/>
+        </div>
+        
 
         <div id='ItensDoCanto'>
           <EditedInfo onMouseEnter={handleClick} onMouseLeave={ola}/>
@@ -37,7 +41,7 @@ function TopBar() {
         </div>
       </div>
       <div id='BgBanner'>
-        <img src={Banner} alt="" />
+        <img src={Banner} alt="" className='img-fluid' />
       </div>
 
     </div>
