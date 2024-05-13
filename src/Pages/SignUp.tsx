@@ -31,10 +31,14 @@ function SignUp(){
 
         const nomeCompleto = firstName + ' ' + lastName;
 
+        const telefone = 1;
+
+        const isPremium = 1;
+
         
-        if(nomeCompleto && email && password){
+        if(nomeCompleto && email && password && telefone && isPremium){
             try{
-                const response = await axios.post('http://localhost:8080/pages/SignUp', { nomeCompleto, email, password });
+                const response = await axios.post('http://localhost:8080/pages/SignUp', { nomeCompleto, email, password, telefone, isPremium });
                 console.log(response.data);
                 setSignedIn(true); // signedIn ficará true após o login bem-sucedido
             } catch (error) {

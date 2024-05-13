@@ -8,6 +8,7 @@ import { useState } from 'react';
 
     function Login(){
 
+        const [loginEmAndamento, setLoginEmAndamento] = useState(false);
         const [loggedIn, setLoggedIn] = useState(false);
         const [error, setError] = useState('');
         const [email, setEmail] = useState('');
@@ -15,11 +16,14 @@ import { useState } from 'react';
 
         const fazerLogin = async () => {
             
+            setLoginEmAndamento(true);
+
                 if(email && senha){
                 try {
                     const response = await axios.post('http://localhost:8080/pages/Login', { email, senha });
                     console.log(response.data); // Lógica para redirecionar o usuário após o login bem-sucedido
                     setLoggedIn(true); // loggedIn ficará true após o login bem-sucedido
+
                 }catch (error) {
                     console.error('Erro ao fazer login:', error);
                     setError('Erro ao fazer login. Tente novamente verificando suas credenciais.');
@@ -27,6 +31,11 @@ import { useState } from 'react';
                 } else {
                     console.error('Email ou senha não preenchidos.');
                 }
+
+                setLoginEmAndamento(false);
+
+                setEmail('');
+                setSenha('');
         }
 
         // Se loggedIn for true, redireciona o usuário para a página desejada
@@ -59,7 +68,7 @@ import { useState } from 'react';
                             <input type="checkbox" className="form-check-input" id="exCheck1"></input>
                             <label className="form-check-label" htmlFor="exampleCheck1" id='labelCheck'>Lembrar do Login</label>
                         </div>
-                        <button type="button" className="btn btn-primary" id="btnEnter" onClick={fazerLogin}>Entrar</button>
+                        <button type="button" className="btn btn-primary" id="btnEnter" onClick={fazerLogin} disabled={loginEmAndamento}>Entrar</button>
                         {/* <LoginButton onClick={fazerLogin}></LoginButton> */}
                     </form>
                 </div>
