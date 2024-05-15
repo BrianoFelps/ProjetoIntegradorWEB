@@ -25,7 +25,8 @@ function EditedInfo(props: Props){
     return(
         <nav id='EditedInfo'>
             <p onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}>
+            onMouseLeave={handleMouseLeave}
+            className='d-none d-lg-block'>
                 Editado há 1h
             </p>
         </nav>

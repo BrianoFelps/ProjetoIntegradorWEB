@@ -8,7 +8,7 @@ function MasterPage () {
             <TopBar></TopBar>
 
             <div id='Separator'>
-            <MidIcon/>
+                <MidIcon/>
             </div>
 
             <ContentPage/>
