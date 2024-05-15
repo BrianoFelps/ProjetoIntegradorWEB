@@ -1,10 +1,15 @@
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import MainPage from '../all-in-one/MainPage';
 import banner from '../assets/i_have_no_enemies___thorfinn___vinland_manga_3d_by_synedae_dg3gce9-fullview.jpg';
 import EmojiMenu from './EmojiMenu';
 import '../Components/CardTooltip.css'
 
-function YourComponent() {
+interface props{
+  EmojiMenuId: number;
+  // emoji: string;
+}
+
+function YourComponent(props: props) {
   const [showTooltip, setShowTooltip] = useState(false);
   const [activeLi, setActiveLi] = useState<HTMLLIElement | null>(null);
   const [emojiMenuOpen, setEmojiMenuOpen] = useState(false);
@@ -42,6 +47,8 @@ function YourComponent() {
         >
         <div id='InsCont'>
             <EmojiMenu
+            // emoji={props.emoji}
+            emojiMenuId={props.EmojiMenuId}
             onOpen={() => handleEmojiMenuOpen()}
             onClose={() => handleEmojiMenuClose()}
             />
