@@ -4,15 +4,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import LoginPageLogo from '../Components/LoginPageLogo';
 import axios from 'axios';
 import { useState } from 'react';
-// import { Navigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
-    function Login(){
+    const Login =  () => {
 
         const [loginEmAndamento, setLoginEmAndamento] = useState(false);
         const [loggedIn, setLoggedIn] = useState(false);
-        const [error, setError] = useState('');
         const [email, setEmail] = useState('');
         const [senha, setSenha] = useState('');
+        const [formError, setFormError] = useState('');
+        const [formSuccess, setFormSuccess] = useState('');
+
+        const navigate = useNavigate();
 
         const fazerLogin = async () => {
             
@@ -26,7 +29,7 @@ import { useState } from 'react';
 
                 }catch (error) {
                     console.error('Erro ao fazer login:', error);
-                    setError('Erro ao fazer login. Tente novamente verificando suas credenciais.');
+                    setFormError('Erro ao fazer login. Tente novamente verificando suas credenciais.');
                 }
                 } else {
                     console.error('Email ou senha não preenchidos.');
@@ -36,22 +39,35 @@ import { useState } from 'react';
 
                 setEmail('');
                 setSenha('');
+                setFormError('')
         }
 
         // Se loggedIn for true, redireciona o usuário para a página desejada
         if (loggedIn) {
             setTimeout(() => {
                 alert('Login bem-sucedido!');
+                setFormSuccess('Login Feito');
+                navigate('/homepage');
             }, 0);
-            // return <Navigate to="./MasterPage.tsx" />;
+
+            return setLoggedIn(false);
         }
 
         return( 
             <div id='AllPage'>
                     <LoginPageLogo></LoginPageLogo>
+                    <div id='modal-container' className='modal-container'>
+                        <div className='modal'>
+                            <div className='title'></div>
+                            <div className='messsage'>
+                                {formSuccess && <p className="success-message">{formSuccess}</p>}
+                                {formError && <p className="error-message">{formError}</p>}
+                            </div>
+                            <div className='button'></div>
+                        </div>
+                    </div>
                 <div id='CentPage'>
                     <form className='insertData'>
-                        {error && <p>{error}</p>}
                         <div id='titleLogin'>
                             <label htmlFor='labeltitleLogin' id='labelLogin'>Faça Login na sua Conta</label>
                         </div>
@@ -77,4 +93,4 @@ import { useState } from 'react';
     }
 
 
-export default Login
+export default Login;
