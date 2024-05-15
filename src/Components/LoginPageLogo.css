@@ -1,0 +1,38 @@
+#logo {
+    width: auto;
+    display: flex;
+    position: absolute;
+    cursor: pointer;
+    left: 5%;
+    top: 10%;
+  }
+
+  #aniLogo{
+    width: min-content;
+    display: inline-flex;
+  }
+
+  #aniLogo:hover{
+    background-color: #000000;
+    transition: background-color 1000ms ease;
+    opacity: 0.8;
+    border-radius: 8px;
+    #textLogo{
+      color: white;
+    }
+  }
+
+  #LogoIcon{
+    display: flex;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    object-fit: cover;
+  }
+
+  #textLogo{
+    font-size: large;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    cursor: pointer;
+  }
