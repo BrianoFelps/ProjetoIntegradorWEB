@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './InputTypeText.css';
+import axios from 'axios';
 
 interface Props {
     placeholder?: string;
@@ -7,7 +8,8 @@ interface Props {
 }
 
 function Input(props: Props) {
-    const [title, setTitle] = useState(props.placeholder || '');
+    const [valueContent, setValueContent] = useState<string>('');
+    const [ContentLoaded, setContentLoaded] = useState(false);
 
     const [content, setContent] = useState('');
 
@@ -15,6 +17,27 @@ function Input(props: Props) {
     const titleRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        // Função para buscar os valores correspondentes aos Elementos
+        const fetchContentValueAndCategory = async () => {
+            try{
+                const response = await axios.get(`http://localhost:8080/pages/Elm/props`);
+
+                const titleValue = response.data.find((element: any) => element.category === 'InputTitle')?.value;
+                const textAreaValue = response.data.find((element: any) => element.category === 'InputText')?.value;
+
+                setValueContent(titleValue || '');
+                setContent(textAreaValue || '');
+                setContentLoaded(true);
+
+                console.log(content)
+                
+            } catch (error) {
+                console.error(`Error fetching element value: ${error}`);
+            }
+        };
+        
+        fetchContentValueAndCategory()
+
         const handleScroll = () => {
             if (textareaRef.current && titleRef.current) {
                 const textareaRect = textareaRef.current.getBoundingClientRect();
@@ -38,7 +61,30 @@ function Input(props: Props) {
                 textarea.removeEventListener('scroll', handleScroll);
             }
         };
+
     }, []);
+
+    const updateContentToBackend = async (updatedValue: string, inputType: string) => {
+        try {
+            let IdAndIdProperty: number;
+            // Determine qual propriedade usar com base no tipo de entrada
+            if (inputType === 'title') {
+                IdAndIdProperty = 2; // Use o id_property correspondente ao título
+            } else if (inputType === 'textarea') {
+                IdAndIdProperty = 3; // Use o id_property correspondente à área de texto
+            } else {
+                throw new Error('Tipo de entrada não reconhecido');
+            }
+
+           await axios.put('http://localhost:8080/pages/Elm', { id_property: IdAndIdProperty, value: updatedValue, id: IdAndIdProperty });
+
+            console.log(`Valor atualizado no banco de dados. Valor: ${updatedValue}`);
+
+            
+        } catch (error) {
+            console.error(`Erro ao atualizar o valor: ${error}`);
+        }
+    };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === 'Tab') {
@@ -68,18 +114,24 @@ function Input(props: Props) {
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setContent(e.target.value);
+        const updatedValue = e.target.value;
+        setContent(updatedValue);
+        updateContentToBackend(updatedValue, 'textarea')
     };
 
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.target.value);
+        const updatedValue = e.target.value;
+        setValueContent(e.target.value);
+        updateContentToBackend(updatedValue, 'title')
     };
 
     return (
         <div className="custom-textarea-container">
             <input
                 type="text"
-                value={title}
+                value={
+                    ContentLoaded !== false ? valueContent : ''
+                }
                 onChange={handleTitleChange}
                 className="custom-title"
                 placeholder="Título"
@@ -95,7 +147,10 @@ function Input(props: Props) {
             <textarea
                 id="Input"
                 placeholder="Conteúdo"
-                value={content}
+                value=
+                {
+                    ContentLoaded !== false ? content : ''
+                }
                 onKeyDown={handleKeyDown}
                 onChange={handleChange}
                 ref={textareaRef}

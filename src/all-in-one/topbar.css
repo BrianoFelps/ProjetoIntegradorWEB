@@ -10,6 +10,7 @@
     padding: 7px 0;
     background: white;
     transition: 1s;
+    padding-right: 10px;
   }
   
   #BgBanner{
@@ -34,12 +35,17 @@
     padding: 0 5px;
   }
   
+  #ParteEsquerda{
+    margin-left: 5px;
+  }
+
   #ContainerSuperior div#TitleText{
     white-space: nowrap;
-    margin-left: 5px;
+    margin-left: 1px;
     align-items: center;
     display: flex;
     padding: 4px 5px;
+    justify-content: center;
   }
   
   #ContainerSuperior div#TitleText:hover{

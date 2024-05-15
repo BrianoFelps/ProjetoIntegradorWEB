@@ -15,15 +15,10 @@ import DiaADiaComponentImage from '../Components/DiaADiaComponentImage';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-interface EmojiMenuData {
-    id: number;
-    emoji: string;
-  }
-
 function ContentPage() {
-    const [emojiMenus, setEmojiMenus] = useState<EmojiMenuData[]>([]);
     const [emojis, setEmojis] = useState<string[]>([]);
     const [emojiMenuIds, setEmojiMenuIds] = useState<number[]>([]); // Estado para armazenar os IDs dos EmojiMenus
+    const [elementIds, setElementIds] = useState<number[]>([]);
 
     // const totalEmojiMenus = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
     
@@ -34,7 +29,7 @@ function ContentPage() {
             const response = await axios.get('http://localhost:8080/pages/emojiMenu/emoji');
             const emojisData = response.data.map((emoji: { emoji: string }) => emoji.emoji);
             setEmojis(emojisData);
-            console.log(emojisData)
+            // console.log(emojisData)
           } catch (error) {
             console.error('Error fetching emojis:', error);
           }
@@ -46,12 +41,11 @@ function ContentPage() {
             const response = await axios.get('http://localhost:8080/pages/emojiMenu/emoji');
             const emojiMenuIdsData = response.data.map((emojiMenu: { id: number }) => emojiMenu.id);
             setEmojiMenuIds(emojiMenuIdsData);
-            console.log(emojiMenuIds)
           } catch (error) {
             console.error('Error fetching emoji menu IDs:', error);
           }
         };
-    
+
         fetchEmojis(); // Chame a função para buscar os emojis
         fetchEmojiMenuIds(); // Chame a função para buscar os IDs dos EmojiMenus
       }, []);
@@ -59,36 +53,6 @@ function ContentPage() {
     const oi = () => {
       alert('oi')
     }
-
-    const handleEmojiOpen = () => {
-        console.log("EmojiMenu aberto!");
-    }
-
-    const handleEmojiClose = () => {
-        console.log("EmojiMenu fechado!");
-    }
-
-    const handleTopBarClick = () => {
-        console.log("TopBarL clicado!");
-    }
-    
-    // useEffect(() => {
-    //     // Função para buscar os emojis correspondentes aos emojiMenuIds
-    //     const fetchEmojis = async () => {
-    //       try {
-    //         const emojisData = await Promise.all(totalEmojiMenus.map(async (emojiMenuId) => {
-    //           const response = await axios.get(`http://localhost:8080/pages/emojiMenu/ID/${emojiMenuId}`);
-    //           return response.data.emoji;
-    //         }));
-    //         setEmojis(emojisData);
-    //         console.log(emojis)
-    //       } catch (error) {
-    //         console.error(`Erro no fetch de emojis: emojis:${emojis}`, error);
-    //       }
-    //     };
-    
-    //     fetchEmojis(); // Chame a função ao montar o componente
-    //   }, []);
 
     return (
     <main id='ConteudoPrincipal'>
@@ -104,7 +68,7 @@ function ContentPage() {
         </section>
             
         <section id='main'>
-            <TopBarL onClick={handleTopBarClick}>
+            <TopBarL>
                 <a href=''>
                     <i className="fa fa-picture-o" aria-hidden="true" style={{fontSize:17}}/>
                     <span>
