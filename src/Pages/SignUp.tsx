@@ -49,8 +49,6 @@ function SignUp(){
             console.error('Credenciais não preenchidas.');
         }
         // Se todas as verificações passarem, pode enviar o formulário
-
-        setFormSuccess('Cadastro realizado com sucesso!');
         
         // Resetar os campos após o envio do formulário
         setFirstName('');
@@ -63,7 +61,8 @@ function SignUp(){
 
     if (signedIn) {
         setTimeout(() => {
-            alert('Login bem-sucedido!');
+            alert('Cadastro bem-sucedido!');
+            setFormSuccess('Cadastro realizado com sucesso!');
         }, 0);
         // return <Navigate to="./MasterPage.tsx" />;
     }
