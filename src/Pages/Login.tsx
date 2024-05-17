@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ModalErro from '../Components/ModalErro';
+import LinkSignUp from '../Components/DirectLink';
 
     const Login = (): JSX.Element => {
 
@@ -47,6 +48,13 @@ import ModalErro from '../Components/ModalErro';
         setFormError('');
     };
 
+    const LinkSign = () => {
+        navigate('/SignUp');
+    }
+
+    const simpletext = "Não possui uma conta?";
+    const linktext = "Crie uma aqui!";
+
         // Se loggedIn for true, redireciona o usuário para a página desejada
     useEffect(() => {
         if (loggedIn) {
@@ -79,7 +87,7 @@ import ModalErro from '../Components/ModalErro';
                             <label className="form-check-label" htmlFor="exampleCheck1" id='labelCheck'>Lembrar do Login</label>
                         </div>
                         <button type="button" className="btn btn-primary" id="btnEnter" onClick={fazerLogin} disabled={loginEmAndamento}>Entrar</button>
-                        {/* <LoginButton onClick={fazerLogin}></LoginButton> */}
+                        <LinkSignUp onClickDirect = {LinkSign} textExample={simpletext} textLink={linktext}/>
                         <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
                     </form>
                 </div>

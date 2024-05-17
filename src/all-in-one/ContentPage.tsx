@@ -1,5 +1,5 @@
 import './ContentPage.css'
-import Input from '../Components/Inputtypetext'; 
+import Input from '../Components/Inputtypetext.tsx';
 import Title from '../Components/title';
 import EmojiMenu from '../Components/EmojiMenu';
 import InputWriteIdea from '../Components/InputWriteIdea';

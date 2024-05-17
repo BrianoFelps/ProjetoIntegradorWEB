@@ -1,25 +1,30 @@
 import '../Pages/SignUp.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import imgplace from '../assets/temploemoji100porcentorealfi.svg';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import ModalErro from '../Components/ModalErro';
+import DirectLink from '../Components/DirectLink';
+import LoginPageLogo from '../Components/LoginPageLogo';
 
 function SignUp(){
 
+    const [loginEmAndamento, setLoginEmAndamento] = useState(false);
     const [signedIn, setSignedIn] = useState(false);
-    const [error, setError] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [formError, setFormError] = useState('');
-    const [formSuccess, setFormSuccess] = useState('');
+    const [showModalErro, setShowModalErro] = useState(false);
 
     const navigate = useNavigate();
 
     const handleSubmit = async () => {
+
+        setLoginEmAndamento(true);
+
         // Verifica se todos os campos foram preenchidos
         if (!firstName || !lastName || !email || !password || !confirmPassword) {
             setFormError('Por favor, preencha todos os campos.');
@@ -46,27 +51,33 @@ function SignUp(){
                 setSignedIn(true); // signedIn ficará true após o login bem-sucedido
             } catch (error) {
                 console.error('Erro ao fazer cadastro:', error);
-                setError('Erro ao fazer cadastro. Tente novamente verificando suas credenciais.');
+                setFormError('Erro ao fazer cadastro. Tente novamente verificando suas credenciais.');
+                setShowModalErro(true);
             }
         } else {
             console.error('Credenciais não preenchidas.');
+            setFormError('Credenciais não preenchidas.');
+            setShowModalErro(true);
         }
-        // Se todas as verificações passarem, pode enviar o formulário
         
-        // Resetar os campos após o envio do formulário
-        setFirstName('');
-        setLastName('');
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
+        setLoginEmAndamento(false);
+    };
+
+    const LinkLogin = () => {
+        navigate('/');
+    }
+
+    const closeModal = () => {
+        setShowModalErro(false);
         setFormError('');
     };
+
+    const simpletext = "Já tem uma conta?";
+    const linktext = "Faça o Login!";
 
     useEffect(() => {
         if (signedIn) {
             setTimeout(() => {
-                alert('Cadastro bem-sucedido!');
-                setFormSuccess('Cadastro realizado com sucesso!');
                 navigate('/homepage');
             }, 0);
         }
@@ -74,19 +85,10 @@ function SignUp(){
 
 
     return(
-    <> 
         <div id='AllPage'>
-                <div id='logo'  className=''>
-                    <div id='aniLogo'>
-                        <img id='LogoIcon' src={imgplace}></img>
-                        <label htmlFor="textLogo" id='textLogo'>Equilibrium</label>
-                    </div>
-                </div>
+                <LoginPageLogo></LoginPageLogo>
             <div id='CentPage'>
                 <form className='insertData'>
-                    {formError && <p className="error-message">{formError}</p>}
-                    {formSuccess && <p className="success-message">{formSuccess}</p>}
-                    {error && <p>{error}</p>}
                     <div id='titleLogin'>
                         <label htmlFor='labeltitleLogin' id='labelLogin'>Crie sua Conta aqui!</label>
                     </div>
@@ -113,22 +115,14 @@ function SignUp(){
                         <label htmlFor="exInputPassword1" id='labelCPassword'>Confirme a sua Senha: </label>
                         <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="form-control" id="InputCPassword1" placeholder="Confirme a Senha"></input>
                     </div>
-                    {/* <div className="form-groupT">
-                        <label htmlFor='exInputTelephone1' id='labelTelephone'>Telefone:</label>
-                        <input type='tel'></input>
-                    </div> */}
-                    {/* <div className="form-group form-check" id='checkgroup'>
-                        <input type="checkbox" className="form-check-input" id="exCheck1"></input>
-                        <label className="form-check-label" htmlFor="exampleCheck1" id='labelCheck'>Lembrar do Login</label>
-                    </div> */}
-                    <button type="button" className="btn btn-primary" id="btnEnter" onClick={handleSubmit}>Criar Conta</button>
-                    <br></br>
+                    <button type="button" className="btn btn-primary" id="btnEnter" onClick={handleSubmit} disabled={loginEmAndamento} >Criar Conta</button>
+                    <DirectLink onClickDirect = {LinkLogin} textExample={simpletext} textLink={linktext}/>
                 </form>
+                <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
             </div>
         </div>
-    </>
     );
 }
 
 
-export default SignUp
+export default SignUp;
