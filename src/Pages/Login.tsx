@@ -3,16 +3,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import LoginButton from '../Components/LoginButton';
 import LoginPageLogo from '../Components/LoginPageLogo';
 import axios from 'axios';
-import { useState } from 'react';
-// import { Navigate } from 'react-router';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ModalErro from '../Components/ModalErro';
 
-    function Login(){
+    const Login = (): JSX.Element => {
 
         const [loginEmAndamento, setLoginEmAndamento] = useState(false);
         const [loggedIn, setLoggedIn] = useState(false);
-        const [error, setError] = useState('');
         const [email, setEmail] = useState('');
         const [senha, setSenha] = useState('');
+        const [formError, setFormError] = useState('');
+        const [showModalErro, setShowModalErro] = useState(false);
+
+        const navigate = useNavigate();
 
         const fazerLogin = async () => {
             
@@ -26,32 +30,38 @@ import { useState } from 'react';
 
                 }catch (error) {
                     console.error('Erro ao fazer login:', error);
-                    setError('Erro ao fazer login. Tente novamente verificando suas credenciais.');
+                    setFormError('Erro ao fazer login. Tente novamente verificando suas credenciais.');
+                    setShowModalErro(true);
                 }
                 } else {
                     console.error('Email ou senha não preenchidos.');
+                    setFormError('Email ou senha não preenchidos.');
+                    setShowModalErro(true);
                 }
 
                 setLoginEmAndamento(false);
+        };
 
-                setEmail('');
-                setSenha('');
-        }
+    const closeModal = () => {
+        setShowModalErro(false);
+        setFormError('');
+    };
 
         // Se loggedIn for true, redireciona o usuário para a página desejada
+    useEffect(() => {
         if (loggedIn) {
             setTimeout(() => {
-                alert('Login bem-sucedido!');
+                navigate('/homepage');
+                setLoggedIn(false);
             }, 0);
-            // return <Navigate to="./MasterPage.tsx" />;
         }
+    }, [loggedIn, navigate]);
 
         return( 
             <div id='AllPage'>
                     <LoginPageLogo></LoginPageLogo>
                 <div id='CentPage'>
                     <form className='insertData'>
-                        {error && <p>{error}</p>}
                         <div id='titleLogin'>
                             <label htmlFor='labeltitleLogin' id='labelLogin'>Faça Login na sua Conta</label>
                         </div>
@@ -70,6 +80,7 @@ import { useState } from 'react';
                         </div>
                         <button type="button" className="btn btn-primary" id="btnEnter" onClick={fazerLogin} disabled={loginEmAndamento}>Entrar</button>
                         {/* <LoginButton onClick={fazerLogin}></LoginButton> */}
+                        <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
                     </form>
                 </div>
             </div>
@@ -77,4 +88,4 @@ import { useState } from 'react';
     }
 
 
-export default Login
+export default Login;
