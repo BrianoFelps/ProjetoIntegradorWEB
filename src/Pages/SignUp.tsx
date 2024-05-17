@@ -1,8 +1,9 @@
 import '../Pages/SignUp.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import imgplace from '../assets/temploemoji100porcentorealfi.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 function SignUp(){
 
@@ -15,6 +16,8 @@ function SignUp(){
     const [confirmPassword, setConfirmPassword] = useState('');
     const [formError, setFormError] = useState('');
     const [formSuccess, setFormSuccess] = useState('');
+
+    const navigate = useNavigate();
 
     const handleSubmit = async () => {
         // Verifica se todos os campos foram preenchidos
@@ -59,13 +62,15 @@ function SignUp(){
         setFormError('');
     };
 
-    if (signedIn) {
-        setTimeout(() => {
-            alert('Cadastro bem-sucedido!');
-            setFormSuccess('Cadastro realizado com sucesso!');
-        }, 0);
-        // return <Navigate to="./MasterPage.tsx" />;
-    }
+    useEffect(() => {
+        if (signedIn) {
+            setTimeout(() => {
+                alert('Cadastro bem-sucedido!');
+                setFormSuccess('Cadastro realizado com sucesso!');
+                navigate('/homepage');
+            }, 0);
+        }
+    }, [signedIn, navigate]);
 
 
     return(
