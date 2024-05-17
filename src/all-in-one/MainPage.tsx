@@ -28,13 +28,14 @@ function MainPage() {
             </Title>
             <EmojiMenu
             onOpen={() => {}} 
-            onClose={() => {}}/>
+            onClose={() => {}}
+            emojiMenuId={1}/>
             <Input/>
             <InputWriteIdea></InputWriteIdea>
           </section>
           
           <section id='main'>
-            <TopBarL onClick={oi}>
+            <TopBarL>
               <div>
                 <i className="fa fa-picture-o" aria-hidden="true" style={{fontSize:17}}/>
                 <span>

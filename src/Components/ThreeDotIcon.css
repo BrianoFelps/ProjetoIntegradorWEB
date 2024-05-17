@@ -11,13 +11,12 @@
 }
 
 #ThreeDotIconOption{
-    width: 20px;
-    height: 10px;
-    background: url('../assets/three-dots-icon.svg') no-repeat;
-    background-size: cover;
-    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    /* css default aberto a alterações a vontade */
+
+    font-size: 1.8em;
 }
 
 #ThreeDI:hover{

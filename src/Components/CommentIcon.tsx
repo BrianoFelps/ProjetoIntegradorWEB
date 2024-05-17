@@ -1,4 +1,6 @@
 import "./CommentIcon.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faComment } from '@fortawesome/free-regular-svg-icons';
 
 interface Props{
     onClick: () => void;
@@ -7,7 +9,7 @@ interface Props{
 function CommentIcon(props:Props){
     return(
         <div id="CommentIcon" onClick={props.onClick}>
-            <i className="fa fa-commenting-o" aria-hidden="true"></i>
+            <FontAwesomeIcon icon={faComment} />
         </div>
     )
 }

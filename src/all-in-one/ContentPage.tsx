@@ -18,8 +18,8 @@ import axios from 'axios';
 function ContentPage() {
     const [emojis, setEmojis] = useState<string[]>([]);
     const [emojiMenuIds, setEmojiMenuIds] = useState<number[]>([]); // Estado para armazenar os IDs dos EmojiMenus
-    const [elementIds, setElementIds] = useState<number[]>([]);
-
+    const [CardsIds, setCardsIds] = useState<number[]>([]);
+    const [TooltipIds, setTooltipIds] = useState<number[]>([]);
     // const totalEmojiMenus = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
     
     useEffect(() => {
@@ -48,6 +48,39 @@ function ContentPage() {
 
         fetchEmojis(); // Chame a função para buscar os emojis
         fetchEmojiMenuIds(); // Chame a função para buscar os IDs dos EmojiMenus
+
+        const fetchCardIds = async () => {
+          try{
+            const response = await axios.get('http://localhost:8080/pages/Elm/cards');
+            const CardsIdsData = response.data.map((elements: { id: number }) => elements.id);
+            setCardsIds(CardsIdsData); 
+
+            // console.log(`Id's dos cards: ${CardsIds}`)
+            // console.log(`CardsIdsData: ${CardsIdsData}`)
+            
+          } catch (error) {
+            console.error('Error fetching Cards ids: ', error)
+          }
+        }
+      
+        fetchCardIds();
+
+        const fetchTooltipIds = async () => {
+          try{
+            const response = await axios.get('http://localhost:8080/pages/Elm/IC');
+            const TooltipIdsData = response.data.map((elements: { id: number }) => elements.id);
+            setTooltipIds(TooltipIdsData); 
+
+            // console.log(`Id's dos Input Tooltip's: ${TooltipIds}`)
+            // console.log(`TooltipIdsData: ${TooltipIdsData}`)
+            
+          } catch (error) {
+            console.error('Error fetching Cards ids: ', error)
+          }
+        }
+      
+        fetchTooltipIds();
+
       }, []);
 
     const oi = () => {
@@ -79,19 +112,19 @@ function ContentPage() {
 
             <div id='ItensContainer'>
                 
-                <NItem key={emojiMenuIds[1]} emojiMenuId={emojiMenuIds[1]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} onclick={oi} image={image1}/>
-                <NItem key={emojiMenuIds[2]} emojiMenuId={emojiMenuIds[2]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image2}/>
-                <NItem key={emojiMenuIds[3]}emojiMenuId={emojiMenuIds[3]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image3}/>
-                <NItem key={emojiMenuIds[4]} emojiMenuId={emojiMenuIds[4]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image4}/>
-                <NItem key={emojiMenuIds[5]} emojiMenuId={emojiMenuIds[5]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image5}/>
+                <NItem NitemId={CardsIds[0]} key={emojiMenuIds[1]} emojiMenuId={emojiMenuIds[1]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} onclick={oi} image={image1}/>
+                <NItem NitemId={CardsIds[1]} key={emojiMenuIds[2]} emojiMenuId={emojiMenuIds[2]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image2}/>
+                <NItem NitemId={CardsIds[2]} key={emojiMenuIds[3]} emojiMenuId={emojiMenuIds[3]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image3}/>
+                <NItem NitemId={CardsIds[3]} key={emojiMenuIds[4]} emojiMenuId={emojiMenuIds[4]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image4}/>
+                <NItem NitemId={CardsIds[4]} key={emojiMenuIds[5]} emojiMenuId={emojiMenuIds[5]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image5}/>
             </div>
         </section>
 
         <section id='NavegacaoBasica'>
             <DiaADiaComponentImage/>
-            <LinkGroup emojimenuid={emojiMenuIds[6]} emojimenuid2={emojiMenuIds[7]} emojimenuid3={emojiMenuIds[8]}></LinkGroup>
-            <LinkGroup emojimenuid={emojiMenuIds[9]} emojimenuid2={emojiMenuIds[10]} emojimenuid3={emojiMenuIds[11]}></LinkGroup>
-            <LinkGroup emojimenuid={emojiMenuIds[12]} emojimenuid2={emojiMenuIds[13]} emojimenuid3={emojiMenuIds[14]}></LinkGroup>
+            <LinkGroup inputid={TooltipIds[0]} inputid2={TooltipIds[1]} inputid3={TooltipIds[2]} emojimenuid={emojiMenuIds[6]} emojimenuid2={emojiMenuIds[7]} emojimenuid3={emojiMenuIds[8]}></LinkGroup>
+            <LinkGroup inputid={TooltipIds[3]} inputid2={TooltipIds[4]} inputid3={TooltipIds[5]} emojimenuid={emojiMenuIds[9]} emojimenuid2={emojiMenuIds[10]} emojimenuid3={emojiMenuIds[11]}></LinkGroup>
+            <LinkGroup inputid={TooltipIds[6]} inputid2={TooltipIds[7]} inputid3={TooltipIds[8]} emojimenuid={emojiMenuIds[12]} emojimenuid2={emojiMenuIds[13]} emojimenuid3={emojiMenuIds[14]}></LinkGroup>
         </section>
     </main>
     )

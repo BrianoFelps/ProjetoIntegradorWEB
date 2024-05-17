@@ -7,9 +7,9 @@ interface props{
     emojimenuid: number;
     emojimenuid2: number;
     emojimenuid3: number;
-    // emoji1: string;
-    // emoji2: string;
-    // emoji3: string;
+    inputid: number;
+    inputid2: number;
+    inputid3: number;
 }
 
 function LinkGroup (props: props){
@@ -20,9 +20,9 @@ function LinkGroup (props: props){
                 <input type="text"/>
             </InputWriteIdea>
             <ul className='list-group list-unstyled' id='ListLinkGroup'>
-                <CardTooltip EmojiMenuId={props.emojimenuid}></CardTooltip>
-                <CardTooltip EmojiMenuId={props.emojimenuid2}></CardTooltip>
-                <CardTooltip EmojiMenuId={props.emojimenuid3}></CardTooltip>
+                <CardTooltip InputWcardId={props.inputid} EmojiMenuId={props.emojimenuid}></CardTooltip>
+                <CardTooltip InputWcardId={props.inputid2} EmojiMenuId={props.emojimenuid2}></CardTooltip>
+                <CardTooltip InputWcardId={props.inputid3} EmojiMenuId={props.emojimenuid3}></CardTooltip>
             </ul>
         </div>
     )
