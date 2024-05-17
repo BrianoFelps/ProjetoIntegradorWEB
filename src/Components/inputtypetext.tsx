@@ -2,7 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import './InputTypeText.css';
 import axios from 'axios';
 
-function Input() {
+interface Props {
+    placeholder?: string;
+    rows?: number;
+}
+
+function Input(props: Props) {
     const [valueContent, setValueContent] = useState<string>('');
     const [ContentLoaded, setContentLoaded] = useState(false);
 

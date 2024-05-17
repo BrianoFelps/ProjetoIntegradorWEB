@@ -6,8 +6,7 @@ interface props {
     children?: ReactNode;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function TopBarL (_props: props){
+function TopBarL (props: props){
     return(
         <ul className="nav nav-tabs" id='TopBarList'>
             <li className="nav-item">
