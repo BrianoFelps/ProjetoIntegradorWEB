@@ -31,10 +31,6 @@
     /* background-size: cover; */
   }
   
-  div#tripleBar{
-    padding: 0 5px;
-  }
-  
   #ParteEsquerda{
     margin-left: 5px;
   }
@@ -83,24 +79,8 @@
     height: auto;
   }
   
-  #ThreeDI{
-    margin-left: 5px;
-  }
-  
   div#ThreeDI:hover{
     background: rgba(0, 0, 0, .1);
-  }
-  
-  div#FavoriteIcon{
-    margin-left: 5px;
-  }
-  
-  div#ClockI{
-    margin-left: 5px;
-  }
-  
-  div#CommentIcon{
-    margin-left: 5px
   }
 
   #EditedInfo p{

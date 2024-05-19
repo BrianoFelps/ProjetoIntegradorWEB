@@ -11,37 +11,51 @@ interface EmojiMenuProps {
 function EmojiMenu({ emojiMenuId, onOpen, onClose }: EmojiMenuProps){
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const [TooltipOpen, setTooltipOpen] = useState(false);
 
   const [selectedEmojiId, setSelectedEmojiId] = useState<number | null>(null);
-  const [selectedEmojis, setSelectedEmojis] = useState<string>('');
+  const [selectedEmoji, setSelectedEmoji] = useState<string>('');
 
-  const [emojiLoaded, setEmojiLoaded] = useState(false);
+  const [emojis, setEmojis] = useState<string[]>([]);
   
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const emojis = ['', '😊', '😂', '😍', '🥴', '😁'];
-
   useEffect(() => {
     // Função para buscar os emojis correspondentes aos EmojiMenus
-    const fetchEmoji = async (menuId: number) => {
+    const fetchEmoji = async () => {
       try {
         const response = await axios.get(`http://localhost:8080/pages/emojiMenu/emoji`);
         const emojisData = response.data.map((emoji: { emoji: string }) => emoji.emoji);
-        setSelectedEmojis(emojisData[menuId]);
-        setEmojiLoaded(true);
+        setEmojis(emojisData)
+
+        const emojiResponse = await axios.get(`http://localhost:8080/pages/emojiMenu/IDMENU/${emojiMenuId}`)
+        const emojiData = emojiResponse.data.emoji;
+        setSelectedEmoji(emojiData);
       } catch (error) {
         console.error('Error fetching emojis:', error);
       }
     };
 
-    fetchEmoji(emojiMenuId); // Chame a função para buscar o emoji correspondente ao emojiMenuId
+    fetchEmoji();
   }, [emojiMenuId]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+        onClose();
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuOpen, onClose]);
 
   const handleEmojiSelect = (emojiId: number) => {
     setSelectedEmojiId(emojiId);
-    setSelectedEmojis(emojis[emojiId]);
+    setSelectedEmoji(emojis[emojiId]);
 
     axios.put(`http://localhost:8080/pages/emojiMenu`, { id_emoji: emojiId, id: emojiMenuId })
       .then(response => {
@@ -56,7 +70,6 @@ function EmojiMenu({ emojiMenuId, onOpen, onClose }: EmojiMenuProps){
     setMenuOpen(prevState => !prevState);
     if (!menuOpen) {
       onOpen();
-      setTooltipOpen(false);
     } else {
       onClose();
     }
@@ -65,7 +78,7 @@ function EmojiMenu({ emojiMenuId, onOpen, onClose }: EmojiMenuProps){
   return (
     <div className="emoji-container">
       <button onClick={toggleMenu} ref={buttonRef} id='BotãoEmoji'>
-        {selectedEmojiId !== null ? emojis[selectedEmojiId] : selectedEmojis}
+        {selectedEmojiId !== null ? emojis[selectedEmojiId] : selectedEmoji}
       </button>
       {menuOpen && (
         <div className="emoji-menu" ref={menuRef} style={{display:'block'}}>

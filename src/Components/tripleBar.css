@@ -1,21 +1,25 @@
 #tripleBar{
+
+    padding: 4px 5px;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
-    position: relative;
-    bottom: 14.3%;
-    left: .2%;
+
     border-radius: 5px;
+
+    cursor: pointer;
 }
 
 #Bars{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#Bars img{
     width: 20px;
-    height: 20px;
-    background: url(../assets/menu-tres-barras-destacadas.png) no-repeat;
-    background-size: cover;
-    cursor: pointer;
 }
 
 #tripleBar:hover{
