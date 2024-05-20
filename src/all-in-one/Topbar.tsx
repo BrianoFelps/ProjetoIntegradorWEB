@@ -22,22 +22,29 @@ function TopBar() {
   return (
     <>
   <div id='TopbarContainermax'>
-      <div id='ContainerSuperior' className='d-flex justify-content-between'>
+      <div id='ContainerSuperior' className='navbar navbar-light bg-light d-flex justify-content-between'>
 
-        <div id='ParteEsquerda' className='d-flex align-items-center justify-content-center'>
+        <div id='ParteEsquerda' className='d-flex align-items-center justify-content-center navbar-brand'>
           <TripleBar onClick={ola}/>
 
           <TextTitle onClick={ola}/>
         </div>
-        
 
         <div id='ItensDoCanto'>
-          <EditedInfo onMouseEnter={handleClick} onMouseLeave={ola}/>
-          <ShareButton onClick={ola}/>
-          <CommentIcon onClick={ola}/>
-          <ClockIcon onClick={ola}/>
-          <FavoriteIcon onClick={ola}/>
-          <ThreeDotIcon onClick={ola}/>
+          <div className='d-none d-sm-flex'>
+            <EditedInfo onMouseEnter={handleClick} onMouseLeave={ola}/>
+          </div>
+          <div className='d-none d-sm-flex'>
+            <ShareButton onClick={ola}/>
+          </div>
+          <div className='d-none d-sm-flex'>
+            <CommentIcon onClick={ola}/>
+          </div>
+          <div className='d-none d-sm-flex'>
+            <ClockIcon onClick={ola}/>
+          </div>
+            <FavoriteIcon onClick={ola}/>
+            <ThreeDotIcon onClick={ola}/>
         </div>
       </div>
       <div id='BgBanner'>
