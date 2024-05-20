@@ -31,7 +31,7 @@ function MainPage() {
             onClose={() => {}}
             emojiMenuId={1}/>
             <Input/>
-            <InputWriteIdea></InputWriteIdea>
+            <InputWriteIdea InputWriteIdeaId={0}></InputWriteIdea>
           </section>
           
           <section id='main'>
