@@ -10,15 +10,15 @@ interface props{
     inputid: number;
     inputid2: number;
     inputid3: number;
+    inputWriteIdeaId: number;
 }
 
 function LinkGroup (props: props){
     
     return(
         <div id='LinkGroupContainer'>
-            <InputWriteIdea>
-                <input type="text"/>
-            </InputWriteIdea>
+            <InputWriteIdea InputWriteIdeaId={props.inputWriteIdeaId}/>
+            
             <ul className='list-group list-unstyled' id='ListLinkGroup'>
                 <CardTooltip InputWcardId={props.inputid} EmojiMenuId={props.emojimenuid}></CardTooltip>
                 <CardTooltip InputWcardId={props.inputid2} EmojiMenuId={props.emojimenuid2}></CardTooltip>
