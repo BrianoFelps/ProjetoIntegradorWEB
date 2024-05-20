@@ -13,37 +13,37 @@
   
   #AllPage {
     display: flex;
-    height: 100vh;
+    flex-direction: column;
+    height: 100%;
     width: 100%;
+    /* min-width: 1280px; */
     align-items: center;
     background-color: white;
   }
 
   #CentPage {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: fit-content;
     display: flex;
     align-items: center;
-  }
-
-  .insertData{
-    display: block;
-    width: 100%;
-    margin-left: 25%;
-    margin-right: 25%
+    background-color: white;
   }
 
   .insertData{
     display: flex;
-    align-content: center;
-    width: 100%; /* Ajuste conforme necessário */
-    height: 50vh;
+    flex-direction: column;
+    max-height: min-content;
+  }
+
+  .insertData{
+    width: max-content; /* Ajuste conforme necessário */
     background-color: rgb(241, 234, 234);
     border: 8px double black;
     padding: 5px;
   }
 
   #titleLogin{
+    max-width: 100%;
     text-align: center;
   }
 
@@ -97,10 +97,12 @@
 
   #InputEmail1::placeholder{
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    text-align: center;
   }
 
   #InputPassword1::placeholder{
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    text-align: center;
   }
 
     #emailHelp{
@@ -162,15 +164,20 @@
 
     #AllPage{
       display: flex;
-      height: 100vh;
+      flex-direction: column;
+      height: 100%;
       width: 100%;
-      min-width: 350px;
+      /* min-width: 1280px; */
+      align-items: center;
+      background-color: white;
     }
   
     #CentPage{
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: fit-content;
       display: flex;
+      align-items: center;
+      background-color: white;
     }
 
     #checkgroup{
@@ -179,9 +186,15 @@
 
     .insertData{
       display: flex;
-      width: 100%; /* Ajuste conforme necessário */
-      height: 100%;
-      background-color: white;
+      flex-direction: column;
+      max-height: min-content;
+    }
+  
+    .insertData{
+      width: max-content; /* Ajuste conforme necessário */
+      background-color: rgb(241, 234, 234);
+      border: 8px double black;
+      padding: 5px;
     }
 
     #InputEmail1{
@@ -205,23 +218,37 @@
   @media (max-width: 350px) {
     #AllPage{
       display: flex;
-      align-items: center;
-      height: 100vh;
+      flex-direction: column;
+      height: 100%;
       width: 100%;
-      min-width: 175px;
-      overflow-y: auto;
+      /* min-width: 1280px; */
+      align-items: center;
+      background-color: white;
+    }
+  
+    #CentPage{
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      background-color: white;
     }
 
-    #CentPage{
-      width: 100vw;
-      height: 100vh;
-      display: flex;
+    #checkgroup{
+      text-align: initial !important;
     }
 
     .insertData{
-      width: 100%; /* Ajuste conforme necessário */
-      height: 60vh;
-      max-height: 100%;
+      display: flex;
+      flex-direction: column;
+      max-height: min-content;
+    }
+  
+    .insertData{
+      width: max-content; /* Ajuste conforme necessário */
+      background-color: rgb(241, 234, 234);
+      border: 8px double black;
+      padding: 5px;
     }
 
     #InputEmail1::placeholder{

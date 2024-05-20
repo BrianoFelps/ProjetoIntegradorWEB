@@ -27,13 +27,29 @@ function SignUp(){
 
         // Verifica se todos os campos foram preenchidos
         if (!firstName || !lastName || !email || !password || !confirmPassword) {
+            setSignedIn(false);
             setFormError('Por favor, preencha todos os campos.');
+            setShowModalErro(true);
+            setLoginEmAndamento(false);
+            return;
+        }
+
+        // Verifica se o email é valido
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            setSignedIn(false);
+            setFormError('Por favor, insira um email válido.');
+            setShowModalErro(true);
+            setLoginEmAndamento(false);
             return;
         }
 
         // Verifica se as senhas coincidem
         if (password !== confirmPassword) {
+            setSignedIn(false);
             setFormError('As senhas não coincidem.');
+            setShowModalErro(true);
+            setLoginEmAndamento(false);
             return;
         }
 
@@ -86,40 +102,42 @@ function SignUp(){
 
     return(
         <div id='AllPage'>
-                <LoginPageLogo></LoginPageLogo>
-            <div id='CentPage'>
-                <form className='insertData'>
-                    <div id='titleLogin'>
-                        <label htmlFor='labeltitleLogin' id='labelLogin'>Crie sua Conta aqui!</label>
-                    </div>
-                    <div id='signUpNE'>
-                        <div id='FNameResponsive'>
-                            <label htmlFor="exInputEmail1" id='labelFName'>Primeiro Nome: </label>
-                            <input type="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="form-control" id="InputFName1" aria-describedby="fnameHelp" placeholder="Primeiro Nome"></input>
+            <LoginPageLogo></LoginPageLogo>    
+                <div id='CentPage'>
+                    <form className='insertData'>
+                        <div id='titleLogin'>
+                            <label htmlFor='labeltitleLogin' id='labelLogin'>Crie sua Conta aqui!</label>
                         </div>
-                        <div id='LNameResponsive'>
-                            <label htmlFor="exInputEmail1" id='labelLName'>Sobre Nome: </label>
-                            <input type="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} className="form-control" id="InputLName1" aria-describedby="lnameHelp" placeholder="Sobre Nome"></input>
+                        <div id='signUpNE'>
+                            <div id='FNameResponsive'>
+                                <label htmlFor="exInputEmail1" id='labelFName'>Primeiro Nome: </label>
+                                <input type="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="form-control" id="InputFName1" aria-describedby="fnameHelp" placeholder="Primeiro Nome"></input>
+                            </div>
+                            <div id='LNameResponsive'>
+                                <label htmlFor="exInputEmail1" id='labelLName'>Sobre Nome: </label>
+                                <input type="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} className="form-control" id="InputLName1" aria-describedby="lnameHelp" placeholder="Sobre Nome"></input>
+                            </div>
                         </div>
-                    </div>
-                    <div className="form-groupE">
-                        <label htmlFor="exInputEmail1" id='labelEmail'>Email: </label>
-                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Endereço de Email"></input>
-                        <small id="emailHelp" className="form-text text-muted">Nunca Compartilharemos o seu Email com ninguém.</small>
-                    </div>
-                    <div className="form-groupP">
-                        <label htmlFor="exInputPassword1" id='labelPassword'>Senha: </label>
-                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" id="InputPassword1" placeholder="Escreva a sua Senha"></input>
-                    </div>
-                    <div className="form-groupP">
-                        <label htmlFor="exInputPassword1" id='labelCPassword'>Confirme a sua Senha: </label>
-                        <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="form-control" id="InputCPassword1" placeholder="Confirme a Senha"></input>
-                    </div>
-                    <button type="button" className="btn btn-primary" id="btnEnter" onClick={handleSubmit} disabled={loginEmAndamento} >Criar Conta</button>
-                    <DirectLink onClickDirect = {LinkLogin} textExample={simpletext} textLink={linktext}/>
-                </form>
-                <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
-            </div>
+                        <div className="form-groupE">
+                            <label htmlFor="exInputEmail1" id='labelEmail'>Email: </label>
+                            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Endereço de Email"></input>
+                            <small id="emailHelp" className="form-text text-muted">Nunca Compartilharemos o seu Email com ninguém.</small>
+                        </div>
+                        <div className="form-groupP">
+                            <label htmlFor="exInputPassword1" id='labelPassword'>Senha: </label>
+                            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" id="InputPassword1" placeholder="Escreva a sua Senha"></input>
+                        </div>
+                        <div className="form-groupP">
+                            <label htmlFor="exInputPassword1" id='labelCPassword'>Confirme a sua Senha: </label>
+                            <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="form-control" id="InputCPassword1" placeholder="Confirme a Senha"></input>
+                        </div>
+                        <div id='formbtnSignUp'>
+                            <button type="button" className="btn btn-primary" id="btnEnter" onClick={handleSubmit} disabled={loginEmAndamento} >Criar Conta</button>
+                        </div>
+                        <DirectLink onClickDirect = {LinkLogin} textExample={simpletext} textLink={linktext}/>
+                    </form>
+                    <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
+                </div>
         </div>
     );
 }

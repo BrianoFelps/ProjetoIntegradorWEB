@@ -15,7 +15,8 @@
   
   #AllPage {
     display: flex;
-    height: 100vh;
+    flex-direction: column;
+    height: 100%;
     width: 100%;
     /* min-width: 1280px; */
     align-items: center;
@@ -24,18 +25,23 @@
 
   #CentPage {
     width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
-    position: absolute;
+    justify-content: center;
   }
 
   .insertData{
-    display: block;
-    width: 100%; /* Ajuste conforme necessário */
-    margin-left: 25%;
-    margin-right: 25%;
-    background-color: white;
-    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+  }
+
+  .insertData{
+    width: fit-content; /* Ajuste conforme necessário */
+    background-color: rgb(241, 234, 234);
+    border: 8px double black;
+    padding: 5px;
   }
 
   #labelLogin{
@@ -191,6 +197,7 @@
 
     #InputCPassword1::placeholder{
       font-family: 'Poppins', Arial, Helvetica, sans-serif;
+      text-align: center;
     }
 
     #emailHelp{
@@ -241,29 +248,50 @@
         border-color: rgb(201, 186, 186);
     }
 
+    #formbtnSignUp{
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+
+
 
   @media (max-width: 768px) {
-    /* body{
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-    }
-    #root{
-      justify-content: space-around;
-      height: 50vh;
-      width: 50%;
-      min-width: 1280px;
-    } */
 
     #AllPage{
       display: flex;
-      align-items: center;
-      position: relative;
-      height: 100vh;
+      flex-direction: column;
+      height: 100%;
       width: 100%;
-      min-width: 350px;
-      overflow-y: auto;
+      /* min-width: 1280px; */
+      align-items: center;
+      background-color: white;
+    }
+  
+    #CentPage{
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      background-color: white;
+    }
+
+    #checkgroup{
+      text-align: initial !important;
+    }
+
+    .insertData{
+      display: flex;
+      flex-direction: column;
+      max-height: min-content;
+    }
+  
+    .insertData{
+      width: max-content; /* Ajuste conforme necessário */
+      background-color: rgb(241, 234, 234);
+      border: 8px double black;
+      padding: 5px;
     }
 
     #InputFName1::placeholder{
@@ -285,24 +313,9 @@
     #InputCPassword1::placeholder{
       text-align: center;
     }
-  
-    #CentPage{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        position: relative;
-        height: auto;
-    }
 
     #checkgroup{
       text-align: initial !important;
-    }
-
-    .insertData{
-        width: 100%; /* Ajuste conforme necessário */
-        background-color: white;
-        justify-content: space-around;
     }
 
     #signUpNE {
@@ -330,20 +343,38 @@
   @media(max-width: 350px) {
     #AllPage{
       display: flex;
-      justify-content: space-around;
-      align-items: center;
-      height: 100vh;
+      flex-direction: column;
+      height: 100%;
       width: 100%;
-      min-width: 175px;
-      overflow-y: auto;
+      /* min-width: 1280px; */
+      align-items: center;
+      background-color: white;
+    }
+  
+    #CentPage{
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      background-color: white;
+    }
+
+    #checkgroup{
+      text-align: initial !important;
     }
 
     .insertData{
-      width: 100%; /* Ajuste conforme necessário */
-      /* margin-left: auto;
-      margin-right: auto; */
+      display: flex;
+      flex-direction: column;
+      max-height: min-content;
     }
-
+  
+    .insertData{
+      width: max-content; /* Ajuste conforme necessário */
+      background-color: rgb(241, 234, 234);
+      border: 8px double black;
+      padding: 5px;
+    }
     #InputFName1::placeholder{
       text-align: center;
     }
@@ -362,16 +393,5 @@
 
     #InputCPassword1::placeholder{
       text-align: center;
-    }
-
-    #CentPage{
-      width: auto;
-      justify-content: safe;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      /* background-color: aqua; */
-      height: 100vh;
     }
   }
