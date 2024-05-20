@@ -2,8 +2,8 @@ import './DirectLink.css'
 
 
 interface DirectLinkProps{
-    textExample?: String;
-    textLink?: String;
+    textExample?: string;
+    textLink?: string;
     onClickDirect?: () => void;
 }
 

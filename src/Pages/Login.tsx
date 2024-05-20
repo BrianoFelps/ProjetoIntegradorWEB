@@ -86,7 +86,9 @@ import LinkSignUp from '../Components/DirectLink';
                             <input type="checkbox" className="form-check-input" id="exCheck1"></input>
                             <label className="form-check-label" htmlFor="exampleCheck1" id='labelCheck'>Lembrar do Login</label>
                         </div>
-                        <button type="button" className="btn btn-primary" id="btnEnter" onClick={fazerLogin} disabled={loginEmAndamento}>Entrar</button>
+                        <div id='formbtnLogin'>
+                            <button type="button" className="btn btn-primary" id="btnEnter" onClick={fazerLogin} disabled={loginEmAndamento}>Entrar</button>
+                        </div>
                         <LinkSignUp onClickDirect = {LinkSign} textExample={simpletext} textLink={linktext}/>
                         <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
                     </form>

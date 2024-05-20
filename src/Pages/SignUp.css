@@ -22,47 +22,6 @@
     background-color: white;
   }
 
-  #logo {
-    width: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    cursor: pointer;
-    left: 5%;
-    top: 10%;
-  }
-
-  #aniLogo{
-    width: min-content;
-    display: inline-flex;
-  }
-
-  #aniLogo:hover{
-    background-color: #000000;
-    transition: background-color 1000ms ease;
-    opacity: 0.8;
-    border-radius: 8px;
-    #textLogo{
-      color: white;
-    }
-  }
-
-  #LogoIcon{
-    display: flex;
-    align-items: center;
-    width: 28px;
-    height: 28px;
-    margin-right: 5px;
-    object-fit: cover;
-  }
-
-  #textLogo{
-    font-size: large;
-    font-family: 'Poppins', Arial, Helvetica, sans-serif;
-    cursor: pointer;
-  }
-
   #CentPage {
     width: 100%;
     display: flex;
@@ -307,22 +266,6 @@
       overflow-y: auto;
     }
 
-    #logo{
-        display: block;
-        margin: 0;
-        width: auto !important;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #LogoIcon{
-      display: flex;
-      object-fit: cover;
-      cursor: pointer;
-    }
-
-    
     #InputFName1::placeholder{
       text-align: center;
     }
@@ -399,15 +342,6 @@
       width: 100%; /* Ajuste conforme necessário */
       /* margin-left: auto;
       margin-right: auto; */
-    }
-
-    #logo{
-      display: flex;
-      justify-content: center;
-      position: relative;
-      margin: 0;
-      align-items: center;
-      cursor: pointer;
     }
 
     #InputFName1::placeholder{

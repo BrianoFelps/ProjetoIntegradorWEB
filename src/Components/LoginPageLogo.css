@@ -1,15 +1,15 @@
-#logo {
-    width: auto;
-    display: flex;
-    position: absolute;
-    cursor: pointer;
-    left: 5%;
-    top: 10%;
+  #logo {
+    width: 20%;
+    height: 100%;
   }
 
   #aniLogo{
-    width: min-content;
-    display: inline-flex;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 25vh;
+    max-width: 100%;
   }
 
   #aniLogo:hover{
@@ -35,4 +35,33 @@
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
     cursor: pointer;
+  }
+
+  @media (max-width: 768px){
+    #logo{
+      width: 100vw;
+      height: 15vh;
+      position: absolute;
+      top: 10vw;
+    }
+    #aniLogo{
+      display: flex;
+      max-width: 100%;
+      height: 10vh;
+    }
+
+  }
+
+  @media (max-width: 350px){
+    #logo{
+      width: 100vw;
+      height: 15vh;
+      position: absolute;
+      top: 10vw;
+    }
+    #aniLogo{
+      display: flex;
+      max-width: 100%;
+      height: 10vh;
+    }
   }

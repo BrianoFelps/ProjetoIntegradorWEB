@@ -3,7 +3,7 @@
 .signUpLink{
     margin-top: 6px;
     display: flex;
-    align-items: center;
+    justify-content: center;
     gap: 8px;
 }
 

@@ -19,60 +19,32 @@
     background-color: white;
   }
 
-  #logo {
-    width: auto;
-    display: flex;
-    position: absolute;
-    cursor: pointer;
-    left: 5%;
-    top: 10%;
-  }
-
-  #aniLogo{
-    width: min-content;
-    display: inline-flex;
-  }
-
-  #aniLogo:hover{
-    background-color: #000000;
-    transition: background-color 1000ms ease;
-    opacity: 0.8;
-    border-radius: 8px;
-    #textLogo{
-      color: white;
-    }
-  }
-
-  #LogoIcon{
-    display: flex;
-    align-items: center;
-    width: 28px;
-    height: 28px;
-    margin-right: 10px;
-    object-fit: cover;
-  }
-
-  #textLogo{
-    font-size: large;
-    font-family: 'Poppins', Arial, Helvetica, sans-serif;
-    cursor: pointer;
-  }
-
   #CentPage {
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     align-items: center;
-    position: absolute;
   }
 
   .insertData{
     display: block;
-    width: 100%; /* Ajuste conforme necessário */
-    height: 350px;
+    width: 100%;
     margin-left: 25%;
-    margin-right: 25%;
-    background-color: white;
-    justify-content: space-around;
+    margin-right: 25%
+  }
+
+  .insertData{
+    display: flex;
+    align-content: center;
+    width: 100%; /* Ajuste conforme necessário */
+    height: 50vh;
+    background-color: rgb(241, 234, 234);
+    border: 8px double black;
+    padding: 5px;
+  }
+
+  #titleLogin{
+    text-align: center;
   }
 
   #labelLogin{
@@ -94,7 +66,7 @@
   }
 
   #InputEmail1{
-    width: 100% !important;
+    width: 75% !important;
   }
 
   #InputEmail1:hover{
@@ -103,7 +75,7 @@
   }
 
   #InputPassword1{
-    width: 100% !important;
+    width: 75% !important;
   }
 
   #InputPassword1:hover{
@@ -162,10 +134,17 @@
         box-shadow: 0px 0px .250em #ADA49E;
     }
 
+    #formbtnLogin{
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
     #btnEnter{
         background-color: black;
         border-color: white;
         font-family: 'Poppins', Arial, Helvetica, sans-serif;
+        
     }
 
     #btnEnter:hover{
@@ -179,42 +158,19 @@
         border-color: rgb(201, 186, 186);
     }
 
-
   @media (max-width: 768px) {
 
     #AllPage{
       display: flex;
-      align-items: center;
       height: 100vh;
       width: 100%;
       min-width: 350px;
     }
-
-    #logo{
-        margin-top: 5%;
-        width: auto !important;
-        display: flex;
-        justify-content: center;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        align-items: center;
-        cursor: pointer;
-    }
-
-    #LogoIcon{
-      display: flex;
-      object-fit: cover;
-    }
   
     #CentPage{
-      width: 100%;
+      width: 100vw;
+      height: 100vh;
       display: flex;
-      align-items: center;
-      text-align: center;
-      position: absolute;
-      height: auto;
     }
 
     #checkgroup{
@@ -222,9 +178,10 @@
     }
 
     .insertData{
+      display: flex;
       width: 100%; /* Ajuste conforme necessário */
+      height: 100%;
       background-color: white;
-      justify-content: space-around;
     }
 
     #InputEmail1{
@@ -255,21 +212,16 @@
       overflow-y: auto;
     }
 
-    .insertData{
-      width: 100%; /* Ajuste conforme necessário */
+    #CentPage{
+      width: 100vw;
+      height: 100vh;
+      display: flex;
     }
 
-    #logo{
-      margin-top: 25%;
-      width: 100% !important;
-      display: flex;
-      justify-content: center;
-      position: fixed;
-      left: 0;
-      right: 0;
-      top: 0;
-      align-items: center;
-      cursor: pointer;
+    .insertData{
+      width: 100%; /* Ajuste conforme necessário */
+      height: 60vh;
+      max-height: 100%;
     }
 
     #InputEmail1::placeholder{
@@ -280,15 +232,6 @@
       text-align: center;
     }
 
-    #CentPage{
-      width: auto;
-      margin: 10px;
-      justify-content: center;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      position: fixed;
-      /* background-color: aqua; */
-      height: auto;
-    }
+    /* #CentPage{
+    } */
   }
