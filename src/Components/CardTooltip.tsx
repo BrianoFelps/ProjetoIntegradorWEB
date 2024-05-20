@@ -29,7 +29,7 @@ function YourComponent(props: props) {
         const TooltipValue = Tooltip ? Tooltip.value : '';
         setInputValue(TooltipValue);
         setvalueLoaded(true);
-        console.log(`Tooltip input value: ${TooltipValue}`)
+        // console.log(`Tooltip input value: ${TooltipValue}`)
       } catch (error) {
         console.error('Error fetching tooltip input:', error)
       }

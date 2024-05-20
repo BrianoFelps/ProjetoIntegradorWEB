@@ -12,31 +12,54 @@ function EmojiMenu({ emojiMenuId, onOpen, onClose }: EmojiMenuProps){
 
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const [selectedEmojiId, setSelectedEmojiId] = useState<number | null>(null);
   const [selectedEmoji, setSelectedEmoji] = useState<string>('');
 
-  const [emojis, setEmojis] = useState<string[]>([]);
+  const [emojis, setEmojis] = useState<{ id: number; name: string; emoji: string }[]>([]);
   
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    // Função para buscar os emojis correspondentes aos EmojiMenus
-    const fetchEmoji = async () => {
+    const fetchEmojis = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/pages/emojiMenu/emoji`);
-        const emojisData = response.data.map((emoji: { emoji: string }) => emoji.emoji);
-        setEmojis(emojisData)
-
-        const emojiResponse = await axios.get(`http://localhost:8080/pages/emojiMenu/IDMENU/${emojiMenuId}`)
-        const emojiData = emojiResponse.data.emoji;
-        setSelectedEmoji(emojiData);
+        const response = await axios.get(`http://localhost:8080/pages/emojis`);
+        setEmojis(response.data);
+      // console.log(emojis)
       } catch (error) {
         console.error('Error fetching emojis:', error);
       }
     };
 
-    fetchEmoji();
+    fetchEmojis();
+  }, []); 
+   
+
+    useEffect(() => {
+       // Função para buscar os emojis correspondentes aos EmojiMenus
+    const fetchSelectedEmoji = async () => {
+      if (emojiMenuId !== undefined && emojiMenuId !== null) {
+        try {
+          const response = await axios.get(`http://localhost:8080/pages/emojiMenu/IDMENU/${emojiMenuId}`);
+          const emojiData = response.data.emoji;
+          setSelectedEmoji(emojiData);
+        } catch (error) {
+          if (axios.isAxiosError(error)) {
+            if (error.response && error.response.status === 404) {
+              console.warn(`EmojiMenu with ID ${emojiMenuId} not found`);
+            } else {
+              console.error('Error fetching selected emoji:', error.message);
+            }
+          } else if (error instanceof Error) {
+            console.error('Unexpected error fetching selected emoji:', error.message);
+          } else {
+            console.error('Unknown error:', error);
+          }
+        }
+      }
+    };
+
+// Chame a função para buscar o emoji correspondente ao emojiMenuId
+    fetchSelectedEmoji();
   }, [emojiMenuId]);
 
   useEffect(() => {
@@ -53,17 +76,18 @@ function EmojiMenu({ emojiMenuId, onOpen, onClose }: EmojiMenuProps){
     };
   }, [menuOpen, onClose]);
 
-  const handleEmojiSelect = (emojiId: number) => {
-    setSelectedEmojiId(emojiId);
-    setSelectedEmoji(emojis[emojiId]);
-
-    axios.put(`http://localhost:8080/pages/emojiMenu`, { id_emoji: emojiId, id: emojiMenuId })
-      .then(response => {
-        console.log('EmojiMenu atualizado com sucesso:', response.data);
-      })
-      .catch(error => {
+  const handleEmojiSelect = async (emojiId: number) => {
+    const selected = emojis.find(emoji => emoji.id === emojiId);
+    if (selected) {
+      setSelectedEmoji(selected.emoji);
+      console.log(selectedEmoji)
+      try {
+        await axios.put('http://localhost:8080/pages/emojiMenu', { id_emoji: emojiId, id: emojiMenuId });
+        console.log('EmojiMenu atualizado com sucesso');
+      } catch (error) {
         console.error(`EmojiId: ${emojiId}. EmojiMenuId: ${emojiMenuId}. Erro ao atualizar o EmojiMenu:`, error);
-      });
+      }
+    }
   };
 
   const toggleMenu = () => {
@@ -78,12 +102,14 @@ function EmojiMenu({ emojiMenuId, onOpen, onClose }: EmojiMenuProps){
   return (
     <div className="emoji-container">
       <button onClick={toggleMenu} ref={buttonRef} id='BotãoEmoji'>
-        {selectedEmojiId !== null ? emojis[selectedEmojiId] : selectedEmoji}
+        {selectedEmoji}
       </button>
       {menuOpen && (
         <div className="emoji-menu" ref={menuRef} style={{display:'block'}}>
-          {emojis.map((emoji, index) => (
-            <span key={index} onClick={() => handleEmojiSelect(index)}>{emoji}</span>
+          {emojis.map((emoji) => (
+            <span key={emoji.id} title={emoji.name} onClick={() => handleEmojiSelect(emoji.id)}>
+              {emoji.emoji}
+            </span>
           ))}
         </div>
       )}
