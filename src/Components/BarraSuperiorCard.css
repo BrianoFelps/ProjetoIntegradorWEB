@@ -1,0 +1,21 @@
+#BarraSuperiorC{
+    display: flex !important;
+    align-items: center;
+    width: 100%;
+    background: white;
+    transition: 1s;
+    padding-right: 10px;
+}
+
+#BarraSuperiorC div#TitleText{
+    white-space: nowrap;
+    margin-left: 1px;
+    align-items: center;
+    display: flex;
+    padding: 4px 5px;
+    justify-content: center;
+  }
+
+  #LeftSect a{
+    margin: 0 3px;
+  }

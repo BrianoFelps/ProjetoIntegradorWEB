@@ -1,13 +1,6 @@
 import './TopBar.css';
 import Banner from "../assets/i_have_no_enemies___thorfinn___vinland_manga_3d_by_synedae_dg3gce9-fullview.jpg"
-import TripleBar from '../Components/TripleBar';
-import TextTitle from '../Components/TextTitle';
-import ShareButton from '../Components/ShareButton';
-import ThreeDotIcon from '../Components/ThreeDotIcon';
-import FavoriteIcon from '../Components/FavoriteIcon';
-import CommentIcon from '../Components/CommentIcon';
-import EditedInfo from '../Components/EditedInfo';
-import ClockIcon from '../Components/ClockIcon';
+import ContainerSuperior from '../Components/ContainerSuperior'
 
 function TopBar() {
   const ola = () =>{
@@ -19,39 +12,19 @@ function TopBar() {
     console.log("Hover ocorreu!");
   };
 
+  const retirado = () =>{
+    console.log("Mouse retirado")
+  }
+
   return (
     <>
-  <div id='TopbarContainermax'>
-      <div id='ContainerSuperior' className='navbar navbar-light bg-light d-flex justify-content-between'>
+      <div id='TopbarContainermax'>
+          <ContainerSuperior value='Ponto de equilíbrio' onClick={ola} onMouseEnter={handleClick} onMouseLeave={retirado}></ContainerSuperior>
+          <div id='BgBanner'>
+            <img src={Banner} alt="" className='img-fluid' />
+          </div>
 
-        <div id='ParteEsquerda' className='d-flex align-items-center justify-content-center navbar-brand'>
-          <TripleBar onClick={ola}/>
-
-          <TextTitle onClick={ola}/>
-        </div>
-
-        <div id='ItensDoCanto'>
-          <div className='d-none d-sm-flex'>
-            <EditedInfo onMouseEnter={handleClick} onMouseLeave={ola}/>
-          </div>
-          <div className='d-none d-sm-flex'>
-            <ShareButton onClick={ola}/>
-          </div>
-          <div className='d-none d-sm-flex'>
-            <CommentIcon onClick={ola}/>
-          </div>
-          <div className='d-none d-sm-flex'>
-            <ClockIcon onClick={ola}/>
-          </div>
-            <FavoriteIcon onClick={ola}/>
-            <ThreeDotIcon onClick={ola}/>
-        </div>
       </div>
-      <div id='BgBanner'>
-        <img src={Banner} alt="" className='img-fluid' />
-      </div>
-
-    </div>
     </>
   )
 }

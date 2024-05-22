@@ -6,6 +6,7 @@ import InputWriteIdea from '../Components/InputWriteIdea';
 import TopBarL from '../Components/TopBarL';
 import NItem from '../Components/NItem';
 import LinkGroup from '../Components/LinkGroup';
+import Modal from '../Components/Modal';
 import image1 from "../assets/1000019662.jpg"
 import image2 from "../assets/Alexandre-o-Grande.webp"
 import image3 from "../assets/Apoteose-de-Santo-Tomás.jpg"
@@ -21,6 +22,8 @@ function ContentPage() {
     const [CardsIds, setCardsIds] = useState<number[]>([]);
     const [TooltipIds, setTooltipIds] = useState<number[]>([]);
     const [WriteIdeaIds, setWriteIdeaIds] = useState<number[]>([]);
+    const [isModalVisible, setIsModalVisible] = useState(false); // Estado para controlar a visibilidade da modal
+
     
     useEffect(() => {
         // Função para buscar os emojis correspondentes aos EmojiMenus
@@ -103,6 +106,15 @@ function ContentPage() {
       alert('oi')
     }
 
+    const openModal = () =>{
+      setIsModalVisible(true)
+    }
+
+    const closeModal = () =>{
+      setIsModalVisible(false)
+    }
+    
+
     return (
     <main id='ConteudoPrincipal'>
         <section id='top'>
@@ -128,12 +140,14 @@ function ContentPage() {
 
             <div id='ItensContainer'>
                 
-                <NItem NitemId={CardsIds[0]} key={emojiMenuIds[1]} emojiMenuId={emojiMenuIds[1]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} onclick={oi} image={image1}/>
-                <NItem NitemId={CardsIds[1]} key={emojiMenuIds[2]} emojiMenuId={emojiMenuIds[2]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image2}/>
-                <NItem NitemId={CardsIds[2]} key={emojiMenuIds[3]} emojiMenuId={emojiMenuIds[3]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image3}/>
-                <NItem NitemId={CardsIds[3]} key={emojiMenuIds[4]} emojiMenuId={emojiMenuIds[4]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image4}/>
-                <NItem NitemId={CardsIds[4]} key={emojiMenuIds[5]} emojiMenuId={emojiMenuIds[5]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image5}/>
+              <NItem NitemId={CardsIds[0]} key={emojiMenuIds[1]} emojiMenuId={emojiMenuIds[1]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} onclick={oi} image={image1}/>
+              <NItem NitemId={CardsIds[1]} key={emojiMenuIds[2]} emojiMenuId={emojiMenuIds[2]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image2}/>
+              <NItem NitemId={CardsIds[2]} key={emojiMenuIds[3]} emojiMenuId={emojiMenuIds[3]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image3}/>
+              <NItem NitemId={CardsIds[3]} key={emojiMenuIds[4]} emojiMenuId={emojiMenuIds[4]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image4}/>
+              <NItem NitemId={CardsIds[4]} key={emojiMenuIds[5]} emojiMenuId={emojiMenuIds[5]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} image={image5} onclick={openModal}/>
             </div>
+
+            {isModalVisible && <Modal Titulo='aaaaa' banner={image5} EmojiMenuInsideSeparatorId={emojiMenuIds[5]} idName='testeModal' onClose={closeModal}/>}
         </section>
 
         <section id='NavegacaoBasica'>

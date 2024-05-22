@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 interface props{
-    onclick: () => void;
+    onclick?: () => void;
     image: string;
     emojiMenuId: number;
     handleEmojiOpen: () => void;

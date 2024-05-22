@@ -1,0 +1,57 @@
+#ContainerSuperior{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 7px 0;
+    background: white;
+    transition: 1s;
+    padding-right: 10px;
+}
+
+#ContainerSuperior div#TitleText{
+    white-space: nowrap;
+    margin-left: 1px;
+    align-items: center;
+    display: flex;
+    padding: 4px 5px;
+    justify-content: center;
+  }
+  
+  #ContainerSuperior div#TitleText:hover{
+    transition: .2s;
+    background: rgba(0, 0, 0, .1);
+  }
+
+  #ContainerSuperior div#TitleText h2{
+    margin: 0;
+    margin-right: 5px;
+    font-size: 1.5em;
+  }
+   
+  div#ShareB{
+    padding: 15px 10px;
+  }
+  
+  div#ShareB h2{
+    font-size: 1.5em;
+    margin: 0;
+  }
+  
+  div#ShareB:hover{
+    background: rgba(0, 0, 0, .1);
+  }
+  
+  div#ShareButtonText{
+    font-size: .65em;
+    width: auto;
+    height: auto;
+  }
+  
+  div#ThreeDI:hover{
+    background: rgba(0, 0, 0, .1);
+  }
+
+  #EditedInfo p{
+    margin: 0;
+  }
+  
