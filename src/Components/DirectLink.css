@@ -19,10 +19,10 @@
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
     font-weight: bold;
     text-decoration: underline;
+    transition: color 0.3s ease-in-out;
 }
 
 .boldLink:hover{
     cursor: pointer;
     color: rgb(100, 100, 255);
-    transition: 0.2s;
 }
