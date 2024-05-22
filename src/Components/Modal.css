@@ -1,3 +1,15 @@
+#DadModalContainer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
 #ModalOverlay{
     position: fixed;
     top: 0;
@@ -12,11 +24,8 @@
 #ModalContainerMax{
     z-index: 1000;
 
-    display: flex;
-}
-
-#ModalContainerMax #ContainerSuperior{
-    position: static;
+    width: 80%;
+    height: 80%;
 }
 
 #ModalContainerMax .card-header{
@@ -65,9 +74,9 @@
 
  #InnerContainerConteudoCard #DivTitulo{
     margin-top: -20px;
-
+    margin-bottom: 20px;
+    
     height: fit-content;
-
  }
 
  #InnerContainerConteudoCard #DivTitulo h2{
@@ -76,6 +85,27 @@
     font-size: 2.2em;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
-    
+
     text-transform: uppercase;
+ }
+
+#CustomTextArea{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    resize: none; /* Remove a possibilidade de redimensionar */
+    box-sizing: border-box; /* Inclui padding e border no tamanho total */
+    font-family: inherit; /* Herda a família de fonte do elemento pai */
+    font-size: inherit; /* Herda o tamanho da fonte do elemento pai */
+    background: transparent; /* Remove fundo padrão */
+    color: inherit; /* Herda a cor do texto do elemento pai */
+}
+
+ @media (min-width: 1000px) {
+    #ModalContainerMax{
+        width: 50%;
+    }
  }

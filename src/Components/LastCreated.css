@@ -1,0 +1,30 @@
+#ContainerCreated{
+    align-items: center;
+}
+
+.BotaoComponent{
+    width: 48%;
+
+    text-align: start;
+
+    opacity: 80%;
+
+    background: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+.conteudo{
+    width: 48%;
+
+    background: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+@media (min-width: 900px){
+    .BotaoComponent{
+        width: 34%;
+    }
+    #ContainerCreated .conteudo{
+        width: 64%;
+    }
+}

@@ -1,0 +1,21 @@
+#ContainerTags .conteudo{
+    width: 50%;
+}
+
+.conteudo input{
+    width: 100%;
+    height: 100%;   
+
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+@media (min-width: 900px){
+    .BotaoComponent{
+        width: 34%;
+    }
+    .conteudo{
+        width: 64%;
+    }
+}
