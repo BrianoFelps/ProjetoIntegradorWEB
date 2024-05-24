@@ -18,7 +18,8 @@
     width: 100%;
     /* min-width: 1280px; */
     align-items: center;
-    background-color: white;
+    /* background: #866a6a; */
+    background: url('../assets/testedebackground.jpg') no-repeat;
   }
 
   #CentPage {
@@ -26,7 +27,8 @@
     height: fit-content;
     display: flex;
     align-items: center;
-    background-color: white;
+    background-position: center;
+    background-size: auto;
   }
 
   .insertData{
@@ -37,7 +39,7 @@
 
   .insertData{
     width: max-content; /* Ajuste conforme necessário */
-    background-color: rgb(241, 234, 234);
+    background: linear-gradient(to right, #FDF2F6, #F2D0DD);
     border: 8px double black;
     padding: 5px;
   }
@@ -169,7 +171,6 @@
       width: 100%;
       /* min-width: 1280px; */
       align-items: center;
-      background-color: white;
     }
   
     #CentPage{
@@ -177,7 +178,6 @@
       height: fit-content;
       display: flex;
       align-items: center;
-      background-color: white;
     }
 
     #checkgroup{
@@ -223,7 +223,6 @@
       width: 100%;
       /* min-width: 1280px; */
       align-items: center;
-      background-color: white;
     }
   
     #CentPage{
@@ -231,7 +230,6 @@
       height: fit-content;
       display: flex;
       align-items: center;
-      background-color: white;
     }
 
     #checkgroup{

@@ -20,7 +20,7 @@
     width: 100%;
     /* min-width: 1280px; */
     align-items: center;
-    background-color: white;
+    background-color: rgb(211, 172, 172);
   }
 
   #CentPage {
@@ -40,7 +40,7 @@
   .insertData{
     width: fit-content; /* Ajuste conforme necessário */
     background-color: rgb(241, 234, 234);
-    border: 8px double black;
+    border: 8px double rgb(138, 96, 96);
     padding: 5px;
   }
 
@@ -291,7 +291,6 @@
       width: 100%;
       /* min-width: 1280px; */
       align-items: center;
-      background-color: white;
     }
   
     #CentPage{
@@ -299,7 +298,6 @@
       height: fit-content;
       display: flex;
       align-items: center;
-      background-color: white;
     }
 
     #checkgroup{
@@ -373,7 +371,6 @@
       width: 100%;
       /* min-width: 1280px; */
       align-items: center;
-      background-color: white;
     }
   
     #CentPage{
@@ -381,7 +378,6 @@
       height: fit-content;
       display: flex;
       align-items: center;
-      background-color: white;
     }
 
     #checkgroup{
