@@ -34,6 +34,7 @@
 
 #ContainerConteudoCard{
     overflow-y: scroll;
+    height: 100%;
 }
 
 #CardBanner{
@@ -51,7 +52,7 @@
     padding: 0 80px;
  }
 
- #Separator{
+#InnerContainerConteudoCard #Separator{
     display: flex;
     width: fit-content;
 
@@ -92,7 +93,7 @@
 #CustomTextArea{
     width: 100%;
     height: 100%;
-    padding: 0;
+    padding: 0 12px;
     margin: 0;
     border: none;
     outline: none;
@@ -102,6 +103,24 @@
     font-size: inherit; /* Herda o tamanho da fonte do elemento pai */
     background: transparent; /* Remove fundo padrão */
     color: inherit; /* Herda a cor do texto do elemento pai */
+}
+
+input[type='file']{
+    display: none;
+}
+
+#CustomFileUpl{
+    margin:0 2px 12px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#CustomFileUpl:hover{
+    background-color: var(--bs-btn-hover-bg);
+}
+
+.icone{
+    margin: 0 10px 0 0;
 }
 
  @media (min-width: 1000px) {

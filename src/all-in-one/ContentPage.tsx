@@ -22,7 +22,11 @@ function ContentPage() {
     const [CardsIds, setCardsIds] = useState<number[]>([]);
     const [TooltipIds, setTooltipIds] = useState<number[]>([]);
     const [WriteIdeaIds, setWriteIdeaIds] = useState<number[]>([]);
-    const [isModalVisible, setIsModalVisible] = useState(false); // Estado para controlar a visibilidade da modal
+    const [isModal1Visible, setIsModal1Visible] = useState(false); // Estado para controlar a visibilidade da modal
+    const [isModal2Visible, setIsModal2Visible] = useState(false); 
+    const [isModal3Visible, setIsModal3Visible] = useState(false);
+    const [isModal4Visible, setIsModal4Visible] = useState(false);
+    const [isModal5Visible, setIsModal5Visible] = useState(false);
 
     
     useEffect(() => {
@@ -106,15 +110,45 @@ function ContentPage() {
       alert('oi')
     }
 
-    const openModal = () =>{
-      setIsModalVisible(true)
+    const openModal1 = () =>{
+      setIsModal1Visible(true)
     }
 
-    const closeModal = () =>{
-      setIsModalVisible(false)
+    const closeModal1 = () =>{
+      setIsModal1Visible(false)
+    }
+
+    const openModal2 = () =>{
+      setIsModal2Visible(true)
+    }
+
+    const closeModal2 = () =>{
+      setIsModal2Visible(false)
+    }
+
+    const openModal3 = () =>{
+      setIsModal3Visible(true)
+    }
+
+    const closeModal3 = () =>{
+      setIsModal3Visible(false)
+    }
+
+    const openModal4 = () =>{
+      setIsModal4Visible(true)
+    }
+
+    const closeModal4 = () =>{
+      setIsModal4Visible(false)
+    }
+    const openModal5 = () =>{
+      setIsModal5Visible(true)
+    }
+
+    const closeModal5 = () =>{
+      setIsModal5Visible(false)
     }
     
-
     return (
     <main id='ConteudoPrincipal'>
         <section id='top'>
@@ -140,14 +174,18 @@ function ContentPage() {
 
             <div id='ItensContainer'>
                 
-              <NItem NitemId={CardsIds[0]} key={emojiMenuIds[1]} emojiMenuId={emojiMenuIds[1]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} onclick={oi} image={image1}/>
-              <NItem NitemId={CardsIds[1]} key={emojiMenuIds[2]} emojiMenuId={emojiMenuIds[2]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image2}/>
-              <NItem NitemId={CardsIds[2]} key={emojiMenuIds[3]} emojiMenuId={emojiMenuIds[3]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image3}/>
-              <NItem NitemId={CardsIds[3]} key={emojiMenuIds[4]} emojiMenuId={emojiMenuIds[4]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={oi} image={image4}/>
-              <NItem NitemId={CardsIds[4]} key={emojiMenuIds[5]} emojiMenuId={emojiMenuIds[5]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} image={image5} onclick={openModal}/>
+              <NItem NitemId={CardsIds[0]} key={emojiMenuIds[1]} emojiMenuId={emojiMenuIds[1]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} onclick={openModal1} image={image1}/>
+              <NItem NitemId={CardsIds[1]} key={emojiMenuIds[2]} emojiMenuId={emojiMenuIds[2]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal2} image={image2}/>
+              <NItem NitemId={CardsIds[2]} key={emojiMenuIds[3]} emojiMenuId={emojiMenuIds[3]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal3} image={image3}/>
+              <NItem NitemId={CardsIds[3]} key={emojiMenuIds[4]} emojiMenuId={emojiMenuIds[4]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal4} image={image4}/>
+              <NItem NitemId={CardsIds[4]} key={emojiMenuIds[5]} emojiMenuId={emojiMenuIds[5]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} image={image5} onclick={openModal5}/>
             </div>
 
-            {isModalVisible && <Modal Titulo='positividade' banner={image5} EmojiMenuInsideSeparatorId={emojiMenuIds[5]} idName='testeModal' onClose={closeModal}/>}
+            {isModal1Visible && <Modal Titulo='religião' banner={image1} EmojiMenuInsideSeparatorId={emojiMenuIds[1]} ClassName='testeModal' onClose={closeModal1}/>}
+            {isModal2Visible && <Modal Titulo='masculinidade' banner={image2} EmojiMenuInsideSeparatorId={emojiMenuIds[2]} ClassName='testeModal' onClose={closeModal2}/>}
+            {isModal3Visible && <Modal Titulo='virtudes católicas' banner={image3} EmojiMenuInsideSeparatorId={emojiMenuIds[3]} ClassName='testeModal' onClose={closeModal3}/>}
+            {isModal4Visible && <Modal Titulo='filosofia' banner={image4} EmojiMenuInsideSeparatorId={emojiMenuIds[4]} ClassName='testeModal' onClose={closeModal4}/>}
+            {isModal5Visible && <Modal Titulo='positividade' banner={image5} EmojiMenuInsideSeparatorId={emojiMenuIds[5]} ClassName='testeModal' onClose={closeModal5}/>}
         </section>
 
         <section id='NavegacaoBasica'>

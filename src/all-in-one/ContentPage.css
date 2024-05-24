@@ -43,14 +43,6 @@
   #Input{
     height: 20vh;
   }
-  
-  #Separator{
-    display: flex;
-    width: fit-content;
-    position: relative;
-    bottom: 40px;
-    left: 190px;
-  }
   /* #MidIconOutside{
     position: absolute;
   

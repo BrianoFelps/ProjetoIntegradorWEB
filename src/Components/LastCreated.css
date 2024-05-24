@@ -14,7 +14,7 @@
 }
 
 .conteudo{
-    width: 48%;
+    width: 50%;
 
     background: rgba(0, 0, 0, 0);
     border: none;
@@ -24,7 +24,7 @@
     .BotaoComponent{
         width: 34%;
     }
-    #ContainerCreated .conteudo{
+    .conteudo{
         width: 64%;
     }
 }

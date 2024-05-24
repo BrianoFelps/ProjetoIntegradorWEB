@@ -10,7 +10,7 @@ body{
 }
 
 #root {
-  height: 100vh;
+  height: 100% ;
   width: 100%;
 }
 
@@ -60,7 +60,7 @@ section{
   width: fit-content;
   position: relative;
   bottom: 40px;
-  left: 190px;
+  left: 10%;
 }
 /* #MidIconOutside{
   position: absolute;

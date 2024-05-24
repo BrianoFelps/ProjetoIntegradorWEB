@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import BarraSuperiorCard from './BarraSuperiorCard';
 import EmojiMenu from './EmojiMenu';
 import './Modal.css'
@@ -6,11 +6,13 @@ import Title from './title';
 import LastCreated from './LastCreated';
 import Tags from './Tags';
 import Data from './Data';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileImport } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
     onClose: () => void;
 
-    idName: string;
+    ClassName: string;
     banner: string;
 
     EmojiMenuInsideSeparatorId: number;
@@ -20,7 +22,9 @@ interface Props {
 
 
 function Modal (props: Props){
-    
+    const [ModalOpen, setModalOpen] = useState(false)
+    const ModalRef = useRef<HTMLDivElement>(null);
+
     const consolelog = () => {
         console.log("olá mundo")
     }
@@ -40,10 +44,24 @@ function Modal (props: Props){
         handleInput();
     }, []);
 
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (ModalRef.current && !ModalRef.current.contains(event.target as Node)) {
+                props.onClose();
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [props]);
+
     return(
         <>
-        <div id='DadModalContainer'>
-            <div id="ModalContainerMax" className='card'>
+        <div id='DadModalContainer' className={props.ClassName}>
+            <div id="ModalContainerMax" className='card' ref={ModalRef}>
                 
                 <div id="ContainerSuperiorCard" className='card-header'>
                     <BarraSuperiorCard onClick={consolelog}/>
@@ -67,14 +85,20 @@ function Modal (props: Props){
                         <Tags/>
                         <Data/>
                         <hr />
-                        <textarea id="CustomTextArea" ref={textAreaRef} onInput={handleInput} placeholder='Digite aqui...'></textarea>
+
+                        <label id='CustomFileUpl' className='btn btn-light'>
+                            <input type="file"/>
+                            <FontAwesomeIcon icon={faFileImport} className='icone'/>
+                            Inserir arquivos
+                        </label>
+
+                        <textarea id="CustomTextArea" ref={textAreaRef} onInput={handleInput} placeholder='Digite aqui...' maxLength={500}></textarea>
+
+                        
+                        
                     </div>
 
                 </div>
-
-                <button className="btn btn-primary" onClick={props.onClose}>
-                    Fechar
-                </button>
             </div>
 
             <div id='ModalOverlay'></div>

@@ -27,6 +27,7 @@ function ContainerSuperior (props: props) {
             </div>
 
             <div id='ItensDoCanto'>
+                {/* Trabalhar na interatividade dos ícones */}
             <div className='d-none d-sm-flex'>
                 <EditedInfo onMouseEnter={props.onMouseEnter} onMouseLeave={props.onMouseLeave}/>
             </div>
