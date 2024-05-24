@@ -36,7 +36,7 @@ function BarraSuperiorCard (props: props) {
             <div className='d-none d-sm-flex'>
                 <ClockIcon onClick={props.onClick}/>
             </div>
-                <FavoriteIcon onClick={props.onClick}/>
+                <FavoriteIcon/>
                 <ThreeDotIcon onClick={props.onClick}/>
             </div>
         </div> 

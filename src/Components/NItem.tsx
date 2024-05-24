@@ -37,7 +37,7 @@ function NItem (props: props){
     const updateContentToBackend = async (updatedValue: string) => {
         try {
 
-           await axios.put('http://localhost:8080/pages/Elm', { id_property: 4, value: updatedValue, id: props.NitemId }); // Enviar o valor completo como string
+           await axios.put('http://localhost:8080/pages/ElmD', { id_property: 4, value: updatedValue, id: props.NitemId }); // Enviar o valor completo como string
 
             console.log(`Valor atualizado no banco de dados. Valor: ${updatedValue}`);
 

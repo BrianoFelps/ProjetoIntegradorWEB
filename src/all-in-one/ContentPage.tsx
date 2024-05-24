@@ -18,11 +18,16 @@ import axios from 'axios';
 
 function ContentPage() {
     const [emojis, setEmojis] = useState<string[]>([]);
-    const [emojiMenuIds, setEmojiMenuIds] = useState<number[]>([]); // Estado para armazenar os IDs dos EmojiMenus
+    
+     // Estado para armazenar os IDs dos EmojiMenus
+    const [emojiMenuIds, setEmojiMenuIds] = useState<number[]>([]);
     const [CardsIds, setCardsIds] = useState<number[]>([]);
     const [TooltipIds, setTooltipIds] = useState<number[]>([]);
     const [WriteIdeaIds, setWriteIdeaIds] = useState<number[]>([]);
-    const [isModal1Visible, setIsModal1Visible] = useState(false); // Estado para controlar a visibilidade da modal
+    const [FScardIds, setFScardIds] = useState<number[]>([]);
+
+    // Estado para controlar a visibilidade da moda
+    const [isModal1Visible, setIsModal1Visible] = useState(false); 
     const [isModal2Visible, setIsModal2Visible] = useState(false); 
     const [isModal3Visible, setIsModal3Visible] = useState(false);
     const [isModal4Visible, setIsModal4Visible] = useState(false);
@@ -30,18 +35,6 @@ function ContentPage() {
 
     
     useEffect(() => {
-        // Função para buscar os emojis correspondentes aos EmojiMenus
-        const fetchEmojis = async () => {
-          try {
-            const response = await axios.get('http://localhost:8080/pages/emojiMenu/emoji');
-            const emojisData = response.data.map((emoji: { emoji: string }) => emoji.emoji);
-            setEmojis(emojisData);
-            // console.log(emojisData)
-          } catch (error) {
-            console.error('Error fetching emojis:', error);
-          }
-        };
-    
         // Função para buscar os IDs dos EmojiMenus a serem especificados
         const fetchEmojiMenuIds = async () => {
           try {
@@ -53,7 +46,6 @@ function ContentPage() {
           }
         };
 
-        fetchEmojis(); // Chame a função para buscar os emojis
         fetchEmojiMenuIds(); // Chame a função para buscar os IDs dos EmojiMenus
 
         const fetchCardIds = async () => {
@@ -104,11 +96,20 @@ function ContentPage() {
       
         fetchWIIds();
 
-      }, []);
+        const fetchFScardIds = async () => {
+          try{
+            const response = await axios.get('http://localhost:8080/pages/Elm/FS');
+            const FSIdsData = response.data.map((elements: { id: number }) => elements.id);
+            setFScardIds(FSIdsData);
+            // console.log(FScardIds)
+          } catch (error) {
+            console.error('Error fetching Cards ids: ', error)
+          }
+        }
+      
+        fetchFScardIds();
 
-    const oi = () => {
-      alert('oi')
-    }
+      }, []);
 
     const openModal1 = () =>{
       setIsModal1Visible(true)
@@ -181,11 +182,11 @@ function ContentPage() {
               <NItem NitemId={CardsIds[4]} key={emojiMenuIds[5]} emojiMenuId={emojiMenuIds[5]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} image={image5} onclick={openModal5}/>
             </div>
 
-            {isModal1Visible && <Modal Titulo='religião' banner={image1} EmojiMenuInsideSeparatorId={emojiMenuIds[1]} ClassName='testeModal' onClose={closeModal1}/>}
-            {isModal2Visible && <Modal Titulo='masculinidade' banner={image2} EmojiMenuInsideSeparatorId={emojiMenuIds[2]} ClassName='testeModal' onClose={closeModal2}/>}
-            {isModal3Visible && <Modal Titulo='virtudes católicas' banner={image3} EmojiMenuInsideSeparatorId={emojiMenuIds[3]} ClassName='testeModal' onClose={closeModal3}/>}
-            {isModal4Visible && <Modal Titulo='filosofia' banner={image4} EmojiMenuInsideSeparatorId={emojiMenuIds[4]} ClassName='testeModal' onClose={closeModal4}/>}
-            {isModal5Visible && <Modal Titulo='positividade' banner={image5} EmojiMenuInsideSeparatorId={emojiMenuIds[5]} ClassName='testeModal' onClose={closeModal5}/>}
+            {isModal1Visible && <Modal FSmodalId={FScardIds[0]} Titulo='religião' banner={image1} EmojiMenuInsideSeparatorId={emojiMenuIds[1]} ClassName='testeModal' onClose={closeModal1}/>}
+            {isModal2Visible && <Modal FSmodalId={FScardIds[1]} Titulo='masculinidade' banner={image2} EmojiMenuInsideSeparatorId={emojiMenuIds[2]} ClassName='testeModal' onClose={closeModal2}/>}
+            {isModal3Visible && <Modal FSmodalId={FScardIds[2]} Titulo='virtudes católicas' banner={image3} EmojiMenuInsideSeparatorId={emojiMenuIds[3]} ClassName='testeModal' onClose={closeModal3}/>}
+            {isModal4Visible && <Modal FSmodalId={FScardIds[3]} Titulo='filosofia' banner={image4} EmojiMenuInsideSeparatorId={emojiMenuIds[4]} ClassName='testeModal' onClose={closeModal4}/>}
+            {isModal5Visible && <Modal FSmodalId={FScardIds[4]} Titulo='positividade' banner={image5} EmojiMenuInsideSeparatorId={emojiMenuIds[5]} ClassName='testeModal' onClose={closeModal5}/>}
         </section>
 
         <section id='NavegacaoBasica'>

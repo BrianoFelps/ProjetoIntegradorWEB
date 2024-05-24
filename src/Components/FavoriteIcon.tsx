@@ -1,17 +1,20 @@
 import "./FavoriteIcon.css"
 import "../assets/FontAwesome/font-awesome-4.7.0/css/font-awesome.min.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-regular-svg-icons';
+import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
+import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
+import { useState } from "react";
 
-interface Props{
-    src?: string;
-    onClick: ()=> void;
-}
+function FavoriteIcon(){
+    const [isFavorite, setIsFavorite] = useState(false);
 
-function FavoriteIcon(props:Props){
+    const handleIconClick = () => {
+        setIsFavorite(!isFavorite);
+    };
+
     return(
-        <div id="FavoriteIcon" onClick={props.onClick}>
-            <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
+        <div id="FavoriteIcon" onClick={handleIconClick}>
+            <FontAwesomeIcon icon={isFavorite ? faStarSolid : faStarRegular}></FontAwesomeIcon>
         </div>
     )
 }

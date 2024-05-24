@@ -92,7 +92,7 @@
 
 #CustomTextArea{
     width: 100%;
-    height: 100%;
+    height: 500px !important;
     padding: 0 12px;
     margin: 0;
     border: none;
@@ -103,6 +103,7 @@
     font-size: inherit; /* Herda o tamanho da fonte do elemento pai */
     background: transparent; /* Remove fundo padrão */
     color: inherit; /* Herda a cor do texto do elemento pai */
+    overflow-y: none;
 }
 
 input[type='file']{
