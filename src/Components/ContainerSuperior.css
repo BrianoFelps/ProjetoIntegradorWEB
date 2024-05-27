@@ -99,9 +99,27 @@ div#ThreeDI:hover{
 }
 
 #Drawer .avatar {
-  margin: 0 5px 0 0px;
+  margin: 0 10px 0 0px;
   width: 40px;
   height: 40px;
+}
+
+.DrawerLi{
+  margin: 0 0 10px 0;
+}
+
+#Drawer ul li a{
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: start;
+
+  border: 1px solid rgba(0, 0, 0, .05);
+}
+
+.iconeDoDrawer{
+  padding-right: 5px;
 }
 
 .MuiDrawer-paper {

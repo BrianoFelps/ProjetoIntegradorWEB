@@ -11,7 +11,7 @@ import { useState } from 'react'
 import { Drawer, Avatar } from '@mui/material'
 import user from '../assets/terrycrews.webp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faGear, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 interface props {
     onMouseEnter: () => void;
@@ -43,15 +43,21 @@ function ContainerSuperior (props: props) {
             {open && 
 
                 <Drawer open={open} variant='temporary' id='Drawer'>
-                    <ul className='d-flex'>
-                        <li className='d-flex align-items-center justify-content-between'>
+                    <ul>
+                        <li className='DrawerLi d-flex align-items-center '>
                             <Avatar src={user} className='avatar' alt='Perfil'></Avatar>
                             <b>Página de: Terry Crews</b>
                         </li>
-                        <li className='d-flex align-items-center'>
-                            <a href="">
-                                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                        <li className='DrawerLi d-flex align-items-center'>
+                            <a href="" className='btn btn-outline-dark'>
+                                <FontAwesomeIcon icon={faMagnifyingGlass} className='iconeDoDrawer'/>
                                 Pesquisar
+                            </a>
+                        </li>
+                        <li className='DrawerLi d-flex align-items-center'>
+                            <a href="" className='btn btn-outline-dark'>
+                                <FontAwesomeIcon icon={faGear} className='iconeDoDrawer'/>
+                                Configurações
                             </a>
                         </li>
 
