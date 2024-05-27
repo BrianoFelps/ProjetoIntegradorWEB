@@ -19,7 +19,7 @@ function TopBar() {
   return (
     <>
       <div id='TopbarContainermax'>
-          <ContainerSuperior value='Ponto de equilíbrio' onClick={ola} onMouseEnter={handleClick} onMouseLeave={retirado}></ContainerSuperior>
+          <ContainerSuperior value='Ponto de equilíbrio' onMouseEnter={handleClick} onMouseLeave={retirado}></ContainerSuperior>
           <div id='BgBanner'>
             <img src={Banner} alt="" className='img-fluid' />
           </div>

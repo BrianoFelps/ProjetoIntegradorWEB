@@ -15,11 +15,8 @@ import image5 from "../assets/ca9c8e1a6db194149e8806c734fdae47.jpg"
 import DiaADiaComponentImage from '../Components/DiaADiaComponentImage';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import SideBar from '../Components/SideBar';
 
 function ContentPage() {
-    const [emojis, setEmojis] = useState<string[]>([]);
-    
      // Estado para armazenar os IDs dos EmojiMenus
     const [emojiMenuIds, setEmojiMenuIds] = useState<number[]>([]);
     const [CardsIds, setCardsIds] = useState<number[]>([]);
@@ -155,12 +152,15 @@ function ContentPage() {
     <main id='ConteudoPrincipal'>
         <section id='top'>
             <Title>
-            <h2>
-                Ponto de equilíbrio
-            </h2>
-                </Title>
+              <h2>
+                  Ponto de equilíbrio
+              </h2>
+            </Title>
+
                     <EmojiMenu key={emojiMenuIds[0]} emojiMenuId={emojiMenuIds[0]} onOpen={() => {}} onClose={() => {}} />
+                    
                 <Input/>
+
                 <InputWriteIdea InputWriteIdeaId={0} classNm='top'></InputWriteIdea>
         </section>
             

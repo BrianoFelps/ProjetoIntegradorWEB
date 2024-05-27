@@ -7,8 +7,8 @@ interface Props{
 
 function TripleBar(props: Props){
     return(
-        <div id='tripleBar'>
-            <div id='Bars' onClick={props.onClick}>
+        <div id='tripleBar' onClick={props.onClick}>
+            <div id='Bars'>
                 <img src={hamburgIcon}/>
             </div>
         </div>

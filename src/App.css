@@ -89,3 +89,9 @@ section{
 #main .emoji-container{
   z-index: 1;
 }
+
+button {
+  background: none;
+  cursor: pointer;
+  border: none;
+}
