@@ -8,7 +8,10 @@ import TextTitle from './TextTitle'
 import ThreeDotIcon from './ThreeDotIcon'
 import TripleBar from './TripleBar'
 import { useState } from 'react'
-import Drawer from '@mui/material/Drawer'
+import { Drawer, Avatar } from '@mui/material'
+import user from '../assets/terrycrews.webp'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 interface props {
     onMouseEnter: () => void;
@@ -39,13 +42,22 @@ function ContainerSuperior (props: props) {
 
             {open && 
 
-            <Drawer style={{background:'blue'}} onClose={() => {toggleDrawer(false)}}>
-                <ul>
-                    <li>
-                        <a href="">Entrar</a>
-                    </li>
-                </ul>
-            </Drawer>
+                <Drawer open={open} variant='temporary' id='Drawer'>
+                    <ul className='d-flex'>
+                        <li className='d-flex align-items-center justify-content-between'>
+                            <Avatar src={user} className='avatar' alt='Perfil'></Avatar>
+                            <b>Página de: Terry Crews</b>
+                        </li>
+                        <li className='d-flex align-items-center'>
+                            <a href="">
+                                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                                Pesquisar
+                            </a>
+                        </li>
+
+                    </ul>
+                    <button className='btn btn-danger' onClick={toggleDrawer(false)}>X</button>
+                </Drawer>
 
                 }
 

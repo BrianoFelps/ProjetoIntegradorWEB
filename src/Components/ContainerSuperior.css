@@ -5,6 +5,13 @@
 * Browsers: last 4 version
 */
 
+*, ol, dl, ul{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
 #ContainerSuperior{
   display: -webkit-box;
   display: -ms-flexbox;
@@ -19,6 +26,10 @@
   -o-transition: 1s;
   transition: 1s;
   padding-right: 10px;
+}
+
+#ContainerSuperior.drawer-open {
+  margin-left: 240px; /* Largura do Drawer */
 }
 
 #ContainerSuperior div#TitleText{
@@ -74,4 +85,26 @@ div#ThreeDI:hover{
 
 #EditedInfo p{
   margin: 0;
+}
+
+#Drawer {
+  width: 30%;
+  
+  flex-shrink: 0;
+  flex-direction: column;
+}
+
+.MuiPaper-root{
+  height: 100%;
+}
+
+#Drawer .avatar {
+  margin: 0 5px 0 0px;
+  width: 40px;
+  height: 40px;
+}
+
+.MuiDrawer-paper {
+  width: 30%;
+  padding: 1em;
 }
