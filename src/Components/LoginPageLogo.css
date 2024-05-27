@@ -1,9 +1,10 @@
-  #logo {
-    width: 20%;
+  #logo{
+    width: 100%;
+    display: flex;
     height: fit-content;
     position: relative;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     z-index: 122;
   }
 
@@ -19,16 +20,6 @@
     border-radius: 8px;
   }
 
-  /* #aniLogo:hover{
-    background-color: #000000;
-    transition: background-color 1000ms ease;
-    opacity: 0.8;
-    border-radius: 8px;
-    #textLogo{
-      color: white;
-    }
-  } */
-
   #LogoIcon{
     display: flex;
     align-items: center;
@@ -41,48 +32,49 @@
   #textLogo{
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
-    /* cursor: pointer; */
   }
 
-  @media (max-width: 768px){
-    #logo {
-      width: 20%;
-      height: fit-content;
-      position: relative;
-      align-items: center;
-      justify-content: center;
-      z-index: 122;
-    }
-  
-    #aniLogo{
-      position: relative;
-      margin: 20px;
-      align-items: center;
-      justify-content: center;
-      display: flex;
-      height: 20%;
-      max-width: 100%;
-    }
-
+@media (max-width: 768px){
+  #logo{
+    width: 100%;
+    display: flex;
+    height: fit-content;
+    position: relative;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 122;
   }
 
-  @media (max-width: 350px){
-    #logo {
-      width: 20%;
-      height: fit-content;
-      position: relative;
-      align-items: center;
-      justify-content: center;
-      z-index: 122;
-    }
-  
-    #aniLogo{
-      position: relative;
-      margin: 20px;
-      align-items: center;
-      justify-content: center;
-      display: flex;
-      height: 20%;
-      max-width: 100%;
-    }
+  #aniLogo{
+    position: relative;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 20%;
+    max-width: 100%;
   }
+
+}
+
+@media (max-width: 350px){
+  #logo{
+    width: 100%;
+    display: flex;
+    height: fit-content;
+    position: relative;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 122;
+  }
+
+  #aniLogo{
+    position: relative;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 20%;
+    max-width: 100%;
+  }
+}

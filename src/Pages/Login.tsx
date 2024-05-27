@@ -69,16 +69,16 @@ import LinkSignUp from '../Components/DirectLink';
             <div id='AllPage'>
                     <LoginPageLogo></LoginPageLogo>
                 <div id='CentPage'>
-                    <form className='insertData'>
+                    <form className='LoginBox'>
                         <div id='titleLogin'>
                             <label htmlFor='labeltitleLogin' id='labelLogin'>Faça Login na sua Conta</label>
                         </div>
-                        <div className="form-groupE">
+                        <div className="form-groupE" id='form-groupEmail'>
                             <label htmlFor="exInputEmail1" id='labelEmail'>Email: </label>
                             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Endereço de Email"></input>
                             <small id="emailHelp" className="form-text text-muted">Nunca Compartilharemos o seu Email com ninguém.</small>
                         </div>
-                        <div className="form-groupP">
+                        <div className="form-groupP" id='form-groupPassword'>
                             <label htmlFor="exInputPassword1" id='labelPassword'>Senha: </label>
                             <input type="password" value={senha} onChange={(e) => setSenha(e.target.value)}className="form-control" id="InputPassword1" placeholder="Escreva a sua Senha"></input>
                         </div>

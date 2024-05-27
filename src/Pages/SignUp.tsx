@@ -104,32 +104,32 @@ function SignUp(){
         <div id='AllPage'>
             <LoginPageLogo></LoginPageLogo>    
                 <div id='CentPage'>
-                    <form className='insertData'>
-                        <div id='titleLogin'>
-                            <label htmlFor='labeltitleLogin' id='labelLogin'>Crie sua Conta aqui!</label>
+                    <form className='SignUpBox'>
+                        <div id='titleSignUp'>
+                            <label htmlFor='labelTitleSignUp' id='labelSignUp'>Crie sua Conta aqui!</label>
                         </div>
-                        <div id='signUpNE'>
-                            <div id='FNameResponsive'>
-                                <label htmlFor="exInputEmail1" id='labelFName'>Primeiro Nome: </label>
+                        <div id='signUpResponsiveFirstAndLastName'>
+                            <div id='firstNameResponsive'>
+                                <label htmlFor="exInputEmail1" id='labelFirstName'>Primeiro Nome: </label>
                                 <input type="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="form-control" id="InputFName1" aria-describedby="fnameHelp" placeholder="Primeiro Nome"></input>
                             </div>
-                            <div id='LNameResponsive'>
-                                <label htmlFor="exInputEmail1" id='labelLName'>Sobre Nome: </label>
+                            <div id='lastNameResponsive'>
+                                <label htmlFor="exInputEmail1" id='labelLastName'>Sobre Nome: </label>
                                 <input type="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} className="form-control" id="InputLName1" aria-describedby="lnameHelp" placeholder="Sobre Nome"></input>
                             </div>
                         </div>
-                        <div className="form-groupE">
+                        <div className="form-groupE" id='form-groupEmail'>
                             <label htmlFor="exInputEmail1" id='labelEmail'>Email: </label>
                             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Endereço de Email"></input>
                             <small id="emailHelp" className="form-text text-muted">Nunca Compartilharemos o seu Email com ninguém.</small>
                         </div>
-                        <div className="form-groupP">
+                        <div className="form-groupP" id='form-groupPassword'>
                             <label htmlFor="exInputPassword1" id='labelPassword'>Senha: </label>
                             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" id="InputPassword1" placeholder="Escreva a sua Senha"></input>
                         </div>
-                        <div className="form-groupP">
-                            <label htmlFor="exInputPassword1" id='labelCPassword'>Confirme a sua Senha: </label>
-                            <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="form-control" id="InputCPassword1" placeholder="Confirme a Senha"></input>
+                        <div className="form-groupP" id='form-groupConfirmPassword'>
+                            <label htmlFor="exInputPassword1" id='labelConfirmPassword'>Confirme a sua Senha: </label>
+                            <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="form-control" id="InputConfirmPassword1" placeholder="Confirme a Senha"></input>
                         </div>
                         <div id='formbtnSignUp'>
                             <button type="button" className="btn btn-primary" id="btnEnter" onClick={handleSubmit} disabled={loginEmAndamento} >Criar Conta</button>

@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+  /* Standard 
+  / Padrão aplicado a pagina */
 
-*{
+
+  *{
     padding: 0;
     margin: 0;
   }
@@ -13,17 +16,16 @@
     display: block;
   }
   
-  #AllPage {
+  #AllPage{
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 100%;
-    /* min-width: 1280px; */
     align-items: center;
-    background-color: rgb(211, 172, 172);
+    background: url('../assets/testedebackground.jpg') center no-repeat #FBD5E2;
   }
 
-  #CentPage {
+  #CentPage{
     width: 100%;
     height: 100%;
     display: flex;
@@ -31,88 +33,92 @@
     justify-content: center;
   }
 
-  .insertData{
+  .SignUpBox{
     display: flex;
     flex-direction: column;
     max-height: fit-content;
   }
 
-  .insertData{
-    width: fit-content; /* Ajuste conforme necessário */
+  .SignUpBox{
+    width: fit-content;
     background-color: rgb(241, 234, 234);
     border: 8px double rgb(138, 96, 96);
     padding: 5px;
   }
 
-  #labelLogin{
+  #labelSignUp{
     padding-bottom: 10px;
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
-  #labelFName  {
+  #labelFirstName{
     padding-bottom: 5px;
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
-  #labelLName {
+  #labelLastName{
     padding-bottom: 5px;
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
-  #labelEmail {
+  #labelEmail{
     padding-bottom: 5px;
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
-  #labelPassword {
+  #labelPassword{
     padding-bottom: 5px;
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
-  #labelCPassword {
+  #labelConfirmPassword{
     padding-bottom: 5px;
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
-  #signUpNE {
+  #signUpResponsiveFirstAndLastName{
     width: 100%;
     display: table;
     padding-bottom: 5px;
   }
 
-  #FNameResponsive {
+  #firstNameResponsive{
     width: 50%;
     float: left;
     position: relative;
     padding-right: 10px;
   }
 
-  #LNameResponsive {
+  #lastNameResponsive{
     width: 50%;
     float: left;
     position: relative;
     padding-left: 10px;
   }
 
-  .form-groupP {
+  #form-groupPassword{
     padding-bottom: 5px;
   }
 
-  #InputFName1 {
+  #form-groupConfirmPassword{
+    padding-bottom: 5px;
+  }
+
+  #InputFName1{
     width: 100%;
     transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out, box-shadow 200ms ease-in-out;
   }
 
   #InputFName1:hover{
-    box-shadow: 0 0 0 0.25rem  rgb(210, 180, 140);
-    border-color: rgb(205, 175, 127);
-    background-color: blanchedalmond;
+    box-shadow: 0 0 0 0.25rem  #ff79a8;
+    border-color: #bd5c7e;
+    background-color: #FBD5E2;
   }
 
   #InputLName1{
@@ -121,9 +127,9 @@
   }
 
   #InputLName1:hover{
-    box-shadow: 0 0 0 0.25rem  rgb(210, 180, 140);
-    border-color: rgb(205, 175, 127);
-    background-color: blanchedalmond;
+    box-shadow: 0 0 0 0.25rem  #ff79a8;
+    border-color: #bd5c7e;
+    background-color: #FBD5E2;
   }
 
   #InputEmail1{
@@ -132,9 +138,9 @@
   }
 
   #InputEmail1:hover{
-    box-shadow: 0 0 0 0.25rem  rgb(210, 180, 140);
-    border-color: rgb(205, 175, 127);
-    background-color: blanchedalmond;
+    box-shadow: 0 0 0 0.25rem  #ff79a8;
+    border-color: #bd5c7e;
+    background-color: #FBD5E2;
   }
 
   #InputPassword1{
@@ -143,276 +149,277 @@
   }
 
   #InputPassword1:hover{
-    box-shadow: 0 0 0 0.25rem  rgb(210, 180, 140);
-    border-color: rgb(205, 175, 127);
-    background-color: blanchedalmond;
+    box-shadow: 0 0 0 0.25rem  #ff79a8;
+    border-color: #bd5c7e;
+    background-color: #FBD5E2;
   }
 
-  #InputCPassword1{
+  #InputConfirmPassword1{
     width: 100% !important;
     transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out, box-shadow 200ms ease-in-out;
   }
 
-  #InputCPassword1:hover{
-    box-shadow: 0 0 0 0.25rem  rgb(210, 180, 140);
-    border-color: rgb(205, 175, 127);
-    background-color: blanchedalmond;
+  #InputConfirmPassword1:hover{
+    box-shadow: 0 0 0 0.25rem  #ff79a8;
+    border-color: #bd5c7e;
+    background-color: #FBD5E2;
   }
 
-    #InputFName1:focus{
-      box-shadow: 0 0 0 0.25rem  rgb(210, 180, 140);
-      border-color: rgb(205, 175, 127);
-      background-color: blanchedalmond;
-      transition: 200ms;
-    }
+  #InputFName1:focus{
+    box-shadow: 0 0 0 0.25rem  #ff79a8;
+    border-color: #bd5c7e;
+    background-color: #FBD5E2;
+    transition: 200ms;
+  }
 
-    #InputLName1:focus{
-      box-shadow: 0 0 0 0.25rem  rgb(210, 180, 140);
-      border-color: rgb(205, 175, 127);
-      background-color: blanchedalmond;
-      transition: 200ms;
-    }
+  #InputLName1:focus{
+    box-shadow: 0 0 0 0.25rem  #ff79a8;
+    border-color: #bd5c7e;
+    background-color: #FBD5E2;
+    transition: 200ms;
+  }
 
-    #InputEmail1:focus{
-      box-shadow: 0 0 0 0.25rem  rgb(210, 180, 140);
-      border-color: rgb(205, 175, 127);
-      background-color: blanchedalmond;
-      transition: 200ms;
-    }
+  #InputEmail1:focus{
+    box-shadow: 0 0 0 0.25rem  #ff79a8;
+    border-color: #bd5c7e;
+    background-color: #FBD5E2;
+    transition: 200ms;
+  }
 
-    #InputPassword1:focus{
-      box-shadow: 0 0 0 0.25rem  rgb(210, 180, 140);
-      border-color: rgb(205, 175, 127);
-      background-color: blanchedalmond;
-      transition: 200ms;
-    }
+  #InputPassword1:focus{
+    box-shadow: 0 0 0 0.25rem  #ff79a8;
+    border-color: #bd5c7e;
+    background-color: #FBD5E2;
+    transition: 200ms;
+  }
 
-    #InputCPassword1:focus{
-      box-shadow: 0 0 0 0.25rem  rgb(210, 180, 140);
-      border-color: rgb(205, 175, 127);
-      background-color: blanchedalmond;
-      transition: 200ms;
-    }
+  #InputConfirmPassword1:focus{
+    box-shadow: 0 0 0 0.25rem  #ff79a8;
+    border-color: #bd5c7e;
+    background-color: #FBD5E2;
+    transition: 200ms;
+  }
 
-    #InputFName1::placeholder{
-      font-family: 'Poppins', Arial, Helvetica, sans-serif;
-    }
+  #InputFName1::placeholder{
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  }
 
-    #InputLName1::placeholder{
-      font-family: 'Poppins', Arial, Helvetica, sans-serif;
-    }
+  #InputLName1::placeholder{
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  }
 
-    #InputEmail1::placeholder{
-      font-family: 'Poppins', Arial, Helvetica, sans-serif;
-    }
+  #InputEmail1::placeholder{
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  }
 
-    #InputPassword1::placeholder{
-      font-family: 'Poppins', Arial, Helvetica, sans-serif;
-    }
+  #InputPassword1::placeholder{
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  }
 
-    #InputCPassword1::placeholder{
-      font-family: 'Poppins', Arial, Helvetica, sans-serif;
-      text-align: center;
-    }
+  #InputConfirmPassword1::placeholder{
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    text-align: center;
+  }
 
-    #emailHelp{
-      display: block;
-      color: #665b54 !important;
-      font-family: 'Poppins', Arial, Helvetica, sans-serif;
-      padding-bottom: 5px;
-    }
+  #emailHelp{
+    display: block;
+    color: #665b54 !important;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    padding-bottom: 5px;
+  }
 
-    #checkgroup{
-        padding-bottom: 10px;
-        padding-top: 10px;
-    }
+  #checkgroup{
+      padding-bottom: 10px;
+      padding-top: 10px;
+  }
 
-    #labelCheck{
-      font-family: 'Poppins', Arial, Helvetica, sans-serif;
-    }
+  #labelCheck{
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  }
 
-    #exCheck1:checked {
-        background-color: black;
-        border-color: #ADA49E;
-    }
+  #exCheck1:checked{
+      background-color: black;
+      border-color: #ADA49E;
+  }
 
-    #exCheck1:focus{
-        border-color: #ADA49E;
-        box-shadow: 0px 0px .250em #ADA49E;
-    }
-
-    #exCheck1:hover{
+  #exCheck1:focus{
       border-color: #ADA49E;
       box-shadow: 0px 0px .250em #ADA49E;
-    }
-
-    #btnEnter{
-        background-color: black;
-        border-color: white;
-        font-family: 'Poppins', Arial, Helvetica, sans-serif;
-        transition: box-shadow 0.5 ease-in-out, border-color 0.5s ease-in-out;
-    }
-
-    #btnEnter:hover{
-        border-color: rgb(201, 186, 186);
-        box-shadow: 0px 0px .250em #636160;
-        animation: colorChange 1s infinite alternate;
-    }
-
-    @keyframes colorChange {
-      0% {
-        background-color: rgb(51, 49, 49);
-      }
-      100% {
-        background-color: rgb(100, 100, 100);
-      }
-    }
-
-    #btnEnter:active{
-        background-color: rgb(51, 49, 49);
-        border-color: rgb(201, 186, 186);
-    }
-
-    #formbtnSignUp{
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-
-
-
-
-  @media (max-width: 768px) {
-
-    #AllPage{
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      width: 100%;
-      /* min-width: 1280px; */
-      align-items: center;
-    }
-  
-    #CentPage{
-      width: 100%;
-      height: fit-content;
-      display: flex;
-      align-items: center;
-    }
-
-    #checkgroup{
-      text-align: initial !important;
-    }
-
-    .insertData{
-      display: flex;
-      flex-direction: column;
-      max-height: min-content;
-    }
-  
-    .insertData{
-      width: max-content; /* Ajuste conforme necessário */
-      background-color: rgb(241, 234, 234);
-      border: 8px double black;
-      padding: 5px;
-    }
-
-    #InputFName1::placeholder{
-      text-align: center;
-    }
-
-    #InputLName1::placeholder{
-      text-align: center;
-    }
-
-    #InputEmail1::placeholder{
-      text-align: center;
-    }
-
-    #InputPassword1::placeholder{
-      text-align: center;
-    }
-
-    #InputCPassword1::placeholder{
-      text-align: center;
-    }
-
-    #checkgroup{
-      text-align: initial !important;
-    }
-
-    #signUpNE {
-        width: 100%;
-        display: flex;
-        padding-bottom: 5px;
-        flex-direction: column;
-      }
-
-    #FNameResponsive {
-        width: 100%;
-        position: relative;
-        padding-bottom: 5px;
-        padding-right: 0px !important;
-    }
-
-    #LNameResponsive {
-        width: 100%;
-        position: relative;
-        padding-left: 0px !important;
-    }
-
   }
 
-  @media(max-width: 350px) {
-    #AllPage{
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      width: 100%;
-      /* min-width: 1280px; */
-      align-items: center;
-    }
-  
-    #CentPage{
-      width: 100%;
-      height: fit-content;
-      display: flex;
-      align-items: center;
-    }
+  #exCheck1:hover{
+    border-color: #ADA49E;
+    box-shadow: 0px 0px .250em #ADA49E;
+  }
 
-    #checkgroup{
-      text-align: initial !important;
-    }
+  #btnEnter{
+      background-color: black;
+      border-color: white;
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+      transition: box-shadow 0.5 ease-in-out, border-color 0.5s ease-in-out;
+  }
 
-    .insertData{
-      display: flex;
-      flex-direction: column;
-      max-height: min-content;
-    }
-  
-    .insertData{
-      width: max-content; /* Ajuste conforme necessário */
-      background-color: rgb(241, 234, 234);
-      border: 8px double black;
-      padding: 5px;
-    }
-    #InputFName1::placeholder{
-      text-align: center;
-    }
+  #btnEnter:hover{
+      border-color: rgb(201, 186, 186);
+      box-shadow: 0px 0px .250em #636160;
+      animation: colorChange 1s infinite alternate;
+  }
 
-    #InputLName1::placeholder{
-      text-align: center;
+  @keyframes colorChange{
+    0%{
+      background-color: rgb(51, 49, 49);
     }
-
-    #InputEmail1::placeholder{
-      text-align: center;
-    }
-
-    #InputPassword1::placeholder{
-      text-align: center;
-    }
-
-    #InputCPassword1::placeholder{
-      text-align: center;
+    100%{
+      background-color: rgb(100, 100, 100);
     }
   }
+
+  #btnEnter:active{
+    background-color: rgb(51, 49, 49);
+    border-color: rgb(201, 186, 186);
+  }
+
+  #formbtnSignUp{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Made for other devices (max-width: 768px) 
+  / Feito para outros dispositivos de 768 pixels de largura*/
+
+@media (max-width: 768px){
+
+  #AllPage{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+  }
+
+  #CentPage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  #checkgroup{
+    text-align: initial !important;
+  }
+
+  .SignUpBox{
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+  }
+
+  .SignUpBox{
+    width: fit-content;
+    background-color: rgb(241, 234, 234);
+    border: 8px double rgb(138, 96, 96);
+    padding: 5px;
+  }
+
+  #InputFName1::placeholder{
+    text-align: center;
+  }
+
+  #InputLName1::placeholder{
+    text-align: center;
+  }
+
+  #InputEmail1::placeholder{
+    text-align: center;
+  }
+
+  #InputPassword1::placeholder{
+    text-align: center;
+  }
+
+  #InputConfirmPassword1::placeholder{
+    text-align: center;
+  }
+
+  #checkgroup{
+    text-align: initial !important;
+  }
+
+  #signUpResponsiveFirstAndLastName{
+    width: 100%;
+    display: flex;
+    padding-bottom: 5px;
+    flex-direction: column;
+  }
+
+  #firstNameResponsive{
+    width: 100%;
+    position: relative;
+    padding-bottom: 5px;
+    padding-right: 0px !important;
+  }
+
+  #lastNameResponsive{
+    width: 100%;
+    position: relative;
+    padding-left: 0px !important;
+  }
+
+}
+
+/* Made for other devices (max-width: 350px) 
+/ Feito para outros dispositivos de 350 pixels de largura*/
+
+@media(max-width: 350px){
+  #AllPage{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+  }
+
+  #CentPage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  #checkgroup{
+    text-align: initial !important;
+  }
+
+  .SignUpBox{
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+  }
+
+  .SignUpBox{
+    width: fit-content;
+    background-color: rgb(241, 234, 234);
+    border: 8px double rgb(138, 96, 96);
+    padding: 5px;
+  }
+  #InputFName1::placeholder{
+    text-align: center;
+  }
+
+  #InputLName1::placeholder{
+    text-align: center;
+  }
+
+  #InputEmail1::placeholder{
+    text-align: center;
+  }
+
+  #InputPassword1::placeholder{
+    text-align: center;
+  }
+
+  #InputConfirmPassword1::placeholder{
+    text-align: center;
+  }
+}

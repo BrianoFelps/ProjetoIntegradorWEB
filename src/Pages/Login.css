@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
+/* Standard 
+/ Padrão aplicado a pagina */
+
+  *{
     padding: 0;
     margin: 0;
   }
@@ -11,18 +14,16 @@
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
   
-  #AllPage {
+  #AllPage{
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 100%;
-    /* min-width: 1280px; */
     align-items: center;
-    /* background: #866a6a; */
-    background: url('../assets/testedebackground.jpg') no-repeat;
+    background: url('../assets/testedebackground.jpg') center no-repeat #FBD5E2;
   }
 
-  #CentPage {
+  #CentPage{
     width: 100%;
     height: fit-content;
     display: flex;
@@ -31,16 +32,16 @@
     background-size: auto;
   }
 
-  .insertData{
+  .LoginBox{
     display: flex;
     flex-direction: column;
-    max-height: min-content;
+    max-height: fit-content;
   }
 
-  .insertData{
-    width: max-content; /* Ajuste conforme necessário */
-    background: linear-gradient(to right, #FDF2F6, #F2D0DD);
-    border: 8px double black;
+  .LoginBox{
+    width: fit-content; 
+    background-color: rgb(241, 234, 234);
+    border: 8px double rgb(138, 96, 96);
     padding: 5px;
   }
 
@@ -55,13 +56,13 @@
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
-  #labelEmail {
+  #labelEmail{
     padding-bottom: 5px;
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
-  #labelPassword {
+  #labelPassword{
     padding-bottom: 5px;
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
@@ -107,156 +108,158 @@
     text-align: center;
   }
 
-    #emailHelp{
-        display: block;
-        color: #665b54 !important;
-        font-family: 'Poppins', Arial, Helvetica, sans-serif;
-        padding-bottom: 5px;
-    }
-
-    #checkgroup{
-        padding-bottom: 10px;
-        padding-top: 10px;
-    }
-
-    #labelCheck{
+  #emailHelp{
+      display: block;
+      color: #665b54 !important;
       font-family: 'Poppins', Arial, Helvetica, sans-serif;
-    }
-
-    #exCheck1:checked {
-        background-color: black;
-        border-color: #ADA49E;
-    }
-
-    #exCheck1:focus{
-        border-color: #ADA49E;
-        box-shadow: 0px 0px .250em #ADA49E;
-    }
-
-    #exCheck1:hover{
-        border-color: #ADA49E;
-        box-shadow: 0px 0px .250em #ADA49E;
-    }
-
-    #formbtnLogin{
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-
-    #btnEnter{
-        background-color: black;
-        border-color: white;
-        font-family: 'Poppins', Arial, Helvetica, sans-serif;
-        
-    }
-
-    #btnEnter:hover{
-        background-color: rgb(51, 49, 49);
-        border-color: rgb(201, 186, 186);
-        box-shadow: 0px 0px .250em #636160;
-    }
-
-    #btnEnter:active{
-        background-color: rgb(51, 49, 49);
-        border-color: rgb(201, 186, 186);
-    }
-
-  @media (max-width: 768px) {
-
-    #AllPage{
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      width: 100%;
-      /* min-width: 1280px; */
-      align-items: center;
-    }
-  
-    #CentPage{
-      width: 100%;
-      height: fit-content;
-      display: flex;
-      align-items: center;
-    }
-
-    #checkgroup{
-      text-align: initial !important;
-    }
-
-    .insertData{
-      display: flex;
-      flex-direction: column;
-      max-height: min-content;
-    }
-  
-    .insertData{
-      width: max-content; /* Ajuste conforme necessário */
-      background-color: rgb(241, 234, 234);
-      border: 8px double black;
-      padding: 5px;
-    }
-
-    #InputEmail1{
-      width: 100% !important;
-    }
-
-    #InputPassword1{
-      width: 100% !important;
-    }
-
-    #InputEmail1::placeholder{
-      text-align: center;
-    }
-
-    #InputPassword1::placeholder{
-      text-align: center;
-    }
-
+      padding-bottom: 5px;
   }
 
-  @media (max-width: 350px) {
-    #AllPage{
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      width: 100%;
-      /* min-width: 1280px; */
-      align-items: center;
-    }
-  
-    #CentPage{
-      width: 100%;
-      height: fit-content;
-      display: flex;
-      align-items: center;
-    }
-
-    #checkgroup{
-      text-align: initial !important;
-    }
-
-    .insertData{
-      display: flex;
-      flex-direction: column;
-      max-height: min-content;
-    }
-  
-    .insertData{
-      width: max-content; /* Ajuste conforme necessário */
-      background-color: rgb(241, 234, 234);
-      border: 8px double black;
-      padding: 5px;
-    }
-
-    #InputEmail1::placeholder{
-      text-align: center;
-    }
-
-    #InputPassword1::placeholder{
-      text-align: center;
-    }
-
-    /* #CentPage{
-    } */
+  #checkgroup{
+      padding-bottom: 10px;
+      padding-top: 10px;
   }
+
+  #labelCheck{
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  }
+
+  #exCheck1:checked{
+      background-color: black;
+      border-color: #ADA49E;
+  }
+
+  #exCheck1:focus{
+      border-color: #ADA49E;
+      box-shadow: 0px 0px .250em #ADA49E;
+  }
+
+  #exCheck1:hover{
+      border-color: #ADA49E;
+      box-shadow: 0px 0px .250em #ADA49E;
+  }
+
+  #formbtnLogin{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  #btnEnter{
+      background-color: black;
+      border-color: white;
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+      
+  }
+
+  #btnEnter:hover{
+      background-color: rgb(51, 49, 49);
+      border-color: rgb(201, 186, 186);
+      box-shadow: 0px 0px .250em #636160;
+  }
+
+  #btnEnter:active{
+      background-color: rgb(51, 49, 49);
+      border-color: rgb(201, 186, 186);
+  }
+
+  /* Made for other devices (max-width: 768px) 
+  / Feito para outros dispositivos de 768 pixels de largura*/
+
+@media (max-width: 768px){
+
+  #AllPage{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+  }
+
+  #CentPage{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+  }
+
+  #checkgroup{
+    text-align: initial !important;
+  }
+
+  .LoginBox{
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+  }
+
+  .LoginBox{
+    width: max-content; 
+    background-color: rgb(241, 234, 234);
+    border: 8px double black;
+    padding: 5px;
+  }
+
+  #InputEmail1{
+    width: 100% !important;
+  }
+
+  #InputPassword1{
+    width: 100% !important;
+  }
+
+  #InputEmail1::placeholder{
+    text-align: center;
+  }
+
+  #InputPassword1::placeholder{
+    text-align: center;
+  }
+
+}
+
+/* Made for other devices (max-width: 350px) 
+/ Feito para outros dispositivos de 350 pixels de largura*/
+
+@media (max-width: 350px){
+  #AllPage{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+  }
+
+  #CentPage{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+  }
+
+  #checkgroup{
+    text-align: initial !important;
+  }
+
+  .LoginBox{
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+  }
+
+  .LoginBox{
+    width: max-content; 
+    background-color: rgb(241, 234, 234);
+    border: 8px double black;
+    padding: 5px;
+  }
+
+  #InputEmail1::placeholder{
+    text-align: center;
+  }
+
+  #InputPassword1::placeholder{
+    text-align: center;
+  }
+
+}
