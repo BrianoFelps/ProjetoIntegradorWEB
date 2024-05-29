@@ -1,4 +1,4 @@
-import TopBar from '../all-in-one/Topbar';
+import TopBar from '../all-in-one/Topbar.tsx';
 import ContentPage from '../all-in-one/ContentPage';
 import MidIcon from '../Components/MidIcon';
 

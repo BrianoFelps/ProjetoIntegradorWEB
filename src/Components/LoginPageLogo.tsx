@@ -9,8 +9,8 @@ interface Props{
 function LoginPageLogo(props:Props){
 
     return(
-        <div id='logo' onClick={props.onClick}>
-                <div id='aniLogo'>
+        <div id='logo'>
+                <div id='aniLogo' onClick={props.onClick}>
                         <img id='LogoIcon' src={imgplace}></img>
                         <label htmlFor="textLogo" id='textLogo'>Equilibrium</label>
                 </div>
