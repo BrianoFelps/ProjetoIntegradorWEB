@@ -5,11 +5,15 @@
 * Browsers: last 4 version
 */
 
-*, ol, dl, ul{
+*, body, ol, dl, ul{
   padding: 0;
   margin: 0;
   list-style: none;
   text-decoration: none;
+}
+
+body{
+  padding-right: 0 !important;
 }
 
 #ContainerSuperior{
@@ -89,23 +93,51 @@ div#ThreeDI:hover{
 
 #Drawer {
   width: 30%;
-  
-  flex-shrink: 0;
-  flex-direction: column;
+}
+
+.css-4t3x6l-MuiPaper-root-MuiDrawer-paper{
+  justify-content: space-between;
 }
 
 .MuiPaper-root{
   height: 100%;
+  border-right: 3px solid #ccc;
+
 }
 
-#Drawer .avatar {
+.MuiDrawer-paper {
+  width: 30%;
+  padding: .7em;
+}
+
+.DrawerLi{
+  margin: 0 0 3px 0;
+}
+
+.AvatarLi{
+  margin-bottom: 10px;
+}
+
+.iconeDoDrawer{
+  padding-right: 5px;
+}
+
+#Drawer a .avatar {
   margin: 0 10px 0 0px;
   width: 40px;
   height: 40px;
 }
 
-.DrawerLi{
-  margin: 0 0 10px 0;
+#Drawer #AvatarLink {
+  padding: 0;
+  width: auto;
+  display: block;
+  border: none;
+}
+
+#Drawer #AvatarLink .avatar:hover{
+  box-shadow: 0px 0px 10px black;
+  transition: .2s;
 }
 
 #Drawer ul li a{
@@ -115,14 +147,29 @@ div#ThreeDI:hover{
   align-items: center;
   justify-content: start;
 
-  border: 1px solid rgba(0, 0, 0, .05);
+  border: 1px solid rgba(0, 0, 0, .03);
 }
 
-.iconeDoDrawer{
-  padding-right: 5px;
+#Drawer #Pags .DrawerLi .active{
+  font-weight: bolder;
+  font-size: .8em;
 }
 
-.MuiDrawer-paper {
-  width: 30%;
-  padding: 1em;
+#Drawer #Pags .DrawerLi #MidIconOutside{
+  width: 25px;
+  height: 25px;
+  font-weight: bolder;
+  font-size: .8em;
+  margin-bottom: -2.5px;
+}
+
+#Pags .pag{
+  font-weight: bolder;
+}
+
+@media (max-width: 590px) {
+  .css-4t3x6l-MuiPaper-root-MuiDrawer-paper ul li a,
+  .css-4t3x6l-MuiPaper-root-MuiDrawer-paper ul li b{
+    font-size: .8em;
+  }
 }
