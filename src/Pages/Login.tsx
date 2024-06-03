@@ -19,6 +19,18 @@ import LinkSignUp from '../Components/DirectLink';
 
         const navigate = useNavigate();
 
+        useEffect(() => {
+
+            InserirClasseLogin();
+    
+        }, []);
+    
+        function InserirClasseLogin() {
+            const html = document.documentElement
+            html.classList.add("Login");
+            html.classList.replace("SignUp", "Login");
+        }
+
         const fazerLogin = async () => {
             
             setLoginEmAndamento(true);
@@ -66,7 +78,7 @@ import LinkSignUp from '../Components/DirectLink';
     }, [loggedIn, navigate]);
 
         return( 
-            <div id='AllPage'>
+            <div id='AllPageLoginSign'>
                     <LoginPageLogo></LoginPageLogo>
                 <div id='CentPage'>
                     <form className='LoginBox'>

@@ -1,4 +1,4 @@
-  #logo{
+  #AllPageLoginSign #logo{
     width: 100%;
     display: flex;
     height: fit-content;
@@ -8,19 +8,20 @@
     z-index: 122;
   }
 
-  #aniLogo{
+  #AllPageLoginSign #logo #aniLogo{
     position: relative;
     margin: 20px;
+    padding: 10px;
     align-items: center;
     justify-content: center;
     display: flex;
     height: 20%;
     max-width: 100%;
-    border: 16px solid #ffffff;
     border-radius: 8px;
+    background-color: white;
   }
 
-  #LogoIcon{
+  #AllPageLoginSign #logo #aniLogo #LogoIcon{
     display: flex;
     align-items: center;
     width: 28px;
@@ -29,13 +30,13 @@
     object-fit: cover;
   }
 
-  #textLogo{
+  #AllPageLoginSign #logo #aniLogo #textLogo{
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
 @media (max-width: 768px){
-  #logo{
+  #AllPageLoginSign #logo{
     width: 100%;
     display: flex;
     height: fit-content;
@@ -45,7 +46,7 @@
     z-index: 122;
   }
 
-  #aniLogo{
+  #AllPageLoginSign #logo #aniLogo{
     position: relative;
     margin: 20px;
     align-items: center;
@@ -58,7 +59,7 @@
 }
 
 @media (max-width: 350px){
-  #logo{
+  #AllPageLoginSign #logo{
     width: 100%;
     display: flex;
     height: fit-content;
@@ -68,7 +69,7 @@
     z-index: 122;
   }
 
-  #aniLogo{
+  #AllPageLoginSign #logo #aniLogo{
     position: relative;
     margin: 20px;
     align-items: center;

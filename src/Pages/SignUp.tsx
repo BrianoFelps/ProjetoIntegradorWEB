@@ -21,6 +21,19 @@ function SignUp(){
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+
+        InserirClasseSignUp();
+
+    }, []);
+
+    function InserirClasseSignUp() {
+        const html = document.documentElement
+        html.classList.add("SignUp");
+        html.classList.replace("Login", "SignUp");
+    }
+
+
     const handleSubmit = async () => {
 
         setLoginEmAndamento(true);
@@ -101,9 +114,9 @@ function SignUp(){
 
 
     return(
-        <div id='AllPage'>
-            <LoginPageLogo></LoginPageLogo>    
-                <div id='CentPage'>
+        <div id='AllPageLoginSign'>
+                <LoginPageLogo></LoginPageLogo>    
+            <div id='CentPage'>
                     <form className='SignUpBox'>
                         <div id='titleSignUp'>
                             <label htmlFor='labelTitleSignUp' id='labelSignUp'>Crie sua Conta aqui!</label>
@@ -135,9 +148,9 @@ function SignUp(){
                             <button type="button" className="btn btn-primary" id="btnEnter" onClick={handleSubmit} disabled={loginEmAndamento} >Criar Conta</button>
                         </div>
                         <DirectLink onClickDirect = {LinkLogin} textExample={simpletext} textLink={linktext}/>
+                        <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
                     </form>
-                    <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
-                </div>
+            </div>
         </div>
     );
 }

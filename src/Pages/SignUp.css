@@ -8,26 +8,30 @@
     padding: 0;
     margin: 0;
   }
+
+  /* #root{
+    height: 100px;
+  } */
   
-  body{
+  .SignUp body{
     width: 100%;
+    height: 100%;
     margin: 0;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
-    display: block;
+    background: url('../assets/testedebackground.jpg') center no-repeat #FBD5E2;
   }
   
-  #AllPage{
+  #AllPageLoginSign{
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 100%;
     align-items: center;
-    background: url('../assets/testedebackground.jpg') center no-repeat #FBD5E2;
   }
 
   #CentPage{
     width: 100%;
-    height: 100%;
+    height: fit-content;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -290,7 +294,7 @@
 
 @media (max-width: 768px){
 
-  #AllPage{
+  #AllPageLoginSign{
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -372,7 +376,7 @@
 / Feito para outros dispositivos de 350 pixels de largura*/
 
 @media(max-width: 350px){
-  #AllPage{
+  #AllPageLoginSign{
     display: flex;
     flex-direction: column;
     height: 100%;
