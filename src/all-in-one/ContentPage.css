@@ -34,14 +34,8 @@
     position: relative;
   }
   
-  #top div.emoji-container{
-    position: absolute;
-    top: 74px;
-    left: 1%;
-  }
-  
-  #Input{
-    height: 20vh;
+  textarea#Input{
+    height: 25vh;
   }
   /* #MidIconOutside{
     position: absolute;
@@ -82,7 +76,14 @@
     height: 300px;
     object-fit: cover;
   }
-  
+
+  #ConteudoPrincipal #top div.emoji-container{
+    position: absolute;
+    top: 63px;
+    left: 12px;
+    z-index: 1;
+  }
+
   #main .emoji-container{
     z-index: 1;
   }

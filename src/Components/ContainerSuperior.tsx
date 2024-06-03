@@ -7,11 +7,13 @@ import ShareButton from './ShareButton'
 import TextTitle from './TextTitle'
 import ThreeDotIcon from './ThreeDotIcon'
 import TripleBar from './TripleBar'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Drawer, Avatar } from '@mui/material'
 import user from '../assets/terrycrews.webp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGear, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faCircleInfo, faGear, faGem, faHouse, faMagnifyingGlass, faQuoteLeft, faUserGroup } from '@fortawesome/free-solid-svg-icons'
+import MidIcon from './MidIcon'
+import { faCalendar, faObjectGroup } from '@fortawesome/free-regular-svg-icons';
 
 interface props {
     onMouseEnter: () => void;
@@ -22,6 +24,8 @@ interface props {
 function ContainerSuperior (props: props) {
     const [open, setOpen] = useState(false);
 
+    const BarRef = useRef<HTMLDivElement>(null);
+
     const toggleDrawer = (newOpen: boolean) => () =>{
         setOpen(newOpen);
     }
@@ -30,23 +34,42 @@ function ContainerSuperior (props: props) {
         alert("Olá")
     }
 
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            const drawerElement = document.querySelector('.css-4t3x6l-MuiPaper-root-MuiDrawer-paper');
+            if (drawerElement && !drawerElement.contains(event.target as Node)) {
+                setOpen(false);
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return(
         <div id='ContainerSuperior' className='navbar navbar-light bg-light d-flex justify-content-between'>
 
             <div id='ParteEsquerda' className='d-flex align-items-center justify-content-center navbar-brand'>
             <TripleBar onClick={toggleDrawer(true)}/>
 
-
             <TextTitle value={props.value} onClick={ola}/>
             </div>
 
             {open && 
-
-                <Drawer open={open} variant='temporary' id='Drawer'>
-                    <ul>
-                        <li className='DrawerLi d-flex align-items-center '>
-                            <Avatar src={user} className='avatar' alt='Perfil'></Avatar>
-                            <b>Página de: Terry Crews</b>
+                <Drawer ref={BarRef} 
+                open={open} 
+                variant='temporary' 
+                anchor='left' 
+                onClose={toggleDrawer(false)} 
+                id='Drawer'>
+                    <ul id='ParteSuperiorD'>
+                        <li className='DrawerLi d-flex align-items-center AvatarLi'>
+                            <a href="" id='AvatarLink'>
+                                <Avatar src={user} className='avatar' alt='Perfil'></Avatar>
+                            </a>
+                                <b style={{color: 'black'}}>Página de: Terry Crews</b>
                         </li>
                         <li className='DrawerLi d-flex align-items-center'>
                             <a href="" className='btn btn-outline-dark'>
@@ -56,16 +79,70 @@ function ContainerSuperior (props: props) {
                         </li>
                         <li className='DrawerLi d-flex align-items-center'>
                             <a href="" className='btn btn-outline-dark'>
+                                <FontAwesomeIcon className='iconeDoDrawer' icon={faHouse} />
+                                Página inicial
+                            </a>
+                        </li>
+                        <li className='DrawerLi d-flex align-items-center'>
+                            <a href="" className='btn btn-outline-dark'>
+                                <FontAwesomeIcon className='iconeDoDrawer' icon={faQuoteLeft} />
+                                Caixa de entrada
+                            </a>
+                        </li>
+                        
+
+                    </ul>
+                    <ul id='Pags'>
+                        <label className='align-self-start mb-2'>Páginas</label>
+                        <li className='DrawerLi d-flex align-items-center justify-content-center flex-column mb-5 pag'>
+                            <a href="" className='btn btn-outline-dark active'>
+                                <MidIcon className='iconeDoDrawer'/>Ponto de equilíbrio
+                            </a>
+
+                        </li>
+                        <li className='DrawerLi d-flex align-items-center'>
+                            <a href="" className='btn btn-outline-dark'>
                                 <FontAwesomeIcon icon={faGear} className='iconeDoDrawer'/>
                                 Configurações
                             </a>
                         </li>
-
+                        <li className='DrawerLi d-flex align-items-center'>
+                            <a href="" className='btn btn-outline-dark'>
+                                <FontAwesomeIcon icon={faCircleInfo} className='iconeDoDrawer'/>
+                                Suporte
+                            </a>
+                        </li>
+                        <li className='DrawerLi d-flex align-items-center'>
+                            <a href="" className='btn btn-outline-dark'>
+                                <FontAwesomeIcon icon={faCalendar} className='iconeDoDrawer'/>
+                                Calendário
+                            </a>
+                        </li>
+                        <li className='DrawerLi d-flex align-items-center'>
+                            <a href="" className='btn btn-outline-dark'>
+                                <FontAwesomeIcon icon={faObjectGroup} className='iconeDoDrawer'/>
+                                Modelos
+                            </a>
+                        </li>
+                        <li className='DrawerLi d-flex align-items-center'>
+                            <a href="" className='btn btn-outline-dark'>
+                                <FontAwesomeIcon icon={faUserGroup} className='iconeDoDrawer'/>
+                                Criar espaço de equipe
+                            </a>
+                        </li>
                     </ul>
-                    <button className='btn btn-danger' onClick={toggleDrawer(false)}>X</button>
-                </Drawer>
 
-                }
+                    <ul id='Inferior'>
+                    <li className='DrawerLi d-flex align-items-center'>
+                            <a href="" className='btn btn-outline-dark'>
+                                <FontAwesomeIcon icon={faGem} className='iconeDoDrawer'/>
+                                Adquira o
+                                <i>&nbsp;Premium</i>
+                            </a>
+                        </li>
+                    </ul>
+                </Drawer>
+            }
 
             <div id='ItensDoCanto'>
                 {/* Trabalhar na interatividade dos ícones */}

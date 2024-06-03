@@ -20,6 +20,9 @@ interface Props {
     EmojiMenuInsideSeparatorId: number;
 
     Titulo: string;
+
+    before: () => void;
+    next: () => void;
 }
 
 
@@ -109,7 +112,7 @@ function Modal (props: Props){
             <div id="ModalContainerMax" className='card' ref={ModalRef}>
                 
                 <div id="ContainerSuperiorCard" className='card-header'>
-                    <BarraSuperiorCard onClick={consolelog}/>
+                    <BarraSuperiorCard before={props.before} next={props.next} onClick={consolelog}/>
                 </div>
 
                 <div id="ContainerConteudoCard">
@@ -137,9 +140,7 @@ function Modal (props: Props){
                             Inserir arquivos
                         </label>
 
-                        <textarea id="CustomTextArea" ref={textAreaRef} onInput={handleInput} placeholder='Digite aqui...' value={valueContent} onChange={(e) => handleValChange(e.target.value)}></textarea>
-
-                        
+                        <textarea id="CustomTextArea" ref={textAreaRef} onInput={handleInput} placeholder='Digite aqui...' value={valueContent} onChange={(e) => handleValChange(e.target.value)}/>
                         
                     </div>
 

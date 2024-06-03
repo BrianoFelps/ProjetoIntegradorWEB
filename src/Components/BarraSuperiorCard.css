@@ -16,6 +16,35 @@
     justify-content: center;
   }
 
-  #LeftSect a{
-    margin: 0 3px;
+  #LeftSect #DivTitulo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
+  #LeftSect:hover{
+    cursor: default;
+  }
+
+  #LeftSect span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    margin: 0 10px 0 0;
+
+    cursor: pointer;
+
+    color: rgba(0, 0, 0, .7);
+    font-size: 1.2em;
+
+    height: 20px;
+
+    transition: .5s;
+  }
+  
+  #LeftSect span:hover{
+    color: rgba(0, 0, 0, 1);
+  }
+
+

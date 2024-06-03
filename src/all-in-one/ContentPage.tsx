@@ -147,22 +147,64 @@ function ContentPage() {
     const closeModal5 = () =>{
       setIsModal5Visible(false)
     }
+
+    const nextModal = () =>{
+      if(isModal1Visible){
+        closeModal1()
+        openModal2()
+      } else if(isModal2Visible){
+        closeModal2()
+        openModal3()
+      } else if(isModal3Visible){
+        closeModal3()
+        openModal4()
+      } else if(isModal4Visible){
+        closeModal4()
+        openModal5()
+      } else if (isModal5Visible){
+        closeModal5()
+        openModal1()
+      } else {
+        console.log("Erro inesperado na troca de modal's (posterior)")
+      }
+    }
     
+    const lastModal = () =>{
+      if(isModal1Visible){
+        closeModal1()
+        openModal5()
+      } else if(isModal2Visible){
+        closeModal2()
+        openModal1()
+      } else if(isModal3Visible){
+        closeModal3()
+        openModal2()
+      } else if(isModal4Visible){
+        closeModal4()
+        openModal3()
+      } else if (isModal5Visible){
+        closeModal5()
+        openModal4()
+      } else {
+        console.log("Erro inesperado na troca de modal's (anterior)")
+      }
+    }
+
     return (
     <main id='ConteudoPrincipal'>
-        <section id='top'>
-            <Title>
-              <h2>
-                  Ponto de equilíbrio
-              </h2>
-            </Title>
+      <section id='top'>
+        <Title>
+          <h2>
+              Ponto de equilíbrio
+          </h2>
+        </Title>
 
-                    <EmojiMenu key={emojiMenuIds[0]} emojiMenuId={emojiMenuIds[0]} onOpen={() => {}} onClose={() => {}} />
-                    
-                <Input/>
+        <EmojiMenu key={emojiMenuIds[0]} emojiMenuId={emojiMenuIds[0]} onOpen={() => {}} onClose={() => {}} />
+                
+        <Input/>
 
-                <InputWriteIdea InputWriteIdeaId={0} classNm='top'></InputWriteIdea>
-        </section>
+        <InputWriteIdea InputWriteIdeaId={0} classNm='top'></InputWriteIdea>
+      </section>
             
         <section id='main'>
             <TopBarL>
@@ -183,11 +225,11 @@ function ContentPage() {
               <NItem NitemId={CardsIds[4]} key={emojiMenuIds[5]} emojiMenuId={emojiMenuIds[5]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} image={image5} onclick={openModal5}/>
             </div>
 
-            {isModal1Visible && <Modal FSmodalId={FScardIds[0]} Titulo='religião' banner={image1} EmojiMenuInsideSeparatorId={emojiMenuIds[1]} ClassName='testeModal' onClose={closeModal1}/>}
-            {isModal2Visible && <Modal FSmodalId={FScardIds[1]} Titulo='masculinidade' banner={image2} EmojiMenuInsideSeparatorId={emojiMenuIds[2]} ClassName='testeModal' onClose={closeModal2}/>}
-            {isModal3Visible && <Modal FSmodalId={FScardIds[2]} Titulo='virtudes católicas' banner={image3} EmojiMenuInsideSeparatorId={emojiMenuIds[3]} ClassName='testeModal' onClose={closeModal3}/>}
-            {isModal4Visible && <Modal FSmodalId={FScardIds[3]} Titulo='filosofia' banner={image4} EmojiMenuInsideSeparatorId={emojiMenuIds[4]} ClassName='testeModal' onClose={closeModal4}/>}
-            {isModal5Visible && <Modal FSmodalId={FScardIds[4]} Titulo='positividade' banner={image5} EmojiMenuInsideSeparatorId={emojiMenuIds[5]} ClassName='testeModal' onClose={closeModal5}/>}
+            {isModal1Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[0]} Titulo='religião' banner={image1} EmojiMenuInsideSeparatorId={emojiMenuIds[1]} ClassName='testeModal' onClose={closeModal1}/>}
+            {isModal2Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[1]} Titulo='masculinidade' banner={image2} EmojiMenuInsideSeparatorId={emojiMenuIds[2]} ClassName='testeModal' onClose={closeModal2}/>}
+            {isModal3Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[2]} Titulo='virtudes católicas' banner={image3} EmojiMenuInsideSeparatorId={emojiMenuIds[3]} ClassName='testeModal' onClose={closeModal3}/>}
+            {isModal4Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[3]} Titulo='filosofia' banner={image4} EmojiMenuInsideSeparatorId={emojiMenuIds[4]} ClassName='testeModal' onClose={closeModal4}/>}
+            {isModal5Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[4]} Titulo='positividade' banner={image5} EmojiMenuInsideSeparatorId={emojiMenuIds[5]} ClassName='testeModal' onClose={closeModal5}/>}
         </section>
 
         <section id='NavegacaoBasica'>
