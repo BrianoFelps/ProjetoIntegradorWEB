@@ -13,7 +13,7 @@ import user from '../assets/terrycrews.webp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleInfo, faGear, faGem, faHouse, faMagnifyingGlass, faQuoteLeft, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import MidIcon from './MidIcon'
-import { faCalendar, faObjectGroup } from '@fortawesome/free-regular-svg-icons'
+import { faCalendar, faObjectGroup } from '@fortawesome/free-regular-svg-icons';
 
 interface props {
     onMouseEnter: () => void;
@@ -54,13 +54,16 @@ function ContainerSuperior (props: props) {
             <div id='ParteEsquerda' className='d-flex align-items-center justify-content-center navbar-brand'>
             <TripleBar onClick={toggleDrawer(true)}/>
 
-
             <TextTitle value={props.value} onClick={ola}/>
             </div>
 
             {open && 
-
-                <Drawer ref={BarRef} open={open} variant='temporary' id='Drawer'>
+                <Drawer ref={BarRef} 
+                open={open} 
+                variant='temporary' 
+                anchor='left' 
+                onClose={toggleDrawer(false)} 
+                id='Drawer'>
                     <ul id='ParteSuperiorD'>
                         <li className='DrawerLi d-flex align-items-center AvatarLi'>
                             <a href="" id='AvatarLink'>
@@ -139,8 +142,7 @@ function ContainerSuperior (props: props) {
                         </li>
                     </ul>
                 </Drawer>
-
-                }
+            }
 
             <div id='ItensDoCanto'>
                 {/* Trabalhar na interatividade dos ícones */}

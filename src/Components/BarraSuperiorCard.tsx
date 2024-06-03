@@ -1,3 +1,4 @@
+import { before } from 'node:test';
 import './BarraSuperiorCard.css'
 import ClockIcon from './ClockIcon';
 import CommentIcon from './CommentIcon';
@@ -5,9 +6,14 @@ import FavoriteIcon from './FavoriteIcon';
 import ShareButton from './ShareButton';
 import ThreeDotIcon from './ThreeDotIcon';
 import Title from './title';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { icon } from '@fortawesome/fontawesome-svg-core';
 
 interface props {
     onClick: () => void;
+    before: () => void;
+    next: () => void;
 }
 
 function BarraSuperiorCard (props: props) {
@@ -16,13 +22,12 @@ function BarraSuperiorCard (props: props) {
 
             <div id='LeftSect' className='d-flex align-items-center justify-content-center'>
                 <Title>
-                    <a href="" className='link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>
-                        Voltar
-                    </a>
-                    |
-                    <a href="" className='link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>
-                        Avançar
-                    </a>
+                    <span onClick={props.before} title='Voltar'>
+                        <FontAwesomeIcon icon={faArrowLeft} />
+                    </span>
+                    <span onClick={props.next} title='Avançar'>
+                        <FontAwesomeIcon icon={faArrowRight} />
+                    </span>
                 </Title>
             </div>
 
