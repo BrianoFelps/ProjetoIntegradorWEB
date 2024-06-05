@@ -4,7 +4,7 @@ import MidIcon from "../Components/MidIcon"
 import Title from "../Components/title"
 import InputWriteIdea from "../Components/InputWriteIdea"
 import TopBarL from "../Components/TopBarL"
-import Input from "../Components/InputTypeText"
+import Input from "../Components/Inputtypetext"
 
 
 function MainPage() {
