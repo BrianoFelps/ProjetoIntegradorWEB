@@ -2,7 +2,7 @@ import './ContentPage.css'
 import Title from '../Components/title';
 import EmojiMenu from '../Components/EmojiMenu';
 import InputWriteIdea from '../Components/InputWriteIdea';
-import Input from "../Components/Inputtypetext"
+import Input from "../Components/inputTypeText"
 import TopBarL from '../Components/TopBarL';
 import NItem from '../Components/NItem';
 import LinkGroup from '../Components/LinkGroup';
