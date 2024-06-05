@@ -14,15 +14,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleInfo, faGear, faGem, faHouse, faMagnifyingGlass, faQuoteLeft, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import MidIcon from './MidIcon'
 import { faCalendar, faObjectGroup } from '@fortawesome/free-regular-svg-icons';
+import axios from 'axios';
+
+interface favoritePage{
+    id: number;
+}
 
 interface props {
     onMouseEnter: () => void;
     onMouseLeave: () => void;
     value: string;
+    pageId: number;
+    userId: number;
 }
 
 function ContainerSuperior (props: props) {
     const [open, setOpen] = useState(false);
+    const [initialIsFavorite, setInitialIsFavorite] = useState(false);
 
     const BarRef = useRef<HTMLDivElement>(null);
 
@@ -33,6 +41,20 @@ function ContainerSuperior (props: props) {
     const ola = () =>{
         alert("Olá")
     }
+
+    useEffect(() => {
+        const fetchFavoriteStatus = async () => {
+            try{
+                const response = await axios.get(`/favorites/${props.userId}`);
+                const favoritedPages = response.data.map((page: favoritePage) => page.id);
+                setInitialIsFavorite(favoritedPages.includes(props.pageId));
+            } catch (error) {
+                console.error('Erro ao buscar status de favorito:', error);
+            }
+        };
+
+        fetchFavoriteStatus();
+    }, [props.userId, props.pageId]);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -158,7 +180,7 @@ function ContainerSuperior (props: props) {
             <div className='d-none d-sm-flex'>
                 <ClockIcon onClick={ola}/>
             </div>
-                <FavoriteIcon/>
+                <FavoriteIcon userId={props.userId} pageId={props.pageId} initialIsFavorite={initialIsFavorite}/>
 
                 <ThreeDotIcon onClick={ola}/>
             </div>
@@ -166,4 +188,4 @@ function ContainerSuperior (props: props) {
     )
 }
 
-export default ContainerSuperior
+export default ContainerSuperior;
