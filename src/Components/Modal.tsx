@@ -50,7 +50,7 @@ function Modal (props: Props){
     useEffect(() => {
         const fetchValueDateContent = async () => {
             try{
-                const response = await axios.get(`${EQ_API_URL}/Elm/FS`);
+                const response = await axios.get(`${EQ_API_URL}/pages/Elm/FS`);
                 const FScard = response.data.find((FScard: { id: number }) => FScard.id === props.FSmodalId);
                 const FScardValue = FScard ? FScard.value : '';
                 const FScardDate = FScard ? FScard.data : '';
@@ -87,7 +87,7 @@ function Modal (props: Props){
     const updateContentToBackend = async (updatedValue: string, updatedDate: string) =>{
         try {
 
-            await axios.put(`${EQ_API_URL}/ElmD`, { id_property: 7, value: updatedValue, data: updatedDate, id: props.FSmodalId }); // Enviar o valor completo como string
+            await axios.put(`${EQ_API_URL}/pages/ElmD`, { id_property: 7, value: updatedValue, data: updatedDate, id: props.FSmodalId }); // Enviar o valor completo como string
  
              console.log(`Valor atualizado no banco de dados. Valor: ${updatedValue}, data: ${updatedDate}`);
  

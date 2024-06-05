@@ -50,7 +50,7 @@ function ContentPage() {
 
         const fetchCardIds = async () => {
           try{
-            const response = await axios.get(`${EQ_API_URL}/Elm/cards`);
+            const response = await axios.get(`${EQ_API_URL}/pages/Elm/cards`);
             const CardsIdsData = response.data.map((elements: { id: number }) => elements.id);
             setCardsIds(CardsIdsData); 
 
@@ -66,7 +66,7 @@ function ContentPage() {
 
         const fetchTooltipIds = async () => {
           try{
-            const response = await axios.get(`${EQ_API_URL}/Elm/IC`);
+            const response = await axios.get(`${EQ_API_URL}/pages/Elm/IC`);
             const TooltipIdsData = response.data.map((elements: { id: number }) => elements.id);
             setTooltipIds(TooltipIdsData); 
 
@@ -82,7 +82,7 @@ function ContentPage() {
 
         const fetchWIIds = async () => {
           try{
-            const response = await axios.get(`${EQ_API_URL}/Elm/WI`);
+            const response = await axios.get(`${EQ_API_URL}/pages/Elm/WI`);
             const WriteIdeaIdsData = response.data.map((elements: { id: number }) => elements.id);
             setWriteIdeaIds(WriteIdeaIdsData); 
 
@@ -98,7 +98,7 @@ function ContentPage() {
 
         const fetchFScardIds = async () => {
           try{
-            const response = await axios.get(`${EQ_API_URL}/Elm/FS`);
+            const response = await axios.get(`${EQ_API_URL}/pages/Elm/FS`);
             const FSIdsData = response.data.map((elements: { id: number }) => elements.id);
             setFScardIds(FSIdsData);
             // console.log(FScardIds)

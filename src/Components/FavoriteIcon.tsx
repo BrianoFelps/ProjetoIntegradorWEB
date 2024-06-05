@@ -18,7 +18,7 @@ function FavoriteIcon(){
 
     const updateBooleanOnBackEnd = async (newFavoriteState: boolean) =>{
         try{
-            await axios.put(`${EQ_API_URL}/`, {
+            await axios.put(`${EQ_API_URL}/pages/`, {
                 isFavorited :newFavoriteState, id: 1
             });
             console.log(`Estado atualizado no backEnd. Boolean: ${newFavoriteState} `)
@@ -31,7 +31,7 @@ function FavoriteIcon(){
     useEffect(() => {
         const fetchIsFavorited = async () =>{
             try{
-                const response = await axios.get(`${EQ_API_URL}/`);
+                const response = await axios.get(`${EQ_API_URL}/pages/`);
                 const page = response.data.find((page: any) => page.id === 1);
                 if (page){
                     setIsFavorite(page.isFavorited);

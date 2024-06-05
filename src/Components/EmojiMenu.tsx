@@ -23,7 +23,7 @@ function EmojiMenu({ emojiMenuId, onOpen, onClose }: EmojiMenuProps){
   useEffect(() => {
     const fetchEmojis = async () => {
       try {
-        const response = await axios.get(`${EQ_API_URL}/emojis`);
+        const response = await axios.get(`${EQ_API_URL}/pages/emojis`);
         setEmojis(response.data);
       // console.log(emojis)
       } catch (error) {
@@ -40,7 +40,7 @@ function EmojiMenu({ emojiMenuId, onOpen, onClose }: EmojiMenuProps){
     const fetchSelectedEmoji = async () => {
       if (emojiMenuId !== undefined && emojiMenuId !== null) {
         try {
-          const response = await axios.get(`${EQ_API_URL}/emojiMenu/IDMENU/${emojiMenuId}`);
+          const response = await axios.get(`${EQ_API_URL}/pages/emojiMenu/IDMENU/${emojiMenuId}`);
           const emojiData = response.data.emoji;
           setSelectedEmoji(emojiData);
         } catch (error) {
@@ -83,7 +83,7 @@ function EmojiMenu({ emojiMenuId, onOpen, onClose }: EmojiMenuProps){
       setSelectedEmoji(selected.emoji);
       console.log(selectedEmoji)
       try {
-        await axios.put(`${EQ_API_URL}/emojiMenu`, { id_emoji: emojiId, id: emojiMenuId });
+        await axios.put(`${EQ_API_URL}/pages/emojiMenu`, { id_emoji: emojiId, id: emojiMenuId });
         console.log('EmojiMenu atualizado com sucesso');
       } catch (error) {
         console.error(`EmojiId: ${emojiId}. EmojiMenuId: ${emojiMenuId}. Erro ao atualizar o EmojiMenu:`, error);

@@ -25,7 +25,7 @@ function YourComponent(props: props) {
 
     const fetchInputValue = async () =>{
       try{
-        const response = await axios.get(`${EQ_API_URL}/Elm/IC`);
+        const response = await axios.get(`${EQ_API_URL}/pages/Elm/IC`);
         const Tooltip = response.data.find((Tooltip: {id: number}) => Tooltip.id === props.InputWcardId);
         const TooltipValue = Tooltip ? Tooltip.value : '';
         setInputValue(TooltipValue);
@@ -49,7 +49,7 @@ function YourComponent(props: props) {
   const updateValueToBackend = async (updatedValue: string) => {
     try {
 
-       await axios.put(`${EQ_API_URL}/Elm`, { id_property: 5, value: updatedValue, id: props.InputWcardId }); // Enviar o valor completo como string
+       await axios.put(`${EQ_API_URL}/pages/Elm`, { id_property: 5, value: updatedValue, id: props.InputWcardId }); // Enviar o valor completo como string
 
       console.log(`Valor atualizado no banco de dados. Valor: ${updatedValue}`);
 
