@@ -9,10 +9,6 @@ import TopBarL from "../Components/TopBarL"
 
 function MainPage() {
   
-    const oi = () => {
-        alert('oi')
-    }
-
     return (
       <>
         <div id='Separator'>
@@ -36,12 +32,6 @@ function MainPage() {
           
           <section id='main'>
             <TopBarL>
-              <div>
-                <i className="fa fa-picture-o" aria-hidden="true" style={{fontSize:17}}/>
-                <span>
-                  Gallery view
-                </span>
-              </div>
             </TopBarL>
           </section>
         </main>

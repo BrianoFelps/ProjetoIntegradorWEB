@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './InputWriteIdea.css'
 import axios from 'axios';
 // import imgplace from '../assets/temploemoji100porcentorealfi.svg';

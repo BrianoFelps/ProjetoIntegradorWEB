@@ -207,14 +207,7 @@ function ContentPage() {
       </section>
             
         <section id='main'>
-            <TopBarL>
-                <a href=''>
-                    <i className="fa fa-picture-o" aria-hidden="true" style={{fontSize:17}}/>
-                    <span>
-                        Gallery view
-                    </span>
-                </a>
-            </TopBarL>
+            <TopBarL/>
 
             <div id='ItensContainer'>
                 

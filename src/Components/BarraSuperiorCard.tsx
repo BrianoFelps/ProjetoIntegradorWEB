@@ -1,4 +1,4 @@
-import { before } from 'node:test';
+
 import './BarraSuperiorCard.css'
 import ClockIcon from './ClockIcon';
 import CommentIcon from './CommentIcon';
@@ -8,7 +8,7 @@ import ThreeDotIcon from './ThreeDotIcon';
 import Title from './title';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { icon } from '@fortawesome/fontawesome-svg-core';
+
 
 interface props {
     onClick: () => void;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import './EditedInfo.css'
 
 interface Props{
@@ -7,16 +7,14 @@ interface Props{
 }
 
 function EditedInfo(props: Props){
-    const [isHovered, setIsHovered] = useState(false);
+
 
     const handleMouseEnter = () => {
-        setIsHovered(true);
         if (props.onMouseEnter) {
             props.onMouseEnter(); // Chama a função passada como propriedade
         }
     };
     const handleMouseLeave = () => {
-        setIsHovered(false);
         if (props.onMouseLeave) {
             props.onMouseLeave();
         }

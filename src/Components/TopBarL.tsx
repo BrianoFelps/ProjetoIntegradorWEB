@@ -1,12 +1,7 @@
-import { ReactNode } from 'react'
 import './TopBarL.css';
 import ImageGaleryIcon from "../assets/icons8-gallery-50.png"
 
-interface props {
-    children?: ReactNode;
-}
-
-function TopBarL (props: props){
+function TopBarL (){
     return(
         <ul className="nav nav-tabs" id='TopBarList'>
             <li className="nav-item">

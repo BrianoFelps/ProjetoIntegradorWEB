@@ -15,7 +15,7 @@ function YourComponent(props: props) {
   const [showTooltip, setShowTooltip] = useState(false);
   const [activeLi, setActiveLi] = useState<HTMLLIElement | null>(null);
   const [emojiMenuOpen, setEmojiMenuOpen] = useState(false);
-  const [mouseOverEmojiButton, setMouseOverEmojiButton] = useState(false);
+  const [mouseOverEmojiButton] = useState(false);
 
   const [ InputValue, setInputValue ] = useState<string>('');
   const [ valueLoaded, setvalueLoaded ] = useState(false);
