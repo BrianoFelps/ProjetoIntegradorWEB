@@ -1,8 +1,8 @@
 import './ContentPage.css'
-import Input from '../Components/InputTypeText';
 import Title from '../Components/title';
 import EmojiMenu from '../Components/EmojiMenu';
 import InputWriteIdea from '../Components/InputWriteIdea';
+import Input from "../Components/InputTypeText"
 import TopBarL from '../Components/TopBarL';
 import NItem from '../Components/NItem';
 import LinkGroup from '../Components/LinkGroup';
