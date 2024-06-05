@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ModalErro from '../Components/ModalErro';
 import LinkSignUp from '../Components/DirectLink';
+import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
     const Login = (): JSX.Element => {
 
@@ -37,7 +38,7 @@ import LinkSignUp from '../Components/DirectLink';
 
                 if(email && senha){
                 try {
-                    const response = await axios.post('http://localhost:8080/pages/Login', { email, senha });
+                    const response = await axios.post(`${EQ_API_URL}/Login`, { email, senha });
                     console.log(response.data); // Lógica para redirecionar o usuário após o login bem-sucedido
                     setLoggedIn(true); // loggedIn ficará true após o login bem-sucedido
 

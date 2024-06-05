@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './InputTypeText.css';
 import axios from 'axios';
+import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
 function Input() {
     const [valueContent, setValueContent] = useState<string>('');
@@ -15,7 +16,7 @@ function Input() {
         // Função para buscar os valores correspondentes aos Elementos
         const fetchContentValueAndCategory = async () => {
             try{
-                const response = await axios.get(`http://localhost:8080/pages/Elm/props`);
+                const response = await axios.get(`${EQ_API_URL}/Elm/props`);
 
                 const titleValue = response.data.find((element: any) => element.category === 'InputTitle')?.value;
                 const textAreaValue = response.data.find((element: any) => element.category === 'InputText')?.value;
@@ -71,7 +72,7 @@ function Input() {
                 throw new Error('Tipo de entrada não reconhecido');
             }
 
-           await axios.put('http://localhost:8080/pages/Elm', { id_property: IdAndIdProperty, value: updatedValue, id: IdAndIdProperty });
+           await axios.put(`${EQ_API_URL}/Elm`, { id_property: IdAndIdProperty, value: updatedValue, id: IdAndIdProperty });
 
             console.log(`Valor atualizado no banco de dados. Valor: ${updatedValue}`);
 

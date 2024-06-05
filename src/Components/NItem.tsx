@@ -2,6 +2,7 @@ import './NItem.css'
 import EmojiMenu from './EmojiMenu';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
 interface props{
     onclick?: () => void;
@@ -20,7 +21,7 @@ function NItem (props: props){
         // Fica a ideia: caso não dê certo, tente fazer com base no ID
         const fetchValueContent = async () => {
             try{
-                const response = await axios.get(`http://localhost:8080/pages/Elm/cards`);
+                const response = await axios.get(`${EQ_API_URL}/Elm/cards`);
                 const card = response.data.find((card: { id: number }) => card.id === props.NitemId);
                 const cardValue = card ? card.value : '';
                 setValueContent(cardValue);
@@ -37,7 +38,7 @@ function NItem (props: props){
     const updateContentToBackend = async (updatedValue: string) => {
         try {
 
-           await axios.put('http://localhost:8080/pages/ElmD', { id_property: 4, value: updatedValue, id: props.NitemId }); // Enviar o valor completo como string
+           await axios.put(`${EQ_API_URL}/ElmD`, { id_property: 4, value: updatedValue, id: props.NitemId }); // Enviar o valor completo como string
 
             console.log(`Valor atualizado no banco de dados. Valor: ${updatedValue}`);
 

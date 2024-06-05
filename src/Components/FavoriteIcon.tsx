@@ -5,6 +5,7 @@ import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
 import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { EQ_API_URL } from "../utils/EquilibriumApiConfig";
 
 function FavoriteIcon(){
     const [isFavorite, setIsFavorite] = useState(false);
@@ -17,7 +18,7 @@ function FavoriteIcon(){
 
     const updateBooleanOnBackEnd = async (newFavoriteState: boolean) =>{
         try{
-            await axios.put("http://localhost:8080/pages/", {
+            await axios.put(`${EQ_API_URL}/`, {
                 isFavorited :newFavoriteState, id: 1
             });
             console.log(`Estado atualizado no backEnd. Boolean: ${newFavoriteState} `)
@@ -30,7 +31,7 @@ function FavoriteIcon(){
     useEffect(() => {
         const fetchIsFavorited = async () =>{
             try{
-                const response = await axios.get(`http://localhost:8080/pages/`);
+                const response = await axios.get(`${EQ_API_URL}/`);
                 const page = response.data.find((page: any) => page.id === 1);
                 if (page){
                     setIsFavorite(page.isFavorited);

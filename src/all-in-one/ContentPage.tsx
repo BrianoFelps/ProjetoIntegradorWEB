@@ -15,6 +15,8 @@ import image5 from "../assets/ca9c8e1a6db194149e8806c734fdae47.jpg"
 import DiaADiaComponentImage from '../Components/DiaADiaComponentImage';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import "../utils/EquilibriumApiConfig"
+import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
 function ContentPage() {
      // Estado para armazenar os IDs dos EmojiMenus
@@ -36,7 +38,7 @@ function ContentPage() {
         // Função para buscar os IDs dos EmojiMenus a serem especificados
         const fetchEmojiMenuIds = async () => {
           try {
-            const response = await axios.get('http://localhost:8080/pages/emojiMenu/emoji');
+            const response = await axios.get(``);
             const emojiMenuIdsData = response.data.map((emojiMenu: { id: number }) => emojiMenu.id);
             setEmojiMenuIds(emojiMenuIdsData);
           } catch (error) {
@@ -48,7 +50,7 @@ function ContentPage() {
 
         const fetchCardIds = async () => {
           try{
-            const response = await axios.get('http://localhost:8080/pages/Elm/cards');
+            const response = await axios.get(`${EQ_API_URL}/Elm/cards`);
             const CardsIdsData = response.data.map((elements: { id: number }) => elements.id);
             setCardsIds(CardsIdsData); 
 
@@ -64,7 +66,7 @@ function ContentPage() {
 
         const fetchTooltipIds = async () => {
           try{
-            const response = await axios.get('http://localhost:8080/pages/Elm/IC');
+            const response = await axios.get(`${EQ_API_URL}/Elm/IC`);
             const TooltipIdsData = response.data.map((elements: { id: number }) => elements.id);
             setTooltipIds(TooltipIdsData); 
 
@@ -80,7 +82,7 @@ function ContentPage() {
 
         const fetchWIIds = async () => {
           try{
-            const response = await axios.get('http://localhost:8080/pages/Elm/WI');
+            const response = await axios.get(`${EQ_API_URL}/Elm/WI`);
             const WriteIdeaIdsData = response.data.map((elements: { id: number }) => elements.id);
             setWriteIdeaIds(WriteIdeaIdsData); 
 
@@ -96,7 +98,7 @@ function ContentPage() {
 
         const fetchFScardIds = async () => {
           try{
-            const response = await axios.get('http://localhost:8080/pages/Elm/FS');
+            const response = await axios.get(`${EQ_API_URL}/Elm/FS`);
             const FSIdsData = response.data.map((elements: { id: number }) => elements.id);
             setFScardIds(FSIdsData);
             // console.log(FScardIds)

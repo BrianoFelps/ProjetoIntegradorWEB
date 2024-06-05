@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './InputWriteIdea.css'
 import axios from 'axios';
+import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 // import imgplace from '../assets/temploemoji100porcentorealfi.svg';
 
 interface Props{
@@ -16,7 +17,7 @@ function Spacer(props: Props){
 
         const fetchInputValue = async () =>{
           try{
-            const response = await axios.get(`http://localhost:8080/pages/Elm/WI`);
+            const response = await axios.get(`${EQ_API_URL}Elm/WI`);
             const WriteIdea = response.data.find((WriteIdea: {id: number}) => WriteIdea.id === props.InputWriteIdeaId);
             const WriteIdeaValue = WriteIdea ? WriteIdea.value : '';
             setInputValue(WriteIdeaValue);
@@ -32,7 +33,7 @@ function Spacer(props: Props){
       const updateValueToBackend = async (updatedValue: string) => {
         try {
     
-           await axios.put('http://localhost:8080/pages/Elm', { id_property: 6, value: updatedValue, id: props.InputWriteIdeaId }); // Enviar o valor completo como string
+           await axios.put(`${EQ_API_URL}/Elm`, { id_property: 6, value: updatedValue, id: props.InputWriteIdeaId }); // Enviar o valor completo como string
     
           console.log(`Valor atualizado no banco de dados. Valor: ${updatedValue}`);
     

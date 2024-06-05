@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router';
 import ModalErro from '../Components/ModalErro';
 import DirectLink from '../Components/DirectLink';
 import LoginPageLogo from '../Components/LoginPageLogo';
+import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
 function SignUp(){
 
@@ -75,7 +76,7 @@ function SignUp(){
         
         if(nomeCompleto && email && password && telefone && isPremium){
             try{
-                const response = await axios.post('http://localhost:8080/pages/SignUp', { nomeCompleto, email, password, telefone, isPremium });
+                const response = await axios.post(`${EQ_API_URL}/SignUp`, { nomeCompleto, email, password, telefone, isPremium });
                 console.log(response.data);
                 setSignedIn(true); // signedIn ficará true após o login bem-sucedido
             } catch (error) {

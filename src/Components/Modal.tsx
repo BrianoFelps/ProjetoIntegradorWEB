@@ -9,6 +9,7 @@ import Data from './Data';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileImport } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
 interface Props {
     onClose: () => void;
@@ -49,7 +50,7 @@ function Modal (props: Props){
     useEffect(() => {
         const fetchValueDateContent = async () => {
             try{
-                const response = await axios.get(`http://localhost:8080/pages/Elm/FS`);
+                const response = await axios.get(`${EQ_API_URL}/Elm/FS`);
                 const FScard = response.data.find((FScard: { id: number }) => FScard.id === props.FSmodalId);
                 const FScardValue = FScard ? FScard.value : '';
                 const FScardDate = FScard ? FScard.data : '';
@@ -86,7 +87,7 @@ function Modal (props: Props){
     const updateContentToBackend = async (updatedValue: string, updatedDate: string) =>{
         try {
 
-            await axios.put('http://localhost:8080/pages/ElmD', { id_property: 7, value: updatedValue, data: updatedDate, id: props.FSmodalId }); // Enviar o valor completo como string
+            await axios.put(`${EQ_API_URL}/ElmD`, { id_property: 7, value: updatedValue, data: updatedDate, id: props.FSmodalId }); // Enviar o valor completo como string
  
              console.log(`Valor atualizado no banco de dados. Valor: ${updatedValue}, data: ${updatedDate}`);
  
