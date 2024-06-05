@@ -1,7 +1,7 @@
 import './MainPage.css'
 import EmojiMenu from "../Components/EmojiMenu"
 import MidIcon from "../Components/MidIcon"
-import Input from "../Components/Inputtypetext"
+import Input from "../Components/InputTypeText"
 import Title from "../Components/title"
 import InputWriteIdea from "../Components/InputWriteIdea"
 import TopBarL from "../Components/TopBarL"
