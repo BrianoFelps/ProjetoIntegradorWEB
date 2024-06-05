@@ -23,6 +23,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
         useEffect(() => {
 
             InserirClasseLogin();
+            console.log(`Login em andamento, valor da const API: ${EQ_API_URL}`)
     
         }, []);
     
@@ -35,7 +36,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
         const fazerLogin = async () => {
             
             setLoginEmAndamento(true);
-
+            
                 if(email && senha){
                 try {
                     const response = await axios.post(`${EQ_API_URL}/pages/Login`, { email, senha });
