@@ -38,7 +38,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
                 if(email && senha){
                 try {
-                    const response = await axios.post(`${EQ_API_URL}/Login`, { email, senha });
+                    const response = await axios.post(`${EQ_API_URL}/pages/Login`, { email, senha });
                     console.log(response.data); // Lógica para redirecionar o usuário após o login bem-sucedido
                     setLoggedIn(true); // loggedIn ficará true após o login bem-sucedido
 
