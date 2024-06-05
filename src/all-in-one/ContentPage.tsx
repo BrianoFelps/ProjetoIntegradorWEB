@@ -38,7 +38,8 @@ function ContentPage() {
         // Função para buscar os IDs dos EmojiMenus a serem especificados
         const fetchEmojiMenuIds = async () => {
           try {
-            const response = await axios.get(``);
+            // http://localhost:8080/pages/emojiMenu/emoji
+            const response = await axios.get(`${EQ_API_URL}/pages/emojiMenu/emoji`);
             const emojiMenuIdsData = response.data.map((emojiMenu: { id: number }) => emojiMenu.id);
             setEmojiMenuIds(emojiMenuIdsData);
           } catch (error) {
