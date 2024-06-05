@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import BarraSuperiorCard from './BarraSuperiorCard';
 import EmojiMenu from './EmojiMenu';
 import './Modal.css'
