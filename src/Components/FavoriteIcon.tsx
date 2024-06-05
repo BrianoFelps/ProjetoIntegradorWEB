@@ -20,7 +20,7 @@ function FavoriteIcon(){
             await axios.put("http://localhost:8080/pages/", {
                 isFavorited :newFavoriteState, id: 1
             });
-            console.log(`Estado atualizado no backEnd. Boolean: ${isFavorite} `)
+            console.log(`Estado atualizado no backEnd. Boolean: ${newFavoriteState} `)
             
         } catch (error){
             console.error(`Erro ao atualizar o estado do isFavorited: ${error}`)
