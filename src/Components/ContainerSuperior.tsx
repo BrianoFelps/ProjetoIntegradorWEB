@@ -24,7 +24,7 @@ interface props {
 
 function ContainerSuperior (props: props) {
     const [open, setOpen] = useState(false);
-
+     
     const BarRef = useRef<HTMLDivElement>(null);
 
     const toggleDrawer = (newOpen: boolean) => () =>{
@@ -64,7 +64,9 @@ function ContainerSuperior (props: props) {
                 variant='temporary' 
                 anchor='left' 
                 onClose={toggleDrawer(false)} 
-                id='Drawer'>
+                id='Drawer'
+                classes={{ paper: 'MuiDrawer-paper alinhamento' }}
+                >
                     <ul id='ParteSuperiorD'>
                         <li className='DrawerLi d-flex align-items-center AvatarLi'>
                             <a href="" id='AvatarLink'>

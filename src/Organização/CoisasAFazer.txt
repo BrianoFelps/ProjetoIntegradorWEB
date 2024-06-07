@@ -1,1 +1,2 @@
 Fazer o nome da barra lateral ser colocado com base no usuário;
+Talvez um botão de alteração de modo escuro e claro;
