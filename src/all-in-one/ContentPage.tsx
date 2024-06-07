@@ -42,8 +42,8 @@ function ContentPage() {
             const response = await axios.get(`${EQ_API_URL}/pages/emojiMenu/emoji`);
             const emojiMenuIdsData = response.data.map((emojiMenu: { id: number }) => emojiMenu.id);
             setEmojiMenuIds(emojiMenuIdsData);
-            console.log(emojiMenuIds);
-            console.log(emojiMenuIdsData);
+            console.log(emojiMenuIds[1]);
+            console.log(emojiMenuIdsData[1]);
           } catch (error) {
             console.error('Error fetching emoji menu IDs:', error);
           }

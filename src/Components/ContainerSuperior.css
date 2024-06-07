@@ -172,4 +172,11 @@ div#ThreeDI:hover{
   .css-4t3x6l-MuiPaper-root-MuiDrawer-paper ul li b{
     font-size: .8em;
   }
+  
+}
+
+@media(max-width:700px){
+  .css-4t3x6l-MuiPaper-root-MuiDrawer-paper, .MuiDrawer-paper, .MuiPaper-root{
+    width: 58%;
+  }
 }
