@@ -1,1 +1,1 @@
-Ajustar favoritos com base na página atual (incluir interação nos cards [modal.tsx])
+Fazer o nome da barra lateral ser colocado com base no usuário;
