@@ -19,6 +19,7 @@ interface props {
     onMouseEnter: () => void;
     onMouseLeave: () => void;
     value: string;
+    PageId: number;
 }
 
 function ContainerSuperior (props: props) {
@@ -158,7 +159,7 @@ function ContainerSuperior (props: props) {
             <div className='d-none d-sm-flex'>
                 <ClockIcon onClick={ola}/>
             </div>
-                <FavoriteIcon/>
+                <FavoriteIcon PageId={props.PageId}/>
 
                 <ThreeDotIcon onClick={ola}/>
             </div>

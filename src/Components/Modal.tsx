@@ -24,12 +24,15 @@ interface Props {
 
     before: () => void;
     next: () => void;
+
+    PagesIds: number;
 }
 
 
 function Modal (props: Props){
     const [valueContent, setValueContent] = useState<string>('');
     const [dateContent, setDateContent] = useState<string>('');
+    
 
     const ModalRef = useRef<HTMLDivElement>(null);
 
@@ -57,8 +60,8 @@ function Modal (props: Props){
                 setValueContent(FScardValue);
                 setDateContent(FScardDate);
 
-                console.log(`FSCard value: ${FScardValue}`)
-                console.log(`Card data: ${FScardDate}`)
+                // console.log(`FSCard value: ${FScardValue}`)
+                // console.log(`Card data: ${FScardDate}`)
             } catch (error) {
                 console.error('Error fetching card:', error)
             }
@@ -113,7 +116,7 @@ function Modal (props: Props){
             <div id="ModalContainerMax" className='card' ref={ModalRef}>
                 
                 <div id="ContainerSuperiorCard" className='card-header'>
-                    <BarraSuperiorCard before={props.before} next={props.next} onClick={consolelog}/>
+                    <BarraSuperiorCard PageId={props.PagesIds} before={props.before} next={props.next} onClick={consolelog}/>
                 </div>
 
                 <div id="ContainerConteudoCard">

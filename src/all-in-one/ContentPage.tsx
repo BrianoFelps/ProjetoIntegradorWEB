@@ -25,6 +25,7 @@ function ContentPage() {
     const [TooltipIds, setTooltipIds] = useState<number[]>([]);
     const [WriteIdeaIds, setWriteIdeaIds] = useState<number[]>([]);
     const [FScardIds, setFScardIds] = useState<number[]>([]);
+    const [PagesIds, setPagesIds] = useState<number[]>([]);
 
     // Estado para controlar a visibilidade da moda
     const [isModal1Visible, setIsModal1Visible] = useState(false); 
@@ -42,8 +43,8 @@ function ContentPage() {
             const response = await axios.get(`${EQ_API_URL}/pages/emojiMenu/emoji`);
             const emojiMenuIdsData = response.data.map((emojiMenu: { id: number }) => emojiMenu.id);
             setEmojiMenuIds(emojiMenuIdsData);
-            console.log(emojiMenuIds[1]);
-            console.log(emojiMenuIdsData[1]);
+            // console.log(emojiMenuIds[1]);
+            // console.log(emojiMenuIdsData[1]);
           } catch (error) {
             console.error('Error fetching emoji menu IDs:', error);
           }
@@ -111,7 +112,23 @@ function ContentPage() {
         }
       
         fetchFScardIds();
-
+          const fetchPagesIds = async () =>{
+            try{
+              const response = await axios.get(`${EQ_API_URL}/pages/`);
+  
+              const PagesIdsData = response.data
+              .map((page: { id: number }) => page.id)
+              .filter((id: number) => id > 1); // Filtrar IDs maiores que 1
+  
+              setPagesIds(PagesIdsData);
+              // console.log(`Pages ids: ${PagesIdsData}`)
+            }catch (error) {
+              console.error('Error fetching Pages ids: ', error)
+            }
+          }
+      
+          fetchPagesIds();
+          //Implementar depois nos cards e no container pai (vai ser o superior)
       }, []);
 
     const openModal1 = () =>{
@@ -217,17 +234,26 @@ function ContentPage() {
             <div id='ItensContainer'>
                 
               <NItem NitemId={CardsIds[0]} key={emojiMenuIds[1]} emojiMenuId={emojiMenuIds[1]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} onclick={openModal1} image={image1}/>
+
               <NItem NitemId={CardsIds[1]} key={emojiMenuIds[2]} emojiMenuId={emojiMenuIds[2]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal2} image={image2}/>
+
               <NItem NitemId={CardsIds[2]} key={emojiMenuIds[3]} emojiMenuId={emojiMenuIds[3]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal3} image={image3}/>
+
               <NItem NitemId={CardsIds[3]} key={emojiMenuIds[4]} emojiMenuId={emojiMenuIds[4]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal4} image={image4}/>
+
               <NItem NitemId={CardsIds[4]} key={emojiMenuIds[5]} emojiMenuId={emojiMenuIds[5]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} image={image5} onclick={openModal5}/>
+
             </div>
 
-            {isModal1Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[0]} Titulo='religião' banner={image1} EmojiMenuInsideSeparatorId={emojiMenuIds[1]} ClassName='testeModal' onClose={closeModal1}/>}
-            {isModal2Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[1]} Titulo='masculinidade' banner={image2} EmojiMenuInsideSeparatorId={emojiMenuIds[2]} ClassName='testeModal' onClose={closeModal2}/>}
-            {isModal3Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[2]} Titulo='virtudes católicas' banner={image3} EmojiMenuInsideSeparatorId={emojiMenuIds[3]} ClassName='testeModal' onClose={closeModal3}/>}
-            {isModal4Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[3]} Titulo='filosofia' banner={image4} EmojiMenuInsideSeparatorId={emojiMenuIds[4]} ClassName='testeModal' onClose={closeModal4}/>}
-            {isModal5Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[4]} Titulo='positividade' banner={image5} EmojiMenuInsideSeparatorId={emojiMenuIds[5]} ClassName='testeModal' onClose={closeModal5}/>}
+            {isModal1Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[0]} PagesIds={PagesIds[1]} Titulo='religião' banner={image1} EmojiMenuInsideSeparatorId={emojiMenuIds[1]} ClassName='testeModal' onClose={closeModal1}/>}
+
+            {isModal2Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[1]} PagesIds={PagesIds[2]} Titulo='masculinidade' banner={image2} EmojiMenuInsideSeparatorId={emojiMenuIds[2]} ClassName='testeModal' onClose={closeModal2}/>}
+
+            {isModal3Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[2]} PagesIds={PagesIds[3]} Titulo='virtudes católicas' banner={image3} EmojiMenuInsideSeparatorId={emojiMenuIds[3]} ClassName='testeModal' onClose={closeModal3}/>}
+
+            {isModal4Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[3]} PagesIds={PagesIds[4]} Titulo='filosofia' banner={image4} EmojiMenuInsideSeparatorId={emojiMenuIds[4]} ClassName='testeModal' onClose={closeModal4}/>}
+
+            {isModal5Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[4]} PagesIds={PagesIds[5]} Titulo='positividade' banner={image5} EmojiMenuInsideSeparatorId={emojiMenuIds[5]} ClassName='testeModal' onClose={closeModal5}/>}
         </section>
 
         <section id='NavegacaoBasica'>

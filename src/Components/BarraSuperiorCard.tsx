@@ -14,6 +14,7 @@ interface props {
     onClick: () => void;
     before: () => void;
     next: () => void;
+    PageId: number;
 }
 
 function BarraSuperiorCard (props: props) {
@@ -41,7 +42,7 @@ function BarraSuperiorCard (props: props) {
             <div className='d-none d-sm-flex'>
                 <ClockIcon onClick={props.onClick}/>
             </div>
-                <FavoriteIcon/>
+                <FavoriteIcon PageId={props.PageId}/>
                 <ThreeDotIcon onClick={props.onClick}/>
             </div>
         </div> 

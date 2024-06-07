@@ -7,7 +7,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { EQ_API_URL } from "../utils/EquilibriumApiConfig";
 
-function FavoriteIcon(){
+interface Props {
+    PageId: number;
+}
+
+function FavoriteIcon({ PageId }: Props){
     const [isFavorite, setIsFavorite] = useState(false);
 
     const handleIconClick = () => {
@@ -19,9 +23,9 @@ function FavoriteIcon(){
     const updateBooleanOnBackEnd = async (newFavoriteState: boolean) =>{
         try{
             await axios.put(`${EQ_API_URL}/pages/`, {
-                isFavorited :newFavoriteState, id: 1
+                isFavorited: newFavoriteState, id: PageId
             });
-            console.log(`Estado atualizado no backEnd. Boolean: ${newFavoriteState} `)
+            console.log(`Estado atualizado no backEnd. Boolean: ${newFavoriteState}, id: ${PageId} `)
             
         } catch (error){
             console.error(`Erro ao atualizar o estado do isFavorited: ${error}`)
@@ -32,7 +36,7 @@ function FavoriteIcon(){
         const fetchIsFavorited = async () =>{
             try{
                 const response = await axios.get(`${EQ_API_URL}/pages/`);
-                const page = response.data.find((page: any) => page.id === 1);
+                const page = response.data.find((page: any) => page.id === PageId);
                 if (page){
                     setIsFavorite(page.isFavorited);
                     console.log(`Valor do isFav: ${page.isFavorited}`)
@@ -42,7 +46,7 @@ function FavoriteIcon(){
             }
         }
         fetchIsFavorited()
-    }, [])
+    }, [PageId])
 
     return(
         <div id="FavoriteIcon" onClick={handleIconClick}>
