@@ -93,6 +93,7 @@ div#ThreeDI:hover{
 
 #Drawer {
   width: 30%;
+  justify-content: space-between;
 }
 
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper{
@@ -102,12 +103,13 @@ div#ThreeDI:hover{
 .MuiPaper-root{
   height: 100%;
   border-right: 3px solid #ccc;
-
+  justify-content: space-between;
 }
 
 .MuiDrawer-paper {
   width: 30%;
   padding: .7em;
+  justify-content: space-between;
 }
 
 .DrawerLi{

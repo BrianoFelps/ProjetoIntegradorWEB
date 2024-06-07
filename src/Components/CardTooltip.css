@@ -73,6 +73,9 @@
 
     font-size: 1.3em;
     text-decoration: #ccc 1px underline;
+
+    cursor: pointer;
+    
 }
 
 #ContainerCardT #InsCont .emoji-container{
