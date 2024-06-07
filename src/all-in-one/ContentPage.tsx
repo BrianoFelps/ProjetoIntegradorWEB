@@ -245,15 +245,15 @@ function ContentPage() {
 
             </div>
 
-            {isModal1Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[0]} PagesIds={PagesIds[1]} Titulo='religião' banner={image1} EmojiMenuInsideSeparatorId={emojiMenuIds[1]} ClassName='testeModal' onClose={closeModal1}/>}
+            {isModal1Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[0]} PagesIds={PagesIds[0]} Titulo='religião' banner={image1} EmojiMenuInsideSeparatorId={emojiMenuIds[1]} ClassName='testeModal' onClose={closeModal1}/>}
 
-            {isModal2Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[1]} PagesIds={PagesIds[2]} Titulo='masculinidade' banner={image2} EmojiMenuInsideSeparatorId={emojiMenuIds[2]} ClassName='testeModal' onClose={closeModal2}/>}
+            {isModal2Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[1]} PagesIds={PagesIds[1]} Titulo='masculinidade' banner={image2} EmojiMenuInsideSeparatorId={emojiMenuIds[2]} ClassName='testeModal' onClose={closeModal2}/>}
 
-            {isModal3Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[2]} PagesIds={PagesIds[3]} Titulo='virtudes católicas' banner={image3} EmojiMenuInsideSeparatorId={emojiMenuIds[3]} ClassName='testeModal' onClose={closeModal3}/>}
+            {isModal3Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[2]} PagesIds={PagesIds[2]} Titulo='virtudes católicas' banner={image3} EmojiMenuInsideSeparatorId={emojiMenuIds[3]} ClassName='testeModal' onClose={closeModal3}/>}
 
-            {isModal4Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[3]} PagesIds={PagesIds[4]} Titulo='filosofia' banner={image4} EmojiMenuInsideSeparatorId={emojiMenuIds[4]} ClassName='testeModal' onClose={closeModal4}/>}
+            {isModal4Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[3]} PagesIds={PagesIds[3]} Titulo='filosofia' banner={image4} EmojiMenuInsideSeparatorId={emojiMenuIds[4]} ClassName='testeModal' onClose={closeModal4}/>}
 
-            {isModal5Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[4]} PagesIds={PagesIds[5]} Titulo='positividade' banner={image5} EmojiMenuInsideSeparatorId={emojiMenuIds[5]} ClassName='testeModal' onClose={closeModal5}/>}
+            {isModal5Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[4]} PagesIds={PagesIds[4]} Titulo='positividade' banner={image5} EmojiMenuInsideSeparatorId={emojiMenuIds[5]} ClassName='testeModal' onClose={closeModal5}/>}
         </section>
 
         <section id='NavegacaoBasica'>
