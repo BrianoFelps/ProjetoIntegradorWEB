@@ -97,23 +97,19 @@ div#ThreeDI:hover{
 }
 
 .css-wf16b5{
-  justify-content: space-between;
-}
-
-.css-4t3x6l-MuiPaper-root-MuiDrawer-paper{
-  justify-content: space-between;
+  justify-content: space-between !important;
 }
 
 .MuiPaper-root{
+  justify-content: space-between !important;
   height: 100%;
   border-right: 3px solid #ccc;
-  justify-content: space-between;
 }
 
 .MuiDrawer-paper {
+  justify-content: space-between !important;
   width: 30%;
   padding: .7em;
-  justify-content: space-between;
 }
 
 .DrawerLi{
