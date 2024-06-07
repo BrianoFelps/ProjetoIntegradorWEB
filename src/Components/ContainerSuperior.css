@@ -173,6 +173,10 @@ div#ThreeDI:hover{
   justify-content: space-between;
 }
 
+#Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-wf16b5{
+  justify-content: space-between;
+}
+
 @media (max-width: 590px) {
   .css-4t3x6l-MuiPaper-root-MuiDrawer-paper ul li a,
   .css-4t3x6l-MuiPaper-root-MuiDrawer-paper ul li b{
