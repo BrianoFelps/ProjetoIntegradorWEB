@@ -20,6 +20,7 @@ interface props {
     onMouseLeave: () => void;
     value: string;
     PageId: number;
+    userName: string;
 }
 
 function ContainerSuperior (props: props) {
@@ -49,6 +50,10 @@ function ContainerSuperior (props: props) {
         };
     }, []);
 
+    useEffect(() => {
+        
+    })
+
     return(
         <div id='ContainerSuperior' className='navbar navbar-light bg-light d-flex justify-content-between'>
 
@@ -72,7 +77,7 @@ function ContainerSuperior (props: props) {
                             <a href="" id='AvatarLink'>
                                 <Avatar src={user} className='avatar' alt='Perfil'></Avatar>
                             </a>
-                                <b style={{color: 'black'}}>Página de: Terry Crews</b>
+                                <b style={{color: 'black'}}>Página de: {props.userName}</b>
                         </li>
                         <li className='DrawerLi d-flex align-items-center'>
                             <a href="" className='btn btn-outline-dark'>

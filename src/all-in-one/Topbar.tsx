@@ -5,8 +5,12 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
+interface TopBarProps{
+  userName: string;
+}
 
-function TopBar() {
+
+function TopBar(props: TopBarProps) {
   const [PagesIds, setPagesIds] = useState<number[]>([]);
   
   const handleClick = () => {
@@ -39,7 +43,7 @@ function TopBar() {
   return (
     <>
       <div id='TopbarContainermax'>
-          <ContainerSuperior PageId={PagesIds[0]} value='Ponto de equilíbrio' onMouseEnter={handleClick} onMouseLeave={retirado}></ContainerSuperior>
+          <ContainerSuperior userName={props.userName} PageId={PagesIds[0]} value='Ponto de equilíbrio' onMouseEnter={handleClick} onMouseLeave={retirado}></ContainerSuperior>
           <div id='BgBanner'>
             <img src={Banner} alt="" className='img-fluid' />
           </div>

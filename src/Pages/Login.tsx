@@ -9,12 +9,17 @@ import ModalErro from '../Components/ModalErro';
 import LinkSignUp from '../Components/DirectLink';
 import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
-    const Login = (): JSX.Element => {
+        // Definindo a interface para as props
+    interface LoginProps {
+        setUser: (userName: string) => void;
+    }
+
+    function Login (props: LoginProps){
 
         const [loginEmAndamento, setLoginEmAndamento] = useState(false);
         const [loggedIn, setLoggedIn] = useState(false);
         const [email, setEmail] = useState('');
-        const [senha, setSenha] = useState('');
+        const [password, setPassword] = useState('');
         const [formError, setFormError] = useState('');
         const [showModalErro, setShowModalErro] = useState(false);
 
@@ -37,12 +42,13 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
             
             setLoginEmAndamento(true);
             
-                if(email && senha){
+                if(email && password){
                 try {
-                    const response = await axios.post(`${EQ_API_URL}/pages/Login`, { email, senha });
+                    const response = await axios.post(`${EQ_API_URL}/pages/Login`, { email, password });
                     console.log(response.data); // Lógica para redirecionar o usuário após o login bem-sucedido
+                    const { nome } = response.data;
+                    props.setUser(nome);
                     setLoggedIn(true); // loggedIn ficará true após o login bem-sucedido
-
                 }catch (error) {
                     console.error('Erro ao fazer login:', error);
                     setFormError('Erro ao fazer login. Tente novamente verificando suas credenciais.');
@@ -57,27 +63,27 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
                 setLoginEmAndamento(false);
         };
 
-    const closeModal = () => {
-        setShowModalErro(false);
-        setFormError('');
-    };
+        const closeModal = () => {
+            setShowModalErro(false);
+            setFormError('');
+        };
 
-    const LinkSign = () => {
-        navigate('/SignUp');
-    }
-
-    const simpletext = "Não possui uma conta?";
-    const linktext = "Crie uma aqui!";
-
-        // Se loggedIn for true, redireciona o usuário para a página desejada
-    useEffect(() => {
-        if (loggedIn) {
-            setTimeout(() => {
-                navigate('/homepage');
-                setLoggedIn(false);
-            }, 0);
+        const LinkSign = () => {
+            navigate('/SignUp');
         }
-    }, [loggedIn, navigate]);
+
+        const simpletext = "Não possui uma conta?";
+        const linktext = "Crie uma aqui!";
+
+            // Se loggedIn for true, redireciona o usuário para a página desejada
+        useEffect(() => {
+            if (loggedIn) {
+                setTimeout(() => {
+                    navigate('/homepage');
+                    setLoggedIn(false);
+                }, 0);
+            }
+        }, [loggedIn, navigate]);
 
         return( 
             <div id='AllPageLoginSign'>
@@ -94,7 +100,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
                         </div>
                         <div className="form-groupP" id='form-groupPassword'>
                             <label htmlFor="exInputPassword1" id='labelPassword'>Senha: </label>
-                            <input type="password" value={senha} onChange={(e) => setSenha(e.target.value)}className="form-control" id="InputPassword1" placeholder="Escreva a sua Senha"></input>
+                            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}className="form-control" id="InputPassword1" placeholder="Escreva a sua Senha"></input>
                         </div>
                         <div className="form-group form-check" id='checkgroup'>
                             <input type="checkbox" className="form-check-input" id="exCheck1"></input>

@@ -3,7 +3,12 @@ import ContentPage from '../all-in-one/ContentPage';
 import MidIcon from '../Components/MidIcon';
 import { useEffect } from 'react';
 
-function MasterPage () {
+interface MasterPageProps{
+    userName: string;
+}
+
+
+function MasterPage (props: MasterPageProps) {
 
     useEffect(() => {
 
@@ -19,7 +24,7 @@ function MasterPage () {
 
     return(
         <>
-            <TopBar></TopBar>
+            <TopBar userName={props.userName}></TopBar>
 
             <div id='Separator'>
                 <MidIcon/>

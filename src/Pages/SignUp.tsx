@@ -8,7 +8,11 @@ import DirectLink from '../Components/DirectLink';
 import LoginPageLogo from '../Components/LoginPageLogo';
 import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
-function SignUp(){
+interface SignUpProps{
+    setUser: (userName: string) => void;
+}
+
+function SignUp(props: SignUpProps){
 
     const [loginEmAndamento, setLoginEmAndamento] = useState(false);
     const [signedIn, setSignedIn] = useState(false);
@@ -78,6 +82,9 @@ function SignUp(){
             try{
                 const response = await axios.post(`${EQ_API_URL}/pages/SignUp`, { nomeCompleto, email, password, telefone, isPremium });
                 console.log(response.data);
+                const response2 = await axios.post(`${EQ_API_URL}/pages/Login`, { email, password });
+                const { nome } = response2.data;
+                props.setUser(nome);
                 setSignedIn(true); // signedIn ficará true após o login bem-sucedido
             } catch (error) {
                 console.error('Erro ao fazer cadastro:', error);
