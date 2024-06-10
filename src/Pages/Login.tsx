@@ -22,6 +22,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
         const [password, setPassword] = useState('');
         const [formError, setFormError] = useState('');
         const [showModalErro, setShowModalErro] = useState(false);
+        const [logoVisible, setLogoVisible] = useState(true);
 
         const navigate = useNavigate();
 
@@ -54,11 +55,13 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
                     console.error('Erro ao fazer login:', error);
                     setFormError('Erro ao fazer login. Tente novamente verificando suas credenciais.');
                     setShowModalErro(true);
+                    setLogoVisible(false); // vai sumir com o logo apenas quando aparecer o Modal.
                 }
                 } else {
                     console.error('Email ou senha não preenchidos.');
                     setFormError('Email ou senha não preenchidos.');
                     setShowModalErro(true);
+                    setLogoVisible(false);
                 }
 
                 setLoginEmAndamento(false);
@@ -67,6 +70,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
         const closeModal = () => {
             setShowModalErro(false);
             setFormError('');
+            setLogoVisible(true);
         };
 
         const LinkSign = () => {
@@ -88,8 +92,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
         return( 
             <div id='AllPageLoginSign'>
-                    <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
-                    <LoginPageLogo></LoginPageLogo>
+                    {logoVisible && <LoginPageLogo/>}
                 <div id='CentPage'>
                     <form className='LoginBox'>
                         <div id='titleLogin'>
@@ -112,6 +115,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
                             <button type="button" className="btn btn-primary" id="btnEnter" onClick={fazerLogin} disabled={loginEmAndamento}>Entrar</button>
                         </div>
                         <LinkSignUp onClickDirect = {LinkSign} textExample={simpletext} textLink={linktext}/>
+                        <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
                     </form>
                 </div>
             </div>

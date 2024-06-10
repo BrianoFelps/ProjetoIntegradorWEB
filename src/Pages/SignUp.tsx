@@ -23,6 +23,7 @@ function SignUp(props: SignUpProps){
     const [confirmPassword, setConfirmPassword] = useState('');
     const [formError, setFormError] = useState('');
     const [showModalErro, setShowModalErro] = useState(false);
+    const [logoVisible, setLogoVisible] = useState(true);
 
     const navigate = useNavigate();
 
@@ -48,6 +49,7 @@ function SignUp(props: SignUpProps){
             setSignedIn(false);
             setFormError('Por favor, preencha todos os campos.');
             setShowModalErro(true);
+            setLogoVisible(false);
             setLoginEmAndamento(false);
             return;
         }
@@ -58,6 +60,7 @@ function SignUp(props: SignUpProps){
             setSignedIn(false);
             setFormError('Por favor, insira um email válido.');
             setShowModalErro(true);
+            setLogoVisible(false);
             setLoginEmAndamento(false);
             return;
         }
@@ -67,6 +70,7 @@ function SignUp(props: SignUpProps){
             setSignedIn(false);
             setFormError('As senhas não coincidem.');
             setShowModalErro(true);
+            setLogoVisible(false);
             setLoginEmAndamento(false);
             return;
         }
@@ -91,11 +95,13 @@ function SignUp(props: SignUpProps){
                 console.error('Erro ao fazer cadastro:', error);
                 setFormError('Erro ao fazer cadastro. Tente novamente verificando suas credenciais.');
                 setShowModalErro(true);
+                setLogoVisible(false);
             }
         } else {
             console.error('Credenciais não preenchidas.');
             setFormError('Credenciais não preenchidas.');
             setShowModalErro(true);
+            setLogoVisible(false);
         }
         
         setLoginEmAndamento(false);
@@ -108,6 +114,7 @@ function SignUp(props: SignUpProps){
     const closeModal = () => {
         setShowModalErro(false);
         setFormError('');
+        setLogoVisible(true);
     };
 
     const simpletext = "Já tem uma conta?";
@@ -124,8 +131,7 @@ function SignUp(props: SignUpProps){
 
     return(
         <div id='AllPageLoginSign'>
-                <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
-                <LoginPageLogo></LoginPageLogo>    
+                {logoVisible && <LoginPageLogo/>}
             <div id='CentPage'>
                     <form className='SignUpBox'>
                         <div id='titleSignUp'>
@@ -162,6 +168,7 @@ function SignUp(props: SignUpProps){
                             <button type="button" className="btn btn-primary" id="btnEnter" onClick={handleSubmit} disabled={loginEmAndamento} >Criar Conta</button>
                         </div>
                         <DirectLink onClickDirect = {LinkLogin} textExample={simpletext} textLink={linktext}/>
+                        <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
                     </form>
             </div>
         </div>
