@@ -47,6 +47,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
                     const response = await axios.post(`${EQ_API_URL}/pages/Login`, { email, password });
                     console.log(response.data); // Lógica para redirecionar o usuário após o login bem-sucedido
                     const { nome } = response.data;
+                    localStorage.setItem('userName', nome); // Armazena o nome no localStorage do computador. há tambem o metodo de JWT porém, seria muita coisa no momento.
                     props.setUser(nome);
                     setLoggedIn(true); // loggedIn ficará true após o login bem-sucedido
                 }catch (error) {
@@ -87,6 +88,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
         return( 
             <div id='AllPageLoginSign'>
+                    <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
                     <LoginPageLogo></LoginPageLogo>
                 <div id='CentPage'>
                     <form className='LoginBox'>
@@ -110,7 +112,6 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
                             <button type="button" className="btn btn-primary" id="btnEnter" onClick={fazerLogin} disabled={loginEmAndamento}>Entrar</button>
                         </div>
                         <LinkSignUp onClickDirect = {LinkSign} textExample={simpletext} textLink={linktext}/>
-                        <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
                     </form>
                 </div>
             </div>

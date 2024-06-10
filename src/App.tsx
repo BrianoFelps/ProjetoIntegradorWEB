@@ -4,11 +4,18 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MasterPage from './Pages/MasterPage';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 function App() {
   const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    const storedUserName = localStorage.getItem('userName');
+    if (storedUserName) {
+      setUserName(storedUserName);
+    }
+  }, []);
 
   return (
     <>
