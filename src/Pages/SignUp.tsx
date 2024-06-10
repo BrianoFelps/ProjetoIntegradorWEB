@@ -8,7 +8,11 @@ import DirectLink from '../Components/DirectLink';
 import LoginPageLogo from '../Components/LoginPageLogo';
 import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
-function SignUp(){
+interface SignUpProps{
+    setUser: (userName: string) => void;
+}
+
+function SignUp(props: SignUpProps){
 
     const [loginEmAndamento, setLoginEmAndamento] = useState(false);
     const [signedIn, setSignedIn] = useState(false);
@@ -78,6 +82,10 @@ function SignUp(){
             try{
                 const response = await axios.post(`${EQ_API_URL}/pages/SignUp`, { nomeCompleto, email, password, telefone, isPremium });
                 console.log(response.data);
+                const response2 = await axios.post(`${EQ_API_URL}/pages/Login`, { email, password });
+                const { nome } = response2.data;
+                localStorage.setItem('userName', nome); // Armazena o nome no localStorage do computador. há tambem o metodo de JWT porém, seria muita coisa no momento.
+                props.setUser(nome);
                 setSignedIn(true); // signedIn ficará true após o login bem-sucedido
             } catch (error) {
                 console.error('Erro ao fazer cadastro:', error);
@@ -116,6 +124,7 @@ function SignUp(){
 
     return(
         <div id='AllPageLoginSign'>
+                <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
                 <LoginPageLogo></LoginPageLogo>    
             <div id='CentPage'>
                     <form className='SignUpBox'>
@@ -145,11 +154,14 @@ function SignUp(){
                             <label htmlFor="exInputPassword1" id='labelConfirmPassword'>Confirme a sua Senha: </label>
                             <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="form-control" id="InputConfirmPassword1" placeholder="Confirme a Senha"></input>
                         </div>
+                        <div className="form-group form-check" id='checkgroup'>
+                            <input type="checkbox" className="form-check-input" id="exCheck1"></input>
+                            <label className="form-check-label" htmlFor="exampleCheck1" id='labelCheck'>Lembrar o login</label>
+                        </div>
                         <div id='formbtnSignUp'>
                             <button type="button" className="btn btn-primary" id="btnEnter" onClick={handleSubmit} disabled={loginEmAndamento} >Criar Conta</button>
                         </div>
                         <DirectLink onClickDirect = {LinkLogin} textExample={simpletext} textLink={linktext}/>
-                        <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
                     </form>
             </div>
         </div>
