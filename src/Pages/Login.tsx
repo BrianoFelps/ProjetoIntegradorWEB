@@ -20,6 +20,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
         const [loggedIn, setLoggedIn] = useState(false);
         const [email, setEmail] = useState('');
         const [password, setPassword] = useState('');
+        const [rememberMe, setRememberMe] = useState (false);
         const [formError, setFormError] = useState('');
         const [showModalErro, setShowModalErro] = useState(false);
         const [logoVisible, setLogoVisible] = useState(true);
@@ -30,7 +31,14 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
             InserirClasseLogin();
             console.log(`Login em andamento, valor da const API: ${EQ_API_URL}`)
-    
+
+            const storedEmail = localStorage.getItem('rememberedEmail');
+            const storedPassword = localStorage.getItem('rememberedPassword');
+            if (storedEmail && storedPassword) {
+                setEmail(storedEmail);
+                setPassword(storedPassword);
+                setRememberMe(true);
+            }
         }, []);
     
         function InserirClasseLogin() {
@@ -49,6 +57,14 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
                     console.log(response.data); // Lógica para redirecionar o usuário após o login bem-sucedido
                     const { nome } = response.data;
                     localStorage.setItem('userName', nome); // Armazena o nome no localStorage do computador. há tambem o metodo de JWT porém, seria muita coisa no momento.
+                    if (rememberMe){
+                        localStorage.setItem('rememberedEmail', email);
+                        localStorage.setItem('rememberedPassword', password);
+                    } else{
+                        localStorage.removeItem('rememberedEmail');
+                        localStorage.removeItem('rememberedPassword');    
+                    }
+
                     props.setUser(nome);
                     setLoggedIn(true); // loggedIn ficará true após o login bem-sucedido
                 }catch (error) {
@@ -108,7 +124,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
                             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}className="form-control" id="InputPassword1" placeholder="Escreva a sua Senha"></input>
                         </div>
                         <div className="form-group form-check" id='checkgroup'>
-                            <input type="checkbox" className="form-check-input" id="exCheck1"></input>
+                            <input type="checkbox" className="form-check-input" id="exCheck1" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)}></input>
                             <label className="form-check-label" htmlFor="exampleCheck1" id='labelCheck'>Lembrar do Login</label>
                         </div>
                         <div id='formbtnLogin'>
