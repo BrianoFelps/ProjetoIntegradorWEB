@@ -1,16 +1,36 @@
 import TopBar from '../all-in-one/Topbar.tsx';
 import ContentPage from '../all-in-one/ContentPage';
 import MidIcon from '../Components/MidIcon';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface MasterPageProps{
     userName: string;
 }
 
-
 function MasterPage (props: MasterPageProps) {
+    const [UserId, setUserId] = useState<number | undefined>(undefined);
+    
 
     useEffect(() => {
+
+        const fetchUserIdByLoginOrSignUp = async () =>{
+            try{
+                const IdUsuario = localStorage.getItem('userId');
+                console.log(`IdUsuario: ${IdUsuario}`)
+
+                if(IdUsuario !== null) {
+                    const userIdNumber = parseInt(IdUsuario, 10);
+                    if(!isNaN(userIdNumber))
+                        setUserId(userIdNumber);
+                    else 
+                        console.error(`IdUsuario não é um número válido: ${IdUsuario}`)
+                }
+            } catch (error) {
+                console.error(`Erro ao fazer fetch dos userIds`)
+            }
+        }
+
+        fetchUserIdByLoginOrSignUp();
 
         function RemoverClass() {
             const html = document.documentElement
@@ -24,7 +44,7 @@ function MasterPage (props: MasterPageProps) {
 
     return(
         <>
-            <TopBar userName={props.userName}></TopBar>
+            <TopBar UserId={UserId} userName={props.userName}></TopBar>
 
             <div id='Separator'>
                 <MidIcon/>

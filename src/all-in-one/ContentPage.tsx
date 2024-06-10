@@ -112,20 +112,21 @@ function ContentPage() {
         }
       
         fetchFScardIds();
-          const fetchPagesIds = async () =>{
-            try{
-              const response = await axios.get(`${EQ_API_URL}/pages/`);
-  
-              const PagesIdsData = response.data
-              .map((page: { id: number }) => page.id)
-              .filter((id: number) => id > 1); // Filtrar IDs maiores que 1
-  
-              setPagesIds(PagesIdsData);
-              // console.log(`Pages ids: ${PagesIdsData}`)
-            }catch (error) {
-              console.error('Error fetching Pages ids: ', error)
-            }
+
+        const fetchPagesIds = async () =>{
+          try{
+            const response = await axios.get(`${EQ_API_URL}/pages/`);
+
+            const PagesIdsData = response.data
+            .map((page: { id: number }) => page.id)
+            .filter((id: number) => id > 1); // Filtrar IDs maiores que 1
+
+            setPagesIds(PagesIdsData);
+            // console.log(`Pages ids: ${PagesIdsData}`)
+          }catch (error) {
+            console.error('Error fetching Pages ids: ', error)
           }
+        }
       
           fetchPagesIds();
           //Implementar depois nos cards e no container pai (vai ser o superior)
