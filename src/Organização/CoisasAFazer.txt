@@ -1,2 +1,7 @@
-Fazer o nome da barra lateral ser colocado com base no usuário;
+PRINCIPAL!!!
+Sincronizar o usuário às alterações da página.
+
+
+
 Talvez um botão de alteração de modo escuro e claro;
+Posteriormente criar uma página para cada registro feito;

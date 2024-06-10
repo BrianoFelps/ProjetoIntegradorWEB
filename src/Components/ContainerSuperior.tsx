@@ -14,6 +14,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleInfo, faGear, faGem, faHouse, faMagnifyingGlass, faQuoteLeft, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import MidIcon from './MidIcon'
 import { faCalendar, faObjectGroup } from '@fortawesome/free-regular-svg-icons';
+// import axios from 'axios'
+// import { EQ_API_URL } from '../utils/EquilibriumApiConfig'
 
 interface props {
     onMouseEnter: () => void;
@@ -24,6 +26,8 @@ interface props {
 
 function ContainerSuperior (props: props) {
     const [open, setOpen] = useState(false);
+    // Continua daqui, essa const vai receber o valor do fetch pra ser usada no texto la embaixo, baseada no user que fez login (idealmente)
+    // const [UserName, setUserName] = useState<string[]>([]);
      
     const BarRef = useRef<HTMLDivElement>(null);
 
@@ -34,6 +38,24 @@ function ContainerSuperior (props: props) {
     const ola = () =>{
         alert("Olá")
     }
+
+    // useEffect(() => {
+    //     const fetchUsernameWpage = async () =>{
+    //         try{
+    //             const response = await axios.get(`${EQ_API_URL}/pages/usr`);
+    //             const Page = response.data.find((pages: {id: number}) => pages.id === props.PageId);
+    //             const PageUsername = Page ? Page.nome : '';
+    //             setUserName(PageUsername)
+    //             console.log(`Page: ${Page}`)
+    //             console.log(`UserName: ${UserName}`); 
+    //             console.log(`Pageusername: ${PageUsername}`); 
+    //         } catch (error){
+    //             console.error(`Erro ao fazer fetch no username`)
+    //         }
+    //     }
+
+    //     fetchUsernameWpage();
+    // }, []);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -47,6 +69,7 @@ function ContainerSuperior (props: props) {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
+
     }, []);
 
     return(
@@ -137,7 +160,7 @@ function ContainerSuperior (props: props) {
 
                     <ul id='Inferior'>
                     <li className='DrawerLi d-flex align-items-center'>
-                            <a href="" className='btn btn-outline-dark'>
+                            <a href="#" className='btn btn-outline-dark'>
                                 <FontAwesomeIcon icon={faGem} className='iconeDoDrawer'/>
                                 Adquira o
                                 <i>&nbsp;Premium</i>

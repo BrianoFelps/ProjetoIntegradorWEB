@@ -169,11 +169,11 @@ div#ThreeDI:hover{
   font-weight: bolder;
 }
 
-#Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-4t3x6l-MuiPaper-root-MuiDrawer-paper{
+#Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-4t3x6l-MuiPaper-root-MuiDrawer-paper, #Drawer .alinhamento{
   justify-content: space-between;
 }
 
-#Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-wf16b5, .alinhamento{
+#Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-wf16b5, #Drawer .alinhamento{
   justify-content: space-between;
 }
 
@@ -186,13 +186,13 @@ div#ThreeDI:hover{
 }
 
 @media(max-width:700px){
-  .css-4t3x6l-MuiPaper-root-MuiDrawer-paper, .MuiDrawer-paper, .MuiPaper-root, #Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-wf16b5{
+  .css-4t3x6l-MuiPaper-root-MuiDrawer-paper, .MuiDrawer-paper, .MuiPaper-root, #Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-wf16b5, #Drawer .alinhamento{
     width: 58%;
   }
 }
 
 @media(min-width:1800px){
-  .css-4t3x6l-MuiPaper-root-MuiDrawer-paper, .MuiDrawer-paper, .MuiPaper-root, #Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-wf16b5{
+  .css-4t3x6l-MuiPaper-root-MuiDrawer-paper, .MuiDrawer-paper, .MuiPaper-root, #Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-wf16b5, #Drawer .alinhamento{
     width: 20%;
   }
 }
