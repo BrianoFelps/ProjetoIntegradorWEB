@@ -38,14 +38,21 @@ body{
 
 #ContainerSuperior div#TitleText{
   white-space: nowrap;
-  margin-left: 1px;
+  margin-left: .5em;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 4px 5px;
+  
+  padding: .4em 10em;
+
+  border: solid rgba(0, 0, 0, 0.089);
+  border-width: 0 1px;
+  border-radius: 1em;
+
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -179,7 +186,7 @@ div#ThreeDI:hover{
 
 #Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-4t3x6l-MuiPaper-root-MuiDrawer-paper, #Drawer .alinhamento{
   justify-content: space-between;
-  width: 38%;
+  width: 40%;
 }
 
 #Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-wf16b5, #Drawer .alinhamento{
@@ -197,13 +204,25 @@ div#ThreeDI:hover{
 
 @media(max-width:700px){
   .css-4t3x6l-MuiPaper-root-MuiDrawer-paper, .MuiDrawer-paper, .MuiPaper-root, #Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-wf16b5, #Drawer .alinhamento{
-    width: 58%;
+    width: 50%;
   }
 }
 
-@media(min-width:1800px){
+@media(min-width:701px){
   .css-4t3x6l-MuiPaper-root-MuiDrawer-paper, .MuiDrawer-paper, .MuiPaper-root, #Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-wf16b5, #Drawer .alinhamento{
-    width: 25%;
+    width: 46%;
+  }
+}
+
+@media(min-width:1000px){
+  .css-4t3x6l-MuiPaper-root-MuiDrawer-paper, .MuiDrawer-paper, .MuiPaper-root, #Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-wf16b5, #Drawer .alinhamento{
+    width: 40%;
+  }
+}
+
+@media(min-width:1610px){
+  .css-4t3x6l-MuiPaper-root-MuiDrawer-paper, .MuiDrawer-paper, .MuiPaper-root, #Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-wf16b5, #Drawer .alinhamento{
+    width: 32%;
   }
   .AvatarLi .sair{
     width: 30%;

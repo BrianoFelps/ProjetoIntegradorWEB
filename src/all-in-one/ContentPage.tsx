@@ -18,7 +18,11 @@ import axios from 'axios';
 import "../utils/EquilibriumApiConfig"
 import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
-function ContentPage() {
+interface props {
+  UserId: number | undefined;
+}
+
+function ContentPage(props: props) {
      // Estado para armazenar os IDs dos EmojiMenus
     const [emojiMenuIds, setEmojiMenuIds] = useState<number[]>([]);
     const [CardsIds, setCardsIds] = useState<number[]>([]);
@@ -91,11 +95,11 @@ function ContentPage() {
             const WriteIdeaIdsData = response.data.map((elements: { id: number }) => elements.id);
             setWriteIdeaIds(WriteIdeaIdsData); 
 
-            // console.log(`Id's dos Input Tooltip's: ${TooltipIds}`)
-            // console.log(`TooltipIdsData: ${TooltipIdsData}`)
+            // console.log(`Id's dos Input WI'S: ${WriteIdeaIdsData}`)
+            // console.log(`WI response: ${response.data}`)
             
           } catch (error) {
-            console.error('Error fetching Cards ids: ', error)
+            console.error('Error fetching WIs ids: ', error)
           }
         }
       
@@ -235,7 +239,7 @@ function ContentPage() {
 
         <EmojiMenu key={emojiMenuIds[0]} emojiMenuId={emojiMenuIds[0]} onOpen={() => {}} onClose={() => {}} />
                 
-        <Input/>
+        <Input UserId={props.UserId}/>
 
         <InputWriteIdea InputWriteIdeaId={0} classNm='top'></InputWriteIdea>
       </section>

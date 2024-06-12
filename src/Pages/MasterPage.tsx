@@ -10,11 +10,11 @@ interface MasterPageProps{
 function MasterPage (props: MasterPageProps) {
     const [UserId, setUserId] = useState<number | undefined>(undefined);
     
-
     useEffect(() => {
 
         const fetchUserIdByLoginOrSignUp = async () =>{
             try{
+                // EXEMPLO DO IDUSUARIO COM LOCALSTORAGE
                 const IdUsuario = localStorage.getItem('userId');
                 console.log(`IdUsuario: ${IdUsuario}`)
 
@@ -50,7 +50,7 @@ function MasterPage (props: MasterPageProps) {
                 <MidIcon/>
             </div>
 
-            <ContentPage/>
+            <ContentPage UserId={UserId}/>
         </>
     )
 }

@@ -60,6 +60,10 @@ function ContainerSuperior (props: props) {
         navigate('/');
     }
 
+    const UserInfoLink = () =>{
+        navigate('/User');
+    }
+
     // Gravatar
     const defaultImage = 'identicon';
     const size = 200;
@@ -86,7 +90,7 @@ function ContainerSuperior (props: props) {
                 >
                     <ul id='ParteSuperiorD'>
                         <li className='DrawerLi d-flex align-items-center AvatarLi justify-content-between'>
-                            <a href="" id='AvatarLink' className='d-flex'>
+                            <a href="" id='AvatarLink' className='d-flex' onClick={UserInfoLink}>
                                 <Avatar 
                                 src={gravatarURL} 
                                 className='avatar'

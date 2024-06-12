@@ -3,7 +3,11 @@ import './InputTypeText.css';
 import axios from 'axios';
 import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
-function Input() {
+interface props {
+    UserId: number | undefined;
+}
+
+function Input(props: props) {
     const [valueContent, setValueContent] = useState<string>('');
     const [ContentLoaded, setContentLoaded] = useState(false);
 
@@ -16,10 +20,11 @@ function Input() {
         // Função para buscar os valores correspondentes aos Elementos
         const fetchContentValueAndCategory = async () => {
             try{
+
                 const response = await axios.get(`${EQ_API_URL}/pages/Elm/props`);
 
-                const titleValue = response.data.find((element: any) => element.category === 'InputTitle')?.value;
-                const textAreaValue = response.data.find((element: any) => element.category === 'InputText')?.value;
+                const titleValue = response.data.find((element: any) => element.category === 'InputTitle' && element.user_id == props.UserId)?.value;
+                const textAreaValue = response.data.find((element: any) => element.category === 'InputText' && element.user_id == props.UserId)?.value;
 
                 setValueContent(titleValue || '');
                 setContent(textAreaValue || '');
@@ -58,24 +63,26 @@ function Input() {
             }
         };
 
-    }, []);
+    }, [props.UserId]);
 
     const updateContentToBackend = async (updatedValue: string, inputType: string) => {
+        console.log(`Valor do user_id: ${props.UserId}`);
         try {
-            let IdAndIdProperty: number;
+            let IdProperty: number;
             // Determine qual propriedade usar com base no tipo de entrada
             if (inputType === 'title') {
-                IdAndIdProperty = 2; // Use o id_property correspondente ao título
+                IdProperty = 2; // Use o id_property correspondente ao título
             } else if (inputType === 'textarea') {
-                IdAndIdProperty = 3; // Use o id_property correspondente à área de texto
+                IdProperty = 3; // Use o id_property correspondente à área de texto
             } else {
                 throw new Error('Tipo de entrada não reconhecido');
             }
 
-           await axios.put(`${EQ_API_URL}/pages/Elm`, { id_property: IdAndIdProperty, value: updatedValue, id: IdAndIdProperty });
+            console.log(`Valor da id_property: ${IdProperty}`)
+
+           await axios.put(`${EQ_API_URL}/pages/Elm`, {value: updatedValue, id_property: IdProperty, user_id: props.UserId });
 
             console.log(`Valor atualizado no banco de dados. Valor: ${updatedValue}`);
-
             
         } catch (error) {
             console.error(`Erro ao atualizar o valor: ${error}`);
