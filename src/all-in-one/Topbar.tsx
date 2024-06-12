@@ -12,6 +12,8 @@ interface TopBarProps{
 
 function TopBar(props: TopBarProps) {
   const [PagesIds, setPagesIds] = useState<number>();
+  const [PageName, setPageName] = useState<string>('');
+  const [UserEmail, setUserEmail] = useState<string>('');
   
   const handleClick = () => {
     // sua função personalizada aqui
@@ -27,9 +29,20 @@ function TopBar(props: TopBarProps) {
     try {
       const response = await axios.get(`${EQ_API_URL}/pages/User/${props.UserId}`);
       console.log('Response data:', response.data);
+
       const PageIdData = response.data.page_id;
-      console.log(`PageIdData: ${PageIdData}`);
+      // console.log(`PageIdData: ${PageIdData}`);
       setPagesIds(PageIdData);
+
+      const PageNameData = response.data.pagina;
+      localStorage.setItem('PageName', PageNameData);
+      // console.log(`NomePagina: ${PageNameData}`)
+      setPageName(PageNameData);
+
+      const UserEmailData = response.data.email;
+      // console.log(`UserEmailData: ${UserEmailData}`)
+      setUserEmail(UserEmailData);
+
     } catch (error){
       console.error(`Erro ao fazer fetch das pagesIds: ${error}`);
     }
@@ -46,9 +59,10 @@ function TopBar(props: TopBarProps) {
       <div id='TopbarContainermax'>
         {PagesIds !== undefined && (
           <ContainerSuperior 
+            email= {UserEmail}
             userName={props.userName} 
             PageId={PagesIds} 
-            value='Ponto de equilíbrio' 
+            value={PageName}
             onMouseEnter={handleClick} 
             onMouseLeave={retirado} 
           />

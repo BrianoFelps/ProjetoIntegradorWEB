@@ -1,7 +1,6 @@
 PRINCIPAL!!!
 Sincronizar o usuário às alterações da página.
-
-
+Adicionar página onde, ao clicar no ícone de usuário, seja redirecionado a ela.
 
 Talvez um botão de alteração de modo escuro e claro;
 Posteriormente criar uma página para cada registro feito;

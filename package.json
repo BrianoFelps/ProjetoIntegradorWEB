@@ -21,10 +21,12 @@
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
     "date-fns": "^3.6.0",
     "dotenv": "^16.4.5",
     "emoji-picker-react": "^4.9.2",
     "express": "^4.19.2",
+    "gravatar": "^1.8.2",
     "jsonwebtoken": "^9.0.2",
     "mysql": "^2.18.1",
     "mysql2": "^3.9.6",
@@ -40,6 +42,7 @@
     "styled-components": "^6.1.11"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
     "@types/material-ui": "^0.21.17",
     "@types/node": "^20.12.7",
     "@types/react": "^18.2.66",

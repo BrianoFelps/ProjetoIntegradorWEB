@@ -130,6 +130,10 @@ div#ThreeDI:hover{
   height: 40px;
 }
 
+.AvatarLi .sair{
+  width: 25%;
+}
+
 #Drawer #AvatarLink {
   padding: 0;
   width: auto;
@@ -138,8 +142,12 @@ div#ThreeDI:hover{
 }
 
 #Drawer #AvatarLink .avatar:hover{
-  box-shadow: 0px 0px 10px black;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, .15);
   transition: .2s;
+}
+
+#Drawer .DrawerLi #AvatarLink b:hover{
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
 }
 
 #Drawer ul li a{
@@ -171,6 +179,7 @@ div#ThreeDI:hover{
 
 #Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-4t3x6l-MuiPaper-root-MuiDrawer-paper, #Drawer .alinhamento{
   justify-content: space-between;
+  width: 38%;
 }
 
 #Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-wf16b5, #Drawer .alinhamento{
@@ -179,7 +188,8 @@ div#ThreeDI:hover{
 
 @media (max-width: 590px) {
   .css-4t3x6l-MuiPaper-root-MuiDrawer-paper ul li a,
-  .css-4t3x6l-MuiPaper-root-MuiDrawer-paper ul li b{
+  .css-4t3x6l-MuiPaper-root-MuiDrawer-paper ul li b, 
+  .sair{
     font-size: .8em;
   }
   
@@ -193,6 +203,9 @@ div#ThreeDI:hover{
 
 @media(min-width:1800px){
   .css-4t3x6l-MuiPaper-root-MuiDrawer-paper, .MuiDrawer-paper, .MuiPaper-root, #Drawer .MuiPaper-root, #Drawer .MuiPaper-elevation, #Drawer .MuiPaper-elevation16, #Drawer .MuiDrawer-paper, #Drawer .MuiDrawer-paperAnchorLeft, #Drawer .css-wf16b5, #Drawer .alinhamento{
-    width: 20%;
+    width: 25%;
+  }
+  .AvatarLi .sair{
+    width: 30%;
   }
 }

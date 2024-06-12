@@ -9,11 +9,13 @@ import ThreeDotIcon from './ThreeDotIcon'
 import TripleBar from './TripleBar'
 import { useEffect, useRef, useState } from 'react'
 import { Drawer, Avatar } from '@mui/material'
-import user from '../assets/terrycrews.webp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleInfo, faGear, faGem, faHouse, faMagnifyingGlass, faQuoteLeft, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import MidIcon from './MidIcon'
 import { faCalendar, faObjectGroup } from '@fortawesome/free-regular-svg-icons';
+import md5 from 'crypto-js/md5';
+import { useNavigate } from 'react-router'
+// import { Navigate } from 'react-router'
 // import axios from 'axios'
 // import { EQ_API_URL } from '../utils/EquilibriumApiConfig'
 
@@ -23,13 +25,12 @@ interface props {
     value: string;
     PageId: number;
     userName: string;
+    email: string;
 }
 
 function ContainerSuperior (props: props) {
     const [open, setOpen] = useState(false);
-    // Continua daqui, essa const vai receber o valor do fetch pra ser usada no texto la embaixo, baseada no user que fez login (idealmente)
-    // const [UserName, setUserName] = useState<string[]>([]);
-     
+    const navigate = useNavigate();
     const BarRef = useRef<HTMLDivElement>(null);
 
     const toggleDrawer = (newOpen: boolean) => () =>{
@@ -39,24 +40,6 @@ function ContainerSuperior (props: props) {
     const ola = () =>{
         alert("Olá")
     }
-
-    // useEffect(() => {
-    //     const fetchUsernameWpage = async () =>{
-    //         try{
-    //             const response = await axios.get(`${EQ_API_URL}/pages/usr`);
-    //             const Page = response.data.find((pages: {id: number}) => pages.id === props.PageId);
-    //             const PageUsername = Page ? Page.nome : '';
-    //             setUserName(PageUsername)
-    //             console.log(`Page: ${Page}`)
-    //             console.log(`UserName: ${UserName}`); 
-    //             console.log(`Pageusername: ${PageUsername}`); 
-    //         } catch (error){
-    //             console.error(`Erro ao fazer fetch no username`)
-    //         }
-    //     }
-
-    //     fetchUsernameWpage();
-    // }, []);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -73,9 +56,15 @@ function ContainerSuperior (props: props) {
 
     }, []);
 
-    useEffect(() => {
-        
-    })
+    const InitialLink = () =>{
+        navigate('/');
+    }
+
+    // Gravatar
+    const defaultImage = 'identicon';
+    const size = 200;
+    const hash = md5(props.email.trim().toLowerCase()).toString();
+    const gravatarURL = `https://www.gravatar.com/avatar/${hash}?s=${size}&d=${defaultImage}`;
 
     return(
         <div id='ContainerSuperior' className='navbar navbar-light bg-light d-flex justify-content-between'>
@@ -96,11 +85,19 @@ function ContainerSuperior (props: props) {
                 classes={{ paper: 'MuiDrawer-paper alinhamento' }}
                 >
                     <ul id='ParteSuperiorD'>
-                        <li className='DrawerLi d-flex align-items-center AvatarLi'>
-                            <a href="" id='AvatarLink'>
-                                <Avatar src={user} className='avatar' alt='Perfil'></Avatar>
-                            </a>
+                        <li className='DrawerLi d-flex align-items-center AvatarLi justify-content-between'>
+                            <a href="" id='AvatarLink' className='d-flex'>
+                                <Avatar 
+                                src={gravatarURL} 
+                                className='avatar'
+                                alt='Perfil' 
+                                onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => 
+                                {e.currentTarget.src = '../assets/avatarIcon.png' 
+                                }}/>
                                 <b style={{color: 'black'}}>Página de: {props.userName}</b>
+                            </a>
+
+                            <button className='btn btn-danger sair' onClick={InitialLink}>Sair</button>
                         </li>
                         <li className='DrawerLi d-flex align-items-center'>
                             <a href="" className='btn btn-outline-dark'>
@@ -127,7 +124,7 @@ function ContainerSuperior (props: props) {
                         <label className='align-self-start mb-2'>Páginas</label>
                         <li className='DrawerLi d-flex align-items-center justify-content-center flex-column mb-5 pag'>
                             <a href="" className='btn btn-outline-dark active'>
-                                <MidIcon className='iconeDoDrawer'/>Ponto de equilíbrio
+                                <MidIcon className='iconeDoDrawer'/>{props.value}
                             </a>
 
                         </li>

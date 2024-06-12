@@ -26,6 +26,7 @@ function ContentPage() {
     const [WriteIdeaIds, setWriteIdeaIds] = useState<number[]>([]);
     const [FScardIds, setFScardIds] = useState<number[]>([]);
     const [PagesIds, setPagesIds] = useState<number[]>([]);
+    const [PageName, setPageName] = useState<String>('');
 
     // Estado para controlar a visibilidade da moda
     const [isModal1Visible, setIsModal1Visible] = useState(false); 
@@ -113,7 +114,7 @@ function ContentPage() {
       
         fetchFScardIds();
 
-        const fetchPagesIds = async () =>{
+        const fetchPagesIdsAndName = async () =>{
           try{
             const response = await axios.get(`${EQ_API_URL}/pages/`);
 
@@ -122,13 +123,23 @@ function ContentPage() {
             .filter((id: number) => id > 1); // Filtrar IDs maiores que 1
 
             setPagesIds(PagesIdsData);
+
+            const getPageNameLS= localStorage.getItem('PageName');
+
+            if(getPageNameLS !== null){
+              const getPageName = getPageNameLS.toString();
+              if(getPageName !== null)
+                setPageName(getPageName)
+              else
+                console.error(`O nome da página não é uma string válida: ${getPageNameLS}`);
+            }
             // console.log(`Pages ids: ${PagesIdsData}`)
           }catch (error) {
             console.error('Error fetching Pages ids: ', error)
           }
         }
       
-          fetchPagesIds();
+          fetchPagesIdsAndName();
           //Implementar depois nos cards e no container pai (vai ser o superior)
       }, []);
 
@@ -218,7 +229,7 @@ function ContentPage() {
       <section id='top'>
         <Title>
           <h2>
-              Ponto de equilíbrio
+              {PageName}
           </h2>
         </Title>
 
