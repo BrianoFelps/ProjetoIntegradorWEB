@@ -10,7 +10,6 @@ interface props {
 function Input(props: props) {
     const [valueContent, setValueContent] = useState<string>('');
     const [ContentLoaded, setContentLoaded] = useState(false);
-
     const [content, setContent] = useState('');
 
     const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -22,16 +21,23 @@ function Input(props: props) {
             try{
 
                 const response = await axios.get(`${EQ_API_URL}/pages/Elm/props`);
-
                 const titleValue = response.data.find((element: any) => element.category === 'InputTitle' && element.user_id == props.UserId)?.value;
+                console.log(`titleValues: ${titleValue}`)
                 const textAreaValue = response.data.find((element: any) => element.category === 'InputText' && element.user_id == props.UserId)?.value;
+                console.log(`textAreaValue: ${textAreaValue}`)
 
                 setValueContent(titleValue || '');
                 setContent(textAreaValue || '');
                 setContentLoaded(true);
 
                 console.log(content)
-                
+
+                if (!titleValue) {
+                    await axios.post(`${EQ_API_URL}/pages/Elm`, { id_property: 2, value: '', user_id: props.UserId, page_id: 1 });
+                  }
+                if (!textAreaValue) {
+                    await axios.post(`${EQ_API_URL}/pages/Elm`, { id_property: 3, value: '', user_id: props.UserId, page_id: 1 });
+                }
             } catch (error) {
                 console.error(`Error fetching element value: ${error}`);
             }
@@ -80,9 +86,14 @@ function Input(props: props) {
 
             console.log(`Valor da id_property: ${IdProperty}`)
 
-           await axios.put(`${EQ_API_URL}/pages/Elm`, {value: updatedValue, id_property: IdProperty, user_id: props.UserId });
-
-            console.log(`Valor atualizado no banco de dados. Valor: ${updatedValue}`);
+            const response = await axios.put(`${EQ_API_URL}/pages/Elm`, { value: updatedValue, id_property: IdProperty, user_id: props.UserId });
+            if (response.status === 404) {
+                // Se a atualização falhar porque o elemento não existe, crie um novo
+                await axios.post(`${EQ_API_URL}/pages/Elm`, { value: updatedValue, id_property: IdProperty, user_id: props.UserId, page_id: 1 });
+                console.log(`Novo valor inserido no banco de dados. Valor: ${updatedValue}`);
+            } else {
+                console.log(`Valor atualizado no banco de dados. Valor: ${updatedValue}`);
+            }
             
         } catch (error) {
             console.error(`Erro ao atualizar o valor: ${error}`);
