@@ -1,6 +1,9 @@
 PRINCIPAL!!!
 Sincronizar o usuário às alterações da página.
 Adicionar página onde, ao clicar no ícone de usuário, seja redirecionado a ela.
+Sincronizar outros elementos com base na alteração do inputtypetext.tsx (API elementsController).
+Sincronizar a criação de usuário e login para adicionar page_id, e fazer cascade com o user_id nos outros quesitos do BD.
+
 
 Talvez um botão de alteração de modo escuro e claro;
 Posteriormente criar uma página para cada registro feito;

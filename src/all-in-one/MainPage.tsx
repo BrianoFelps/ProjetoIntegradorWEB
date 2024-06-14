@@ -8,7 +8,7 @@ import Input from "../Components/inputtypetext"
 
 
 function MainPage() {
-  
+
     return (
       <>
         <div id='Separator'>
@@ -26,7 +26,7 @@ function MainPage() {
             onOpen={() => {}} 
             onClose={() => {}}
             emojiMenuId={1}/>
-            <Input/>
+            <Input UserId={undefined}/>
             <InputWriteIdea InputWriteIdeaId={0}></InputWriteIdea>
           </section>
           
