@@ -16,21 +16,21 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
     function Login (props: LoginProps){
 
-        const [loginEmAndamento, setLoginEmAndamento] = useState(false);
-        const [loggedIn, setLoggedIn] = useState(false);
-        const [email, setEmail] = useState('');
-        const [password, setPassword] = useState('');
-        const [rememberMe, setRememberMe] = useState (false);
-        const [formError, setFormError] = useState('');
-        const [showModalErro, setShowModalErro] = useState(false);
-        const [logoVisible, setLogoVisible] = useState(true);
+        const [loginEmAndamento, setLoginEmAndamento] = useState(false); // determina quando o login está em andamento ou não, pois poderia causar problemas.
+        const [loggedIn, setLoggedIn] = useState(false); //para direcionar o usuario da forma correta sem bugs.
+        const [email, setEmail] = useState(''); //usado para inserir o valor do email, podendo fazer requisiçoes ao BD e outras coisas.
+        const [password, setPassword] = useState(''); //usado para inserir o valor da senha, podendo fazer requisiçoes ao BD e outras coisas.
+        const [rememberMe, setRememberMe] = useState (false); //função do lembrar do login
+        const [formError, setFormError] = useState(''); // mensagem do modal
+        const [showModalErro, setShowModalErro] = useState(false); //pra mostrar o modal de erro na hora que você quiser.
+        const [logoVisible, setLogoVisible] = useState(true); //logo visivel ou não na hora de aparecer o modal
 
         const navigate = useNavigate();
 
         useEffect(() => {
 
             InserirClasseLogin();
-            console.log(`Login em andamento, valor da const API: ${EQ_API_URL}`)
+            console.log(`Login em andamento, valor da const API: ${EQ_API_URL}`);
 
             const storedEmail = localStorage.getItem('rememberedEmail');
             const storedPassword = localStorage.getItem('rememberedPassword');
@@ -42,7 +42,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
         }, []);
     
         function InserirClasseLogin() {
-            const html = document.documentElement
+            const html = document.documentElement;
             html.classList.add("Login");
             html.classList.replace("SignUp", "Login");
         }

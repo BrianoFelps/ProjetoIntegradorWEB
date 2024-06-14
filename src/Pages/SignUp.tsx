@@ -14,18 +14,18 @@ interface SignUpProps{
 
 function SignUp(props: SignUpProps){
 
-    const [loginEmAndamento, setLoginEmAndamento] = useState(false);
-    const [signedIn, setSignedIn] = useState(false);
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [formError, setFormError] = useState('');
-    const [showModalErro, setShowModalErro] = useState(false);
-    const [logoVisible, setLogoVisible] = useState(true);
+    const [loginEmAndamento, setLoginEmAndamento] = useState(false); // determina quando o login está em andamento ou não, pois poderia causar problemas.
+    const [signedIn, setSignedIn] = useState(false); //para direcionar o usuario da forma correta sem bugs.
+    const [firstName, setFirstName] = useState(''); //esse é o valor do primeiro nome que o usuario colocará, há uma função que junta os nomes sem ficar tudo junto sem espaço.
+    const [lastName, setLastName] = useState(''); //esse é o valor do apelido ou sobrenome do usuario.
+    const [email, setEmail] = useState(''); //usado para inserir o valor do email, podendo fazer requisiçoes ao BD e outras coisas.
+    const [password, setPassword] = useState(''); //usado para inserir o valor da senha, podendo fazer requisiçoes ao BD e outras coisas.
+    const [confirmPassword, setConfirmPassword] = useState(''); //valor de confirmação da senha, apenas para garantir se o usuario preencheu corretamente.
+    const [formError, setFormError] = useState(''); // mensagem do modal
+    const [showModalErro, setShowModalErro] = useState(false); //pra mostrar o modal de erro na hora que você quiser.
+    const [logoVisible, setLogoVisible] = useState(true); //logo visivel ou não na hora de aparecer o modal
 
-    const navigate = useNavigate();
+    const navigate = useNavigate(); //navega o usuario pra outra pagina.
 
     useEffect(() => {
 
@@ -39,6 +39,8 @@ function SignUp(props: SignUpProps){
         html.classList.replace("Login", "SignUp");
     }
 
+
+    //logica de quando a pessoa vai clicar no botao de registrar:
 
     const handleSubmit = async () => {
 
@@ -160,10 +162,10 @@ function SignUp(props: SignUpProps){
                             <label htmlFor="exInputPassword1" id='labelConfirmPassword'>Confirme a sua Senha: </label>
                             <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="form-control" id="InputConfirmPassword1" placeholder="Confirme a Senha"></input>
                         </div>
-                        <div className="form-group form-check" id='checkgroup'>
+                        {/* <div className="form-group form-check" id='checkgroup'>
                             <input type="checkbox" className="form-check-input" id="exCheck1"></input>
                             <label className="form-check-label" htmlFor="exampleCheck1" id='labelCheck'>Lembrar o login</label>
-                        </div>
+                        </div> */}
                         <div id='formbtnSignUp'>
                             <button type="button" className="btn btn-primary" id="btnEnter" onClick={handleSubmit} disabled={loginEmAndamento} >Criar Conta</button>
                         </div>
