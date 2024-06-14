@@ -25,23 +25,23 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
         const [showModalErro, setShowModalErro] = useState(false); //pra mostrar o modal de erro na hora que você quiser.
         const [logoVisible, setLogoVisible] = useState(true); //logo visivel ou não na hora de aparecer o modal
 
-        const navigate = useNavigate();
+        const navigate = useNavigate(); //navega o usuario pra outra pagina.
 
         useEffect(() => {
 
             InserirClasseLogin();
             console.log(`Login em andamento, valor da const API: ${EQ_API_URL}`);
 
-            const storedEmail = localStorage.getItem('rememberedEmail');
+            const storedEmail = localStorage.getItem('rememberedEmail'); // feito para armazenar as informações e inseri-las no momento que o usuario entra.
             const storedPassword = localStorage.getItem('rememberedPassword');
-            if (storedEmail && storedPassword) {
+            if (storedEmail && storedPassword) { //se a caixa de lembrar login for marcada, será inserido os dados do login efetuado anteriormente dentro dos inputs. 
                 setEmail(storedEmail);
                 setPassword(storedPassword);
                 setRememberMe(true);
             }
         }, []);
     
-        function InserirClasseLogin() {
+        function InserirClasseLogin() { // para evitar inserção de css dessa pagina na pagina principal ou na de cadastro.
             const html = document.documentElement;
             html.classList.add("Login");
             html.classList.replace("SignUp", "Login");
@@ -56,16 +56,18 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
                     const response = await axios.post(`${EQ_API_URL}/pages/Login`, { email, password });
                     console.log(response.data); // Lógica para redirecionar o usuário após o login bem-sucedido
                     const { nome } = response.data;
-                    localStorage.setItem('userName', nome); // Armazena o nome no localStorage do computador. há tambem o metodo de JWT porém, seria muita coisa no momento.
-                    if (rememberMe){
-                        localStorage.setItem('rememberedEmail', email);
+                    localStorage.setItem('userName', nome); // Armazena o nome no localStorage do computador. Implementado para guardar o nome do user que fez login na pagina principal. 
+                    //há tambem o metodo de JWT porém, seria muita coisa no momento.
+
+                    if (rememberMe){ // se o usuario clicar ou nao na opção lembrar do login, ele puxa o true ou false desse obj
+                        localStorage.setItem('rememberedEmail', email); // ele ja deixa os inputs inseridos com as informações do login anterior caso o usuario tenha marcado a caixa.
                         localStorage.setItem('rememberedPassword', password);
                     } else{
-                        localStorage.removeItem('rememberedEmail');
+                        localStorage.removeItem('rememberedEmail'); // remove do localStorage a informação inserida caso o usuario nao tenha clicado na opção.
                         localStorage.removeItem('rememberedPassword');    
                     }
 
-                    props.setUser(nome);
+                    props.setUser(nome); //props para guardar o nome do usuario.
                     setLoggedIn(true); // loggedIn ficará true após o login bem-sucedido
                 }catch (error) {
                     console.error('Erro ao fazer login:', error);
@@ -93,10 +95,10 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
             navigate('/SignUp');
         }
 
-        const simpletext = "Não possui uma conta?";
-        const linktext = "Crie uma aqui!";
+        const simpletext = "Não possui uma conta?"; // texto para o usuario ver
+        const linktext = "Crie uma aqui!"; //e decidir clicar pra adicionar a conta.
 
-            // Se loggedIn for true, redireciona o usuário para a página desejada
+        // Se loggedIn for true, redireciona o usuário para a página desejada
         useEffect(() => {
             if (loggedIn) {
                 setTimeout(() => {
