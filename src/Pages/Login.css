@@ -201,7 +201,7 @@
   .LoginBox{
     width: max-content; 
     background-color: rgb(241, 234, 234);
-    border: 8px double black;
+    border: 8px double rgb(138, 96, 96);
     padding: 5px;
   }
 
@@ -253,9 +253,9 @@
   }
 
   .LoginBox{
-    width: max-content; 
+    width: max-content;
     background-color: rgb(241, 234, 234);
-    border: 8px double black;
+    border: 8px double rgb(138, 96, 96);
     padding: 5px;
   }
 

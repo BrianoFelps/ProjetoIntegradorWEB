@@ -2,16 +2,16 @@ import './DirectLink.css'
 
 
 interface DirectLinkProps{
-    textExample?: string;
+    simpleText?: string;
     textLink?: string;
     onClickDirect?: () => void;
 }
 
-const DirectLink: React.FC<DirectLinkProps> = ({textExample, onClickDirect, textLink}) => {
+const DirectLink: React.FC<DirectLinkProps> = ({simpleText, onClickDirect, textLink}) => {
 
     return(
         <div className='signUpLink'>
-            <p className='suLink'>{textExample}</p>
+            <p className='suLink'>{simpleText}</p>
             <p className='boldLink' onClick={onClickDirect}>{textLink}</p>
         </div>
     );

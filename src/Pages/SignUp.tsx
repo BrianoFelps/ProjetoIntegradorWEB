@@ -79,9 +79,9 @@ function SignUp(props: SignUpProps){
 
         const nomeCompleto = firstName + ' ' + lastName;
 
-        const telefone = 1;
+        const telefone = 1; // esse é no caso de criar um input de telefone, porém acho que não daria tempo. Acho que apenas fora do curso. (string ne paizao)
 
-        const isPremium = 1;
+        const isPremium = 1; // acredito que um booleanzinho da massa, mas é o mesmo caso do telefone. Fora do curso.
 
         
         if(nomeCompleto && email && password && telefone && isPremium){
@@ -94,13 +94,11 @@ function SignUp(props: SignUpProps){
                 props.setUser(nome);
                 setSignedIn(true); // signedIn ficará true após o login bem-sucedido
             } catch (error) {
-                console.error('Erro ao fazer cadastro:', error);
                 setFormError('Erro ao fazer cadastro. Tente novamente verificando suas credenciais.');
                 setShowModalErro(true);
                 setLogoVisible(false);
             }
         } else {
-            console.error('Credenciais não preenchidas.');
             setFormError('Credenciais não preenchidas.');
             setShowModalErro(true);
             setLogoVisible(false);
@@ -109,18 +107,18 @@ function SignUp(props: SignUpProps){
         setLoginEmAndamento(false);
     };
 
-    const LinkLogin = () => {
-        navigate('/');
-    }
-
     const closeModal = () => {
         setShowModalErro(false);
         setFormError('');
         setLogoVisible(true);
     };
 
-    const simpletext = "Já tem uma conta?";
-    const linktext = "Faça o Login!";
+    const LinkLogin = () => { //ao clicar no texto especifico, vai direcionar para a pagina de login.
+        navigate('/');
+    }
+
+    const simpletext = "Não possui uma conta?"; // texto
+    const textlink = "Crie uma aqui!"; //texto para o usuario criar a conta.
 
     useEffect(() => {
         if (signedIn) {
@@ -162,14 +160,10 @@ function SignUp(props: SignUpProps){
                             <label htmlFor="exInputPassword1" id='labelConfirmPassword'>Confirme a sua Senha: </label>
                             <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="form-control" id="InputConfirmPassword1" placeholder="Confirme a Senha"></input>
                         </div>
-                        {/* <div className="form-group form-check" id='checkgroup'>
-                            <input type="checkbox" className="form-check-input" id="exCheck1"></input>
-                            <label className="form-check-label" htmlFor="exampleCheck1" id='labelCheck'>Lembrar o login</label>
-                        </div> */}
                         <div id='formbtnSignUp'>
                             <button type="button" className="btn btn-primary" id="btnEnter" onClick={handleSubmit} disabled={loginEmAndamento} >Criar Conta</button>
                         </div>
-                        <DirectLink onClickDirect = {LinkLogin} textExample={simpletext} textLink={linktext}/>
+                        <DirectLink onClickDirect = {LinkLogin} simpleText={simpletext} textLink={textlink}/>
                         <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
                     </form>
             </div>

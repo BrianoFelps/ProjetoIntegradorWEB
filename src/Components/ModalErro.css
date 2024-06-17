@@ -66,17 +66,17 @@
 .modal-content {
     justify-items: center;
     display: flex;
-    background-color: rgb(114, 113, 113);
+    background-color: rgb(173, 34, 34);
     border-radius: 5px;
     max-width: 500px;
-    height: 40%;
+    height: 100%;
     width: 100%;
     animation: colorChange2 3s infinite alternate;
 }
 
 @keyframes colorChange2 {
     0% {
-      background-color: rgb(51, 49, 49);
+      background-color: rgb(173, 34, 34);
     }
     100% {
       background-color: rgb(255, 0, 0);
@@ -86,6 +86,28 @@
 .modal-title{
     display: flex;
     justify-content: center;
+}
+
+.modal-errorsymb {
+    display: flex;
+    width: 100%;
+    height: min-content;
+    justify-content: center;
+    box-sizing: border-box;
+    z-index: 2;
+    text-align: center;
+}
+
+.modal-errorsymb .i {
+    margin: 5px 0px;
+    width: min-content;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f80707;
+    line-height: 60px;
+    /* animation: colorChange2 3s infinite alternate; */
+    text-align: center;
+    display: inline-block;
 }
   
 .modal-body {
@@ -100,7 +122,7 @@
 
 @keyframes colorChange3 {
     0% {
-      background-color: #31302e;
+      background-color: #3d3a38;
     }
     100% {
       background-color: #81746c;

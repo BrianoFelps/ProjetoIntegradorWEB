@@ -6,8 +6,8 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ModalErro from '../Components/ModalErro';
-import LinkSignUp from '../Components/DirectLink';
 import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
+import DirectLink from '../Components/DirectLink';
 
         // Definindo a interface para as props
     interface LoginProps {
@@ -20,10 +20,10 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
         const [loggedIn, setLoggedIn] = useState(false); //para direcionar o usuario da forma correta sem bugs.
         const [email, setEmail] = useState(''); //usado para inserir o valor do email, podendo fazer requisiçoes ao BD e outras coisas.
         const [password, setPassword] = useState(''); //usado para inserir o valor da senha, podendo fazer requisiçoes ao BD e outras coisas.
-        const [rememberMe, setRememberMe] = useState (false); //função do lembrar do login
-        const [formError, setFormError] = useState(''); // mensagem do modal
+        const [rememberMe, setRememberMe] = useState (false); //função do lembrar do login.
+        const [formError, setFormError] = useState(''); // mensagem do modal.
         const [showModalErro, setShowModalErro] = useState(false); //pra mostrar o modal de erro na hora que você quiser.
-        const [logoVisible, setLogoVisible] = useState(true); //logo visivel ou não na hora de aparecer o modal
+        const [logoVisible, setLogoVisible] = useState(true); //logo visivel ou não na hora de aparecer o modal.
 
         const navigate = useNavigate(); //navega o usuario pra outra pagina.
 
@@ -42,9 +42,9 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
         }, []);
     
         function InserirClasseLogin() { // para evitar inserção de css dessa pagina na pagina principal ou na de cadastro.
-            const html = document.documentElement;
-            html.classList.add("Login");
-            html.classList.replace("SignUp", "Login");
+            const html = document.documentElement; // chama o html por meio do document.documentElement
+            html.classList.add("Login"); //tras ele pra cá porém criando uma classe chamada Login(apenas para essa pagina.)
+            html.classList.replace("SignUp", "Login"); //aí toda vez que vier a estilização de outra pagina como o SignUp primeiro por meio do redirecionamento, ele vai trocar pela de Login.
         }
 
         const fazerLogin = async () => {
@@ -70,13 +70,11 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
                     props.setUser(nome); //props para guardar o nome do usuario.
                     setLoggedIn(true); // loggedIn ficará true após o login bem-sucedido
                 }catch (error) {
-                    console.error('Erro ao fazer login:', error);
                     setFormError('Erro ao fazer login. Tente novamente verificando suas credenciais.');
                     setShowModalErro(true);
                     setLogoVisible(false); // vai sumir com o logo apenas quando aparecer o Modal.
                 }
                 } else {
-                    console.error('Email ou senha não preenchidos.');
                     setFormError('Email ou senha não preenchidos.');
                     setShowModalErro(true);
                     setLogoVisible(false);
@@ -91,14 +89,14 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
             setLogoVisible(true);
         };
 
-        const LinkSign = () => {
+        const LinkSign = () => { //ao clicar no texto especifico, vai direcionar para a pagina de cadastro.
             navigate('/SignUp');
         }
 
-        const simpletext = "Não possui uma conta?"; // texto para o usuario ver
-        const linktext = "Crie uma aqui!"; //e decidir clicar pra adicionar a conta.
+        const simpletext = "Não possui uma conta?"; // texto
+        const textlink = "Crie uma aqui!"; //texto para o usuario criar a conta.
 
-        // Se loggedIn for true, redireciona o usuário para a página desejada
+        // Se loggedIn for true, redireciona o usuário para a página desejada com delay nenhum.
         useEffect(() => {
             if (loggedIn) {
                 setTimeout(() => {
@@ -132,7 +130,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
                         <div id='formbtnLogin'>
                             <button type="button" className="btn btn-primary" id="btnEnter" onClick={fazerLogin} disabled={loginEmAndamento}>Entrar</button>
                         </div>
-                        <LinkSignUp onClickDirect = {LinkSign} textExample={simpletext} textLink={linktext}/>
+                        <DirectLink onClickDirect = {LinkSign} simpleText={simpletext} textLink={textlink}/>
                         <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
                     </form>
                 </div>
