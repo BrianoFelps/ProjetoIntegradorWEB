@@ -63,7 +63,8 @@
     justify-content: center;
 }
   
-.modal-content {
+.modal-content { 
+    /* muda esse safado em casa */
     justify-items: center;
     display: flex;
     background-color: rgb(173, 34, 34);
