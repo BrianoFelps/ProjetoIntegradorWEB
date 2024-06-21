@@ -22,15 +22,15 @@ function Input(props: props) {
 
                 const response = await axios.get(`${EQ_API_URL}/pages/Elm/props`);
                 const titleValue = response.data.find((element: any) => element.category === 'InputTitle' && element.user_id == props.UserId)?.value;
-                console.log(`titleValues: ${titleValue}`)
+                // console.log(`titleValues: ${titleValue}`)
                 const textAreaValue = response.data.find((element: any) => element.category === 'InputText' && element.user_id == props.UserId)?.value;
-                console.log(`textAreaValue: ${textAreaValue}`)
+                // console.log(`textAreaValue: ${textAreaValue}`)
 
                 setValueContent(titleValue || '');
                 setContent(textAreaValue || '');
                 setContentLoaded(true);
 
-                console.log(content)
+                // console.log(content)
 
                 if (!titleValue) {
                     await axios.post(`${EQ_API_URL}/pages/Elm`, { id_property: 2, value: '', user_id: props.UserId, page_id: 1 });

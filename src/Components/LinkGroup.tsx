@@ -11,6 +11,7 @@ interface props{
     inputid2: number;
     inputid3: number;
     inputWriteIdeaId: number;
+    UserId: number | undefined;
 }
 
 function LinkGroup (props: props){
@@ -20,9 +21,9 @@ function LinkGroup (props: props){
             <InputWriteIdea InputWriteIdeaId={props.inputWriteIdeaId}/>
             
             <ul className='list-group list-unstyled' id='ListLinkGroup'>
-                <CardTooltip InputWcardId={props.inputid} EmojiMenuId={props.emojimenuid}></CardTooltip>
-                <CardTooltip InputWcardId={props.inputid2} EmojiMenuId={props.emojimenuid2}></CardTooltip>
-                <CardTooltip InputWcardId={props.inputid3} EmojiMenuId={props.emojimenuid3}></CardTooltip>
+                <CardTooltip UserId={props.UserId} InputWcardId={props.inputid} EmojiMenuId={props.emojimenuid}></CardTooltip>
+                <CardTooltip UserId={props.UserId} InputWcardId={props.inputid2} EmojiMenuId={props.emojimenuid2}></CardTooltip>
+                <CardTooltip UserId={props.UserId} InputWcardId={props.inputid3} EmojiMenuId={props.emojimenuid3}></CardTooltip>
             </ul>
         </div>
     )

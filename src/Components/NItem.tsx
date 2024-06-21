@@ -11,6 +11,7 @@ interface props{
     handleEmojiOpen: () => void;
     handleEmojiClose: () => void;
     NitemId: number;
+    UserId: number | undefined;
 }
 
 function NItem (props: props){
@@ -59,6 +60,7 @@ function NItem (props: props){
             <img className='card-img-top' onClick={props.onclick} src={props.image} alt="" />
             <div id='NItem' className='card-body'>
                 <EmojiMenu
+                UserId={props.UserId}
                 // emoji = {props.emoji}
                 emojiMenuId={props.emojiMenuId}
                 onOpen={props.handleEmojiOpen}

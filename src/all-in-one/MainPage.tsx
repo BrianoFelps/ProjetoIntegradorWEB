@@ -25,7 +25,8 @@ function MainPage() {
             <EmojiMenu
             onOpen={() => {}} 
             onClose={() => {}}
-            emojiMenuId={1}/>
+            emojiMenuId={1}
+            UserId={undefined}/>
             <Input UserId={undefined}/>
             <InputWriteIdea InputWriteIdeaId={0}></InputWriteIdea>
           </section>

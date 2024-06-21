@@ -7,9 +7,10 @@ interface EmojiMenuProps {
   emojiMenuId: number;
   onOpen: () => void;
   onClose: () => void;
+  UserId: number | undefined;
 }
 
-function EmojiMenu({ emojiMenuId, onOpen, onClose }: EmojiMenuProps){
+function EmojiMenu({ emojiMenuId, onOpen, onClose, UserId }: EmojiMenuProps){
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -41,8 +42,20 @@ function EmojiMenu({ emojiMenuId, onOpen, onClose }: EmojiMenuProps){
       if (emojiMenuId !== undefined && emojiMenuId !== null) {
         try {
           const response = await axios.get(`${EQ_API_URL}/pages/emojiMenu/IDMENU/${emojiMenuId}`);
-          const emojiData = response.data.emoji;
-          setSelectedEmoji(emojiData);
+          // console.log(`Response data:`, response.data);
+          // Teste para posteriormente tentar fazer o response.data.find (identificar se é uma array ou um objeto, já que a função só roda em array)
+          /*
+          if(Array.isArray(response.data)){
+            console.log(`Response.data é uma array!!!!`)
+            } else {
+            console.log(`Response.data não é verificado como uma array!`)
+          }
+          */
+
+          if (response.data && response.data.user_id === UserId){
+            setSelectedEmoji(response.data.emoji);
+            console.log(`UserId: ${UserId}`)
+          }
         } catch (error) {
           if (axios.isAxiosError(error)) {
             if (error.response && error.response.status === 404) {
@@ -57,11 +70,12 @@ function EmojiMenu({ emojiMenuId, onOpen, onClose }: EmojiMenuProps){
           }
         }
       }
+      
     };
 
 // Chame a função para buscar o emoji correspondente ao emojiMenuId
     fetchSelectedEmoji();
-  }, [emojiMenuId]);
+  }, [emojiMenuId, UserId]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -81,13 +95,31 @@ function EmojiMenu({ emojiMenuId, onOpen, onClose }: EmojiMenuProps){
     const selected = emojis.find(emoji => emoji.id === emojiId);
     if (selected) {
       setSelectedEmoji(selected.emoji);
-      console.log(selectedEmoji)
+      console.log(`Antes: ${selectedEmoji}`)
       try {
-        await axios.put(`${EQ_API_URL}/pages/emojiMenu`, { id_emoji: emojiId, id: emojiMenuId });
-        console.log('EmojiMenu atualizado com sucesso');
+        // Verifica se o emojiMenu já existe para decidir entre adicionar ou atualizar
+        const existingEmojiMenu = await axios.get(`${EQ_API_URL}/pages/emojiMenu/IDMENU/${emojiMenuId}`);
+        if (existingEmojiMenu.status === 200) {
+          // Já existe um registro, então faz um PUT para atualizar
+          await axios.put(`${EQ_API_URL}/pages/emojiMenu`, { id: emojiMenuId, id_emoji: emojiId });
+          console.log('EmojiMenu atualizado com sucesso');
+          console.log(`Depois: ${selected.emoji}`);
+        }
       } catch (error) {
-        console.error(`EmojiId: ${emojiId}. EmojiMenuId: ${emojiMenuId}. Erro ao atualizar o EmojiMenu:`, error);
+        // Se não encontrar, adiciona um novo registro de emojiMenu
+        try {
+          await axios.post(`${EQ_API_URL}/pages/emojiMenu`, { id_emoji: emojiId });
+          console.log('EmojiMenu adicionado com sucesso');
+        } catch (error) {
+          console.error(`Erro ao adicionar/atualizar EmojiMenu:`, error);
+        }
       }
+      // try {
+      //   await axios.put(`${EQ_API_URL}/pages/emojiMenu`, { id_emoji: emojiId, id: emojiMenuId });
+      //   console.log('EmojiMenu atualizado com sucesso');
+      // } catch (error) {
+      //   console.error(`EmojiId: ${emojiId}. EmojiMenuId: ${emojiMenuId}. Erro ao atualizar o EmojiMenu:`, error);
+      // }
     }
   };
 

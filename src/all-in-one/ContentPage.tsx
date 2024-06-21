@@ -44,19 +44,50 @@ function ContentPage(props: props) {
         // Função para buscar os IDs dos EmojiMenus a serem especificados
         const fetchEmojiMenuIds = async () => {
           try {
+            /*Buscar todos os emojimenus*/
             // http://localhost:8080/pages/emojiMenu/emoji
             const response = await axios.get(`${EQ_API_URL}/pages/emojiMenu/emoji`);
-            const emojiMenuIdsData = response.data.map((emojiMenu: { id: number }) => emojiMenu.id);
-            setEmojiMenuIds(emojiMenuIdsData);
-            // console.log(emojiMenuIds[1]);
-            // console.log(emojiMenuIdsData[1]);
+            console.log(response.data)
+
+            const userEmojiMenus = response.data.filter((emojimenu: any) => emojimenu.user_id === props.UserId)
+
+            console.log(`Número de EmojiMenus encontrados: ${userEmojiMenus.length}`)
+
+            const requiredEmojiMenus = 15; //Número máximo de emojimenus na pag
+
+            if(userEmojiMenus.length < requiredEmojiMenus){
+              const addEmojiMenuPromises = [];
+              for (let i = userEmojiMenus.length; i < requiredEmojiMenus; i++){
+                addEmojiMenuPromises.push(
+                  axios.post(`${EQ_API_URL}/pages/emojiMenu`, { id_emoji: 0, page_id: 1, user_id: props.UserId })
+                )
+              }
+              await Promise.all(addEmojiMenuPromises);
+              console.log(`Adicionados ${requiredEmojiMenus - userEmojiMenus.length} EmojiMenus.`)
+
+              // Refazer a requisição para obter os novos EmojiMenus adicionados
+              const newResponse = await axios.get(`${EQ_API_URL}/pages/emojiMenu/emoji`);
+              const newUserEmojiMenus = newResponse.data.filter((emojimenu: any) => emojimenu.user_id === props.UserId);
+              setEmojiMenuIds(newUserEmojiMenus.map((emojiMenu: { id: number }) => emojiMenu.id));
+            } else {
+              setEmojiMenuIds(userEmojiMenus.map((emojiMenu: {id: number}) => emojiMenu.id))
+              console.log(`EmojiMenu já existem em quantidade suficiente para o user_id ${props.UserId}`)
+            }
+            
+            //   const addResponse = await axios.post(`${EQ_API_URL}/pages/emojiMenu`, { id_emoji: 0, page_id: 1, user_id: props.UserId });
+            //   console.log(`EmojiMenu adicionado:`, addResponse.data);
+            
+
           } catch (error) {
             console.error('Error fetching emoji menu IDs:', error);
           }
         };
 
         fetchEmojiMenuIds(); // Chame a função para buscar os IDs dos EmojiMenus
+      }, [props.UserId]);
 
+
+      useEffect(() => {
         const fetchCardIds = async () => {
           try{
             const response = await axios.get(`${EQ_API_URL}/pages/Elm/cards`);
@@ -237,7 +268,7 @@ function ContentPage(props: props) {
           </h2>
         </Title>
 
-        <EmojiMenu key={emojiMenuIds[0]} emojiMenuId={emojiMenuIds[0]} onOpen={() => {}} onClose={() => {}} />
+        <EmojiMenu key={emojiMenuIds[0]} UserId={props.UserId} emojiMenuId={emojiMenuIds[0]} onOpen={() => {}} onClose={() => {}} />
                 
         <Input UserId={props.UserId}/>
 
@@ -249,15 +280,15 @@ function ContentPage(props: props) {
 
             <div id='ItensContainer'>
                 
-              <NItem NitemId={CardsIds[0]} key={emojiMenuIds[1]} emojiMenuId={emojiMenuIds[1]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} onclick={openModal1} image={image1}/>
+              <NItem NitemId={CardsIds[0]} UserId={props.UserId} key={emojiMenuIds[1]} emojiMenuId={emojiMenuIds[1]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} onclick={openModal1} image={image1}/>
 
-              <NItem NitemId={CardsIds[1]} key={emojiMenuIds[2]} emojiMenuId={emojiMenuIds[2]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal2} image={image2}/>
+              <NItem NitemId={CardsIds[1]} UserId={props.UserId} key={emojiMenuIds[2]} emojiMenuId={emojiMenuIds[2]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal2} image={image2}/>
 
-              <NItem NitemId={CardsIds[2]} key={emojiMenuIds[3]} emojiMenuId={emojiMenuIds[3]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal3} image={image3}/>
+              <NItem NitemId={CardsIds[2]} UserId={props.UserId} key={emojiMenuIds[3]} emojiMenuId={emojiMenuIds[3]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal3} image={image3}/>
 
-              <NItem NitemId={CardsIds[3]} key={emojiMenuIds[4]} emojiMenuId={emojiMenuIds[4]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal4} image={image4}/>
+              <NItem NitemId={CardsIds[3]} UserId={props.UserId} key={emojiMenuIds[4]} emojiMenuId={emojiMenuIds[4]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal4} image={image4}/>
 
-              <NItem NitemId={CardsIds[4]} key={emojiMenuIds[5]} emojiMenuId={emojiMenuIds[5]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} image={image5} onclick={openModal5}/>
+              <NItem NitemId={CardsIds[4]} UserId={props.UserId} key={emojiMenuIds[5]} emojiMenuId={emojiMenuIds[5]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} image={image5} onclick={openModal5}/>
 
             </div>
 
@@ -274,9 +305,9 @@ function ContentPage(props: props) {
 
         <section id='NavegacaoBasica'>
             <DiaADiaComponentImage/>
-            <LinkGroup inputWriteIdeaId={WriteIdeaIds[0]} inputid={TooltipIds[0]} inputid2={TooltipIds[1]} inputid3={TooltipIds[2]} emojimenuid={emojiMenuIds[6]} emojimenuid2={emojiMenuIds[7]} emojimenuid3={emojiMenuIds[8]}/>
-            <LinkGroup inputWriteIdeaId={WriteIdeaIds[1]} inputid={TooltipIds[3]} inputid2={TooltipIds[4]} inputid3={TooltipIds[5]} emojimenuid={emojiMenuIds[9]} emojimenuid2={emojiMenuIds[10]} emojimenuid3={emojiMenuIds[11]}/>
-            <LinkGroup inputWriteIdeaId={WriteIdeaIds[2]} inputid={TooltipIds[6]} inputid2={TooltipIds[7]} inputid3={TooltipIds[8]} emojimenuid={emojiMenuIds[12]} emojimenuid2={emojiMenuIds[13]} emojimenuid3={emojiMenuIds[14]}/>
+            <LinkGroup UserId={props.UserId} inputWriteIdeaId={WriteIdeaIds[0]} inputid={TooltipIds[0]} inputid2={TooltipIds[1]} inputid3={TooltipIds[2]} emojimenuid={emojiMenuIds[6]} emojimenuid2={emojiMenuIds[7]} emojimenuid3={emojiMenuIds[8]}/>
+            <LinkGroup UserId={props.UserId} inputWriteIdeaId={WriteIdeaIds[1]} inputid={TooltipIds[3]} inputid2={TooltipIds[4]} inputid3={TooltipIds[5]} emojimenuid={emojiMenuIds[9]} emojimenuid2={emojiMenuIds[10]} emojimenuid3={emojiMenuIds[11]}/>
+            <LinkGroup UserId={props.UserId} inputWriteIdeaId={WriteIdeaIds[2]} inputid={TooltipIds[6]} inputid2={TooltipIds[7]} inputid3={TooltipIds[8]} emojimenuid={emojiMenuIds[12]} emojimenuid2={emojiMenuIds[13]} emojimenuid3={emojiMenuIds[14]}/>
         </section>
     </main>
     )

@@ -8,7 +8,8 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
 interface props{
   EmojiMenuId: number;
-  InputWcardId: number
+  InputWcardId: number;
+  UserId: number | undefined;
   // emoji: string;
 }
 
@@ -85,7 +86,7 @@ function YourComponent(props: props) {
         >
         <div id='InsCont'>
             <EmojiMenu
-            // emoji={props.emoji}
+            UserId={props.UserId}
             emojiMenuId={props.EmojiMenuId}
             onOpen={() => handleEmojiMenuOpen()}
             onClose={() => handleEmojiMenuClose()}
