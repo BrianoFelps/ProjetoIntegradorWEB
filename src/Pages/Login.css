@@ -11,6 +11,14 @@
   /* #root{
     height: 100px;
   } */
+
+  .logo{
+    transition: opacity 2s ease-in-out;
+  }
+
+  .logo-opacity{
+    opacity: 0.75;
+  }
   
   .Login body{
     width: 100%;

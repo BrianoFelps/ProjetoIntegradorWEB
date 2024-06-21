@@ -131,7 +131,9 @@ function SignUp(props: SignUpProps){
 
     return(
         <div id='AllPageLoginSign'>
-                {logoVisible && <LoginPageLogo/>}
+                <div className={`logo ${logoVisible ? '' : 'logo-opacity'}`}>
+                    <LoginPageLogo />
+                </div>
             <div id='CentPage'>
                     <form className='SignUpBox'>
                         <div id='titleSignUp'>
@@ -164,7 +166,7 @@ function SignUp(props: SignUpProps){
                             <button type="button" className="btn btn-primary" id="btnEnter" onClick={handleSubmit} disabled={loginEmAndamento} >Criar Conta</button>
                         </div>
                         <DirectLink onClickDirect = {LinkLogin} simpleText={simpletext} textLink={textlink}/>
-                        <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
+                        <ModalErro show={showModalErro} onClose={closeModal} title='Erro ao cadastrar' message={formError}/>
                     </form>
             </div>
         </div>

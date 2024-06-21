@@ -24,7 +24,7 @@ import DirectLink from '../Components/DirectLink';
         const [formError, setFormError] = useState(''); // mensagem do modal.
         const [showModalErro, setShowModalErro] = useState(false); //pra mostrar o modal de erro na hora que você quiser.
         const [logoVisible, setLogoVisible] = useState(true); //logo visivel ou não na hora de aparecer o modal.
-
+        
         const navigate = useNavigate(); //navega o usuario pra outra pagina.
 
         useEffect(() => {
@@ -40,6 +40,7 @@ import DirectLink from '../Components/DirectLink';
                 setRememberMe(true);
             }
         }, []);
+
     
         function InserirClasseLogin() { // para evitar inserção de css dessa pagina na pagina principal ou na de cadastro.
             const html = document.documentElement; // chama o html por meio do document.documentElement
@@ -108,7 +109,9 @@ import DirectLink from '../Components/DirectLink';
 
         return( 
             <div id='AllPageLoginSign'>
-                    {logoVisible && <LoginPageLogo/>}
+                    <div className={`logo ${logoVisible ? '' : 'logo-opacity'}`}>
+                        <LoginPageLogo />
+                    </div>
                 <div id='CentPage'>
                     <form className='LoginBox'>
                         <div id='titleLogin'>
@@ -117,7 +120,6 @@ import DirectLink from '../Components/DirectLink';
                         <div className="form-groupE" id='form-groupEmail'>
                             <label htmlFor="exInputEmail1" id='labelEmail'>Email: </label>
                             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Endereço de Email"></input>
-                            <small id="emailHelp" className="form-text text-muted">Nunca Compartilharemos o seu Email com ninguém.</small>
                         </div>
                         <div className="form-groupP" id='form-groupPassword'>
                             <label htmlFor="exInputPassword1" id='labelPassword'>Senha: </label>
@@ -131,7 +133,7 @@ import DirectLink from '../Components/DirectLink';
                             <button type="button" className="btn btn-primary" id="btnEnter" onClick={fazerLogin} disabled={loginEmAndamento}>Entrar</button>
                         </div>
                         <DirectLink onClickDirect = {LinkSign} simpleText={simpletext} textLink={textlink}/>
-                        <ModalErro show={showModalErro} onClose={closeModal} title='Ocorreu um erro ao fazer login.' message={formError}/>
+                        <ModalErro show={showModalErro} onClose={closeModal} title='Erro ao fazer login' message={formError}/>
                     </form>
                 </div>
             </div>
