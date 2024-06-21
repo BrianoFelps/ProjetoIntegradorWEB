@@ -19,6 +19,7 @@ interface Props {
     banner: string;
 
     EmojiMenuInsideSeparatorId: number;
+    UserId: number | undefined;
 
     Titulo: string;
 
@@ -125,7 +126,7 @@ function Modal (props: Props){
                     </div>
                     <div id='InnerContainerConteudoCard' className='container'>
                         <div id='Separator'>
-                            <EmojiMenu emojiMenuId={props.EmojiMenuInsideSeparatorId} onOpen={consolelog} onClose={consolelog}/>
+                            <EmojiMenu UserId={props.UserId} emojiMenuId={props.EmojiMenuInsideSeparatorId} onOpen={consolelog} onClose={consolelog}/>
                         </div>
                         <Title>
                             <h2>
