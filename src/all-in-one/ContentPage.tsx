@@ -71,7 +71,7 @@ function ContentPage(props: props) {
               setEmojiMenuIds(newUserEmojiMenus.map((emojiMenu: { id: number }) => emojiMenu.id));
             } else {
               setEmojiMenuIds(userEmojiMenus.map((emojiMenu: {id: number}) => emojiMenu.id))
-              console.log(`EmojiMenu já existem em quantidade suficiente para o user_id ${props.UserId}`)
+              // console.log(`EmojiMenu já existem em quantidade suficiente para o user_id ${props.UserId}`)
             }
             
             //   const addResponse = await axios.post(`${EQ_API_URL}/pages/emojiMenu`, { id_emoji: 0, page_id: 1, user_id: props.UserId });
@@ -115,7 +115,7 @@ function ContentPage(props: props) {
               setCardsIds(newUserNItems.map((Nitem: {id: number}) => Nitem.id))
             } else {
               setCardsIds(userNItems.map((Nitem: {id: number}) => Nitem.id))
-              console.log(`NItem's já existem suficientemente para o user_id ${props.UserId}`)
+              // console.log(`NItem's já existem suficientemente para o user_id ${props.UserId}`)
               console.log(CardsIds)
             }    
           } catch (error) {
@@ -123,8 +123,50 @@ function ContentPage(props: props) {
           }
         }
 
+        fetchCardIds();
         if (props.UserId !== undefined) {
-          fetchCardIds();
+        } else {
+          console.error('UserId está indefinido em ContentPage');
+        }
+        
+        const fetchFScardIds = async () => {
+          try{
+            const response = await axios.get(`${EQ_API_URL}/pages/Elm/FS`);
+            const FSIdsData = response.data.filter((elm: any) => elm.user_id === props.UserId);
+
+            const requiredCards = 5;
+
+            if(FSIdsData.length < requiredCards){
+              const addNItemModalPromises = [];
+              for (let i = FSIdsData.length; i< requiredCards; i++){
+                addNItemModalPromises.push(
+                  axios.post(`${EQ_API_URL}/pages/Elm`, {
+                    id_property: 7, 
+                    value: '', 
+                    user_id: props.UserId,
+                    page_id: 1
+                  })
+                )
+              }
+              await Promise.all(addNItemModalPromises);
+              console.log(`Adicionados ${requiredCards - FSIdsData.length} fsCardS`)
+
+              const newResponse = await axios.get(`${EQ_API_URL}/pages/Elm/FS`)
+              const newUserFSIds = newResponse.data.filter((elements: any) => elements.user_id === props.UserId);
+
+              setFScardIds(newUserFSIds.map((elements: {id: number}) => elements.id))
+            } else {
+              setFScardIds(FSIdsData.map((elements: {id: number}) => elements.id))
+              // console.log(`Element's FSCard já existem suficientemente para o user_id ${props.UserId}`)
+              console.log(`FScardIds: ${FScardIds}`)
+            }    
+          } catch (error) {
+            console.error('Error fetching CardsModals ids: ', error)
+          }
+        }
+
+        fetchFScardIds();
+        if (props.UserId !== undefined) {
         } else {
           console.error('UserId está indefinido em ContentPage');
         }
@@ -166,19 +208,6 @@ function ContentPage(props: props) {
         }
       
         fetchWIIds();
-
-        const fetchFScardIds = async () => {
-          try{
-            const response = await axios.get(`${EQ_API_URL}/pages/Elm/FS`);
-            const FSIdsData = response.data.map((elements: { id: number }) => elements.id);
-            setFScardIds(FSIdsData);
-            // console.log(FScardIds)
-          } catch (error) {
-            console.error('Error fetching Cards ids: ', error)
-          }
-        }
-      
-        fetchFScardIds();
 
         const fetchPagesIdsAndName = async () =>{
           try{

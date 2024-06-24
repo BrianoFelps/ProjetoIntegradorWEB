@@ -53,10 +53,11 @@ function Modal (props: Props){
     useEffect(() => {
         const fetchValueDateContent = async () => {
             try{
+                console.log(`fsmodalid: ${props.FSmodalId}`)
                 const response = await axios.get(`${EQ_API_URL}/pages/Elm/FS`);
                 const FScard = response.data.find((FScard: { id: number }) => FScard.id === props.FSmodalId);
-                const FScardValue = FScard ? FScard.value : '';
-                const FScardDate = FScard ? FScard.data : '';
+                const FScardValue = FScard ? FScard?.value : '';
+                const FScardDate = FScard ? FScard?.data : '';
                 setValueContent(FScardValue);
                 setDateContent(FScardDate);
 
@@ -71,6 +72,21 @@ function Modal (props: Props){
     }, [props.FSmodalId]);
 
     useEffect(() => {
+        
+        const fetchModalTitle = async () => {
+            try{
+              const response = await axios.get(`${EQ_API_URL}/pages/Elm/cards`);
+                  
+              const cardvalue = response.data.find((card: { id: number }) => card.id === props.Nitemid)?.value;
+              setNItemTitle(cardvalue || '')
+  
+            } catch {
+              console.error(`Erro ao fazer fetch do titleNItem`)
+            }
+          }
+  
+          fetchModalTitle()
+
          // Ajusta a altura inicial ao montar o componente
          handleInput();
 
@@ -85,23 +101,6 @@ function Modal (props: Props){
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [props]);
-
-    useEffect(() => {
-
-        const fetchModalTitle = async () => {
-          try{
-            const response = await axios.get(`${EQ_API_URL}/pages/Elm/cards`);
-                
-            const cardValue = response.data.find((card: { id: number }) => card.id === props.Nitemid)?.value;
-            setNItemTitle(cardValue || '')
-
-          } catch {
-            console.error(`Erro ao fazer fetch do titleNItem`)
-          }
-        }
-
-        fetchModalTitle()
     }, []);
 
     const updateContentToBackend = async (updatedValue: string, updatedDate: string) =>{
@@ -109,7 +108,7 @@ function Modal (props: Props){
 
             await axios.put(`${EQ_API_URL}/pages/ElmD`, { id_property: 7, value: updatedValue, data: updatedDate, id: props.FSmodalId }); // Enviar o valor completo como string
  
-             console.log(`Valor atualizado no banco de dados. Valor: ${updatedValue}, data: ${updatedDate}`);
+            console.log(`Valor atualizado no banco de dados. Valor: ${updatedValue}, data: ${updatedDate}, id: ${props.FSmodalId}`);
  
              
          } catch (error) {
@@ -152,7 +151,7 @@ function Modal (props: Props){
 
                         <LastCreated/>
                         <Tags/>
-                        <Data value={dateContent.toString()} onChange={(e) => handleDateChange(e.target.value)}/>
+                        <Data value={dateContent ? dateContent.toString() : ''} onChange={(e) => handleDateChange(e.target.value)}/>
                         <hr />
 
                         <label id='CustomFileUpl' className='btn btn-light'>
