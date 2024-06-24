@@ -12,6 +12,7 @@ import axios from 'axios';
 import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
 interface Props {
+    Nitemid: number;
     onClose: () => void;
     FSmodalId: number;
 
@@ -20,8 +21,6 @@ interface Props {
 
     EmojiMenuInsideSeparatorId: number;
     UserId: number | undefined;
-
-    Titulo: string;
 
     before: () => void;
     next: () => void;
@@ -33,7 +32,7 @@ interface Props {
 function Modal (props: Props){
     const [valueContent, setValueContent] = useState<string>('');
     const [dateContent, setDateContent] = useState<string>('');
-    
+    const [nItemTitle, setNItemTitle] = useState<String>('')
 
     const ModalRef = useRef<HTMLDivElement>(null);
 
@@ -88,6 +87,23 @@ function Modal (props: Props){
         };
     }, [props]);
 
+    useEffect(() => {
+
+        const fetchModalTitle = async () => {
+          try{
+            const response = await axios.get(`${EQ_API_URL}/pages/Elm/cards`);
+                
+            const cardValue = response.data.find((card: { id: number }) => card.id === props.Nitemid)?.value;
+            setNItemTitle(cardValue || '')
+
+          } catch {
+            console.error(`Erro ao fazer fetch do titleNItem`)
+          }
+        }
+
+        fetchModalTitle()
+    }, []);
+
     const updateContentToBackend = async (updatedValue: string, updatedDate: string) =>{
         try {
 
@@ -130,7 +146,7 @@ function Modal (props: Props){
                         </div>
                         <Title>
                             <h2>
-                                {props.Titulo}
+                                {nItemTitle}
                             </h2>
                         </Title>
 

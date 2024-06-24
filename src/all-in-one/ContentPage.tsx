@@ -84,25 +84,56 @@ function ContentPage(props: props) {
         };
 
         fetchEmojiMenuIds(); // Chame a função para buscar os IDs dos EmojiMenus
-      }, [props.UserId]);
 
-
-      useEffect(() => {
         const fetchCardIds = async () => {
           try{
             const response = await axios.get(`${EQ_API_URL}/pages/Elm/cards`);
-            const CardsIdsData = response.data.map((elements: { id: number }) => elements.id);
-            setCardsIds(CardsIdsData); 
+            const userNItems = response.data.filter((NItem: any) => NItem.user_id === props.UserId)
 
-            // console.log(`Id's dos cards: ${CardsIds}`)
-            // console.log(`CardsIdsData: ${CardsIdsData}`)
-            
+            console.log(`Número de NItems encontrados: ${userNItems.length}`);
+
+            const requiredNItems = 5;
+
+            if(userNItems.length < requiredNItems){
+              const addNItemPromises = [];
+              for (let i = userNItems.length; i< requiredNItems; i++){
+                addNItemPromises.push(
+                  axios.post(`${EQ_API_URL}/pages/Elm`, {
+                    id_property: 4, 
+                    value: '', 
+                    user_id: props.UserId,
+                    page_id: 1
+                  })
+                )
+              }
+              await Promise.all(addNItemPromises);
+              console.log(`Adicionados ${requiredNItems - userNItems.length} NItem's`)
+
+              const newResponse = await axios.get(`${EQ_API_URL}/pages/Elm/cards`)
+              const newUserNItems = newResponse.data.filter((NItem: any) => NItem.user_id === props.UserId);
+
+              setCardsIds(newUserNItems.map((Nitem: {id: number}) => Nitem.id))
+            } else {
+              setCardsIds(userNItems.map((Nitem: {id: number}) => Nitem.id))
+              console.log(`NItem's já existem suficientemente para o user_id ${props.UserId}`)
+              console.log(CardsIds)
+            }    
           } catch (error) {
             console.error('Error fetching Cards ids: ', error)
           }
         }
+
+        if (props.UserId !== undefined) {
+          fetchCardIds();
+        } else {
+          console.error('UserId está indefinido em ContentPage');
+        }
+
+      }, [props.UserId]);
+
+
       
-        fetchCardIds();
+      useEffect(() => {
 
         const fetchTooltipIds = async () => {
           try{
@@ -280,27 +311,27 @@ function ContentPage(props: props) {
 
             <div id='ItensContainer'>
                 
-              <NItem NitemId={CardsIds[0]} UserId={props.UserId} key={emojiMenuIds[1]} emojiMenuId={emojiMenuIds[1]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} onclick={openModal1} image={image1}/>
+              <NItem NitemId={CardsIds[0]} userid={props.UserId} key={emojiMenuIds[1]} emojiMenuId={emojiMenuIds[1]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} onclick={openModal1} image={image1}/>
 
-              <NItem NitemId={CardsIds[1]} UserId={props.UserId} key={emojiMenuIds[2]} emojiMenuId={emojiMenuIds[2]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal2} image={image2}/>
+              <NItem NitemId={CardsIds[1]} userid={props.UserId} key={emojiMenuIds[2]} emojiMenuId={emojiMenuIds[2]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal2} image={image2}/>
 
-              <NItem NitemId={CardsIds[2]} UserId={props.UserId} key={emojiMenuIds[3]} emojiMenuId={emojiMenuIds[3]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal3} image={image3}/>
+              <NItem NitemId={CardsIds[2]} userid={props.UserId} key={emojiMenuIds[3]} emojiMenuId={emojiMenuIds[3]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal3} image={image3}/>
 
-              <NItem NitemId={CardsIds[3]} UserId={props.UserId} key={emojiMenuIds[4]} emojiMenuId={emojiMenuIds[4]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal4} image={image4}/>
+              <NItem NitemId={CardsIds[3]} userid={props.UserId} key={emojiMenuIds[4]} emojiMenuId={emojiMenuIds[4]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal4} image={image4}/>
 
-              <NItem NitemId={CardsIds[4]} UserId={props.UserId} key={emojiMenuIds[5]} emojiMenuId={emojiMenuIds[5]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} image={image5} onclick={openModal5}/>
+              <NItem NitemId={CardsIds[4]} userid={props.UserId} key={emojiMenuIds[5]} emojiMenuId={emojiMenuIds[5]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} image={image5} onclick={openModal5}/>
 
             </div>
 
-            {isModal1Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[0]} UserId={props.UserId} PagesIds={PagesIds[0]} Titulo='religião' banner={image1} EmojiMenuInsideSeparatorId={emojiMenuIds[1]} ClassName='testeModal' onClose={closeModal1}/>}
+            {isModal1Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[0]} UserId={props.UserId} PagesIds={PagesIds[0]} banner={image1} EmojiMenuInsideSeparatorId={emojiMenuIds[1]} Nitemid={CardsIds[0]}ClassName='testeModal' onClose={closeModal1}/>}
 
-            {isModal2Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[1]} UserId={props.UserId} PagesIds={PagesIds[1]} Titulo='masculinidade' banner={image2} EmojiMenuInsideSeparatorId={emojiMenuIds[2]} ClassName='testeModal' onClose={closeModal2}/>}
+            {isModal2Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[1]} UserId={props.UserId} PagesIds={PagesIds[1]} banner={image2} EmojiMenuInsideSeparatorId={emojiMenuIds[2]} Nitemid={CardsIds[1]} ClassName='testeModal' onClose={closeModal2}/>}
 
-            {isModal3Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[2]} UserId={props.UserId} PagesIds={PagesIds[2]} Titulo='virtudes católicas' banner={image3} EmojiMenuInsideSeparatorId={emojiMenuIds[3]} ClassName='testeModal' onClose={closeModal3}/>}
+            {isModal3Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[2]} UserId={props.UserId} PagesIds={PagesIds[2]} banner={image3} EmojiMenuInsideSeparatorId={emojiMenuIds[3]} Nitemid={CardsIds[2]} ClassName='testeModal' onClose={closeModal3}/>}
 
-            {isModal4Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[3]} UserId={props.UserId} PagesIds={PagesIds[3]} Titulo='filosofia' banner={image4} EmojiMenuInsideSeparatorId={emojiMenuIds[4]} ClassName='testeModal' onClose={closeModal4}/>}
+            {isModal4Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[3]} UserId={props.UserId} PagesIds={PagesIds[3]} banner={image4} EmojiMenuInsideSeparatorId={emojiMenuIds[4]} Nitemid={CardsIds[3]} ClassName='testeModal' onClose={closeModal4}/>}
 
-            {isModal5Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[4]} UserId={props.UserId} PagesIds={PagesIds[4]} Titulo='positividade' banner={image5} EmojiMenuInsideSeparatorId={emojiMenuIds[5]} ClassName='testeModal' onClose={closeModal5}/>}
+            {isModal5Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[4]} UserId={props.UserId} PagesIds={PagesIds[4]} banner={image5} EmojiMenuInsideSeparatorId={emojiMenuIds[5]} Nitemid={CardsIds[4]} ClassName='testeModal' onClose={closeModal5}/>}
         </section>
 
         <section id='NavegacaoBasica'>

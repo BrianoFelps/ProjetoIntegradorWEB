@@ -11,7 +11,7 @@ interface props{
     handleEmojiOpen: () => void;
     handleEmojiClose: () => void;
     NitemId: number;
-    UserId: number | undefined;
+    userid: number | undefined;
 }
 
 function NItem (props: props){
@@ -23,36 +23,34 @@ function NItem (props: props){
         const fetchValueContent = async () => {
             try{
                 const response = await axios.get(`${EQ_API_URL}/pages/Elm/cards`);
-                const card = response.data.find((card: { id: number }) => card.id === props.NitemId);
-                const cardValue = card ? card.value : '';
-                setValueContent(cardValue);
+                
+                const cardValue = response.data.find((card: { id: number }) => card.id === props.NitemId)?.value;
+                setValueContent(cardValue || '')
                 setContentLoaded(true);
-                // console.log(`Card value: ${cardValue}`)
+
             } catch (error) {
+                setContentLoaded(false)
                 console.error('Error fetching card:', error)
             }
         }
-
         fetchValueContent()
     }, [props.NitemId])
 
     const updateContentToBackend = async (updatedValue: string) => {
         try {
-
-           await axios.put(`${EQ_API_URL}/pages/ElmD`, { id_property: 4, value: updatedValue, id: props.NitemId }); // Enviar o valor completo como string
+            await axios.put(`${EQ_API_URL}/pages/ElmD`, { id_property: 4, value: updatedValue, id: props.NitemId }); // Enviar o valor completo como string
 
             console.log(`Valor atualizado no banco de dados. Valor: ${updatedValue}`);
-
-            
         } catch (error) {
             console.error(`Erro ao atualizar o valor: ${error}`);
         }
     };
 
     const handleInputChange = (newValue: string) => {
+        console.log("NewValue:", newValue)
         setValueContent(newValue);
         updateContentToBackend(newValue);
-      };
+    };
 
     return(
         <div id='NItemContainer' className='card'>
@@ -60,7 +58,7 @@ function NItem (props: props){
             <img className='card-img-top' onClick={props.onclick} src={props.image} alt="" />
             <div id='NItem' className='card-body'>
                 <EmojiMenu
-                UserId={props.UserId}
+                UserId={props.userid}
                 // emoji = {props.emoji}
                 emojiMenuId={props.emojiMenuId}
                 onOpen={props.handleEmojiOpen}
