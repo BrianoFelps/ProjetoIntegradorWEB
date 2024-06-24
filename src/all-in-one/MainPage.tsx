@@ -28,7 +28,7 @@ function MainPage() {
             emojiMenuId={1}
             UserId={undefined}/>
             <Input UserId={undefined}/>
-            <InputWriteIdea InputWriteIdeaId={0}></InputWriteIdea>
+            <InputWriteIdea WIuserId={undefined} InputWriteIdeaId={0}></InputWriteIdea>
           </section>
           
           <section id='main'>
