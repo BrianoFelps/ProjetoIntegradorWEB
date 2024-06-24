@@ -165,11 +165,49 @@ function ContentPage(props: props) {
           }
         }
 
-        fetchFScardIds();
         if (props.UserId !== undefined) {
+          fetchFScardIds();
         } else {
           console.error('UserId está indefinido em ContentPage');
         }
+
+        const fetchWIIds = async () => {
+          try{
+            const response = await axios.get(`${EQ_API_URL}/pages/Elm/WI`);
+            const WriteIdeaIdsData = response.data.filter((elements: any) => elements.user_id === props.UserId);
+            
+
+            const requiredWIs = 4;
+
+            if(WriteIdeaIdsData.length < requiredWIs){
+              const addWIpromises = [];
+              for(let i = WriteIdeaIds.length; i < requiredWIs; i++){
+                addWIpromises.push(
+                  axios.post(`${EQ_API_URL}/pages/Elm`, {
+                    id_property: 6,
+                    value: '',
+                    user_id: props.UserId,
+                    page_id: 1
+                  })
+                )
+              }
+              await Promise.all(addWIpromises);
+              console.log(`Adicionados ${requiredWIs - WriteIdeaIdsData.length} Write Idea Input's`)
+
+              const newResponse = await axios.get(`${EQ_API_URL}/pages/Elm/WI`)
+              const newUserWIids = newResponse.data.filter((elements: any) => elements.user_id === props.UserId);
+              setWriteIdeaIds(newUserWIids.map((elements: {id: number}) => elements.id))
+            } else {
+              setWriteIdeaIds(WriteIdeaIdsData.map((elements: {id: number})=> elements.id));
+              console.log(`Element's Writeidea já existem suficientemente para o userid ${props.UserId}`)
+              console.log(`WIids: ${WriteIdeaIds}`) 
+            }
+          } catch (error) {
+            console.error('Error fetching WIs ids: ', error)
+          }
+        }
+      
+        fetchWIIds();
 
       }, [props.UserId]);
 
@@ -193,21 +231,7 @@ function ContentPage(props: props) {
       
         fetchTooltipIds();
 
-        const fetchWIIds = async () => {
-          try{
-            const response = await axios.get(`${EQ_API_URL}/pages/Elm/WI`);
-            const WriteIdeaIdsData = response.data.map((elements: { id: number }) => elements.id);
-            setWriteIdeaIds(WriteIdeaIdsData); 
-
-            // console.log(`Id's dos Input WI'S: ${WriteIdeaIdsData}`)
-            // console.log(`WI response: ${response.data}`)
-            
-          } catch (error) {
-            console.error('Error fetching WIs ids: ', error)
-          }
-        }
-      
-        fetchWIIds();
+        
 
         const fetchPagesIdsAndName = async () =>{
           try{
@@ -332,7 +356,7 @@ function ContentPage(props: props) {
                 
         <Input UserId={props.UserId}/>
 
-        <InputWriteIdea InputWriteIdeaId={0} classNm='top'></InputWriteIdea>
+        <InputWriteIdea InputWriteIdeaId={0} WIuserId={props.UserId} classNm='top'></InputWriteIdea>
       </section>
             
         <section id='main'>

@@ -18,7 +18,7 @@ function LinkGroup (props: props){
     
     return(
         <div id='LinkGroupContainer'>
-            <InputWriteIdea InputWriteIdeaId={props.inputWriteIdeaId}/>
+            <InputWriteIdea WIuserId={props.UserId} InputWriteIdeaId={props.inputWriteIdeaId}/>
             
             <ul className='list-group list-unstyled' id='ListLinkGroup'>
                 <CardTooltip UserId={props.UserId} InputWcardId={props.inputid} EmojiMenuId={props.emojimenuid}></CardTooltip>

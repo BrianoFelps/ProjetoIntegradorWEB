@@ -8,6 +8,7 @@ interface Props{
     onClick?: () => void;
     classNm?: string;
     InputWriteIdeaId: number;
+    WIuserId: number | undefined;
 }
 
 function Spacer(props: Props){
@@ -18,22 +19,23 @@ function Spacer(props: Props){
         const fetchInputValue = async () =>{
           try{
             const response = await axios.get(`${EQ_API_URL}/pages/Elm/WI`);
-            const WriteIdea = response.data.find((WriteIdea: {id: number}) => WriteIdea.id === props.InputWriteIdeaId);
-            const WriteIdeaValue = WriteIdea ? WriteIdea.value : '';
-            setInputValue(WriteIdeaValue);
+            const WriteIdeaValue = response.data.find((WriteIdea: any) => WriteIdea.id === props.InputWriteIdeaId)?.value;
+            
+            setInputValue(WriteIdeaValue || '');
             // console.log(`Tooltip input value: ${TooltipValue}`)
+
           } catch (error) {
             console.error('Error fetching tooltip input:', error)
           }
         }
     
         fetchInputValue();
-      }, [props.InputWriteIdeaId])
+      }, [props.InputWriteIdeaId, props.WIuserId])
 
       const updateValueToBackend = async (updatedValue: string) => {
         try {
     
-           await axios.put(`${EQ_API_URL}/pages/Elm`, { id_property: 6, value: updatedValue, id: props.InputWriteIdeaId }); // Enviar o valor completo como string
+           await axios.put(`${EQ_API_URL}/pages/ElmD`, { id_property: 6, value: updatedValue, id: props.InputWriteIdeaId }); // Enviar o valor completo como string
     
           console.log(`Valor atualizado no banco de dados. Valor: ${updatedValue}`);
     
