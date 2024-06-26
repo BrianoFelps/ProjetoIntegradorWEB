@@ -42,7 +42,7 @@
 
 #custom-tooltip .card-img-top{
     width: 100%; /* Garante que a imagem ocupe toda a largura da tooltip */
-    height: auto; /* Mantém a proporção da imagem */
+    height: 5%; /* Mantém a proporção da imagem */
     border-radius: 5px; /* Arredonda as bordas da imagem */
 }
 

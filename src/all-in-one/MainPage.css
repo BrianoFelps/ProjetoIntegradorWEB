@@ -1,61 +1,114 @@
-*{
+#cardtooltiporiginal *{
+  margin: 0;
+  padding: 0;
+}
+  
+#cardtooltiporiginal #BgBanner{           
+    height: 150px;
+  }
+
+  #cardtooltiporiginal #BgBanner img{
+    object-fit: cover;
+    object-position: center 50%;
+    height: 100%;
+    width: 100%;
+  }
+  
+  #cardtooltiporiginal #ParteEsquerda{
+    margin-left: 5px;
+  }
+
+  #cardtooltiporiginal #ItensDoCanto{
+    display: flex;
+    align-items: center;
+  }
+
+  #cardtooltiporiginal *{
     padding: 0;
     margin: 0;
   }
   
-  #cardtooltiporiginal body{
-    width: 100%;
-    margin: 0;
-    font-family: sans-serif;
+  #cardtooltiporiginal #ConteudoPrincipal{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    
+      position: relative;
+      bottom: 15px;
+    
+      margin: 0 auto;
+    
+      width: 80%;
   }
+    
+  #cardtooltiporiginal #ConteudoPrincipal section{
+      width: 100%;
+    }
+    
+    #cardtooltiporiginal #ContainerSuperior{
+      position: fixed;
+      z-index: 100;
+    }
+    
+    #cardtooltiporiginal #DivTitulo h2{
+      font-family: "Lyon-text";
+      font-size: 2.2em;
+    }
+    
+    #cardtooltiporiginal section{
+      position: relative;
+    }
+    
+    #cardtooltiporiginal textarea#Input{
+      height: 25vh;
+    }
+    /* #MidIconOutside{
+      position: absolute;
+    
+      top: -45px;
+      right: 100%;
+      z-index: 3;
+    } */
+    
+    #cardtooltiporiginal #ItensContainer{
+      padding-bottom: 0px;
+      min-width: calc(100% - 192px);
+      display: grid;
+      position: relative;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      padding-top: 16px;
+      padding-bottom: 4px;
+    }
   
-  #cardtooltiporiginal #root {
-    height: 100%;
-    width: 100%;
-  }
+    #cardtooltiporiginal #NavegacaoBasica{
+      width: 70%;
+      height: 700px;
+      margin-top: 40px;
+      margin-bottom: 300px;
+    }
   
-  #cardtooltiporiginal  #ConteudoPrincipal{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    #cardtooltiporiginal #NavegacaoBasica #DADComponent{
+      width: 100%;
+    }
   
-    position: relative;
-    bottom: 15px;
+    #cardtooltiporiginal #NavegacaoBasica #DiaADiaImg{
+      width: 100%;
+    }
   
-    margin: 0 auto;
+    #cardtooltiporiginal #NavegacaoBasica #DiaADiaImg img{
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
   
-    width: 80%;
-  }
+    #cardtooltiporiginal #ConteudoPrincipal #top div.emoji-container{
+      position: absolute;
+      top: 63px;
+      left: 12px;
+      z-index: 1;
+    }
   
-  #cardtooltiporiginal  #ConteudoPrincipal section{
-    width: 100%;
-  }
-  
-  #cardtooltiporiginal #ContainerSuperior{
-    position: fixed;
-    z-index: 100;
-  }
-  
-  #cardtooltiporiginal #DivTitulo h2{
-    font-family: "Lyon-text";
-    font-size: 2.2em;
-  }
-  
-  #cardtooltiporiginal section{
-    position: relative;
-  }
-  
-  #cardtooltiporiginal #Input{
-    height: 20vh;
-  }
-  
-  #cardtooltiporiginal #BgBanner img{
-    height: 100%;
-  }
-  /* #MidIconOutside{
-    position: absolute;
-  
-    top: -45px;
-    right: 100%;
-    z-index: 3;
-  } */
+    #cardtooltiporiginal #main .emoji-container{
+      z-index: 1;
+    }

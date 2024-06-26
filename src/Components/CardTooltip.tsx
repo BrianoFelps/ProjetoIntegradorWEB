@@ -105,10 +105,7 @@ function YourComponent(props: props) {
         {showTooltip && activeLi &&(
             <div className='custom-tooltip' id='custom-tooltip'>
                 <div className='card' id='card'>
-                    <img src={banner} alt="" className='card-img-top'/>
-                    <div className='card-body' id='CorpoCard'>
-                        <MainPage suppressFunctions/>
-                    </div>
+                  <MainPage suppressFunctions/>
                 </div>
             </div>
         )}
