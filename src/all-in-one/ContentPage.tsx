@@ -20,6 +20,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 
 interface props {
   UserId: number | undefined;
+  suppressFunctions?: boolean;
 }
 
 function ContentPage(props: props) {
@@ -41,6 +42,8 @@ function ContentPage(props: props) {
 
     
     useEffect(() => {
+        if(props.suppressFunctions) return;
+
         // Função para buscar os IDs dos EmojiMenus a serem especificados
         const fetchEmojiMenuIds = async () => {
           try {
@@ -177,7 +180,7 @@ function ContentPage(props: props) {
             const WriteIdeaIdsData = response.data.filter((elements: any) => elements.user_id === props.UserId);
             
 
-            const requiredWIs = 4;
+            const requiredWIs = 3;
 
             if(WriteIdeaIdsData.length < requiredWIs){
               const addWIpromises = [];
@@ -209,29 +212,46 @@ function ContentPage(props: props) {
       
         fetchWIIds();
 
-      }, [props.UserId]);
+          const fetchTooltipIds = async () => {
+            try{
+              // PAREI AQUI
+              const response = await axios.get(`${EQ_API_URL}/pages/Elm/IC`);
+              const TooltipIdsData = response.data.filter((elements: any) => elements.user_id === props.UserId);
 
+              const requiredTI = 9;
 
-      
-      useEffect(() => {
+              if(TooltipIdsData.length < requiredTI){
+                const addTIpromises = [];
+                for(let i = TooltipIdsData.length; i < requiredTI; i++){
+                  addTIpromises.push(
+                    axios.post(`${EQ_API_URL}/pages/Elm`, {
+                      id_property: 5,
+                      value: '',
+                      user_id: props.UserId,
+                      page_id: 1
+                    })
+                  )
+                }
+                await Promise.all(addTIpromises);
+                console.log(`Adicionados ${requiredTI - TooltipIdsData.length} Tooltip inputs`)
 
-        const fetchTooltipIds = async () => {
-          try{
-            const response = await axios.get(`${EQ_API_URL}/pages/Elm/IC`);
-            const TooltipIdsData = response.data.map((elements: { id: number }) => elements.id);
-            setTooltipIds(TooltipIdsData); 
-
-            // console.log(`Id's dos Input Tooltip's: ${TooltipIds}`)
-            // console.log(`TooltipIdsData: ${TooltipIdsData}`)
-            
-          } catch (error) {
-            console.error('Error fetching Cards ids: ', error)
+                const newRes = await axios.get(`${EQ_API_URL}/pages/Elm/IC`)
+                const newTooltipIds = newRes.data.filter((elements: any) => elements.user_id === props.UserId);
+                setTooltipIds(newTooltipIds.map((elements: {id: number})=> elements.id))
+              } else {
+                setTooltipIds(TooltipIdsData.map((elm: {id: number})=> elm.id));
+                console.log(`Element's Tooltips já existem suficientemente para o userid ${props.UserId}`)
+                console.log(`TooltipI ids: ${WriteIdeaIds}`) 
+              }
+            } catch (error) {
+              console.error('Error fetching Cards ids: ', error)
+            }
           }
-        }
-      
-        fetchTooltipIds();
-
         
+          fetchTooltipIds();
+      }, [props.UserId, props.suppressFunctions]);
+
+      useEffect(() => {
 
         const fetchPagesIdsAndName = async () =>{
           try{
@@ -356,7 +376,7 @@ function ContentPage(props: props) {
                 
         <Input UserId={props.UserId}/>
 
-        <InputWriteIdea InputWriteIdeaId={0} WIuserId={props.UserId} classNm='top'></InputWriteIdea>
+        <InputWriteIdea WIuserId={props.UserId} classNm='top'></InputWriteIdea>
       </section>
             
         <section id='main'>

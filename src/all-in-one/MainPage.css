@@ -3,18 +3,18 @@
     margin: 0;
   }
   
-  body{
+  #cardtooltiporiginal body{
     width: 100%;
     margin: 0;
     font-family: sans-serif;
   }
   
-  #root {
+  #cardtooltiporiginal #root {
     height: 100%;
     width: 100%;
   }
   
-  #ConteudoPrincipal{
+  #cardtooltiporiginal  #ConteudoPrincipal{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -27,28 +27,31 @@
     width: 80%;
   }
   
-  #ConteudoPrincipal section{
+  #cardtooltiporiginal  #ConteudoPrincipal section{
     width: 100%;
   }
   
-  #ContainerSuperior{
+  #cardtooltiporiginal #ContainerSuperior{
     position: fixed;
     z-index: 100;
   }
   
-  #DivTitulo h2{
+  #cardtooltiporiginal #DivTitulo h2{
     font-family: "Lyon-text";
     font-size: 2.2em;
   }
   
-  section{
+  #cardtooltiporiginal section{
     position: relative;
   }
   
-  #Input{
+  #cardtooltiporiginal #Input{
     height: 20vh;
   }
   
+  #cardtooltiporiginal #BgBanner img{
+    height: 100%;
+  }
   /* #MidIconOutside{
     position: absolute;
   

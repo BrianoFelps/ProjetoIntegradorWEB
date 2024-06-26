@@ -7,7 +7,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 interface Props{
     onClick?: () => void;
     classNm?: string;
-    InputWriteIdeaId: number;
+    InputWriteIdeaId?: number;
     WIuserId: number | undefined;
 }
 

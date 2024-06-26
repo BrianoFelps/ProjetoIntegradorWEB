@@ -8,6 +8,7 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
 interface TopBarProps{
   userName: string;
   UserId: number | undefined;
+  suppressFunctions?: boolean;
 }
 
 function TopBar(props: TopBarProps) {
@@ -25,6 +26,8 @@ function TopBar(props: TopBarProps) {
   }
 
   useEffect(() => {
+    if(props.suppressFunctions) return;
+
     const fetchPagesIdsWUsers = async () => {
     try {
       const response = await axios.get(`${EQ_API_URL}/pages/User/${props.UserId}`);
