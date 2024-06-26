@@ -1,0 +1,42 @@
+#ContainerMaxUserInfo{
+    height: 100vh;
+}
+
+#ContainerMaxUserInfo #Voltar, #ContainerMaxUserInfo  #Deslogar{
+    font-weight: bolder;
+}
+
+#ContainerMaxUserInfo .pr{
+    padding-right: .3em;
+}
+
+#ContainerMaxUserInfo .css-1wlk0hk-MuiAvatar-root {
+    width: 120px;
+    height: 120px;
+}
+
+#ContainerMaxUserInfo #InfosPrincipais label{
+    position: relative;
+}
+
+#ContainerMaxUserInfo .BotãoDView{
+    position:absolute;
+    right: 8px;
+    bottom: 5px;
+
+    padding: 2px 5px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+#ContainerMaxUserInfo .BotãoDView:hover{
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.ml{
+    margin-left: .5em;
+}

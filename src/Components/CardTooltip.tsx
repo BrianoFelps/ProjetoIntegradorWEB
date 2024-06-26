@@ -1,6 +1,5 @@
 import React, { useEffect, useState} from 'react';
 import MainPage from '../all-in-one/MainPage';
-import banner from '../assets/i_have_no_enemies___thorfinn___vinland_manga_3d_by_synedae_dg3gce9-fullview.jpg';
 import EmojiMenu from './EmojiMenu';
 import '../Components/CardTooltip.css'
 import axios from 'axios';

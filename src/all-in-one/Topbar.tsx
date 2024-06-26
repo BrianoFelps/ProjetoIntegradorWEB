@@ -45,17 +45,17 @@ function TopBar(props: TopBarProps) {
       const UserEmailData = response.data.email;
       // console.log(`UserEmailData: ${UserEmailData}`)
       setUserEmail(UserEmailData);
-
+      
     } catch (error){
       console.error(`Erro ao fazer fetch das pagesIds: ${error}`);
     }
   }
-
-    if (props.UserId !== undefined) {
-      fetchPagesIdsWUsers();
-    }
-    //Implementar depois nos cards e no container pai (vai ser o superior)
-  }, [props.UserId])
+  
+  if (props.UserId !== undefined) {
+    fetchPagesIdsWUsers();
+  }
+  //Implementar depois nos cards e no container pai (vai ser o superior)
+}, [props.UserId])
 
   return (
     <>

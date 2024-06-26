@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MasterPage from './Pages/MasterPage';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
+import UserInfo from './Pages/UserInfo';
 import { useEffect, useState } from 'react';
 
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Login setUser={setUserName} />} />
           <Route path="/homepage" element={<MasterPage userName={userName} />} />
           <Route path="/SignUp" element={<SignUp setUser={setUserName}/>} />
+          <Route path="/User" element={<UserInfo userName={userName}/>} />
         </Routes>
       </BrowserRouter>
     </>
