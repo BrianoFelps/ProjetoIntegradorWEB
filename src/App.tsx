@@ -25,7 +25,7 @@ function App() {
           <Route path="/" element={<Login setUser={setUserName} />} />
           <Route path="/homepage" element={<MasterPage userName={userName} />} />
           <Route path="/SignUp" element={<SignUp setUser={setUserName}/>} />
-          <Route path="/user" element={<UserInfo userName={userName}/>} />
+          <Route path="/User" element={<UserInfo userName={userName}/>} />
         </Routes>
       </BrowserRouter>
     </>
