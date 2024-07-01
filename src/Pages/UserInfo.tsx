@@ -42,7 +42,7 @@ function UserInfo(props: UserInfoProps){
             try{
                 // EXEMPLO DO IDUSUARIO COM LOCALSTORAGE
                 const IdUsuario = localStorage.getItem('userId');
-                console.log(`IdUsuario: ${IdUsuario}`)
+                console.log(`IdUsuario segundo userinfo: ${IdUsuario}`)
 
                 if(IdUsuario !== null) {
                     const userIdNumber = parseInt(IdUsuario, 10);

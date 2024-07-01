@@ -18,7 +18,7 @@ function MasterPage (props: MasterPageProps) {
                 const IdUsuario = localStorage.getItem('userId');
                 console.log(`IdUsuario: ${IdUsuario}`)
 
-                if(IdUsuario !== null) {
+                if(IdUsuario !== null && IdUsuario !== undefined) {
                     const userIdNumber = parseInt(IdUsuario, 10);
                     if(!isNaN(userIdNumber))
                         setUserId(userIdNumber);

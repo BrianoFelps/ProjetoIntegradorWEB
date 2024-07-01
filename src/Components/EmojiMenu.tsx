@@ -93,7 +93,7 @@ function EmojiMenu({ emojiMenuId, onOpen, onClose, UserId }: EmojiMenuProps){
 
   const handleEmojiSelect = async (emojiId: number) => {
     const selected = emojis.find(emoji => emoji.id === emojiId);
-    if (emojiMenuId !== undefined && emojiMenuId !== null) {
+    if (emojiMenuId !== undefined && emojiMenuId !== null && UserId !== undefined) {
       if (selected) {
         setSelectedEmoji(selected.emoji);
         console.log(`Antes: ${selectedEmoji}`)

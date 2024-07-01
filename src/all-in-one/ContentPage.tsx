@@ -39,249 +39,75 @@ function ContentPage( { UserId, suppressFunctions } : props) {
     const [isModal3Visible, setIsModal3Visible] = useState(false);
     const [isModal4Visible, setIsModal4Visible] = useState(false);
     const [isModal5Visible, setIsModal5Visible] = useState(false);
-
     
     useEffect(() => {
-        if(suppressFunctions) return;
-
-        // Função para buscar os IDs dos EmojiMenus a serem especificados
-        const fetchEmojiMenuIds = async () => {
-          try {
-            /*Buscar todos os emojimenus*/
-            // http://localhost:8080/pages/emojiMenu/emoji
-            const response = await axios.get(`${EQ_API_URL}/pages/emojiMenu/emoji`);
-            console.log(response.data)
-
-            const userEmojiMenus = response.data.filter((emojimenu: any) => emojimenu.user_id === UserId)
-
-            console.log(`Número de EmojiMenus encontrados: ${userEmojiMenus.length}`)
-
-            const requiredEmojiMenus = 15; //Número máximo de emojimenus na pag
-
-            if(userEmojiMenus.length < requiredEmojiMenus){
-              const addEmojiMenuPromises = [];
-              for (let i = userEmojiMenus.length; i < requiredEmojiMenus; i++){
-                addEmojiMenuPromises.push(
-                  axios.post(`${EQ_API_URL}/pages/emojiMenu`, { id_emoji: 0, page_id: 1, user_id: UserId })
-                )
-              }
-              await Promise.all(addEmojiMenuPromises);
-              console.log(`Adicionados ${requiredEmojiMenus - userEmojiMenus.length} EmojiMenus.`)
-
-              // Refazer a requisição para obter os novos EmojiMenus adicionados
-              const newResponse = await axios.get(`${EQ_API_URL}/pages/emojiMenu/emoji`);
-              const newUserEmojiMenus = newResponse.data.filter((emojimenu: any) => emojimenu.user_id === UserId);
-              setEmojiMenuIds(newUserEmojiMenus.map((emojimenu: { id: number }) => emojimenu.id));
-            } else {
-              setEmojiMenuIds(userEmojiMenus.map((emojimenu: {id: number}) => emojimenu.id))
-              console.log(`EmojiMenu já existem em quantidade suficiente para o user_id ${UserId}`)
-              console.log(`emojiMenuIds: ${emojiMenuIds}`)
-            }
-            
-            //   const addResponse = await axios.post(`${EQ_API_URL}/pages/emojiMenu`, { id_emoji: 0, page_id: 1, user_id: props.UserId });
-            //   console.log(`EmojiMenu adicionado:`, addResponse.data);
-            
-
-          } catch (error) {
-            console.error('Error fetching emoji menu IDs:', error);
+      if (suppressFunctions) return;
+  
+      const fetchData = async () => {
+        try {
+          if (!UserId) {
+            console.error('User ID is null or undefined.');
+            return;
           }
-        };
-
-        fetchEmojiMenuIds(); // Chame a função para buscar os IDs dos EmojiMenus
-
-        const fetchCardIds = async () => {
-          try{
-            const response = await axios.get(`${EQ_API_URL}/pages/Elm/cards`);
-            const userNItems = response.data.filter((NItem: any) => NItem.user_id === UserId)
-
-            console.log(`Número de NItems encontrados: ${userNItems.length}`);
-
-            const requiredNItems = 5;
-
-            if(userNItems.length < requiredNItems){
-              const addNItemPromises = [];
-              for (let i = userNItems.length; i < requiredNItems; i++){
-                addNItemPromises.push(
-                  axios.post(`${EQ_API_URL}/pages/Elm`, {
-                    id_property: 4, 
-                    value: '', 
-                    user_id: UserId,
-                    page_id: 1
-                  })
-                )
-              }
-              await Promise.all(addNItemPromises);
-              console.log(`Adicionados ${requiredNItems - userNItems.length} NItem's`)
-
-              const newResponse = await axios.get(`${EQ_API_URL}/pages/Elm/cards`)
-              const newUserNItems = newResponse.data.filter((NItem: any) => NItem.user_id === UserId);
-
-              setCardsIds(newUserNItems.map((Nitem: {id: number}) => Nitem.id))
-            } else {
-              setCardsIds(userNItems.map((Nitem: {id: number}) => Nitem.id))
-              // console.log(`NItem's já existem suficientemente para o user_id ${props.UserId}`)
-              console.log(CardsIds)
-            }    
-          } catch (error) {
-            console.error('Error fetching Cards ids: ', error)
-          }
+  
+          const [
+            emojiMenusResponse,
+            cardsResponse,
+            fsCardsResponse,
+            writeIdeaResponse,
+            tooltipResponse,
+            pagesResponse
+          ] = await Promise.all([
+            axios.get(`${EQ_API_URL}/pages/emojiMenu/emoji`),
+            axios.get(`${EQ_API_URL}/pages/Elm/cards`),
+            axios.get(`${EQ_API_URL}/pages/Elm/FS`),
+            axios.get(`${EQ_API_URL}/pages/Elm/WI`),
+            axios.get(`${EQ_API_URL}/pages/Elm/IC`),
+            axios.get(`${EQ_API_URL}/pages/`)
+          ]);
+  
+          const userEmojiMenus = emojiMenusResponse.data.filter((emojimenu: any) => emojimenu.user_id === UserId);
+          const userCards = cardsResponse.data.filter((NItem: any) => NItem.user_id === UserId);
+          const userFScards = fsCardsResponse.data.filter((elm: any) => elm.user_id === UserId);
+          const userWriteIdeas = writeIdeaResponse.data.filter((elements: any) => elements.user_id === UserId);
+          const userTooltips = tooltipResponse.data.filter((elements: any) => elements.user_id === UserId);
+  
+          setEmojiMenuIds(await manageItems(userEmojiMenus, 15, 'emojiMenu', setEmojiMenuIds));
+          setCardsIds(await manageItems(userCards, 5, 'cards', setCardsIds));
+          setFScardIds(await manageItems(userFScards, 5, 'FS', setFScardIds));
+          setWriteIdeaIds(await manageItems(userWriteIdeas, 3, 'WI', setWriteIdeaIds));
+          setTooltipIds(await manageItems(userTooltips, 9, 'IC', setTooltipIds));
+  
+          const PagesIdsData = pagesResponse.data.map((page: { id: number }) => page.id).filter((id: number) => id > 1);
+          setPagesIds(PagesIdsData);
+  
+          const getPageNameLS = localStorage.getItem('PageName');
+          if (getPageNameLS) setPageName(getPageNameLS);
+        } catch (error) {
+          console.error('Error fetching data:', error);
         }
-
-        fetchCardIds();
-        if (UserId !== undefined) {
+      };
+  
+      const manageItems = async (items: any[], requiredCount: number, endpoint: string, _setState: React.Dispatch<React.SetStateAction<number[]>>) => {
+        if (items.length < requiredCount) {
+          const addItemsPromises = [];
+          for (let i = items.length; i < requiredCount; i++) {
+            addItemsPromises.push(
+              axios.post(`${EQ_API_URL}/pages/${endpoint}`, { id_property: 0, value: '', user_id: UserId, page_id: 1 })
+            );
+          }
+          await Promise.all(addItemsPromises);
+  
+          const newResponse = await axios.get(`${EQ_API_URL}/pages/${endpoint}`);
+          const newItems = newResponse.data.filter((item: any) => item.user_id === UserId);
+          return newItems.map((item: { id: number }) => item.id);
         } else {
-          console.error('UserId está indefinido em ContentPage');
+          return items.map((item: { id: number }) => item.id);
         }
-        
-        const fetchFScardIds = async () => {
-          try{
-            const response = await axios.get(`${EQ_API_URL}/pages/Elm/FS`);
-            const FSIdsData = response.data.filter((elm: any) => elm.user_id === UserId);
-
-            const requiredCards = 5;
-
-            if(FSIdsData.length < requiredCards){
-              const addNItemModalPromises = [];
-              for (let i = FSIdsData.length; i< requiredCards; i++){
-                addNItemModalPromises.push(
-                  axios.post(`${EQ_API_URL}/pages/Elm`, {
-                    id_property: 7, 
-                    value: '', 
-                    user_id: UserId,
-                    page_id: 1
-                  })
-                )
-              }
-              await Promise.all(addNItemModalPromises);
-              console.log(`Adicionados ${requiredCards - FSIdsData.length} fsCardS`)
-
-              const newResponse = await axios.get(`${EQ_API_URL}/pages/Elm/FS`)
-              const newUserFSIds = newResponse.data.filter((elements: any) => elements.user_id === UserId);
-
-              setFScardIds(newUserFSIds.map((elements: {id: number}) => elements.id))
-            } else {
-              setFScardIds(FSIdsData.map((elements: {id: number}) => elements.id))
-              // console.log(`Element's FSCard já existem suficientemente para o user_id ${props.UserId}`)
-              console.log(`FScardIds: ${FScardIds}`)
-            }    
-          } catch (error) {
-            console.error('Error fetching CardsModals ids: ', error)
-          }
-        }
-
-        if (UserId !== undefined) {
-          fetchFScardIds();
-        } else {
-          console.error('UserId está indefinido em ContentPage');
-        }
-
-        const fetchWIIds = async () => {
-          try{
-            const response = await axios.get(`${EQ_API_URL}/pages/Elm/WI`);
-            const WriteIdeaIdsData = response.data.filter((elements: any) => elements.user_id === UserId);
-            
-
-            const requiredWIs = 3;
-
-            if(WriteIdeaIdsData.length < requiredWIs){
-              const addWIpromises = [];
-              for(let i = WriteIdeaIds.length; i < requiredWIs; i++){
-                addWIpromises.push(
-                  axios.post(`${EQ_API_URL}/pages/Elm`, {
-                    id_property: 6,
-                    value: '',
-                    user_id: UserId,
-                    page_id: 1
-                  })
-                )
-              }
-              await Promise.all(addWIpromises);
-              console.log(`Adicionados ${requiredWIs - WriteIdeaIdsData.length} Write Idea Input's`)
-
-              const newResponse = await axios.get(`${EQ_API_URL}/pages/Elm/WI`)
-              const newUserWIids = newResponse.data.filter((elements: any) => elements.user_id === UserId);
-              setWriteIdeaIds(newUserWIids.map((elements: {id: number}) => elements.id))
-            } else {
-              setWriteIdeaIds(WriteIdeaIdsData.map((elements: {id: number})=> elements.id));
-              console.log(`Element's Writeidea já existem suficientemente para o userid ${UserId}`)
-              console.log(`WIids: ${WriteIdeaIds}`) 
-            }
-          } catch (error) {
-            console.error('Error fetching WIs ids: ', error)
-          }
-        }
-      
-        fetchWIIds();
-
-          const fetchTooltipIds = async () => {
-            try{
-              // PAREI AQUI
-              const response = await axios.get(`${EQ_API_URL}/pages/Elm/IC`);
-              const TooltipIdsData = response.data.filter((elements: any) => elements.user_id === UserId);
-
-              const requiredTI = 9;
-
-              if(TooltipIdsData.length < requiredTI){
-                const addTIpromises = [];
-                for(let i = TooltipIdsData.length; i < requiredTI; i++){
-                  addTIpromises.push(
-                    axios.post(`${EQ_API_URL}/pages/Elm`, {
-                      id_property: 5,
-                      value: '',
-                      user_id: UserId,
-                      page_id: 1
-                    })
-                  )
-                }
-                await Promise.all(addTIpromises);
-                console.log(`Adicionados ${requiredTI - TooltipIdsData.length} Tooltip inputs`)
-
-                const newRes = await axios.get(`${EQ_API_URL}/pages/Elm/IC`)
-                const newTooltipIds = newRes.data.filter((elements: any) => elements.user_id === UserId);
-                setTooltipIds(newTooltipIds.map((elements: {id: number})=> elements.id))
-              } else {
-                setTooltipIds(TooltipIdsData.map((elm: {id: number})=> elm.id));
-                console.log(`Element's Tooltips já existem suficientemente para o userid ${UserId}`)
-                console.log(`TooltipI ids: ${WriteIdeaIds}`) 
-              }
-            } catch (error) {
-              console.error('Error fetching Cards ids: ', error)
-            }
-          }
-        
-          fetchTooltipIds();
-      }, [UserId, suppressFunctions]);
-
-      useEffect(() => {
-
-        const fetchPagesIdsAndName = async () =>{
-          try{
-            const response = await axios.get(`${EQ_API_URL}/pages/`);
-
-            const PagesIdsData = response.data
-            .map((page: { id: number }) => page.id)
-            .filter((id: number) => id > 1); // Filtrar IDs maiores que 1
-
-            setPagesIds(PagesIdsData);
-
-            const getPageNameLS= localStorage.getItem('PageName');
-
-            if(getPageNameLS !== null){
-              const getPageName = getPageNameLS.toString();
-              if(getPageName !== null)
-                setPageName(getPageName)
-              else
-                console.error(`O nome da página não é uma string válida: ${getPageNameLS}`);
-            }
-            // console.log(`Pages ids: ${PagesIdsData}`)
-          }catch (error) {
-            console.error('Error fetching Pages ids: ', error)
-          }
-        }
-      
-          fetchPagesIdsAndName();
-          //Implementar depois nos cards e no container pai (vai ser o superior)
-      }, []);
+      };
+  
+      fetchData();
+    }, [UserId, suppressFunctions]);
 
     const openModal1 = () =>{
       setIsModal1Visible(true)
