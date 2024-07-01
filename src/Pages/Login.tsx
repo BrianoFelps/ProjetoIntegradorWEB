@@ -1,6 +1,5 @@
 import './Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import LoginButton from '../Components/LoginButton';
 import LoginPageLogo from '../Components/LoginPageLogo';
 import axios from 'axios';
 import { useState, useEffect } from 'react';

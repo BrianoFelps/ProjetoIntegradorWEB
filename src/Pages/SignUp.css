@@ -59,36 +59,48 @@
   }
 
   #labelSignUp{
+    display: block;
     padding-bottom: 10px;
+    text-align: center;
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
   #labelFirstName{
+    display: block;
+    text-align: center;
     padding-bottom: 5px;
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
   #labelLastName{
+    display: block;
+    text-align: center;
     padding-bottom: 5px;
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
   #labelEmail{
+    display: block;
+    text-align: center;
     padding-bottom: 5px;
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
   #labelPassword{
+    display: block;
+    text-align: center;
     padding-bottom: 5px;
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
   }
 
   #labelConfirmPassword{
+    display: block;
+    text-align: center;
     padding-bottom: 5px;
     font-size: large;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
@@ -133,6 +145,10 @@
     background-color: #FBD5E2;
   }
 
+  #InputFName1::placeholder{
+    text-align: center;
+  }
+
   #InputLName1{
     width: 100%;
     transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out, box-shadow 200ms ease-in-out;
@@ -142,6 +158,10 @@
     box-shadow: 0 0 0 0.25rem  #ff79a8;
     border-color: #bd5c7e;
     background-color: #FBD5E2;
+  }
+
+  #InputLName1::placeholder{
+    text-align: center;
   }
 
   #InputEmail1{
@@ -233,10 +253,11 @@
     text-align: center;
   }
 
-  #emailHelp{
+  #infoHelp{
     display: block;
     color: #665b54 !important;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    text-align: center;
     padding-bottom: 5px;
   }
 

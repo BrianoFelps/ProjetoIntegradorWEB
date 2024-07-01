@@ -94,7 +94,7 @@ function SignUp(props: SignUpProps){
                 props.setUser(nome);
                 setSignedIn(true); // signedIn ficará true após o login bem-sucedido
             } catch (error) {
-                setFormError('Erro ao fazer cadastro. Tente novamente verificando suas credenciais.');
+                setFormError('Tente novamente verificando suas credenciais. (email já cadastrado)');
                 setShowModalErro(true);
                 setLogoVisible(false);
             }
@@ -117,8 +117,8 @@ function SignUp(props: SignUpProps){
         navigate('/');
     }
 
-    const simpletext = "Não possui uma conta?"; // texto
-    const textlink = "Crie uma aqui!"; //texto para o usuario criar a conta.
+    const simpletext = "Já possui uma conta aqui?"; // texto
+    const textlink = "Faça o Login!"; //texto para o usuario criar a conta.
 
     useEffect(() => {
         if (signedIn) {
@@ -152,7 +152,6 @@ function SignUp(props: SignUpProps){
                         <div className="form-groupE" id='form-groupEmail'>
                             <label htmlFor="exInputEmail1" id='labelEmail'>Email: </label>
                             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Endereço de Email"></input>
-                            <small id="emailHelp" className="form-text text-muted">Nunca Compartilharemos o seu Email com ninguém.</small>
                         </div>
                         <div className="form-groupP" id='form-groupPassword'>
                             <label htmlFor="exInputPassword1" id='labelPassword'>Senha: </label>
@@ -161,6 +160,7 @@ function SignUp(props: SignUpProps){
                         <div className="form-groupP" id='form-groupConfirmPassword'>
                             <label htmlFor="exInputPassword1" id='labelConfirmPassword'>Confirme a sua Senha: </label>
                             <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="form-control" id="InputConfirmPassword1" placeholder="Confirme a Senha"></input>
+                            <small id="infoHelp" className="form-text text-muted">Nunca Compartilharemos suas informações</small>
                         </div>
                         <div id='formbtnSignUp'>
                             <button type="button" className="btn btn-primary" id="btnEnter" onClick={handleSubmit} disabled={loginEmAndamento} >Criar Conta</button>

@@ -121,13 +121,6 @@
     text-align: center;
   }
 
-  #emailHelp{
-      display: block;
-      color: #665b54 !important;
-      font-family: 'Poppins', Arial, Helvetica, sans-serif;
-      padding-bottom: 5px;
-  }
-
   #checkgroup{
       padding-bottom: 10px;
       padding-top: 10px;
