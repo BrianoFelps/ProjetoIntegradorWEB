@@ -23,7 +23,7 @@ interface props {
   suppressFunctions?: boolean;
 }
 
-function ContentPage(props: props) {
+function ContentPage( { UserId, suppressFunctions } : props) {
      // Estado para armazenar os IDs dos EmojiMenus
     const [emojiMenuIds, setEmojiMenuIds] = useState<number[]>([]);
     const [CardsIds, setCardsIds] = useState<number[]>([]);
@@ -42,7 +42,7 @@ function ContentPage(props: props) {
 
     
     useEffect(() => {
-        if(props.suppressFunctions) return;
+        if(suppressFunctions) return;
 
         // Função para buscar os IDs dos EmojiMenus a serem especificados
         const fetchEmojiMenuIds = async () => {
@@ -52,7 +52,7 @@ function ContentPage(props: props) {
             const response = await axios.get(`${EQ_API_URL}/pages/emojiMenu/emoji`);
             console.log(response.data)
 
-            const userEmojiMenus = response.data.filter((emojimenu: any) => emojimenu.user_id === props.UserId)
+            const userEmojiMenus = response.data.filter((emojimenu: any) => emojimenu.user_id === UserId)
 
             console.log(`Número de EmojiMenus encontrados: ${userEmojiMenus.length}`)
 
@@ -62,7 +62,7 @@ function ContentPage(props: props) {
               const addEmojiMenuPromises = [];
               for (let i = userEmojiMenus.length; i < requiredEmojiMenus; i++){
                 addEmojiMenuPromises.push(
-                  axios.post(`${EQ_API_URL}/pages/emojiMenu`, { id_emoji: 0, page_id: 1, user_id: props.UserId })
+                  axios.post(`${EQ_API_URL}/pages/emojiMenu`, { id_emoji: 0, page_id: 1, user_id: UserId })
                 )
               }
               await Promise.all(addEmojiMenuPromises);
@@ -70,11 +70,12 @@ function ContentPage(props: props) {
 
               // Refazer a requisição para obter os novos EmojiMenus adicionados
               const newResponse = await axios.get(`${EQ_API_URL}/pages/emojiMenu/emoji`);
-              const newUserEmojiMenus = newResponse.data.filter((emojimenu: any) => emojimenu.user_id === props.UserId);
-              setEmojiMenuIds(newUserEmojiMenus.map((emojiMenu: { id: number }) => emojiMenu.id));
+              const newUserEmojiMenus = newResponse.data.filter((emojimenu: any) => emojimenu.user_id === UserId);
+              setEmojiMenuIds(newUserEmojiMenus.map((emojimenu: { id: number }) => emojimenu.id));
             } else {
-              setEmojiMenuIds(userEmojiMenus.map((emojiMenu: {id: number}) => emojiMenu.id))
-              // console.log(`EmojiMenu já existem em quantidade suficiente para o user_id ${props.UserId}`)
+              setEmojiMenuIds(userEmojiMenus.map((emojimenu: {id: number}) => emojimenu.id))
+              console.log(`EmojiMenu já existem em quantidade suficiente para o user_id ${UserId}`)
+              console.log(`emojiMenuIds: ${emojiMenuIds}`)
             }
             
             //   const addResponse = await axios.post(`${EQ_API_URL}/pages/emojiMenu`, { id_emoji: 0, page_id: 1, user_id: props.UserId });
@@ -91,7 +92,7 @@ function ContentPage(props: props) {
         const fetchCardIds = async () => {
           try{
             const response = await axios.get(`${EQ_API_URL}/pages/Elm/cards`);
-            const userNItems = response.data.filter((NItem: any) => NItem.user_id === props.UserId)
+            const userNItems = response.data.filter((NItem: any) => NItem.user_id === UserId)
 
             console.log(`Número de NItems encontrados: ${userNItems.length}`);
 
@@ -99,12 +100,12 @@ function ContentPage(props: props) {
 
             if(userNItems.length < requiredNItems){
               const addNItemPromises = [];
-              for (let i = userNItems.length; i< requiredNItems; i++){
+              for (let i = userNItems.length; i < requiredNItems; i++){
                 addNItemPromises.push(
                   axios.post(`${EQ_API_URL}/pages/Elm`, {
                     id_property: 4, 
                     value: '', 
-                    user_id: props.UserId,
+                    user_id: UserId,
                     page_id: 1
                   })
                 )
@@ -113,7 +114,7 @@ function ContentPage(props: props) {
               console.log(`Adicionados ${requiredNItems - userNItems.length} NItem's`)
 
               const newResponse = await axios.get(`${EQ_API_URL}/pages/Elm/cards`)
-              const newUserNItems = newResponse.data.filter((NItem: any) => NItem.user_id === props.UserId);
+              const newUserNItems = newResponse.data.filter((NItem: any) => NItem.user_id === UserId);
 
               setCardsIds(newUserNItems.map((Nitem: {id: number}) => Nitem.id))
             } else {
@@ -127,7 +128,7 @@ function ContentPage(props: props) {
         }
 
         fetchCardIds();
-        if (props.UserId !== undefined) {
+        if (UserId !== undefined) {
         } else {
           console.error('UserId está indefinido em ContentPage');
         }
@@ -135,7 +136,7 @@ function ContentPage(props: props) {
         const fetchFScardIds = async () => {
           try{
             const response = await axios.get(`${EQ_API_URL}/pages/Elm/FS`);
-            const FSIdsData = response.data.filter((elm: any) => elm.user_id === props.UserId);
+            const FSIdsData = response.data.filter((elm: any) => elm.user_id === UserId);
 
             const requiredCards = 5;
 
@@ -146,7 +147,7 @@ function ContentPage(props: props) {
                   axios.post(`${EQ_API_URL}/pages/Elm`, {
                     id_property: 7, 
                     value: '', 
-                    user_id: props.UserId,
+                    user_id: UserId,
                     page_id: 1
                   })
                 )
@@ -155,7 +156,7 @@ function ContentPage(props: props) {
               console.log(`Adicionados ${requiredCards - FSIdsData.length} fsCardS`)
 
               const newResponse = await axios.get(`${EQ_API_URL}/pages/Elm/FS`)
-              const newUserFSIds = newResponse.data.filter((elements: any) => elements.user_id === props.UserId);
+              const newUserFSIds = newResponse.data.filter((elements: any) => elements.user_id === UserId);
 
               setFScardIds(newUserFSIds.map((elements: {id: number}) => elements.id))
             } else {
@@ -168,7 +169,7 @@ function ContentPage(props: props) {
           }
         }
 
-        if (props.UserId !== undefined) {
+        if (UserId !== undefined) {
           fetchFScardIds();
         } else {
           console.error('UserId está indefinido em ContentPage');
@@ -177,7 +178,7 @@ function ContentPage(props: props) {
         const fetchWIIds = async () => {
           try{
             const response = await axios.get(`${EQ_API_URL}/pages/Elm/WI`);
-            const WriteIdeaIdsData = response.data.filter((elements: any) => elements.user_id === props.UserId);
+            const WriteIdeaIdsData = response.data.filter((elements: any) => elements.user_id === UserId);
             
 
             const requiredWIs = 3;
@@ -189,7 +190,7 @@ function ContentPage(props: props) {
                   axios.post(`${EQ_API_URL}/pages/Elm`, {
                     id_property: 6,
                     value: '',
-                    user_id: props.UserId,
+                    user_id: UserId,
                     page_id: 1
                   })
                 )
@@ -198,11 +199,11 @@ function ContentPage(props: props) {
               console.log(`Adicionados ${requiredWIs - WriteIdeaIdsData.length} Write Idea Input's`)
 
               const newResponse = await axios.get(`${EQ_API_URL}/pages/Elm/WI`)
-              const newUserWIids = newResponse.data.filter((elements: any) => elements.user_id === props.UserId);
+              const newUserWIids = newResponse.data.filter((elements: any) => elements.user_id === UserId);
               setWriteIdeaIds(newUserWIids.map((elements: {id: number}) => elements.id))
             } else {
               setWriteIdeaIds(WriteIdeaIdsData.map((elements: {id: number})=> elements.id));
-              console.log(`Element's Writeidea já existem suficientemente para o userid ${props.UserId}`)
+              console.log(`Element's Writeidea já existem suficientemente para o userid ${UserId}`)
               console.log(`WIids: ${WriteIdeaIds}`) 
             }
           } catch (error) {
@@ -216,7 +217,7 @@ function ContentPage(props: props) {
             try{
               // PAREI AQUI
               const response = await axios.get(`${EQ_API_URL}/pages/Elm/IC`);
-              const TooltipIdsData = response.data.filter((elements: any) => elements.user_id === props.UserId);
+              const TooltipIdsData = response.data.filter((elements: any) => elements.user_id === UserId);
 
               const requiredTI = 9;
 
@@ -227,7 +228,7 @@ function ContentPage(props: props) {
                     axios.post(`${EQ_API_URL}/pages/Elm`, {
                       id_property: 5,
                       value: '',
-                      user_id: props.UserId,
+                      user_id: UserId,
                       page_id: 1
                     })
                   )
@@ -236,11 +237,11 @@ function ContentPage(props: props) {
                 console.log(`Adicionados ${requiredTI - TooltipIdsData.length} Tooltip inputs`)
 
                 const newRes = await axios.get(`${EQ_API_URL}/pages/Elm/IC`)
-                const newTooltipIds = newRes.data.filter((elements: any) => elements.user_id === props.UserId);
+                const newTooltipIds = newRes.data.filter((elements: any) => elements.user_id === UserId);
                 setTooltipIds(newTooltipIds.map((elements: {id: number})=> elements.id))
               } else {
                 setTooltipIds(TooltipIdsData.map((elm: {id: number})=> elm.id));
-                console.log(`Element's Tooltips já existem suficientemente para o userid ${props.UserId}`)
+                console.log(`Element's Tooltips já existem suficientemente para o userid ${UserId}`)
                 console.log(`TooltipI ids: ${WriteIdeaIds}`) 
               }
             } catch (error) {
@@ -249,7 +250,7 @@ function ContentPage(props: props) {
           }
         
           fetchTooltipIds();
-      }, [props.UserId, props.suppressFunctions]);
+      }, [UserId, suppressFunctions]);
 
       useEffect(() => {
 
@@ -372,11 +373,11 @@ function ContentPage(props: props) {
           </h2>
         </Title>
 
-        <EmojiMenu key={emojiMenuIds[0]} UserId={props.UserId} emojiMenuId={emojiMenuIds[0]} onOpen={() => {}} onClose={() => {}} />
+        <EmojiMenu key={emojiMenuIds[0]} UserId={UserId} emojiMenuId={emojiMenuIds[0]} onOpen={() => {}} onClose={() => {}} />
                 
-        <Input UserId={props.UserId}/>
+        <Input UserId={UserId}/>
 
-        <InputWriteIdea WIuserId={props.UserId} classNm='top'></InputWriteIdea>
+        <InputWriteIdea WIuserId={UserId} classNm='top'></InputWriteIdea>
       </section>
             
         <section id='main'>
@@ -384,34 +385,34 @@ function ContentPage(props: props) {
 
             <div id='ItensContainer'>
                 
-              <NItem NitemId={CardsIds[0]} userid={props.UserId} key={emojiMenuIds[1]} emojiMenuId={emojiMenuIds[1]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} onclick={openModal1} image={image1}/>
+              <NItem NitemId={CardsIds[0]} userid={UserId} key={emojiMenuIds[1]} emojiMenuId={emojiMenuIds[1]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} onclick={openModal1} image={image1}/>
 
-              <NItem NitemId={CardsIds[1]} userid={props.UserId} key={emojiMenuIds[2]} emojiMenuId={emojiMenuIds[2]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal2} image={image2}/>
+              <NItem NitemId={CardsIds[1]} userid={UserId} key={emojiMenuIds[2]} emojiMenuId={emojiMenuIds[2]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal2} image={image2}/>
 
-              <NItem NitemId={CardsIds[2]} userid={props.UserId} key={emojiMenuIds[3]} emojiMenuId={emojiMenuIds[3]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal3} image={image3}/>
+              <NItem NitemId={CardsIds[2]} userid={UserId} key={emojiMenuIds[3]} emojiMenuId={emojiMenuIds[3]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal3} image={image3}/>
 
-              <NItem NitemId={CardsIds[3]} userid={props.UserId} key={emojiMenuIds[4]} emojiMenuId={emojiMenuIds[4]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal4} image={image4}/>
+              <NItem NitemId={CardsIds[3]} userid={UserId} key={emojiMenuIds[4]} emojiMenuId={emojiMenuIds[4]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}}  onclick={openModal4} image={image4}/>
 
-              <NItem NitemId={CardsIds[4]} userid={props.UserId} key={emojiMenuIds[5]} emojiMenuId={emojiMenuIds[5]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} image={image5} onclick={openModal5}/>
+              <NItem NitemId={CardsIds[4]} userid={UserId} key={emojiMenuIds[5]} emojiMenuId={emojiMenuIds[5]} handleEmojiOpen={() => {}} handleEmojiClose={() => {}} image={image5} onclick={openModal5}/>
 
             </div>
 
-            {isModal1Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[0]} UserId={props.UserId} PagesIds={PagesIds[0]} banner={image1} EmojiMenuInsideSeparatorId={emojiMenuIds[1]} Nitemid={CardsIds[0]}ClassName='testeModal' onClose={closeModal1}/>}
+            {isModal1Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[0]} UserId={UserId} PagesIds={PagesIds[0]} banner={image1} EmojiMenuInsideSeparatorId={emojiMenuIds[1]} Nitemid={CardsIds[0]}ClassName='testeModal' onClose={closeModal1}/>}
 
-            {isModal2Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[1]} UserId={props.UserId} PagesIds={PagesIds[1]} banner={image2} EmojiMenuInsideSeparatorId={emojiMenuIds[2]} Nitemid={CardsIds[1]} ClassName='testeModal' onClose={closeModal2}/>}
+            {isModal2Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[1]} UserId={UserId} PagesIds={PagesIds[1]} banner={image2} EmojiMenuInsideSeparatorId={emojiMenuIds[2]} Nitemid={CardsIds[1]} ClassName='testeModal' onClose={closeModal2}/>}
 
-            {isModal3Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[2]} UserId={props.UserId} PagesIds={PagesIds[2]} banner={image3} EmojiMenuInsideSeparatorId={emojiMenuIds[3]} Nitemid={CardsIds[2]} ClassName='testeModal' onClose={closeModal3}/>}
+            {isModal3Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[2]} UserId={UserId} PagesIds={PagesIds[2]} banner={image3} EmojiMenuInsideSeparatorId={emojiMenuIds[3]} Nitemid={CardsIds[2]} ClassName='testeModal' onClose={closeModal3}/>}
 
-            {isModal4Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[3]} UserId={props.UserId} PagesIds={PagesIds[3]} banner={image4} EmojiMenuInsideSeparatorId={emojiMenuIds[4]} Nitemid={CardsIds[3]} ClassName='testeModal' onClose={closeModal4}/>}
+            {isModal4Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[3]} UserId={UserId} PagesIds={PagesIds[3]} banner={image4} EmojiMenuInsideSeparatorId={emojiMenuIds[4]} Nitemid={CardsIds[3]} ClassName='testeModal' onClose={closeModal4}/>}
 
-            {isModal5Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[4]} UserId={props.UserId} PagesIds={PagesIds[4]} banner={image5} EmojiMenuInsideSeparatorId={emojiMenuIds[5]} Nitemid={CardsIds[4]} ClassName='testeModal' onClose={closeModal5}/>}
+            {isModal5Visible && <Modal before={lastModal} next={nextModal} FSmodalId={FScardIds[4]} UserId={UserId} PagesIds={PagesIds[4]} banner={image5} EmojiMenuInsideSeparatorId={emojiMenuIds[5]} Nitemid={CardsIds[4]} ClassName='testeModal' onClose={closeModal5}/>}
         </section>
 
         <section id='NavegacaoBasica'>
             <DiaADiaComponentImage/>
-            <LinkGroup UserId={props.UserId} inputWriteIdeaId={WriteIdeaIds[0]} inputid={TooltipIds[0]} inputid2={TooltipIds[1]} inputid3={TooltipIds[2]} emojimenuid={emojiMenuIds[6]} emojimenuid2={emojiMenuIds[7]} emojimenuid3={emojiMenuIds[8]}/>
-            <LinkGroup UserId={props.UserId} inputWriteIdeaId={WriteIdeaIds[1]} inputid={TooltipIds[3]} inputid2={TooltipIds[4]} inputid3={TooltipIds[5]} emojimenuid={emojiMenuIds[9]} emojimenuid2={emojiMenuIds[10]} emojimenuid3={emojiMenuIds[11]}/>
-            <LinkGroup UserId={props.UserId} inputWriteIdeaId={WriteIdeaIds[2]} inputid={TooltipIds[6]} inputid2={TooltipIds[7]} inputid3={TooltipIds[8]} emojimenuid={emojiMenuIds[12]} emojimenuid2={emojiMenuIds[13]} emojimenuid3={emojiMenuIds[14]}/>
+            <LinkGroup UserId={UserId} inputWriteIdeaId={WriteIdeaIds[0]} inputid={TooltipIds[0]} inputid2={TooltipIds[1]} inputid3={TooltipIds[2]} emojimenuid={emojiMenuIds[6]} emojimenuid2={emojiMenuIds[7]} emojimenuid3={emojiMenuIds[8]}/>
+            <LinkGroup UserId={UserId} inputWriteIdeaId={WriteIdeaIds[1]} inputid={TooltipIds[3]} inputid2={TooltipIds[4]} inputid3={TooltipIds[5]} emojimenuid={emojiMenuIds[9]} emojimenuid2={emojiMenuIds[10]} emojimenuid3={emojiMenuIds[11]}/>
+            <LinkGroup UserId={UserId} inputWriteIdeaId={WriteIdeaIds[2]} inputid={TooltipIds[6]} inputid2={TooltipIds[7]} inputid3={TooltipIds[8]} emojimenuid={emojiMenuIds[12]} emojimenuid2={emojiMenuIds[13]} emojimenuid3={emojiMenuIds[14]}/>
         </section>
     </main>
     )

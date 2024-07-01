@@ -61,7 +61,7 @@ function ContainerSuperior (props: props) {
     }
 
     const UserInfoLink = () =>{
-        navigate('/User');
+        navigate('/user');
     }
 
     // Gravatar
