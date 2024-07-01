@@ -24,6 +24,7 @@ function SignUp(props: SignUpProps){
     const [formError, setFormError] = useState(''); // mensagem do modal
     const [showModalErro, setShowModalErro] = useState(false); //pra mostrar o modal de erro na hora que você quiser.
     const [logoVisible, setLogoVisible] = useState(true); //logo visivel ou não na hora de aparecer o modal
+    // const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate(); //navega o usuario pra outra pagina.
 
@@ -128,6 +129,9 @@ function SignUp(props: SignUpProps){
         }
     }, [signedIn, navigate]);
 
+    // const showPasswordVisible = () => {
+
+    // }
 
     return(
         <div id='AllPageLoginSign'>
