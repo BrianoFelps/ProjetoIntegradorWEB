@@ -9,4 +9,6 @@ Sincronizar a criação de usuário e login para adicionar page_id, e fazer casc
 
 Talvez um botão de alteração de modo escuro e claro;
 
+Corrigir os emoji
+
 Posteriormente criar uma página para cada registro feito;
