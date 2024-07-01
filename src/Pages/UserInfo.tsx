@@ -14,7 +14,7 @@ interface UserInfoProps{
 
 function UserInfo(props: UserInfoProps){
     
-    const [UserId, setUserId] = useState<number | undefined>(undefined);
+    const [UserId1, setUserId1] = useState<number | undefined>(undefined);
     const [UserEmail, setUserEmail] = useState<string>('');
     const [showEmail, setShowEmail] = useState(false);
     const [showPss, setShowPss] = useState(false);
@@ -41,15 +41,15 @@ function UserInfo(props: UserInfoProps){
         const fetchUserIdByLoginOrSignUp = async () =>{
             try{
                 // EXEMPLO DO IDUSUARIO COM LOCALSTORAGE
-                const IdUsuario = localStorage.getItem('userId');
-                console.log(`IdUsuario segundo userinfo: ${IdUsuario}`)
+                const IdUsuario1 = localStorage.getItem('userId');
+                console.log(`IdUsuario segundo userinfo: ${IdUsuario1}`)
 
-                if(IdUsuario !== null) {
-                    const userIdNumber = parseInt(IdUsuario, 10);
+                if(IdUsuario1 !== null) {
+                    const userIdNumber = parseInt(IdUsuario1, 10);
                     if(!isNaN(userIdNumber))
-                        setUserId(userIdNumber);
+                        setUserId1(userIdNumber);
                     else 
-                        console.error(`IdUsuario não é um número válido: ${IdUsuario}`)
+                        console.error(`IdUsuario não é um número válido: ${IdUsuario1}`)
                 }
             } catch (error) {
                 console.error(`Erro ao fazer fetch dos userIds`)
@@ -62,7 +62,7 @@ function UserInfo(props: UserInfoProps){
     useEffect(() => {
             const fetchEmail = async () => {
             try {
-              const response = await axios.get(`${EQ_API_URL}/pages/User/${UserId}`);
+              const response = await axios.get(`${EQ_API_URL}/pages/User/${UserId1}`);
               console.log('Response data:', response.data);
 
               const UserEmailData = response.data.email;
@@ -74,11 +74,11 @@ function UserInfo(props: UserInfoProps){
             }
           }
           
-          if (UserId !== undefined) {
+          if (UserId1 !== undefined) {
             fetchEmail();
           }
           //Implementar depois nos cards e no container pai (vai ser o superior)
-    }, [UserId])
+    }, [UserId1])
 
     // Gravatar
     const defaultImage = 'identicon';

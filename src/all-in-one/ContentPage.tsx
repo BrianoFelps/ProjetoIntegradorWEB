@@ -31,7 +31,6 @@ function ContentPage( { UserId, suppressFunctions } : props) {
     const [WriteIdeaIds, setWriteIdeaIds] = useState<number[]>([]);
     const [FScardIds, setFScardIds] = useState<number[]>([]);
     const [PagesIds, setPagesIds] = useState<number[]>([]);
-    const [PageName, setPageName] = useState<String>('');
 
     // Estado para controlar a visibilidade da moda
     const [isModal1Visible, setIsModal1Visible] = useState(false); 
@@ -80,9 +79,7 @@ function ContentPage( { UserId, suppressFunctions } : props) {
   
           const PagesIdsData = pagesResponse.data.map((page: { id: number }) => page.id).filter((id: number) => id > 1);
           setPagesIds(PagesIdsData);
-  
-          const getPageNameLS = localStorage.getItem('PageName');
-          if (getPageNameLS) setPageName(getPageNameLS);
+
         } catch (error) {
           console.error('Error fetching data:', error);
         }
@@ -195,7 +192,7 @@ function ContentPage( { UserId, suppressFunctions } : props) {
       <section id='top'>
         <Title>
           <h2>
-              {PageName}
+              {localStorage.getItem('PageName')}
           </h2>
         </Title>
 

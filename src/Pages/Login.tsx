@@ -45,12 +45,16 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
                 if(email && password){
                 try {
                     const response = await axios.post(`${EQ_API_URL}/pages/Login`, { email, password });
-                    console.log(response.data); // Lógica para redirecionar o usuário após o login bem-sucedido
-                    const { nome } = response.data;
-                    const { id } = response.data;
+
+                    const response2 = await axios.get(`${EQ_API_URL}/pages/User/${response.data.id}`)
+                    console.log(response2.data); // Lógica para redirecionar o usuário após o login bem-sucedido
+                    const { usuario } = response2.data;
+                    const { id } = response2.data;
+                    
                     localStorage.setItem('userId', id);
-                    localStorage.setItem('userName', nome); // Armazena o nome no localStorage do computador. há tambem o metodo de JWT porém, seria muita coisa no momento.
-                    props.setUser(nome);
+                    localStorage.setItem('userName', usuario); // Armazena o nome no localStorage do computador. há tambem o metodo de JWT porém, seria muita coisa no momento.
+                    console.log(`Nome de usuário: ${usuario}. Nome de usuário via localstorage: ${localStorage.getItem('userName')}`)
+                    props.setUser(usuario);
                     setLoggedIn(true); // loggedIn ficará true após o login bem-sucedido
                 }catch (error) {
                     console.error('Erro ao fazer login:', error);

@@ -77,15 +77,23 @@ function SignUp(props: SignUpProps){
 
         const isPremium = 1;
 
+        const nome = 'Nome da página';
+
+        const isFavorited = 0;
+
         
         if(nomeCompleto && email && password && telefone && isPremium){
             try{
-                const response = await axios.post(`${EQ_API_URL}/pages/SignUp`, { nomeCompleto, email, password, telefone, isPremium });
+                const response = await axios.post(`${EQ_API_URL}/pages/SignUp`, { name: nome, isFavorited: isFavorited, nome_inteiro: nomeCompleto, email: email, password: password, telefone: telefone, isPremium: isPremium});
                 console.log(response.data);
                 const response2 = await axios.post(`${EQ_API_URL}/pages/Login`, { email, password });
-                const { nome } = response2.data;
-                localStorage.setItem('userName', nome); // Armazena o nome no localStorage do computador. há tambem o metodo de JWT porém, seria muita coisa no momento.
-                props.setUser(nome);
+                const { nome_inteiro } = response2.data;
+                const { id }= response2.data;
+                localStorage.setItem('userId', id);
+                localStorage.setItem('userName', nome_inteiro);
+                 // Armazena o nome no localStorage do computador. há tambem o metodo de JWT porém, seria muita coisa no momento.
+                console.log(nome_inteiro)
+                 props.setUser(nomeCompleto);
                 setSignedIn(true); // signedIn ficará true após o login bem-sucedido
             } catch (error) {
                 console.error('Erro ao fazer cadastro:', error);

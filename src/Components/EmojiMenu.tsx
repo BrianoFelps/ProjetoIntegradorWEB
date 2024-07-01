@@ -109,7 +109,7 @@ function EmojiMenu({ emojiMenuId, onOpen, onClose, UserId }: EmojiMenuProps){
         } catch (error) {
           // Se não encontrar, adiciona um novo registro de emojiMenu
           try {
-            await axios.post(`${EQ_API_URL}/pages/emojiMenu`, { id_emoji: emojiId, page_id: 1, user_id: UserId });
+            await axios.post(`${EQ_API_URL}/pages/emojiMenu`, { id_emoji: 0, page_id: 1, user_id: UserId });
             console.log('EmojiMenu adicionado com sucesso');
           } catch (error) {
             console.error(`Erro ao adicionar/atualizar EmojiMenu:`, error);
