@@ -355,7 +355,7 @@ function ContentPage( { UserId, suppressFunctions } : props) {
     return (
     <main id='ConteudoPrincipal'>
       <section id='top'>
-        <Title children={undefined}>
+        <Title>
           <h2>
               {localStorage.getItem('PageName')}
           </h2>
