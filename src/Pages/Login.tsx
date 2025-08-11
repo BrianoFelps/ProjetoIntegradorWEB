@@ -102,20 +102,20 @@ import { EQ_API_URL } from '../utils/EquilibriumApiConfig';
                             <label htmlFor='labeltitleLogin' id='labelLogin'>Faça Login na sua Conta</label>
                         </div>
                         <div className="form-groupE" id='form-groupEmail'>
-                            <label htmlFor="exInputEmail1" id='labelEmail'>Email: </label>
+                            <label htmlFor="InputEmail1" id='labelEmail'>Email: </label>
                             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Endereço de Email"></input>
-                            <small id="emailHelp" className="form-text text-muted">Nunca Compartilharemos o seu Email com ninguém.</small>
+                            <small id="emailHelp" className="form-text text-muted text-center">Nunca Compartilharemos o seu Email com ninguém.</small>
                         </div>
                         <div className="form-groupP" id='form-groupPassword'>
-                            <label htmlFor="exInputPassword1" id='labelPassword'>Senha: </label>
+                            <label htmlFor="InputPassword1" id='labelPassword'>Senha: </label>
                             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}className="form-control" id="InputPassword1" placeholder="Escreva a sua Senha"></input>
                         </div>
                         <div className="form-group form-check" id='checkgroup'>
                             <input type="checkbox" className="form-check-input" id="exCheck1"></input>
-                            <label className="form-check-label" htmlFor="exampleCheck1" id='labelCheck'>Lembrar do Login</label>
+                            <label className="form-check-label" htmlFor="exCheck1" id='labelCheck'>Lembrar do Login</label>
                         </div>
                         <div id='formbtnLogin'>
-                            <button type="button" className="btn btn-primary" id="btnEnter" onClick={fazerLogin} disabled={loginEmAndamento}>Entrar</button>
+                            <button type="button" className="btn" id="btnEnter" onClick={fazerLogin} disabled={loginEmAndamento}>Entrar</button>
                         </div>
                         <LinkSignUp onClickDirect = {LinkSign} textExample={simpletext} textLink={linktext}/>
                     </form>
