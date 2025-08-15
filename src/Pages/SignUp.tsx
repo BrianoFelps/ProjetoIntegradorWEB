@@ -141,33 +141,33 @@ function SignUp(props: SignUpProps){
                         </div>
                         <div id='signUpResponsiveFirstAndLastName'>
                             <div id='firstNameResponsive'>
-                                <label htmlFor="exInputEmail1" id='labelFirstName'>Primeiro Nome: </label>
+                                <label htmlFor="InputFName1" id='labelFirstName'>Primeiro Nome: </label>
                                 <input type="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="form-control" id="InputFName1" aria-describedby="fnameHelp" placeholder="Primeiro Nome"></input>
                             </div>
                             <div id='lastNameResponsive'>
-                                <label htmlFor="exInputEmail1" id='labelLastName'>Sobre Nome: </label>
+                                <label htmlFor="InputLName1" id='labelLastName'>Sobre Nome: </label>
                                 <input type="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} className="form-control" id="InputLName1" aria-describedby="lnameHelp" placeholder="Sobre Nome"></input>
                             </div>
                         </div>
                         <div className="form-groupE" id='form-groupEmail'>
-                            <label htmlFor="exInputEmail1" id='labelEmail'>Email: </label>
+                            <label htmlFor="InputEmail1" id='labelEmail'>Email: </label>
                             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Endereço de Email"></input>
-                            <small id="emailHelp" className="form-text text-muted">Nunca Compartilharemos o seu Email com ninguém.</small>
+                            <small id="emailHelp" className="form-text text-muted text-center">Nunca Compartilharemos o seu Email com ninguém.</small>
                         </div>
                         <div className="form-groupP" id='form-groupPassword'>
-                            <label htmlFor="exInputPassword1" id='labelPassword'>Senha: </label>
+                            <label htmlFor="InputPassword1" id='labelPassword'>Senha: </label>
                             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" id="InputPassword1" placeholder="Escreva a sua Senha"></input>
                         </div>
                         <div className="form-groupP" id='form-groupConfirmPassword'>
-                            <label htmlFor="exInputPassword1" id='labelConfirmPassword'>Confirme a sua Senha: </label>
+                            <label htmlFor="InputConfirmPassword1" id='labelConfirmPassword'>Confirme a sua Senha: </label>
                             <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="form-control" id="InputConfirmPassword1" placeholder="Confirme a Senha"></input>
                         </div>
                         <div className="form-group form-check" id='checkgroup'>
                             <input type="checkbox" className="form-check-input" id="exCheck1"></input>
-                            <label className="form-check-label" htmlFor="exampleCheck1" id='labelCheck'>Lembrar o login</label>
+                            <label className="form-check-label" htmlFor="exCheck1" id='labelCheck'>Lembrar o login</label>
                         </div>
                         <div id='formbtnSignUp'>
-                            <button type="button" className="btn btn-primary" id="btnEnter" onClick={handleSubmit} disabled={loginEmAndamento} >Criar Conta</button>
+                            <button type="button" className="btn" id="btnEnter" onClick={handleSubmit} disabled={loginEmAndamento} >Criar Conta</button>
                         </div>
                         <DirectLink onClickDirect = {LinkLogin} textExample={simpletext} textLink={linktext}/>
                     </form>

@@ -11,7 +11,7 @@
     margin: 0;
     margin-top: 10px;
     margin-bottom: 10px;
-    color: rgb(255, 255, 255);
+    color: #212529;
 }
 
 .m{
@@ -22,36 +22,28 @@
     margin-left: 10px;
     margin-right: 10px;
     margin: 0;
-    color: rgb(255, 255, 255);
+    color: #212529;
 }
 
 .btnModal{
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
-    height: 100%;
-    width: 20%;
     cursor: pointer;
-    color: white;
-    background-color: black;
-    transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    color: #FFFFFF;
+    background-color: #212529;
+    transition: border-color 0.5s ease-in-out;
+    border-radius: 4px;
+    padding: 10px;
+    transition: ease-in-out 0.3s;
 }
 
 .btnModal:hover{
-    /* background-image: linear-gradient( to right, black, rgb(122, 122, 122) ); */
+    color: #212529;
     border-color: rgb(201, 186, 186);
-    box-shadow: 0px 0px .250em #636160;
-    animation: colorChange 1s infinite alternate;
-}
-
-@keyframes colorChange {
-    0% {
-      background-color: rgb(51, 49, 49);
-    }
-    100% {
-      background-color: rgb(100, 100, 100);
-    }
+    background-color: #DDDDDD;
 }
 
 .modal-overlay {
+    z-index: 2;
     position: fixed;
     top: 0;
     left: 0;
@@ -66,22 +58,13 @@
 .modal-content {
     justify-items: center;
     display: flex;
-    background-color: rgb(114, 113, 113);
-    border-radius: 5px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
     max-width: 500px;
     height: 40%;
     width: 100%;
-    animation: colorChange2 3s infinite alternate;
 }
 
-@keyframes colorChange2 {
-    0% {
-      background-color: rgb(51, 49, 49);
-    }
-    100% {
-      background-color: rgb(255, 0, 0);
-    }
-}
 
 .modal-title{
     display: flex;
@@ -89,22 +72,12 @@
 }
   
 .modal-body {
-    background-color: #3d3a38;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     padding: 20px;
-    animation: colorChange3 3s infinite alternate;
-}
-
-@keyframes colorChange3 {
-    0% {
-      background-color: #31302e;
-    }
-    100% {
-      background-color: #81746c;
-    }
+    background-color: #DDDDDD;
 }
 
 .btnArea {
